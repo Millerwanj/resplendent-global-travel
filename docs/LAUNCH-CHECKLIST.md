@@ -1,0 +1,14 @@
+# Launch Checklist
+- [ ] Replace temporary Gmail
+- [ ] Connect secure form handling
+- [ ] Confirm domain and canonical URLs
+- [ ] Add privacy policy and terms
+- [ ] Verify social accounts
+- [ ] Verify image rights
+- [ ] Generate AVIF/WebP images
+- [ ] Test mobile navigation
+- [ ] Test enquiry form
+- [ ] Run Lighthouse
+- [ ] Run accessibility audit
+- [ ] Validate sitemap and robots.txt
+- [ ] Create GitHub release tag v5.0.0

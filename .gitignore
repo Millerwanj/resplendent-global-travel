@@ -1,18 +1,5 @@
-# OS files
 .DS_Store
 Thumbs.db
-
-# Editor files
 .vscode/
-.idea/
-*.swp
-
-# Local env / secrets (if a form backend key is ever added)
+node_modules/
 .env
-.env.local
-
-# Logs
-*.log
-
-# Archive artifacts — the project ships as real files, not zips
-*.zip

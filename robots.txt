@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.resplendentgts.com/sitemap.xml
+Sitemap: https://www.resplendentglobaltravel.com/sitemap.xml
