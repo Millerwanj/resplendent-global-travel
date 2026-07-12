@@ -1,0 +1,7 @@
+chore(v5.3): harden production readiness and accessibility
+
+- reduce layout shift with intrinsic image dimensions
+- strengthen navigation and form accessibility
+- add breadcrumb data and absolute social images
+- add 404 support and runtime year updates
+- update QA, release and version documentation

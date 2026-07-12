@@ -1,11 +1,16 @@
-# Resplendent Global Travel Solutions — v5.2 Complete
+# Resplendent Global Travel Solutions — v5.3 Complete
 
 **Edition:** The Signature Edition  
-**Integrated sprints:** Beta + Gamma  
-**Status:** Ready for local preview
+**Release focus:** Production Readiness  
+**Editorial status:** Locked  
+**Status:** Ready for local preview and commit
 
-## Locked homepage copy
+## Scope
 
-**Travel, thoughtfully designed**
-
-Exceptional journeys, corporate travel and global business connections—thoughtfully designed with precision, discretion and purpose.
+- Performance stability
+- Accessibility hardening
+- Navigation reliability
+- Form validation refinement
+- Metadata and structured-data consistency
+- Error-page support
+- Launch documentation

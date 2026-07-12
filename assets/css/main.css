@@ -16,3 +16,19 @@
 @media(max-width:700px){:root{--container:min(100% - 32px,1180px)}.section{padding:82px 0}.header-inner{height:76px}.split,.pillar-grid,.service-grid,.process-grid,.form-grid,.footer-grid,.destination-feature,.destination-feature:nth-child(even){grid-template-columns:1fr}.destination-feature:nth-child(even) img{order:0}.destination-feature img{height:420px}.destination-grid{display:block}.destination-card{height:340px;margin-bottom:16px}.industry-grid.wide{grid-template-columns:1fr 1fr}.book-card{grid-template-columns:1fr;padding:32px}.book-card img{width:140px}.book-card .button{grid-column:auto}.luxury-form{padding:30px 22px}.footer-bottom{display:block}.hero{min-height:84svh;padding:112px 0 92px}.page-hero{min-height:46svh;padding:108px 0 44px}.page-hero h1{font-size:clamp(3.25rem,14vw,5rem)}.page-hero p:last-child{max-width:32rem;font-size:.95rem}.hero-scroll{right:16px;bottom:22px}.hero-scroll i{height:48px}.actions{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 :focus-visible{outline:2px solid var(--gold);outline-offset:4px}.primary-nav a[aria-current="page"]:after{right:0}.button:focus-visible,.text-link:focus-visible,.brand:focus-visible,.hero-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:5px}.luxury-form input[aria-invalid="true"],.luxury-form select[aria-invalid="true"],.luxury-form textarea[aria-invalid="true"]{border-bottom-color:#9e3030}.form-status{min-height:1.4em}
+/* v5.3 production hardening */
+html{scroll-padding-top:88px}
+body.nav-open{overflow:hidden}
+img[width][height]{height:auto}
+.consent-error{display:block;margin-top:-14px;color:#9e3030;font-size:.78rem}
+.luxury-form input[aria-invalid="true"],
+.luxury-form select[aria-invalid="true"],
+.luxury-form textarea[aria-invalid="true"]{border-bottom-color:#9e3030}
+.luxury-form input[type="checkbox"][aria-invalid="true"]{outline:2px solid #9e3030;outline-offset:3px}
+@media print{
+  .site-header,.site-footer,.hero-scroll,.nav-toggle,.actions,.button{display:none!important}
+  body{color:#000;background:#fff}
+  .hero,.page-hero{min-height:auto;padding:32px 0;color:#000;background:none!important}
+  .hero-overlay{display:none}
+  .section{padding:32px 0}
+}

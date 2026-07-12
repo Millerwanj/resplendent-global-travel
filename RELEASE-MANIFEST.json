@@ -1,11 +1,14 @@
 {
   "project": "Resplendent Global Travel Solutions",
-  "release": "v5.2 Complete",
+  "release": "v5.3 Complete",
   "edition": "The Signature Edition",
-  "sprints": [
-    "Beta",
-    "Gamma"
-  ],
+  "focus": "Production Readiness",
+  "editorial_status": "Locked",
   "status": "Ready for local preview",
-  "commit_message": "feat(v5.2): integrate locked editorial identity and production engineering"
+  "commit_message": "chore(v5.3): harden production readiness and accessibility",
+  "launch_blockers": [
+    "Replace temporary Gmail address",
+    "Confirm final production domain",
+    "Confirm production form handling"
+  ]
 }
