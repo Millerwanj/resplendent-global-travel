@@ -1,24 +1,17 @@
 {
   "name": "Resplendent Global Travel Solutions",
   "short_name": "Resplendent",
-  "description": "Luxury travel design, executive travel management and global business connections.",
-  "start_url": "/index.html",
-  "scope": "/",
+  "description": "Exceptional journeys, corporate travel and global business connections.",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#FFFFFF",
+  "background_color": "#ffffff",
   "theme_color": "#0A2342",
-  "lang": "en",
   "icons": [
     {
-      "src": "/assets/images/favicon.svg",
+      "src": "favicon.ico",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "/assets/images/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/x-icon"
     }
   ]
 }

@@ -1,0 +1,7 @@
+chore(v5.4): finalize pre-domain launch configuration
+
+- centralize site URL and enquiry email configuration
+- add accessible contact fallback behavior
+- add hosting security header templates
+- improve web manifest and contrast support
+- document domain, email and launch handover steps

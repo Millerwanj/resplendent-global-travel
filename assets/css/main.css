@@ -32,3 +32,6 @@ img[width][height]{height:auto}
   .hero-overlay{display:none}
   .section{padding:32px 0}
 }
+
+/* v5.4 final pre-domain release */
+.form-fallback{max-width:44rem;margin:14px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}.form-fallback a{text-underline-offset:3px}@media(prefers-contrast:more){:root{--muted:#4c5660;--line:rgba(10,35,66,.3)}.button-outline{border-color:currentColor}}@media(forced-colors:active){.button,.nav-toggle,.hero-scroll{forced-color-adjust:auto}}

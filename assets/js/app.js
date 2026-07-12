@@ -8,6 +8,23 @@
   const status = document.querySelector("[data-form-status]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const validateSiteConfiguration = () => {
+    const config = window.RESPLENDENT_CONFIG;
+    if (!config) { console.warn("Resplendent site configuration is unavailable."); return; }
+    try { new URL(config.siteUrl); } catch { console.warn("Resplendent siteUrl is not valid."); }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.enquiryEmail || "")) {
+      console.warn("Resplendent enquiryEmail is not valid.");
+    }
+  };
+  validateSiteConfiguration();
+
+  document.querySelectorAll("[data-config-email]").forEach((link) => {
+    const email = window.RESPLENDENT_CONFIG?.enquiryEmail;
+    if (!email) return;
+    link.textContent = email;
+    link.setAttribute("href", `mailto:${email}`);
+  });
+
   document.querySelectorAll("[data-current-year]").forEach((year) => {
     year.textContent = String(new Date().getFullYear());
   });
