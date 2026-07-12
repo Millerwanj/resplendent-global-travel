@@ -1,0 +1,7 @@
+feat(v5.2): integrate locked editorial identity and production engineering
+
+- apply final homepage hero copy
+- simplify and resize internal heroes
+- retain the vertical gold scroll signature
+- improve accessibility, responsive behaviour and form feedback
+- add SEO metadata, structured data and updated sitemap

@@ -1,20 +1,16 @@
 # Changelog
 
-## 5.0.0 — Sprint 6
-### Added
-- Full multi-page production repository
-- Home, Destinations, Corporate, Business, About and Contact pages
-- Local image architecture
-- Premium concierge enquiry form
-- Corporate and B2B modules
-- Return on Travel integration
-- Responsive navigation and motion system
-- SEO, sitemap, robots, repository standards and launch documentation
+## v5.2 — 2026-07-12
 
-### Preserved
-- Confirmed navigation
-- Quiet-luxury editorial direction
-- Navy, gold and white brand system
-- Minimal, practical, premium presentation
-- Corporate Travel and About Us
-- No Experiences navigation section
+### Beta
+- Applied the final homepage headline and supporting statement.
+- Simplified internal heroes to their approved page titles.
+- Reduced hero height and retained the vertical gold Scroll signature.
+
+### Gamma
+- Added unique SEO titles, descriptions, canonical tags and social metadata.
+- Added TravelAgency structured data.
+- Improved responsive hero scaling, keyboard focus and navigation states.
+- Improved form invalid states and keyboard focus.
+- Added lazy image loading, updated sitemap and robots configuration.
+- Completed QA and release documentation.

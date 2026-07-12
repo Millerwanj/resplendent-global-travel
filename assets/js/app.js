@@ -1,3 +1,8 @@
+const currentPage=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+document.querySelectorAll("[data-nav] a").forEach(link=>{
+  const href=(link.getAttribute("href")||"").split("?")[0].toLowerCase();
+  if(href===currentPage) link.setAttribute("aria-current","page");
+});
 
 (() => {
   const header = document.querySelector('[data-header]');
@@ -52,3 +57,14 @@
     status.className = 'form-status success';
   });
 })();
+
+document.addEventListener("keydown",event=>{
+  if(event.key!=="Escape") return;
+  const nav=document.querySelector("[data-nav]");
+  const toggle=document.querySelector("[data-nav-toggle]");
+  if(nav?.classList.contains("open")){
+    nav.classList.remove("open");
+    toggle?.setAttribute("aria-expanded","false");
+    toggle?.focus();
+  }
+});
