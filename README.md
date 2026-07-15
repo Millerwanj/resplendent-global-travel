@@ -1,3 +1,3 @@
-# Resplendent Global Travel Solutions — v5.4 Complete
+# Resplendent Global Travel Solutions
 
-Final pre-domain baseline. Edit `assets/js/site-config.js` when the final domain and professional email addresses are confirmed.
+Production-ready v6.0 website for `resplendentglobaltravel.com`.

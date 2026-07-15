@@ -1,13 +1,13 @@
 window.RESPLENDENT_CONFIG = Object.freeze({
-  version: "5.4",
+  version: "6.0",
   siteName: "Resplendent Global Travel Solutions",
   siteUrl: "https://www.resplendentglobaltravel.com",
-  enquiryEmail: "resplendentglobaltravelsolutions@gmail.com",
+  enquiryEmail: "info@resplendentglobaltravel.com",
   contact: Object.freeze({
-    info: "resplendentglobaltravelsolutions@gmail.com",
-    bookings: "resplendentglobaltravelsolutions@gmail.com",
-    corporate: "resplendentglobaltravelsolutions@gmail.com",
-    business: "resplendentglobaltravelsolutions@gmail.com",
-    support: "resplendentglobaltravelsolutions@gmail.com"
+    info: "info@resplendentglobaltravel.com",
+    bookings: "bookings@resplendentglobaltravel.com",
+    corporate: "corporate@resplendentglobaltravel.com",
+    business: "business@resplendentglobaltravel.com",
+    support: "support@resplendentglobaltravel.com"
   })
 });

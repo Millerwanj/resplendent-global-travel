@@ -1,9 +1,10 @@
 {
   "project": "Resplendent Global Travel Solutions",
-  "release": "v5.4 Complete",
-  "edition": "The Signature Edition",
-  "role": "Final pre-domain baseline",
-  "editorial_status": "Locked",
-  "recommended_next_workstream": "Operating manuals",
-  "commit_message": "chore(v5.4): finalize pre-domain launch configuration"
+  "release": "v6.0",
+  "edition": "Refined Production Release",
+  "homepage": "Namibia hero, four trust pillars, no additional sections",
+  "brand_status": "Locked",
+  "payment_status": "Dedicated page prepared for merchant activation",
+  "privacy_status": "No public office location",
+  "commit_message": "release(v6.0): refine production website and lock minimal homepage"
 }
