@@ -7,6 +7,7 @@
   const form = document.querySelector("[data-concierge-form]");
   const status = document.querySelector("[data-form-status]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const navFocusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   const validateSiteConfiguration = () => {
     const config = window.RESPLENDENT_CONFIG;
@@ -54,6 +55,7 @@
     toggle.setAttribute("aria-expanded", String(!open));
     nav?.classList.toggle("open", !open);
     document.body.classList.toggle("nav-open", !open);
+    if (!open) nav?.querySelector("a")?.focus();
   });
 
   nav?.querySelectorAll("a").forEach((link) => {
@@ -70,6 +72,17 @@
     if (event.key === "Escape" && nav?.classList.contains("open")) {
       closeNavigation({ restoreFocus: true });
     }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab" || !nav?.classList.contains("open")) return;
+    const focusable = [...nav.querySelectorAll(navFocusableSelector)];
+    if (toggle) focusable.unshift(toggle);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
 
   window.addEventListener("resize", () => {
@@ -188,6 +201,6 @@ ${data.message}`
     status.className = "form-status success";
 
     window.location.href =
-      `mailto:resplendentglobaltravelsolutions@gmail.com?subject=${subject}&body=${body}`;
+      `mailto:${window.RESPLENDENT_CONFIG?.enquiryEmail || "info@resplendentglobaltravel.com"}?subject=${subject}&body=${body}`;
   });
 })();

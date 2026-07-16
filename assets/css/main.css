@@ -57,3 +57,18 @@ img[width][height]{height:auto}
 /* v6.0 final closing-photo fix: use the same proven CSS background loading method as page heroes. */
 .closing-photo{min-height:520px;background-repeat:no-repeat;background-size:cover;background-position:center;overflow:hidden}
 @media(max-width:700px){.closing-photo{min-height:390px}}
+
+
+/* v7.0 engineering refinement — content and visual direction remain locked */
+html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
+body{min-width:320px}
+button,.button,a{-webkit-tap-highlight-color:transparent}
+.nav-toggle{touch-action:manipulation}
+.primary-nav.open{visibility:visible}
+.luxury-form input,.luxury-form select,.luxury-form textarea{border-radius:0;min-height:44px}
+.luxury-form textarea{resize:vertical}
+.form-status[aria-live]{scroll-margin-top:110px}
+img{content-visibility:auto}
+@media(max-width:980px){.primary-nav{visibility:hidden}.primary-nav.open{visibility:visible}.primary-nav a{min-height:44px;display:flex;align-items:center}}
+@media(hover:hover){.primary-nav a:hover,.site-footer a:hover{text-decoration-color:var(--gold)}}
+@supports(content-visibility:auto){.section:not(:first-child){content-visibility:auto;contain-intrinsic-size:1px 760px}}

@@ -1,10 +1,12 @@
 {
   "project": "Resplendent Global Travel Solutions",
-  "release": "v6.0",
-  "edition": "Refined Production Release",
-  "homepage": "Namibia hero, four trust pillars, no additional sections",
-  "brand_status": "Locked",
-  "payment_status": "Dedicated page prepared for merchant activation",
+  "release": "v7.0",
+  "edition": "Engineering & Production Refinement",
+  "base_release": "v6.0 Final Refined Production Build",
+  "editorial_status": "Locked \u2014 no approved visible copy changed",
+  "visual_status": "Locked \u2014 approved imagery and design retained",
+  "engineering_status": "Complete",
+  "payment_status": "Dedicated page retained for merchant activation",
   "privacy_status": "No public office location",
-  "commit_message": "release(v6.0): refine production website and lock minimal homepage"
+  "commit_message": "release(v7.0): harden production engineering without editorial changes"
 }

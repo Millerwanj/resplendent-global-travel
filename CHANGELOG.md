@@ -1,31 +1,20 @@
 # Changelog
 
-## v6.0 — Refined Production Release
-- Replaced the homepage hero with the approved Namibia desert lodge direction.
-- Kept Payments as a separate navigation page only.
-- Locked the homepage to the hero and four trust pillars with no footer or extra sections.
-- Blended the approved R mark into the shared header.
-- Reserved Gulfstream imagery for Corporate and destination imagery for Destinations.
-- Removed all published company location and office-address references.
+## v7.0 — Engineering & Production Refinement (16 July 2026)
 
-## v6.0 — Contact Privacy Refinement
-- Removed all published company location and office-address references.
-- Updated the Contact page to use the approved “Get in Touch” wording.
-- Meeting details are arranged privately where appropriate.
-- Retained phone, WhatsApp, email and enquiry form contact routes.
+### Improved
+- Centralised the enquiry recipient through `site-config.js` and removed the obsolete Gmail fallback from the form workflow.
+- Added keyboard focus containment and improved focus restoration for the mobile navigation.
+- Added intrinsic image dimensions, lazy loading and asynchronous image decoding to reduce layout shift and improve loading performance.
+- Expanded social metadata, crawl directives and homepage TravelAgency structured data.
+- Added long-lived immutable caching for versioned static assets and revalidation for HTML documents.
+- Improved form status announcements, input sizing, textarea resizing and cross-browser resilience.
+- Versioned production CSS and JavaScript references for reliable cache refresh.
 
-## v5.4 — 2026-07-12
-- Centralised site URL and enquiry email configuration.
-- Added accessible contact fallback.
-- Added hosting security templates and migration guidance.
-- Declared v5.4 the baseline for operating manuals.
-- Preserved the locked editorial identity and visual design.
+### Preserved
+- All approved visible editorial copy.
+- Santorini homepage hero and all approved imagery.
+- Navigation, layout, typography, colours and minimalist quiet-luxury direction.
 
-## v6.0 Homepage Lock Refinement
-- Homepage ends immediately after the four trust pillars.
-- Removed the homepage newsletter, company-information footer, and all content below the trust bar.
-- Corporate, destination, business, payment, and legal content remain on their dedicated pages.
-
-## v6.0.3 — Git-ready image refinement
-- Replaced the duplicated Corporate handshake closing image with a unique executive boardroom photograph.
-- Preserved the working About Us closing image and all approved Santorini v6.0 changes.
+## v6.0
+- Final refined production build.
