@@ -1,12 +1,343 @@
 {
-  "project": "Resplendent Global Travel Solutions",
-  "release": "v7.0",
-  "edition": "Engineering & Production Refinement",
-  "base_release": "v6.0 Final Refined Production Build",
-  "editorial_status": "Locked \u2014 no approved visible copy changed",
-  "visual_status": "Locked \u2014 approved imagery and design retained",
-  "engineering_status": "Complete",
-  "payment_status": "Dedicated page retained for merchant activation",
-  "privacy_status": "No public office location",
-  "commit_message": "release(v7.0): harden production engineering without editorial changes"
+  "release": "v7.1",
+  "name": "Operational Intelligence",
+  "baseline": "v7.0",
+  "editorialChanges": false,
+  "files": [
+    {
+      "path": ".editorconfig",
+      "bytes": 114,
+      "sha256": "78dc11bb60364cbb65afecce40c965fa2e395491632a96a5be330a37fe8daad8"
+    },
+    {
+      "path": ".github/workflows-placeholder.md",
+      "bytes": 115,
+      "sha256": "209b8767e673c79d63a6de8cd86a175a44b992414675d6faf7df5d5db56d9a0c"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 48,
+      "sha256": "8933d0cf2d46993bd1fbeefd85550421745905d6550588c124c38e288413e47e"
+    },
+    {
+      "path": "404.html",
+      "bytes": 4972,
+      "sha256": "b680fbccaef6ad14012ac762290865befef93314fc509ea1eceb89025286b38e"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1662,
+      "sha256": "43ab74fb330969819d2949788e89ae69f7110e8b0dae1efffb50454dc50928b2"
+    },
+    {
+      "path": "README.md",
+      "bytes": 622,
+      "sha256": "bbe0169cf6889353e7ac2ecc83a4e22b2f625dd7cc7820a1e76a0c9e95d24439"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 170,
+      "sha256": "f0376e2a208d8317f334ef10d5ef88768528a4ed0e52b615354bc1b5fd40f573"
+    },
+    {
+      "path": "_headers",
+      "bytes": 595,
+      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
+    },
+    {
+      "path": "about.html",
+      "bytes": 6391,
+      "sha256": "f3542d7443a5ae3291d9c83313f7b297bbda6952af367c0e33e4a62f954109a4"
+    },
+    {
+      "path": "assets/css/main.css",
+      "bytes": 19456,
+      "sha256": "accf9a7a3c4042ff3ab79bb17196619e71c883bbb55b61f7ce4567c7f3bbcaca"
+    },
+    {
+      "path": "assets/images/book/return-on-travel.jpg",
+      "bytes": 108935,
+      "sha256": "2910b0318b833261e059f7d1b6a5c07c18ca9112f97ab75522c258c3dee68a82"
+    },
+    {
+      "path": "assets/images/business/global.jpg",
+      "bytes": 208418,
+      "sha256": "1572fb51862a049c4ba3c73b507f5bbfc34db78948d509204007ac828097f1f4"
+    },
+    {
+      "path": "assets/images/corporate/boardroom.jpg",
+      "bytes": 538668,
+      "sha256": "abf08a4dd91cffbbd7ae3fc7a3466f8fb587e742bce52b60ef4d107bdec5c9f7"
+    },
+    {
+      "path": "assets/images/corporate/executive.jpg",
+      "bytes": 1057533,
+      "sha256": "26b5e50a8350f25139bb0770ed3e90680cfcfbbe1a6d0bda9fe09ba1bd994e2a"
+    },
+    {
+      "path": "assets/images/corporate/meeting.jpg",
+      "bytes": 213819,
+      "sha256": "580b3ddc0e7d5156372e324889bfb25ca0a739a7ff7e8ece855f7d40974ed3c7"
+    },
+    {
+      "path": "assets/images/destinations/brazil.jpg",
+      "bytes": 397513,
+      "sha256": "133ac51a9eebf8c19694af1e82223cf78678e2e026ade8a5143e4d129a68e5be"
+    },
+    {
+      "path": "assets/images/destinations/cape-town.jpg",
+      "bytes": 416210,
+      "sha256": "91c413566c854ae2eed14d208b0bbf3076f466049a8a696866de876c5ac41774"
+    },
+    {
+      "path": "assets/images/destinations/dubai.jpg",
+      "bytes": 368759,
+      "sha256": "013da86d32a6399b7f82e3758c760b7eaa8140c9c6fc2e31d92c2ae8cbe4dbfd"
+    },
+    {
+      "path": "assets/images/destinations/japan.jpg",
+      "bytes": 479591,
+      "sha256": "3b77f7efeec50e2c7496236ac250c2b310245011469fd0fa28a7f20048cf1472"
+    },
+    {
+      "path": "assets/images/destinations/maasai-mara.jpg",
+      "bytes": 289214,
+      "sha256": "90bd9143a0e11676b8129c09c40ad0adb55061eefbedaa9254fb064de4737ea9"
+    },
+    {
+      "path": "assets/images/destinations/paris.jpg",
+      "bytes": 273786,
+      "sha256": "df23058d5fa7d68471fcb9d23daae90751f92eb2539bcf919b6b704d1e2fc72d"
+    },
+    {
+      "path": "assets/images/hero/about.jpg",
+      "bytes": 269237,
+      "sha256": "7870a9107af552cb59a048ad94cd6ddd09b5f0e24a7747453740dc2535b7670a"
+    },
+    {
+      "path": "assets/images/hero/business-handshake.jpg",
+      "bytes": 307829,
+      "sha256": "910ee52302eb4e6446ddeed672c68ae2ce99836fe6fff8e6800c237897152a9c"
+    },
+    {
+      "path": "assets/images/hero/business.jpg",
+      "bytes": 307829,
+      "sha256": "910ee52302eb4e6446ddeed672c68ae2ce99836fe6fff8e6800c237897152a9c"
+    },
+    {
+      "path": "assets/images/hero/contact.jpg",
+      "bytes": 310223,
+      "sha256": "d1e28727bcf4c9fe58916b965588455a18542c5a6bae230c7592c99381e8a865"
+    },
+    {
+      "path": "assets/images/hero/corporate.jpg",
+      "bytes": 307723,
+      "sha256": "2bbc9fd350da26fc91a192ec38fe830a26f7514f5973a9f6bd58a24a33f850f7"
+    },
+    {
+      "path": "assets/images/hero/destinations.jpg",
+      "bytes": 309205,
+      "sha256": "d24ec4ed0926468b156e0fc02eb1c0c16e15a902c75dddce23df7c39145b5001"
+    },
+    {
+      "path": "assets/images/hero/home.jpg",
+      "bytes": 537527,
+      "sha256": "a134ac1930f02e9b330883fa05efbec0ae1feb269811878c06481d20ffdeec88"
+    },
+    {
+      "path": "assets/images/logo-r.png",
+      "bytes": 50060,
+      "sha256": "2a494dfb87a0e250dac3888aa6f82d4112336c5a5a28ef80e4f6118e08ca31b0"
+    },
+    {
+      "path": "assets/js/app.js",
+      "bytes": 10082,
+      "sha256": "45c9d7993b1a7099ce24293bd1e61876b7bc2988240203888dd9dd2db837f148"
+    },
+    {
+      "path": "assets/js/site-config.js",
+      "bytes": 516,
+      "sha256": "dffef0e39df22cddf426df8f1d814f6d881ada85e6b036ab9f67172e7515cb85"
+    },
+    {
+      "path": "business.html",
+      "bytes": 6708,
+      "sha256": "3f84133ffcec371aeff1c7ada351c1baa3c3c00745947a6ccad63fb55c417a64"
+    },
+    {
+      "path": "contact.html",
+      "bytes": 10738,
+      "sha256": "42aa59723cadddeb4c4e04532c31b62282cf3da8d9b47c348a41c5db12c01c86"
+    },
+    {
+      "path": "corporate.html",
+      "bytes": 6394,
+      "sha256": "b9a026a2771286a11e0dad05820982e7d3af15567c6653394d981399ab977055"
+    },
+    {
+      "path": "data/site.json",
+      "bytes": 296,
+      "sha256": "4ffbdd51a462f0a3e91e8559ba6bd7d61281192d709cc9c57685dee64deffebf"
+    },
+    {
+      "path": "destinations.html",
+      "bytes": 7889,
+      "sha256": "fb8a20e0f6c2bce0656dfd17ab2bca54ae5b130519b2677c4bed0cbe8931ecb2"
+    },
+    {
+      "path": "docs/BRAND-GUIDE.md",
+      "bytes": 341,
+      "sha256": "76cbf3a80acef433fc2ffd3ccbb7a281a50278d158f610205318f2489f508d45"
+    },
+    {
+      "path": "docs/COMMIT-v5.2.txt",
+      "bytes": 311,
+      "sha256": "1df04b3cd5fff7e935af1efb18d3413018bb038586e3e2c607fef7f013750d26"
+    },
+    {
+      "path": "docs/COMMIT-v5.3.txt",
+      "bytes": 300,
+      "sha256": "0786e8797fbc7f39627422ab773e941365ab08143aec335b299ad5942e4974b4"
+    },
+    {
+      "path": "docs/COMMIT-v5.4.txt",
+      "bytes": 287,
+      "sha256": "24a9aaf8c5599235baa389fd78cd5d12ef8846ea18b768c9e65a2688892eea9f"
+    },
+    {
+      "path": "docs/COMMIT-v7.0.txt",
+      "bytes": 71,
+      "sha256": "5336a85d9254f6cc51dd6a3caf1e442ad73e8d54583914c2043924c5000c0c76"
+    },
+    {
+      "path": "docs/COMMIT-v7.1.txt",
+      "bytes": 67,
+      "sha256": "30d424ac78fefb79b5cd3e77befb0370206461c9c7b1b66105066e5413020f92"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "bytes": 230,
+      "sha256": "be59259db8bd21ab62449abc95ab43d8b865eadde09867713956c03fb1854c17"
+    },
+    {
+      "path": "docs/DOMAIN-AND-EMAIL-MIGRATION.md",
+      "bytes": 379,
+      "sha256": "f3a7e8349e66fa645d7490b825c81a1d5e63ae3b962a61ad9c08debc9b20e240"
+    },
+    {
+      "path": "docs/IMAGE-CREDITS.md",
+      "bytes": 468,
+      "sha256": "24ff983a2246058d126512433a856a0ded3b9b4b39ee1dc28be7977659f41f69"
+    },
+    {
+      "path": "docs/LAUNCH-CHECKLIST.md",
+      "bytes": 427,
+      "sha256": "d0f0368b5e15440337cdbf90d7ac058f225abe954ec69d44cd331b0919fbcf4c"
+    },
+    {
+      "path": "docs/LAUNCH-HANDOVER-v5.4.md",
+      "bytes": 465,
+      "sha256": "7098b3a7ef8b81c9e33c8c714fa1e0dc2ba9ed47de8e789d392193f6f3fc85a1"
+    },
+    {
+      "path": "docs/QA-REPORT.md",
+      "bytes": 371,
+      "sha256": "d88c0662f148cee1fdf5507fbbef0f7b6f5f5fab5ab684948cbd3f042db216b7"
+    },
+    {
+      "path": "docs/QA-v5.2-COMPLETE.md",
+      "bytes": 500,
+      "sha256": "d8f4ed79e49eabb88202f6853eba1bec2b5b3288e1ef12d6517d2d162d0cf168"
+    },
+    {
+      "path": "docs/QA-v5.3-COMPLETE.md",
+      "bytes": 1014,
+      "sha256": "2979d33c5ff3e92d39dc55815804d7319f76c4a886e1baeea655b6bd39d2879c"
+    },
+    {
+      "path": "docs/QA-v5.4-COMPLETE.md",
+      "bytes": 409,
+      "sha256": "f30746210c9cbe08484b5f0e02f8e73b03d374913084e2e092227264e6e03d96"
+    },
+    {
+      "path": "docs/QA-v7.0-COMPLETE.md",
+      "bytes": 759,
+      "sha256": "94e24ca72f6bcddb18d766168c9f3d08f0003d7704001d4fbb8d8f3873cf7d30"
+    },
+    {
+      "path": "docs/QA-v7.1-COMPLETE.md",
+      "bytes": 476,
+      "sha256": "1733b302596d6119f8138dd42b5a0249b35fc5f4b795bb5dc2d5b1a47a987f44"
+    },
+    {
+      "path": "docs/RELEASE-v5.2.md",
+      "bytes": 255,
+      "sha256": "dc5e466f6f0da38f3facd2ca815182ac711a19fc6b026f4a70cf9494571fb6aa"
+    },
+    {
+      "path": "docs/RELEASE-v5.3.md",
+      "bytes": 301,
+      "sha256": "582eaf84b6eaad4ed64f3dcf66231d878bb3804295775f0ef4b207adf7a08cb1"
+    },
+    {
+      "path": "docs/RELEASE-v5.4.md",
+      "bytes": 133,
+      "sha256": "bc0a5b0e90f3d749a8e56819526c7d1f9a9d081af8db1c6c9b286da75cc71ea8"
+    },
+    {
+      "path": "docs/RELEASE-v7.0.md",
+      "bytes": 728,
+      "sha256": "fb05a75d9db7e7f0f683b46280f187f9ede99514bc0c1c96f4c6f7f8d230b84c"
+    },
+    {
+      "path": "docs/RELEASE-v7.1.md",
+      "bytes": 769,
+      "sha256": "3697810fb5a6a5aecf41613a21ca0635072f97a25bfc50e7da350dac70afef0d"
+    },
+    {
+      "path": "favicon.ico",
+      "bytes": 13771,
+      "sha256": "92866a2030bb4712d84d2cf183c49b1bd9c2cd38e0eb62346ba17cc65048eec9"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4049,
+      "sha256": "feaaa99ebff272985b3afeb227cf9cc5d0b14fd946bac4cb069b9123b19bc9f0"
+    },
+    {
+      "path": "payments.html",
+      "bytes": 3585,
+      "sha256": "59c4690ccdef0c230dd4aaa5dd3716a93a4b43f9197bc5702b242047ec2e3642"
+    },
+    {
+      "path": "privacy.html",
+      "bytes": 3150,
+      "sha256": "0e9f512feb6c3cf6b9d3bf1d06070500ecdee60aa3a679489f24d3350cd0f300"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 85,
+      "sha256": "9cc5ff43735a5819c8a9194e064ac04b17eb51c34ad7319db937a84ceb673ae8"
+    },
+    {
+      "path": "site.webmanifest",
+      "bytes": 419,
+      "sha256": "afddeac428566b8cdc554832805c6bed22ade9707f986f648ec3e18d0a526f88"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 902,
+      "sha256": "a98585a7bd60f9dc1fe25ea8b181863ca9b8f903361166fcb2727b4cd1677f68"
+    },
+    {
+      "path": "terms.html",
+      "bytes": 3030,
+      "sha256": "0b78ec0a9d6648d8f068bf450cab809dced176d80f2f2e24a5bd64774bb4d25e"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 911,
+      "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
+    }
+  ]
 }

@@ -108,41 +108,54 @@
 
   if (!form) return;
 
+  const serviceSelect = form.querySelector("[data-service-category]");
+  const servicePanels = [...form.querySelectorAll("[data-service-panel]")];
+  const submitButton = form.querySelector("[data-submit-button]");
   const params = new URLSearchParams(location.search);
-  const requestedPurpose = params.get("purpose");
-  if (requestedPurpose && form.elements.purpose) {
-    const matchingOption = [...form.elements.purpose.options].find(
-      (option) => option.value.toLowerCase() === requestedPurpose.toLowerCase()
-    );
-    if (matchingOption) form.elements.purpose.value = matchingOption.value;
+
+  const generateReference = () => {
+    const now = new Date();
+    const date = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("");
+    const token = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return `RGTS-${date}-${token}`;
+  };
+
+  const updateServicePanels = () => {
+    const selected = serviceSelect?.value || "";
+    servicePanels.forEach((panel) => {
+      const active = panel.dataset.servicePanel === selected;
+      panel.hidden = !active;
+      panel.querySelectorAll("input, select, textarea").forEach((field) => {
+        field.disabled = !active;
+      });
+    });
+  };
+
+  const requestedService = params.get("service") || params.get("purpose");
+  if (requestedService && serviceSelect) {
+    const aliases = { Leisure: "Leisure Travel", Corporate: "Corporate Travel", Business: "Business Connections", Mixed: "Multi-service Request" };
+    const target = aliases[requestedService] || requestedService;
+    const option = [...serviceSelect.options].find((item) => item.value.toLowerCase() === target.toLowerCase());
+    if (option) serviceSelect.value = option.value;
   }
+  updateServicePanels();
+  serviceSelect?.addEventListener("change", updateServicePanels);
 
   const setFieldError = (field, message) => {
     const small = field.closest("label")?.querySelector("small");
     field.classList.toggle("invalid", Boolean(message));
-    if (message) {
-      field.setAttribute("aria-invalid", "true");
-    } else {
-      field.removeAttribute("aria-invalid");
-    }
+    if (message) field.setAttribute("aria-invalid", "true");
+    else field.removeAttribute("aria-invalid");
     if (small) small.textContent = message;
     return !message;
   };
 
   const validateField = (field) => {
+    if (field.disabled) return true;
     const value = field.value.trim();
     let message = "";
-
-    if (field.required && !value) {
-      message = "This field is required.";
-    } else if (
-      field.type === "email" &&
-      value &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-    ) {
-      message = "Enter a valid email address.";
-    }
-
+    if (field.required && !value) message = "This field is required.";
+    else if (field.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = "Enter a valid email address.";
     return setFieldError(field, message);
   };
 
@@ -150,30 +163,29 @@
     const consent = form.elements.consent;
     const error = document.querySelector("#consent-error");
     const valid = Boolean(consent?.checked);
-
-    consent?.setAttribute("aria-invalid", String(!valid));
-    if (valid) consent?.removeAttribute("aria-invalid");
+    if (!valid) consent?.setAttribute("aria-invalid", "true");
+    else consent?.removeAttribute("aria-invalid");
     if (error) error.textContent = valid ? "" : "Please confirm that we may contact you.";
-
     return valid;
   };
 
   form.querySelectorAll("input:not([type=checkbox]), select, textarea").forEach((field) => {
     field.addEventListener("blur", () => validateField(field));
-    field.addEventListener("input", () => {
-      if (field.hasAttribute("aria-invalid")) validateField(field);
-    });
+    field.addEventListener("input", () => { if (field.hasAttribute("aria-invalid")) validateField(field); });
   });
-
   form.elements.consent?.addEventListener("change", validateConsent);
+
+  const readableLabel = (name) => ({
+    travel_flexibility: "Travel flexibility", accommodation_preference: "Accommodation preference",
+    corporate_industry: "Industry", corporate_objective: "Travel objective", business_industry: "Industry / sector",
+    partner_profile: "Target partner profile", meeting_objective: "Meeting objective", combined_services: "Combined services"
+  }[name] || name.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()));
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const fields = [...form.querySelectorAll("input:not([type=checkbox]), select, textarea")];
+    const fields = [...form.querySelectorAll("input:not([type=checkbox]):not([type=hidden]), select, textarea")];
     const fieldsValid = fields.map(validateField).every(Boolean);
     const consentValid = validateConsent();
-
     if (!fieldsValid || !consentValid) {
       status.textContent = "Please review the highlighted fields.";
       status.className = "form-status error";
@@ -181,26 +193,45 @@
       return;
     }
 
-    const data = Object.fromEntries(new FormData(form).entries());
-    const subject = encodeURIComponent(`New ${data.purpose} enquiry from ${data.name}`);
+    const reference = generateReference();
+    const submittedAt = new Date().toISOString();
+    form.elements.reference.value = reference;
+    form.elements.submitted_at.value = submittedAt;
+    const formData = new FormData(form);
+    const combined = formData.getAll("combined_services");
+    const data = Object.fromEntries(formData.entries());
+    if (combined.length) data.combined_services = combined.join(", ");
+
+    const coreNames = new Set(["reference", "submitted_at", "name", "email", "phone", "company", "service", "destination", "dates", "travellers", "message", "consent"]);
+    const detailLines = Object.entries(data)
+      .filter(([name, value]) => !coreNames.has(name) && String(value).trim())
+      .map(([name, value]) => `${readableLabel(name)}: ${value}`);
+
+    const subject = encodeURIComponent(`[${reference}] ${data.service} enquiry — ${data.name}`);
     const body = encodeURIComponent(
-      `Name: ${data.name}
+`ENQUIRY REFERENCE: ${reference}
+SUBMITTED: ${new Date(submittedAt).toLocaleString()}
+CLASSIFICATION: ${data.service}
+
+CLIENT DETAILS
+Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone || "-"}
 Company: ${data.company || "-"}
-Purpose: ${data.purpose}
-Destination: ${data.destination || "-"}
-Dates: ${data.dates || "-"}
-Travellers: ${data.travellers || "-"}
 
-Journey details:
+REQUEST SUMMARY
+Destination: ${data.destination || "-"}
+Preferred dates: ${data.dates || "-"}
+Travellers / delegates: ${data.travellers || "-"}${detailLines.length ? `\n${detailLines.join("\n")}` : ""}
+
+CLIENT BRIEF
 ${data.message}`
     );
 
-    status.textContent = "Your email application is opening with the enquiry prepared.";
+    submitButton?.setAttribute("aria-disabled", "true");
+    status.textContent = `Enquiry ${reference} is ready. Your email application is opening.`;
     status.className = "form-status success";
-
-    window.location.href =
-      `mailto:${window.RESPLENDENT_CONFIG?.enquiryEmail || "info@resplendentglobaltravel.com"}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${window.RESPLENDENT_CONFIG?.enquiryEmail || "info@resplendentglobaltravel.com"}?subject=${subject}&body=${body}`;
+    window.setTimeout(() => submitButton?.removeAttribute("aria-disabled"), 1200);
   });
 })();

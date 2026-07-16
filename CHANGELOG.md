@@ -1,5 +1,14 @@
 # Changelog
 
+## v7.1 — Operational Intelligence
+
+- Added structured service classification across leisure, corporate, business connections and supporting travel services.
+- Added context-sensitive enquiry fields without changing the approved visual identity or page copy.
+- Added enquiry reference generation and submission timestamps.
+- Prepared quotation-ready email summaries with clearly grouped client and request details.
+- Added multi-service selection, improved validation, keyboard accessibility and mobile form behaviour.
+- Preserved the approved homepage, navigation, photography, typography and editorial content.
+
 ## v7.0 — Engineering & Production Refinement (16 July 2026)
 
 ### Improved
