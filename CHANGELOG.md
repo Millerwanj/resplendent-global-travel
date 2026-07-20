@@ -1,5 +1,13 @@
 # Changelog
 
+## v7.2 — Business Operations Edition (20 July 2026)
+- Added secure server-side enquiry handling through PHP.
+- Added automatic department routing for bookings, corporate, business, support, accounts and general enquiries.
+- Made Phone / WhatsApp mandatory with browser and server validation.
+- Added enquiry references, spam honeypot protection and tailored success/error feedback.
+- Updated service-page calls to action to preselect the correct department.
+- Preserved the approved v7.1 design, branding and editorial presentation.
+
 ## v7.1 — Operational Intelligence
 
 - Added structured service classification across leisure, corporate, business connections and supporting travel services.

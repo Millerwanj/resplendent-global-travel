@@ -339,5 +339,13 @@
       "bytes": 911,
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
     }
+  ],
+  "version": "7.2",
+  "releaseName": "Business Operations Edition",
+  "releaseDate": "2026-07-20",
+  "entryPoints": [
+    "index.html",
+    "contact.html",
+    "form-handler.php"
   ]
 }

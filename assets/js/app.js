@@ -133,7 +133,7 @@
 
   const requestedService = params.get("service") || params.get("purpose");
   if (requestedService && serviceSelect) {
-    const aliases = { Leisure: "Leisure Travel", Corporate: "Corporate Travel", Business: "Business Connections", Mixed: "Multi-service Request" };
+    const aliases = { Leisure: "Leisure Travel", Corporate: "Corporate Travel", Business: "Business Connections", Accounts: "Accounts & Billing", Support: "Customer Support", Mixed: "Multi-service Request" };
     const target = aliases[requestedService] || requestedService;
     const option = [...serviceSelect.options].find((item) => item.value.toLowerCase() === target.toLowerCase());
     if (option) serviceSelect.value = option.value;
@@ -156,6 +156,7 @@
     let message = "";
     if (field.required && !value) message = "This field is required.";
     else if (field.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = "Enter a valid email address.";
+    else if (field.name === "phone" && value && !/^[+()0-9\s.-]{7,24}$/.test(value)) message = "Enter a valid phone number with country code.";
     return setFieldError(field, message);
   };
 
@@ -181,6 +182,18 @@
     partner_profile: "Target partner profile", meeting_objective: "Meeting objective", combined_services: "Combined services"
   }[name] || name.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()));
 
+  const returnedStatus = params.get("status");
+  const returnedReference = params.get("reference");
+  if (returnedStatus === "success") {
+    status.textContent = `Thank you. Your enquiry${returnedReference ? ` ${returnedReference}` : ""} has been delivered to the appropriate Resplendent department.`;
+    status.className = "form-status success";
+    status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    history.replaceState({}, "", location.pathname);
+  } else if (returnedStatus === "error") {
+    status.textContent = "We could not send your enquiry. Please review the form and try again, or contact info@resplendentglobaltravel.com.";
+    status.className = "form-status error";
+  }
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const fields = [...form.querySelectorAll("input:not([type=checkbox]):not([type=hidden]), select, textarea")];
@@ -194,44 +207,12 @@
     }
 
     const reference = generateReference();
-    const submittedAt = new Date().toISOString();
     form.elements.reference.value = reference;
-    form.elements.submitted_at.value = submittedAt;
-    const formData = new FormData(form);
-    const combined = formData.getAll("combined_services");
-    const data = Object.fromEntries(formData.entries());
-    if (combined.length) data.combined_services = combined.join(", ");
-
-    const coreNames = new Set(["reference", "submitted_at", "name", "email", "phone", "company", "service", "destination", "dates", "travellers", "message", "consent"]);
-    const detailLines = Object.entries(data)
-      .filter(([name, value]) => !coreNames.has(name) && String(value).trim())
-      .map(([name, value]) => `${readableLabel(name)}: ${value}`);
-
-    const subject = encodeURIComponent(`[${reference}] ${data.service} enquiry — ${data.name}`);
-    const body = encodeURIComponent(
-`ENQUIRY REFERENCE: ${reference}
-SUBMITTED: ${new Date(submittedAt).toLocaleString()}
-CLASSIFICATION: ${data.service}
-
-CLIENT DETAILS
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone || "-"}
-Company: ${data.company || "-"}
-
-REQUEST SUMMARY
-Destination: ${data.destination || "-"}
-Preferred dates: ${data.dates || "-"}
-Travellers / delegates: ${data.travellers || "-"}${detailLines.length ? `\n${detailLines.join("\n")}` : ""}
-
-CLIENT BRIEF
-${data.message}`
-    );
-
+    form.elements.submitted_at.value = new Date().toISOString();
     submitButton?.setAttribute("aria-disabled", "true");
-    status.textContent = `Enquiry ${reference} is ready. Your email application is opening.`;
-    status.className = "form-status success";
-    window.location.href = `mailto:${window.RESPLENDENT_CONFIG?.enquiryEmail || "info@resplendentglobaltravel.com"}?subject=${subject}&body=${body}`;
-    window.setTimeout(() => submitButton?.removeAttribute("aria-disabled"), 1200);
+    submitButton && (submitButton.textContent = "Sending Enquiry…");
+    status.textContent = "Securely sending your enquiry to the appropriate department…";
+    status.className = "form-status";
+    form.submit();
   });
 })();

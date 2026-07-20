@@ -1,7 +1,5 @@
-# Version
+# Resplendent Global Travel Solutions
 
-**Current release:** v7.1 — Operational Intelligence
+**Current production version: v7.2 — Business Operations Edition**
 
-**Production baseline:** v7.0
-
-Released as a structured client enquiry and quotation-readiness update.
+Released: 20 July 2026

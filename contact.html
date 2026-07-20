@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="assets/css/main.css?v=7.1" rel="stylesheet"/>
+<link href="assets/css/main.css?v=7.2" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.resplendentglobaltravel.com/"},{"@type":"ListItem","position":2,"name":"Get in Touch","item":"https://www.resplendentglobaltravel.com/contact.html"}]}</script>
 <meta content="index, follow, max-image-preview:large" name="robots"/><meta content="https://www.resplendentglobaltravel.com/assets/images/hero/contact.jpg" name="twitter:image"/></head>
 <body class="contact-page">
@@ -47,17 +47,18 @@
 <main id="main">
 <section class="page-hero hero-contact"><div class="hero-overlay"></div><div class="container reveal"><h1>Get in Touch</h1><p>We'd be delighted to discuss your travel or business requirements. Our team will arrange a consultation and provide meeting details where appropriate.</p></div></section>
 <section class="section"><div class="container journey-layout">
-<div class="journey-intro reveal"><p class="eyebrow">Begin the Conversation</p><h2>Tell us what you have in mind.</h2><p>Use this form for leisure travel, corporate travel or global business connection enquiries.</p><div class="contact-note"><span>Email</span><a href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a><span>Call / WhatsApp</span><a aria-label="Contact Resplendent on WhatsApp" href="https://wa.me/254724785341" rel="noopener noreferrer">+254 724 785 341</a></div></div>
-<form aria-describedby="form-status form-guidance" class="luxury-form reveal" data-concierge-form="" novalidate="">
+<div class="journey-intro reveal"><p class="eyebrow">Begin the Conversation</p><h2>Tell us what you have in mind.</h2><p>Choose the relevant service and your enquiry will be delivered directly to the responsible Resplendent department.</p><div class="contact-note"><span>Email</span><a href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a><span>Call / WhatsApp</span><a aria-label="Contact Resplendent on WhatsApp" href="https://wa.me/254724785341" rel="noopener noreferrer">+254 724 785 341</a></div></div>
+<form action="form-handler.php" aria-describedby="form-status form-guidance" class="luxury-form reveal" data-concierge-form="" method="post" novalidate="">
 <p class="form-guidance" id="form-guidance">Choose the service that best matches your request. Relevant details will appear below.</p>
 <input name="reference" type="hidden"/>
 <input name="submitted_at" type="hidden"/>
+<input aria-hidden="true" autocomplete="off" class="form-trap" name="website" tabindex="-1" type="text"/>
 <div class="form-grid">
 <label>Full Name *<input autocomplete="name" name="name" required="" type="text"/><small></small></label>
 <label>Email Address *<input autocomplete="email" name="email" required="" type="email"/><small></small></label>
-<label>WhatsApp / Phone<input autocomplete="tel" name="phone" type="tel"/></label>
+<label>WhatsApp / Phone *<input autocomplete="tel" inputmode="tel" name="phone" placeholder="Include country code, e.g. +254…" required="" type="tel"/><small></small></label>
 <label>Company<input autocomplete="organization" name="company" type="text"/></label>
-<label>Service Required *<select data-service-category="" name="service" required=""><option value="">Select one</option><option value="Leisure Travel">Leisure Travel</option><option value="Corporate Travel">Corporate Travel</option><option value="Business Connections">Business Connections</option><option value="Flight Booking">Flight Booking</option><option value="Hotel Reservation">Hotel Reservation</option><option value="International Medical Cover">International Medical Cover</option><option value="Car Rental">Car Rental</option><option value="Multi-service Request">Multi-service Request</option></select><small></small></label>
+<label>Service Required *<select data-service-category="" name="service" required=""><option value="">Select one</option><option value="General Enquiry">General Enquiry</option><option value="Leisure Travel">Leisure Travel</option><option value="Corporate Travel">Corporate Travel</option><option value="Business Connections">Business Connections</option><option value="Flight Booking">Flight Booking</option><option value="Hotel Reservation">Hotel Reservation</option><option value="International Medical Cover">International Medical Cover</option><option value="Car Rental">Car Rental</option><option value="Customer Support">Customer Support</option><option value="Accounts &amp; Billing">Accounts &amp; Billing</option><option value="Multi-service Request">Multi-service Request</option></select><small></small></label>
 <label>Destination<input name="destination" type="text"/></label>
 <label>Preferred Dates<input name="dates" placeholder="e.g. 14–21 October" type="text"/></label>
 <label>Number of Travellers / Delegates<input min="1" name="travellers" type="number"/></label>
@@ -107,7 +108,7 @@
 <label class="consent"><input aria-describedby="consent-error" name="consent" required="" type="checkbox"/><span>I agree to be contacted about this enquiry.</span></label><small class="consent-error" id="consent-error"></small>
 <button class="button button-dark" data-submit-button="" type="submit">Begin Your Journey</button>
 <p aria-live="polite" class="form-status" data-form-status="" id="form-status" role="status"></p>
-<p class="form-fallback">If your email application does not open, contact us at <a data-config-email="" href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a>.</p>
+<p class="form-fallback">For general assistance, contact us at <a data-config-email="" href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a>.</p>
 </form></div></section>
 </main>
 <footer class="site-footer">
@@ -123,9 +124,9 @@
 <div><h2>Services</h2><span>Flight Bookings</span><span>Hotel Reservations</span><span>Executive Travel</span><span>Business Matching</span><span>Medical Cover</span><span>Car Hire</span></div>
 <div><h2>Contact</h2><a href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a><a aria-label="Contact Resplendent on WhatsApp" href="https://wa.me/254724785341" rel="noopener noreferrer">WhatsApp</a></div>
 </div>
-<div class="container footer-bottom"><span>© <span data-current-year="">2026</span> Resplendent Global Travel Solutions.</span><span>v7.1</span></div>
+<div class="container footer-bottom"><span>© <span data-current-year="">2026</span> Resplendent Global Travel Solutions.</span><span>v7.2</span></div>
 </footer>
-<script defer="" src="assets/js/site-config.js?v=7.1"></script>
-<script defer="" src="assets/js/app.js?v=7.1"></script>
+<script defer="" src="assets/js/site-config.js?v=7.2"></script>
+<script defer="" src="assets/js/app.js?v=7.2"></script>
 </body>
 </html>
