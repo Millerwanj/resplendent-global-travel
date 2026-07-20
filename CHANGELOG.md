@@ -35,3 +35,11 @@
 
 ## v6.0
 - Final refined production build.
+
+## v7.3 — Enterprise SMTP Edition
+
+- Replaced PHP `mail()` with authenticated SMTP over SSL/TLS port 465.
+- Added reliable departmental delivery with a central copy to `info@`.
+- Added an external secret configuration workflow outside `public_html`.
+- Success is now shown only after the SMTP server accepts the message.
+- Added server-side error logging without exposing credentials to visitors.

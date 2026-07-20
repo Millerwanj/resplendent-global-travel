@@ -89,13 +89,36 @@ $body .= "CLIENT DETAILS\nName: $name\nEmail: $email\nPhone / WhatsApp: $phone\n
 if ($details) $body .= "REQUEST DETAILS\n" . implode("\n", $details) . "\n\n";
 $body .= "CLIENT MESSAGE\n$message\n";
 
-$headers = [
-    'From: Resplendent Website <info@resplendentglobaltravel.com>',
-    'Reply-To: ' . $email,
-    'Content-Type: text/plain; charset=UTF-8',
-    'X-Mailer: PHP/' . phpversion(),
-];
+$configPath = dirname(__DIR__) . '/rgts-mail-config.php';
+if (!is_file($configPath)) {
+    error_log("[$reference] RGTS SMTP configuration file is missing: $configPath");
+    redirect_result('error');
+}
+$config = require $configPath;
+if (!is_array($config)) {
+    error_log("[$reference] RGTS SMTP configuration is invalid.");
+    redirect_result('error');
+}
 
-$sent = mail($recipient, $subject, $body, implode("\r\n", $headers));
-if (!$sent) redirect_result('error');
+require_once __DIR__ . '/includes/SmtpMailer.php';
+
+$centralCopy = (string)($config['central_copy'] ?? 'info@resplendentglobaltravel.com');
+$cc = ($centralCopy !== '' && strcasecmp($centralCopy, $recipient) !== 0) ? [$centralCopy] : [];
+
+try {
+    $mailer = new SmtpMailer($config);
+    $mailer->send(
+        [$recipient],
+        $cc,
+        (string)($config['from_email'] ?? 'info@resplendentglobaltravel.com'),
+        (string)($config['from_name'] ?? 'Resplendent Website'),
+        (string)$email,
+        $subject,
+        $body
+    );
+} catch (Throwable $error) {
+    error_log("[$reference] RGTS SMTP delivery failed: " . $error->getMessage());
+    redirect_result('error');
+}
+
 redirect_result('success', $reference);

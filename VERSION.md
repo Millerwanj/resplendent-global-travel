@@ -1,5 +1,5 @@
-# Resplendent Global Travel Solutions
+# Version 7.3
 
-**Current production version: v7.2 — Business Operations Edition**
+**Enterprise SMTP Edition**
 
-Released: 20 July 2026
+Authenticated SMTP delivery through the Resplendent domain mail server, verified departmental routing, central `info@` oversight, and truthful success/error reporting.

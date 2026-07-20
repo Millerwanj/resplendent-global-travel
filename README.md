@@ -1,15 +1,13 @@
 # Resplendent Global Travel Solutions
 
-Production website for Resplendent Global Travel Solutions.
+Production website for `resplendentglobaltravel.com`.
 
-**Current release:** v7.0 — Engineering & Production Refinement  
-**Website:** https://www.resplendentglobaltravel.com
+## Current release
 
-## Pages
-Home, Destinations, Corporate, Business, Payments, About Us, Contact, Privacy, Terms and 404.
+**v7.3 — Enterprise SMTP Edition**
 
-## Local preview
-Open the project folder in VS Code and run `index.html` with Live Server.
+This release preserves the approved visual and editorial experience while upgrading website enquiries to authenticated SMTP delivery with departmental routing and central oversight.
 
-## Release principle
-v7.0 preserves the approved editorial copy, imagery and minimalist quiet-luxury visual direction while improving production engineering, accessibility, performance and technical SEO.
+## Production note
+
+The SMTP password is intentionally excluded from the repository and release ZIP. Create `/home/resplend/rgts-mail-config.php` on Verpex using `docs/rgts-mail-config.example.php` as the template.

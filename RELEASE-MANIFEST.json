@@ -1,18 +1,13 @@
 {
-  "release": "v7.1",
-  "name": "Operational Intelligence",
-  "baseline": "v7.0",
+  "release": "v7.3",
+  "name": "Enterprise SMTP Edition",
+  "baseline": "v7.2",
   "editorialChanges": false,
   "files": [
     {
       "path": ".editorconfig",
       "bytes": 114,
       "sha256": "78dc11bb60364cbb65afecce40c965fa2e395491632a96a5be330a37fe8daad8"
-    },
-    {
-      "path": ".github/workflows-placeholder.md",
-      "bytes": 115,
-      "sha256": "209b8767e673c79d63a6de8cd86a175a44b992414675d6faf7df5d5db56d9a0c"
     },
     {
       "path": ".gitignore",
@@ -22,22 +17,27 @@
     {
       "path": "404.html",
       "bytes": 4972,
-      "sha256": "b680fbccaef6ad14012ac762290865befef93314fc509ea1eceb89025286b38e"
+      "sha256": "fe616e47721c391585023d6f42fdb7e01d414eec3c2c26d37b670520e7f5aee4"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1662,
-      "sha256": "43ab74fb330969819d2949788e89ae69f7110e8b0dae1efffb50454dc50928b2"
+      "bytes": 2599,
+      "sha256": "86189f3ea9d120f734996ac58039a321a26408825a1043be11985142a76d9870"
     },
     {
       "path": "README.md",
-      "bytes": 622,
-      "sha256": "bbe0169cf6889353e7ac2ecc83a4e22b2f625dd7cc7820a1e76a0c9e95d24439"
+      "bytes": 550,
+      "sha256": "4b18093b272bfda2db1a6477c33a36b58af3a032c6579db7fc0d30de86d1bcc6"
+    },
+    {
+      "path": "RELEASE-MANIFEST.json",
+      "bytes": 10845,
+      "sha256": "5c18157168b581338423ee41639670272a0ba00b4a6ece244d27c39ed586a75f"
     },
     {
       "path": "VERSION.md",
-      "bytes": 170,
-      "sha256": "f0376e2a208d8317f334ef10d5ef88768528a4ed0e52b615354bc1b5fd40f573"
+      "bytes": 212,
+      "sha256": "db117188241b85da61e012d46cd4532bbef155398742f2d2cbfb6b1e10c4211d"
     },
     {
       "path": "_headers",
@@ -47,12 +47,12 @@
     {
       "path": "about.html",
       "bytes": 6391,
-      "sha256": "f3542d7443a5ae3291d9c83313f7b297bbda6952af367c0e33e4a62f954109a4"
+      "sha256": "fba7cce2e66564ff4d5a89e775d1cea17482be2647f40c30db5dea66ffcba794"
     },
     {
       "path": "assets/css/main.css",
-      "bytes": 19456,
-      "sha256": "accf9a7a3c4042ff3ab79bb17196619e71c883bbb55b61f7ce4567c7f3bbcaca"
+      "bytes": 19677,
+      "sha256": "74b2b1d07838e85c9cadc2f7e62f50262012e43bf96f5b4024aeaf9597d4baf7"
     },
     {
       "path": "assets/images/book/return-on-travel.jpg",
@@ -151,28 +151,28 @@
     },
     {
       "path": "assets/js/app.js",
-      "bytes": 10082,
-      "sha256": "45c9d7993b1a7099ce24293bd1e61876b7bc2988240203888dd9dd2db837f148"
+      "bytes": 9622,
+      "sha256": "0b4dc28866dad94c0cf58599cbb24a57d7092a2d6c7f1099c64ff2bd38dab3bf"
     },
     {
       "path": "assets/js/site-config.js",
-      "bytes": 516,
-      "sha256": "dffef0e39df22cddf426df8f1d814f6d881ada85e6b036ab9f67172e7515cb85"
+      "bytes": 529,
+      "sha256": "a72dcf9b7b62d2012af4b0f7a0ca7f6306d6bd24234ce42922160b9907d77fda"
     },
     {
       "path": "business.html",
-      "bytes": 6708,
-      "sha256": "3f84133ffcec371aeff1c7ada351c1baa3c3c00745947a6ccad63fb55c417a64"
+      "bytes": 6722,
+      "sha256": "1a005c39043e057e74bc2efafbb5a4629036a872f1c4ad49d05ae87541d619f5"
     },
     {
       "path": "contact.html",
-      "bytes": 10738,
-      "sha256": "42aa59723cadddeb4c4e04532c31b62282cf3da8d9b47c348a41c5db12c01c86"
+      "bytes": 11168,
+      "sha256": "7c91b8c3573c078c64541a0a3766fb390667934a951dabc4f82186560129c229"
     },
     {
       "path": "corporate.html",
-      "bytes": 6394,
-      "sha256": "b9a026a2771286a11e0dad05820982e7d3af15567c6653394d981399ab977055"
+      "bytes": 6403,
+      "sha256": "179bef3dd5b0ae67dff5470d9c03ce8726ec58ef65b44fd263f6fa39838f98dc"
     },
     {
       "path": "data/site.json",
@@ -182,7 +182,7 @@
     {
       "path": "destinations.html",
       "bytes": 7889,
-      "sha256": "fb8a20e0f6c2bce0656dfd17ab2bca54ae5b130519b2677c4bed0cbe8931ecb2"
+      "sha256": "367a40d1a541c0288222dc49a69b7262ea6430cbd4734d3570dc72a3c0429799"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -211,8 +211,18 @@
     },
     {
       "path": "docs/COMMIT-v7.1.txt",
-      "bytes": 67,
-      "sha256": "30d424ac78fefb79b5cd3e77befb0370206461c9c7b1b66105066e5413020f92"
+      "bytes": 68,
+      "sha256": "6a91e9142b4373cdb3b115cabc882fa4fa9838715bf643c76e74f8c6d414a67a"
+    },
+    {
+      "path": "docs/COMMIT-v7.2.txt",
+      "bytes": 77,
+      "sha256": "2f46f75efd2dfb91803024ad18df2ef24f02d42e27c464497d45bbba3ca313ee"
+    },
+    {
+      "path": "docs/COMMIT-v7.3.txt",
+      "bytes": 39,
+      "sha256": "1ba1449628adaeb9506b48aca70fb8afcfae22811c9425242d31f8bcfab52df3"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -266,8 +276,13 @@
     },
     {
       "path": "docs/QA-v7.1-COMPLETE.md",
-      "bytes": 476,
-      "sha256": "1733b302596d6119f8138dd42b5a0249b35fc5f4b795bb5dc2d5b1a47a987f44"
+      "bytes": 491,
+      "sha256": "4d2c936895423ca130b272acb3efe5bf1cd6d16354e386ed134c994364e83b01"
+    },
+    {
+      "path": "docs/QA-v7.2-COMPLETE.md",
+      "bytes": 440,
+      "sha256": "d4fe681bb6c84f14df764efd46e4c09e4027b767310f221aae11121ca8f0feb2"
     },
     {
       "path": "docs/RELEASE-v5.2.md",
@@ -291,8 +306,23 @@
     },
     {
       "path": "docs/RELEASE-v7.1.md",
-      "bytes": 769,
-      "sha256": "3697810fb5a6a5aecf41613a21ca0635072f97a25bfc50e7da350dac70afef0d"
+      "bytes": 784,
+      "sha256": "0939acbce04801ec26b568682554347b7aad17f2fbb1cea48b3f15909f0a0a9c"
+    },
+    {
+      "path": "docs/RELEASE-v7.2.md",
+      "bytes": 684,
+      "sha256": "5653a716d7c358796051b2119c669928223d44536be20042dfdbfc7b9f1180c1"
+    },
+    {
+      "path": "docs/SMTP-SETUP-v7.3.md",
+      "bytes": 1256,
+      "sha256": "626ad26b42ad16040e4fcc70d51929b35ae8480a248660942a405a39e0322969"
+    },
+    {
+      "path": "docs/rgts-mail-config.example.php",
+      "bytes": 555,
+      "sha256": "05eb436e68deca65b9e7ef52475aa0d9c057db5e10c2b3120a5e03b8922e44b9"
     },
     {
       "path": "favicon.ico",
@@ -300,19 +330,29 @@
       "sha256": "92866a2030bb4712d84d2cf183c49b1bd9c2cd38e0eb62346ba17cc65048eec9"
     },
     {
+      "path": "form-handler.php",
+      "bytes": 5176,
+      "sha256": "6f5877f86d3a748c54dd5af9e919aa22c3b18958fdc2a2201080813613d3e4bf"
+    },
+    {
+      "path": "includes/SmtpMailer.php",
+      "bytes": 6485,
+      "sha256": "57fe57504b10f80d0baba68a5281a053e7b6fe94144fa56ba197b62e4f847d27"
+    },
+    {
       "path": "index.html",
       "bytes": 4049,
-      "sha256": "feaaa99ebff272985b3afeb227cf9cc5d0b14fd946bac4cb069b9123b19bc9f0"
+      "sha256": "0559d0f2705d028fdfc0ff03876550ee11ac49c85ddc921a72dd8e5a6e6fffe7"
     },
     {
       "path": "payments.html",
-      "bytes": 3585,
-      "sha256": "59c4690ccdef0c230dd4aaa5dd3716a93a4b43f9197bc5702b242047ec2e3642"
+      "bytes": 3587,
+      "sha256": "e78d550acd9bf4977219e028cd76268b8f4a0bbbed8cf4f17625b3aaf657b128"
     },
     {
       "path": "privacy.html",
       "bytes": 3150,
-      "sha256": "0e9f512feb6c3cf6b9d3bf1d06070500ecdee60aa3a679489f24d3350cd0f300"
+      "sha256": "30a127b1b4c240e7de49f71c134866f82f1624d3a4f789fcd1d15d42698ee2ae"
     },
     {
       "path": "robots.txt",
@@ -332,20 +372,12 @@
     {
       "path": "terms.html",
       "bytes": 3030,
-      "sha256": "0b78ec0a9d6648d8f068bf450cab809dced176d80f2f2e24a5bd64774bb4d25e"
+      "sha256": "455cb0e78c6e847ef193090b2fe2a55ccf32f4e59b66a4480ab2e6b50d1a5a22"
     },
     {
       "path": "vercel.json",
       "bytes": 911,
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
     }
-  ],
-  "version": "7.2",
-  "releaseName": "Business Operations Edition",
-  "releaseDate": "2026-07-20",
-  "entryPoints": [
-    "index.html",
-    "contact.html",
-    "form-handler.php"
   ]
 }
