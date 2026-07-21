@@ -1,5 +1,5 @@
-# Version 7.3
+# Version
 
-**Enterprise SMTP Edition**
+**v7.4.0 — Search & Performance Edition**
 
-Authenticated SMTP delivery through the Resplendent domain mail server, verified departmental routing, central `info@` oversight, and truthful success/error reporting.
+Released: 21 July 2026

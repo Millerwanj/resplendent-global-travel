@@ -43,3 +43,9 @@
 - Added an external secret configuration workflow outside `public_html`.
 - Success is now shown only after the SMTP server accepts the message.
 - Added server-side error logging without exposing credentials to visitors.
+
+## v7.4.0 — 2026-07-21
+- Site-wide SEO metadata and structured data refinement.
+- High-quality WebP image delivery with original JPEGs retained.
+- Apache performance, HTTPS and security configuration.
+- Updated sitemap, robots directives and release documentation.
