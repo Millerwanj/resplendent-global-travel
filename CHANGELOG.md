@@ -1,5 +1,12 @@
 # Changelog
 
+## v9.1.0 — Resplendent Journal
+- Added a new Journal section to the production website.
+- Published original guides for Japan, Kenya and Dubai.
+- Added editorial Article schema and CollectionPage schema.
+- Added site-wide Journal navigation and updated the sitemap.
+- Added responsive editorial layouts and accessible image metadata.
+
 ## v8.1.0 — 22 July 2026
 - Preserved separate warm hero images for About Us and Contact.
 - Slightly enlarged the six homepage navigation labels.

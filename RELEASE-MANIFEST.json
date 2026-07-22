@@ -1,7 +1,5 @@
 {
-  "project": "Resplendent Global Travel Solutions",
-  "version": "8.1.0",
-  "release_date": "2026-07-22",
+  "version": "9.1.0",
   "files": [
     {
       "path": ".editorconfig",
@@ -20,13 +18,13 @@
     },
     {
       "path": "404.html",
-      "bytes": 5198,
-      "sha256": "50f762c64e29f2c3a9b0f9356fee0d0229bd442dc5e0767cf424da3e66a32b1b"
+      "bytes": 5106,
+      "sha256": "8e744590b2b0860e9441b88d68453ac1506e348d7f27ff3199caadecfed06394"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 3143,
-      "sha256": "c87a7189a965866ca3dedff074eed41061d0c319517735e9b0354e4e90d518ef"
+      "bytes": 3481,
+      "sha256": "cac43892b6348083c87b505ac387f28f078e8b6efd3fe0baa1a2813d07942496"
     },
     {
       "path": "README.md",
@@ -34,9 +32,19 @@
       "sha256": "4b18093b272bfda2db1a6477c33a36b58af3a032c6579db7fc0d30de86d1bcc6"
     },
     {
+      "path": "RELEASE-MANIFEST.json",
+      "bytes": 16790,
+      "sha256": "ac85cab97738cd685054ab9beeefb7fcc692f68efda6a5ff3ac201a1279c5fa6"
+    },
+    {
+      "path": "SEO_REPORT.md",
+      "bytes": 465,
+      "sha256": "3aeac61dd962489ed40bfdd1d9d769c4d582e98e08f77da4b3585c4dd1d140fa"
+    },
+    {
       "path": "VERSION.md",
-      "bytes": 91,
-      "sha256": "eab9ba484f00d0fee3829de180fda5d1d66b940f0d8d24b3c478e6f6f6c69b2e"
+      "bytes": 70,
+      "sha256": "b07e858dc777b14792b1f2e6106950cdfdd3934db6305361e6b797953acc0567"
     },
     {
       "path": "_headers",
@@ -45,13 +53,13 @@
     },
     {
       "path": "about.html",
-      "bytes": 7280,
-      "sha256": "e9a6266ac8b7ebfa2d02f5b39f5e9497229791d567b76d73358d1fcc14a6b574"
+      "bytes": 7173,
+      "sha256": "1a6a44e172f7d7606248a1dd0eb37b899925a4a7252daadca6fa9fab6dc6f7a8"
     },
     {
       "path": "assets/css/main.css",
-      "bytes": 21634,
-      "sha256": "b31f313f3160494fe3c7318798a612d8f1e39bf5eddc244a7645698004858bb1"
+      "bytes": 24054,
+      "sha256": "cdcc5af15683d0e653cc9d2252ea51b8c1451e6e6dfaba73e0f8ad2884b58df4"
     },
     {
       "path": "assets/images/book/return-on-travel.jpg",
@@ -165,13 +173,13 @@
     },
     {
       "path": "assets/images/hero/about-warm.jpg",
-      "bytes": 300898,
-      "sha256": "37378a795c31da8aedd7c97b39adb8651981361e0ff46874d93cedeebd466f56"
+      "bytes": 282672,
+      "sha256": "1aa74863523cddc4280d73209350ee0ab33de8e3165ee27bcb872801b6e16725"
     },
     {
       "path": "assets/images/hero/about-warm.webp",
-      "bytes": 154332,
-      "sha256": "545af1cde3e98c8590bec2cbb3821e27d84de017b749dbf870c803828b676403"
+      "bytes": 106572,
+      "sha256": "a0f84c5f819d4cb45313a2a554f605f652533b271abd8cbcaf812ed16225b4bd"
     },
     {
       "path": "assets/images/hero/about.jpg",
@@ -205,13 +213,13 @@
     },
     {
       "path": "assets/images/hero/contact-warm.jpg",
-      "bytes": 234550,
-      "sha256": "d1c2ab0c0e6d82e98dbcc65c9432a3e4aa7e1bc10d0ead7d6bda503b297063e3"
+      "bytes": 142886,
+      "sha256": "0108fa8646af0dde9629979a575a0525b987a392d0fa7cfd0ba14f3a285fcdfc"
     },
     {
       "path": "assets/images/hero/contact-warm.webp",
-      "bytes": 99746,
-      "sha256": "3e783046e25ffeff84d00dece1c1834a25873b6e36c1440947676e41a41c593d"
+      "bytes": 95266,
+      "sha256": "883bce5c3ab14e5644677c0d7badae978537612db0bfafe77afe1df8112a9401"
     },
     {
       "path": "assets/images/hero/contact.jpg",
@@ -270,18 +278,18 @@
     },
     {
       "path": "business.html",
-      "bytes": 7608,
-      "sha256": "95482f14b6be946d1035bf6283da04ab06506f0cf821326f20c019fefd308d29"
+      "bytes": 7448,
+      "sha256": "366840e6ec41b426592bbbbb5cf9daf8ca33d677f666d534acf58c6a03cfb6f0"
     },
     {
       "path": "contact.html",
-      "bytes": 11771,
-      "sha256": "d8a775f5e55af247db08f35716a283b939bafdd20c8a7bbdf8680276772e149c"
+      "bytes": 11698,
+      "sha256": "47065cd504c2c644ff2b2e2acc384b21d123aa75536342958d742e4d07c3cf28"
     },
     {
       "path": "corporate.html",
-      "bytes": 7368,
-      "sha256": "ff836d9d6b285d90ce8a6d61b3658eab41bef0b83958517e35fff9d3726077ad"
+      "bytes": 7182,
+      "sha256": "159c622e31e2dba49d216dbd7e4557401017f29bb555dba2c75073f0cc97ced1"
     },
     {
       "path": "data/site.json",
@@ -290,8 +298,8 @@
     },
     {
       "path": "destinations.html",
-      "bytes": 10008,
-      "sha256": "4f6da13abf66b7c4e89977a8ecddc9ad07629e31ed5075fbfecc5d52ab8d275e"
+      "bytes": 9739,
+      "sha256": "f95a405d260be4a35101561f9c33fa574a0e4bdb3d8b57192a077d6ee909190c"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -485,18 +493,38 @@
     },
     {
       "path": "index.html",
-      "bytes": 6606,
-      "sha256": "cb9e2cc618de5e36aeca9259dfc7300711017caa2422ea2b9e8664fcc7415269"
+      "bytes": 6372,
+      "sha256": "52b44e99275bff0c078ee1d5c1e545be0e72c924f23a655dd5347ce9497941e7"
+    },
+    {
+      "path": "journal-dubai.html",
+      "bytes": 7052,
+      "sha256": "094c461a4672c588c03bb4736d1f3e18a2c6150b5ea3cf89a347610f414e0115"
+    },
+    {
+      "path": "journal-japan.html",
+      "bytes": 7087,
+      "sha256": "65c0c81806e6a4e93f86895f477b2d6b986c5fe2f2d6699204077ac870cb061e"
+    },
+    {
+      "path": "journal-kenya.html",
+      "bytes": 7166,
+      "sha256": "423c7574699db95017195d949e817501b6b691becb8bd4ed14890109f9d96712"
+    },
+    {
+      "path": "journal.html",
+      "bytes": 7278,
+      "sha256": "66f3a41886ee36bfefc3b42d3136399bb7eb014907f38cb1ab2884579cc092e4"
     },
     {
       "path": "payments.html",
-      "bytes": 4765,
-      "sha256": "ed14cf6076dce7bd3a98844fbb4c1a89ed701e9698c88250e80f66d6e1a29a80"
+      "bytes": 4605,
+      "sha256": "a5620942f53d0c8f74f4c67902bc568092452f62e04c5f74cb7b86e2a26e7959"
     },
     {
       "path": "privacy.html",
-      "bytes": 5038,
-      "sha256": "86ef97bd60333e52478a564ebfe455a492d9394a212b3aade1300c4cdc56fe92"
+      "bytes": 4755,
+      "sha256": "820598180adfafda9320c2d79941fa9b250fe90de05df813b784a1778d383820"
     },
     {
       "path": "robots.txt",
@@ -510,13 +538,13 @@
     },
     {
       "path": "sitemap.xml",
-      "bytes": 1363,
-      "sha256": "c2dbb940e4042cbe58ee6ccc14e67f5ae99759a765f78e3bed51f77cdfec5583"
+      "bytes": 1992,
+      "sha256": "69b19b14f14091ac5cb7a96e434b584c770b55ee7f92d3b8a2b2eee321b2b555"
     },
     {
       "path": "terms.html",
-      "bytes": 4948,
-      "sha256": "ed979083de4549614d8fa4638ce8ceb02d1265c83531273afebb36a08d21bde8"
+      "bytes": 4656,
+      "sha256": "379a076199ebe25a3f8f4c8ef383f35b1a339050ab5980a6f5738f0b3445d313"
     },
     {
       "path": "vercel.json",

@@ -1,4 +1,5 @@
-# Resplendent Global Travel Solutions
+# Version
 
-**Version:** 8.1.0  
-**Release date:** 22 July 2026
+**v9.1.0 — Resplendent Journal**
+
+Released 22 July 2026.
