@@ -1,5 +1,4 @@
-# Version
+# Resplendent Global Travel Solutions
 
-**v7.4.0 — Search & Performance Edition**
-
-Released: 21 July 2026
+**Version:** 8.1.0  
+**Release date:** 22 July 2026

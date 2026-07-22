@@ -1,5 +1,11 @@
 # Changelog
 
+## v8.1.0 — 22 July 2026
+- Preserved separate warm hero images for About Us and Contact.
+- Slightly enlarged the six homepage navigation labels.
+- Fixed remaining static-host contact links with query parameters.
+- Updated metadata, cache-busting and release documentation.
+
 ## v7.2 — Business Operations Edition (20 July 2026)
 - Added secure server-side enquiry handling through PHP.
 - Added automatic department routing for bookings, corporate, business, support, accounts and general enquiries.
