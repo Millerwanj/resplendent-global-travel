@@ -1,5 +1,14 @@
 # Changelog
 
+## v9.3.0 — Analytics Foundation Edition (23 July 2026)
+
+- Installed the official Google Analytics 4 Google tag on every HTML page.
+- Configured Measurement ID `G-5WEEFVG6MB` consistently across the website.
+- Ensured the tag loads asynchronously and appears only once per page immediately after the opening `<head>` element.
+- Updated production asset version parameters to v9.3.0 for reliable cache refresh.
+- Rechecked canonical URLs, metadata, sitemap references, internal links and core production files.
+- Preserved the approved v9.2 design, content and functionality without editorial changes.
+
 ## v9.2.0 — Technical SEO Edition (23 July 2026)
 
 - Shortened search-result titles to remove the Bing title-length warning.

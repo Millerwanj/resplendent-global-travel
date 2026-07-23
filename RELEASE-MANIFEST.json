@@ -1,5 +1,5 @@
 {
-  "version": "9.2.0",
+  "version": "9.3.0",
   "files": [
     {
       "path": ".editorconfig",
@@ -18,23 +18,18 @@
     },
     {
       "path": "404.html",
-      "bytes": 5106,
-      "sha256": "8e744590b2b0860e9441b88d68453ac1506e348d7f27ff3199caadecfed06394"
+      "bytes": 5871,
+      "sha256": "9fd57b718aa4f7954c2ff6766c217aad92e001a7a665afb574f1d0e078ab9ced"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 3481,
-      "sha256": "cac43892b6348083c87b505ac387f28f078e8b6efd3fe0baa1a2813d07942496"
+      "bytes": 4785,
+      "sha256": "4b4430b684cc5c19ab2cafeb1ec26a928c437f6e01d7fc46c1dd6f1dcee4814e"
     },
     {
       "path": "README.md",
       "bytes": 550,
       "sha256": "4b18093b272bfda2db1a6477c33a36b58af3a032c6579db7fc0d30de86d1bcc6"
-    },
-    {
-      "path": "RELEASE-MANIFEST.json",
-      "bytes": 16790,
-      "sha256": "ac85cab97738cd685054ab9beeefb7fcc692f68efda6a5ff3ac201a1279c5fa6"
     },
     {
       "path": "SEO_REPORT.md",
@@ -43,8 +38,8 @@
     },
     {
       "path": "VERSION.md",
-      "bytes": 70,
-      "sha256": "b07e858dc777b14792b1f2e6106950cdfdd3934db6305361e6b797953acc0567"
+      "bytes": 79,
+      "sha256": "bd6238dcdd3116f5c93bb194698373d4e04f7114f2fab6f48d92070fb77ed68c"
     },
     {
       "path": "_headers",
@@ -53,8 +48,8 @@
     },
     {
       "path": "about.html",
-      "bytes": 7173,
-      "sha256": "1a6a44e172f7d7606248a1dd0eb37b899925a4a7252daadca6fa9fab6dc6f7a8"
+      "bytes": 7621,
+      "sha256": "02b83b26d1b1284baffd7c13eae8dc662d991e82b9bd6da22f61614370a2ab3d"
     },
     {
       "path": "assets/css/main.css",
@@ -278,18 +273,18 @@
     },
     {
       "path": "business.html",
-      "bytes": 7448,
-      "sha256": "366840e6ec41b426592bbbbb5cf9daf8ca33d677f666d534acf58c6a03cfb6f0"
+      "bytes": 7905,
+      "sha256": "8dc077449594f225d7ecb885bbd617bfb7f4aa6641c6f58c5572bf0c3f3f76f1"
     },
     {
       "path": "contact.html",
-      "bytes": 11698,
-      "sha256": "47065cd504c2c644ff2b2e2acc384b21d123aa75536342958d742e4d07c3cf28"
+      "bytes": 12156,
+      "sha256": "e547858fb757ca087a30aebf05bde20e3f6fa74a85ecf27eedf3af68635d6cd3"
     },
     {
       "path": "corporate.html",
-      "bytes": 7182,
-      "sha256": "159c622e31e2dba49d216dbd7e4557401017f29bb555dba2c75073f0cc97ced1"
+      "bytes": 7657,
+      "sha256": "d173c66d0f0587fca41611958f6147520b7df7eb8ea452087cc42368294fa714"
     },
     {
       "path": "data/site.json",
@@ -298,8 +293,8 @@
     },
     {
       "path": "destinations.html",
-      "bytes": 9739,
-      "sha256": "f95a405d260be4a35101561f9c33fa574a0e4bdb3d8b57192a077d6ee909190c"
+      "bytes": 10197,
+      "sha256": "5059a0947d23622e21f3161344583180c193296a8ad3d8c0e47bf128c5614aa2"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -417,6 +412,21 @@
       "sha256": "91e89c94de91a38c71f860614541dcd7d3350e62c7e0f58c4fb040c7aa86f60b"
     },
     {
+      "path": "docs/QA-v9.1.0-COMPLETE.md",
+      "bytes": 289,
+      "sha256": "0838770010010f290f4107f0227e8e8382fba19f91ebfc182c7ef9422edcc04d"
+    },
+    {
+      "path": "docs/QA-v9.2.0-COMPLETE.md",
+      "bytes": 1096,
+      "sha256": "d7aac5c840b1641cdc14020026c614214d7d8447cd472acf4408af1973130bd7"
+    },
+    {
+      "path": "docs/QA-v9.3.0-COMPLETE.md",
+      "bytes": 560,
+      "sha256": "901893814ca80445f09ab636e85945ca7b64e7c193bba17eed40924628043471"
+    },
+    {
       "path": "docs/RELEASE-v5.2.md",
       "bytes": 255,
       "sha256": "dc5e466f6f0da38f3facd2ca815182ac711a19fc6b026f4a70cf9494571fb6aa"
@@ -462,6 +472,16 @@
       "sha256": "6bc26525a0b43ce8c6d43c456e001013644549f80c60d31189ad45e385c27719"
     },
     {
+      "path": "docs/RELEASE-v9.2.0.md",
+      "bytes": 186,
+      "sha256": "7131dffe5104856d9f6676c21a6cabe4fa4a6b03902d1d7665d6be39e366c545"
+    },
+    {
+      "path": "docs/RELEASE-v9.3.0.md",
+      "bytes": 736,
+      "sha256": "e1a89570acea9971af93b7c698c2d3612f1bc426d21bbbb2c564334020602855"
+    },
+    {
       "path": "docs/SMTP-SETUP-v7.3.md",
       "bytes": 1256,
       "sha256": "626ad26b42ad16040e4fcc70d51929b35ae8480a248660942a405a39e0322969"
@@ -493,38 +513,38 @@
     },
     {
       "path": "index.html",
-      "bytes": 6372,
-      "sha256": "52b44e99275bff0c078ee1d5c1e545be0e72c924f23a655dd5347ce9497941e7"
+      "bytes": 6749,
+      "sha256": "1750185e16dc8af6cd9ee611b8144a65592ef10a05aac931ddd148ca235dbbbc"
     },
     {
       "path": "journal-dubai.html",
-      "bytes": 7052,
-      "sha256": "094c461a4672c588c03bb4736d1f3e18a2c6150b5ea3cf89a347610f414e0115"
+      "bytes": 7643,
+      "sha256": "e8454a1a5e47c87a608983dd3ecd0d04f454c0b793a160e21ee70eef091b7acd"
     },
     {
       "path": "journal-japan.html",
-      "bytes": 7087,
-      "sha256": "65c0c81806e6a4e93f86895f477b2d6b986c5fe2f2d6699204077ac870cb061e"
+      "bytes": 7694,
+      "sha256": "3fb9cf5cc3159356fafc2f2767152635116c9f52ce35d58bb89a398f4b1605ce"
     },
     {
       "path": "journal-kenya.html",
-      "bytes": 7166,
-      "sha256": "423c7574699db95017195d949e817501b6b691becb8bd4ed14890109f9d96712"
+      "bytes": 7714,
+      "sha256": "deaac7f04bbc155baaf48eab92b9171c8c78fd87978b50ff65ea25300f4e85c2"
     },
     {
       "path": "journal.html",
-      "bytes": 7278,
-      "sha256": "66f3a41886ee36bfefc3b42d3136399bb7eb014907f38cb1ab2884579cc092e4"
+      "bytes": 7927,
+      "sha256": "4b99895adc7a9948b709169b551bf339e8968c26d6588bc2f8707a452e7e54cb"
     },
     {
       "path": "payments.html",
-      "bytes": 4605,
-      "sha256": "a5620942f53d0c8f74f4c67902bc568092452f62e04c5f74cb7b86e2a26e7959"
+      "bytes": 5210,
+      "sha256": "d4f52753087857d9c66031926084f55e05eabbc51e9acc8c98ae5c65fb6620d2"
     },
     {
       "path": "privacy.html",
-      "bytes": 4755,
-      "sha256": "820598180adfafda9320c2d79941fa9b250fe90de05df813b784a1778d383820"
+      "bytes": 5353,
+      "sha256": "67710ccfc15f942e6016f5464e081f96e362031b219a25a621d91e95f042214b"
     },
     {
       "path": "robots.txt",
@@ -538,13 +558,13 @@
     },
     {
       "path": "sitemap.xml",
-      "bytes": 1992,
-      "sha256": "69b19b14f14091ac5cb7a96e434b584c770b55ee7f92d3b8a2b2eee321b2b555"
+      "bytes": 1841,
+      "sha256": "38b5a5994c548e5d90f96a45373d390f6541fbbc4de29e0081dd45e2ed386b68"
     },
     {
       "path": "terms.html",
-      "bytes": 4656,
-      "sha256": "379a076199ebe25a3f8f4c8ef383f35b1a339050ab5980a6f5738f0b3445d313"
+      "bytes": 5247,
+      "sha256": "983033dfe6206029dc27ece17043b5d5974054dfac28623d41da1a0f5d11febc"
     },
     {
       "path": "vercel.json",
@@ -553,5 +573,5 @@
     }
   ],
   "releaseDate": "2026-07-23",
-  "edition": "Technical SEO Edition"
+  "edition": "Analytics Foundation Edition"
 }
