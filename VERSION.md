@@ -1,5 +1,5 @@
 # Version
 
-**v9.1.0 — Resplendent Journal**
+**v9.2.0 — Technical SEO Edition**
 
-Released 22 July 2026.
+Released: 23 July 2026

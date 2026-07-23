@@ -1,5 +1,17 @@
 # Changelog
 
+## v9.2.0 — Technical SEO Edition (23 July 2026)
+
+- Shortened search-result titles to remove the Bing title-length warning.
+- Added descriptive alternative text to the brand logo across all pages.
+- Added complete Open Graph image metadata and image alternative text.
+- Standardised canonical URLs on HTTPS, the `www` host and clean URL paths.
+- Standardised Twitter/X card metadata across all public pages.
+- Normalised Schema.org URLs and removed duplicate minimal TravelAgency markup.
+- Updated the XML sitemap to canonical clean URLs and removed the noindex payments page.
+- Updated production asset version parameters to v9.2.0.
+- Preserved the approved v9.1 visual design and functionality.
+
 ## v9.1.0 — Resplendent Journal
 - Added a new Journal section to the production website.
 - Published original guides for Japan, Kenya and Dubai.

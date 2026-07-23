@@ -1,5 +1,5 @@
 {
-  "version": "9.1.0",
+  "version": "9.2.0",
   "files": [
     {
       "path": ".editorconfig",
@@ -551,5 +551,7 @@
       "bytes": 911,
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
     }
-  ]
+  ],
+  "releaseDate": "2026-07-23",
+  "edition": "Technical SEO Edition"
 }
