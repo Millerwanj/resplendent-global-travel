@@ -111,7 +111,11 @@
   const serviceSelect = form.querySelector("[data-service-category]");
   const servicePanels = [...form.querySelectorAll("[data-service-panel]")];
   const submitButton = form.querySelector("[data-submit-button]");
+  const honeypot = form.elements.rgts_fax_number;
   const params = new URLSearchParams(location.search);
+
+  // Prevent browser autofill/password managers from creating false spam positives.
+  if (honeypot) honeypot.value = "";
 
   const generateReference = () => {
     const now = new Date();
@@ -188,10 +192,33 @@
     status.textContent = `Thank you. Your enquiry${returnedReference ? ` ${returnedReference}` : ""} has been delivered to the appropriate Resplendent department.`;
     status.className = "form-status success";
     status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        form_name: "Website Contact Enquiry",
+        enquiry_reference: returnedReference || "not_available"
+      });
+    }
     history.replaceState({}, "", location.pathname);
-  } else if (returnedStatus === "error") {
-    status.textContent = "We could not send your enquiry. Please review the form and try again, or contact info@resplendentglobaltravel.com.";
+  } else if (returnedStatus === "partial") {
+    const stage = params.get("stage") || "delivery";
+    const stageLabels = {
+      smtp_config: "email configuration",
+      smtp: "departmental email delivery"
+    };
+    status.textContent = `Your enquiry${returnedReference ? ` ${returnedReference}` : ""} reached Zoho CRM, but ${stageLabels[stage] || "the email delivery step"} did not complete. Please keep this reference; the pipeline log identifies the exact failure.`;
     status.className = "form-status error";
+    status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  } else if (returnedStatus === "error") {
+    const stage = params.get("stage") || "submission";
+    const stageLabels = {
+      validation: "form validation",
+      zoho: "Zoho CRM delivery",
+      smtp_config: "email configuration",
+      smtp: "departmental email delivery"
+    };
+    status.textContent = `We could not complete ${stageLabels[stage] || "the enquiry submission"}${returnedReference ? ` for reference ${returnedReference}` : ""}. Please contact info@resplendentglobaltravel.com and quote the reference shown.`;
+    status.className = "form-status error";
+    status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   }
 
   form.addEventListener("submit", (event) => {
@@ -209,6 +236,7 @@
     const reference = generateReference();
     form.elements.reference.value = reference;
     form.elements.submitted_at.value = new Date().toISOString();
+    if (honeypot) honeypot.value = "";
     submitButton?.setAttribute("aria-disabled", "true");
     submitButton && (submitButton.textContent = "Sending Enquiry…");
     status.textContent = "Securely sending your enquiry to the appropriate department…";

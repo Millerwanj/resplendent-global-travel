@@ -1,13 +1,27 @@
 # Resplendent Global Travel Solutions
 
+**Current production baseline: v9.5.2 — Production Stable**
+
 Production website for `resplendentglobaltravel.com`.
 
 ## Current release
 
-**v7.3 — Enterprise SMTP Edition**
+**v9.5.0 — CRM Pipeline Edition**
 
-This release preserves the approved visual and editorial experience while upgrading website enquiries to authenticated SMTP delivery with departmental routing and central oversight.
+The Contact form now provides a traceable server-side pipeline:
 
-## Production note
+1. validation and departmental routing;
+2. Zoho CRM Web-to-Lead submission with HTTP/response diagnostics;
+3. external SMTP configuration check;
+4. authenticated SMTP delivery to the selected department and central copy;
+5. structured reference-based logging.
 
-The SMTP password is intentionally excluded from the repository and release ZIP. Create `/home/resplend/rgts-mail-config.php` on Verpex using `docs/rgts-mail-config.example.php` as the template.
+The website design, content, Google Analytics ID `G-5WEEFVG6MB`, SEO metadata and public navigation remain unchanged.
+
+## Required private mail configuration
+
+Keep `/home/resplend/rgts-mail-config.php` outside `public_html`. Use `docs/rgts-mail-config.example.php` as the template. Never place the live mailbox password in this ZIP or GitHub.
+
+## Pipeline logs
+
+The handler writes logs to `/home/resplend/rgts-logs/pipeline-YYYY-MM-DD.log`. Search the file for the reference shown after form submission, for example `RGTS-20260724-AB12`.

@@ -4,6 +4,7 @@
 return [
     'smtp_host' => 'mail.resplendentglobaltravel.com',
     'smtp_port' => 465,
+    'smtp_encryption' => 'ssl', // ssl for 465; tls for 587
     'smtp_username' => 'info@resplendentglobaltravel.com',
     'smtp_password' => 'REPLACE_WITH_INFO_MAILBOX_PASSWORD',
     'smtp_timeout' => 20,

@@ -1,5 +1,8 @@
-# Version
+# Resplendent Global Travel Solutions
 
-**v9.3.0 — Analytics Foundation Edition**
+## Current Release
 
-Released: 23 July 2026
+**v9.5.2 — Production Stable**  
+Released: 24 July 2026
+
+This is the approved Phase 1 stable baseline. It includes verified Zoho CRM lead capture, departmental SMTP routing, resilient anti-spam handling, structured pipeline logging, and an automatic customer acknowledgement after successful enquiry processing.
