@@ -1,4 +1,4 @@
-# Resplendent Global Travel Solutions — v8.0.0
+# Resplendent Global Travel Solutions — v9.6.1
 Options -Indexes
 RewriteEngine On
 
@@ -53,6 +53,11 @@ RewriteRule ^(.+?)/?$ $1.html [END]
 </IfModule>
 
 # Protect private implementation and documentation files
-<FilesMatch "^(\.env|rgts-mail-config\.php)$">
+<FilesMatch "^(\.env|rgts-mail-config\.php|rgts-admin-config\.php|ADMIN-SETUP\.md|RELEASE-MANIFEST\.json|VERSION\.md|CHANGELOG\.md|README\.md)$">
   Require all denied
 </FilesMatch>
+
+# Prevent direct access to internal implementation and release documents.
+RewriteRule ^includes(?:/|$) - [F,L,NC]
+RewriteRule ^docs(?:/|$) - [F,L,NC]
+RewriteRule ^\.rgts-operations-data(?:/|$) - [F,L,NC]

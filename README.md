@@ -1,26 +1,51 @@
 # Resplendent Global Travel Solutions
 
-**Current production baseline: v9.5.2 — Production Stable**
+**Current production release: v9.6.1 — Complete Client Engagement Suite**
 
 Production website for `resplendentglobaltravel.com`.
 
-## Current release
+## Public enquiry workflow
 
-**v9.5.0 — CRM Pipeline Edition**
-
-The Contact form now provides a traceable server-side pipeline:
+The Contact form retains the verified server-side pipeline:
 
 1. validation and departmental routing;
 2. Zoho CRM Web-to-Lead submission with HTTP/response diagnostics;
 3. external SMTP configuration check;
 4. authenticated SMTP delivery to the selected department and central copy;
-5. structured reference-based logging.
+5. customer acknowledgement and enhanced success page;
+6. automatic entry in the private Client Workflow.
 
 The website design, content, Google Analytics ID `G-5WEEFVG6MB`, SEO metadata and public navigation remain unchanged.
+
+## Private Client Engagement Suite
+
+Open `/admin/` after deployment to access:
+
+- Executive Proposal Generator with travel, corporate and separate Global Business Connections modes;
+- Executive Quotation Generator with itemised travel costs and the fixed USD 250 / 150 / 100 business-matchmaking schedule;
+- Invoice Generator with quotation conversion, milestone invoicing, payment status and balance tracking;
+- automatic proposal and quotation numbering;
+- automatic `RGT-I-YYYY-000001` invoice numbering;
+- print-ready branded documents for browser PDF export;
+- Client Workflow with enquiry capture, status changes, notes and document history.
+- private Payment Settings that can be updated without coding or redeployment.
+
+Use `ADMIN-SETUP.md` for the one-time private administrator setup.
 
 ## Required private mail configuration
 
 Keep `/home/resplend/rgts-mail-config.php` outside `public_html`. Use `docs/rgts-mail-config.example.php` as the template. Never place the live mailbox password in this ZIP or GitHub.
+
+## Private operational data
+
+Admin configuration and client data are written outside `public_html`:
+
+- `/home/resplend/rgts-admin-config.php`
+- `/home/resplend/rgts-operations-data/`
+
+The ZIP contains no client records, mailbox passwords or administrator password.
+Each invoice stores a snapshot of the payment details active when it was issued;
+later settings changes affect new invoices only.
 
 ## Pipeline logs
 

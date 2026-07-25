@@ -2,7 +2,10 @@
 
 ## Current Release
 
-**v9.5.2 — Production Stable**  
-Released: 24 July 2026
+**v9.6.1 — Complete Client Engagement Suite Production**
+Released: 25 July 2026
 
-This is the approved Phase 1 stable baseline. It includes verified Zoho CRM lead capture, departmental SMTP routing, resilient anti-spam handling, structured pipeline logging, and an automatic customer acknowledgement after successful enquiry processing.
+This cumulative release preserves the verified public enquiry pipeline and
+Enhanced Success Page, then completes the private suite with Proposal,
+Quotation and Invoice Generators, Client Workflow, payment tracking and
+editable Payment Settings.

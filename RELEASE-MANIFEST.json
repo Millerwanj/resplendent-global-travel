@@ -1,12 +1,22 @@
 {
-  "release": "9.5.2",
-  "name": "Production Stable",
-  "date": "2026-07-24",
+  "release": "9.6.1",
+  "name": "Complete Client Engagement Suite Production",
+  "date": "2026-07-25",
   "files": [
+    {
+      "path": "_headers",
+      "bytes": 595,
+      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
+    },
     {
       "path": ".editorconfig",
       "bytes": 114,
       "sha256": "78dc11bb60364cbb65afecce40c965fa2e395491632a96a5be330a37fe8daad8"
+    },
+    {
+      "path": ".github/workflows-placeholder.md",
+      "bytes": 115,
+      "sha256": "209b8767e673c79d63a6de8cd86a175a44b992414675d6faf7df5d5db56d9a0c"
     },
     {
       "path": ".gitignore",
@@ -15,48 +25,123 @@
     },
     {
       "path": ".htaccess",
-      "bytes": 2230,
-      "sha256": "7b9f40c57acb6901d966254f5191ba853e6e1efd04341a76b96f318b4d78efc0"
+      "bytes": 2534,
+      "sha256": "f316fbad99c3f0ab6867a3b6fe59af7867f3f653bd5a90bb39d9a120ca7d48aa"
     },
     {
       "path": "404.html",
       "bytes": 5871,
-      "sha256": "58980105129b1f9754582ae0b55dcbb1d7b51e008a007eea4941c5ec5ec31dd4"
-    },
-    {
-      "path": "CHANGELOG.md",
-      "bytes": 7674,
-      "sha256": "95698f658457bddda21a97411218a1b256d8831bd081484424230f4e51825d45"
-    },
-    {
-      "path": "README.md",
-      "bytes": 1078,
-      "sha256": "d332c30c34b50c866c2f8cacbe6713171d8e05c7c41cb3eeadf2af1571db95ac"
-    },
-    {
-      "path": "SEO_REPORT.md",
-      "bytes": 465,
-      "sha256": "3aeac61dd962489ed40bfdd1d9d769c4d582e98e08f77da4b3585c4dd1d140fa"
-    },
-    {
-      "path": "VERSION.md",
-      "bytes": 373,
-      "sha256": "9bbc8675da4d3552f8762167afbab84d843c1983199ea0367a3cd813e505f44a"
-    },
-    {
-      "path": "_headers",
-      "bytes": 595,
-      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
+      "sha256": "f2aebc8acb654b2f559f1706fb4f3e59010b3df245ddd41b042a1be714650da8"
     },
     {
       "path": "about.html",
       "bytes": 7621,
-      "sha256": "262c19920d513d3541163fcb0c383ee3e0807ae44c4c180781780f29fc8ee660"
+      "sha256": "7d7efeae79086ad807700cc11e10699560e10bbf12c8962de4650fbdca84d8fd"
+    },
+    {
+      "path": "ADMIN-SETUP.md",
+      "bytes": 1118,
+      "sha256": "9395991028346559bda7d90d60ada6c99a57556c12c68ba9ccf5adb56f94b674"
+    },
+    {
+      "path": "admin/.htaccess",
+      "bytes": 361,
+      "sha256": "6e7cf987a2c88ab0d19e854058811ec44fd3664112aff671cdd17fb148800364"
+    },
+    {
+      "path": "admin/assets/admin.css",
+      "bytes": 30003,
+      "sha256": "d91c4701b8820912ba6f989f23192bb8340f07d481f7e9d708b7d8f18379f8aa"
+    },
+    {
+      "path": "admin/assets/admin.js",
+      "bytes": 1827,
+      "sha256": "17032d3838e51180714877ef73b88ba4f4b3d1b7d9ae47cffcac631983436ba5"
+    },
+    {
+      "path": "admin/assets/invoice.js",
+      "bytes": 8763,
+      "sha256": "332f285301f2620d55b65c30477d18d0d7a407103cd3b19b72b31e11d3607cca"
+    },
+    {
+      "path": "admin/assets/proposal.js",
+      "bytes": 7719,
+      "sha256": "8730be0a0607a97b6328d1d9a4801f60e0377d5e6cde7f2a5a3c8e16bf259f90"
+    },
+    {
+      "path": "admin/assets/quotation.js",
+      "bytes": 7248,
+      "sha256": "7c491ace7c0e90ae1533eea21b1ed5421996ea26987669310e5a8cc17a1fea4c"
+    },
+    {
+      "path": "admin/document.php",
+      "bytes": 15798,
+      "sha256": "d172b1b8db622a3e29dd36904f4ddc10522ca03d3b7c0a6abcfcc775ac309803"
+    },
+    {
+      "path": "admin/includes/bootstrap.php",
+      "bytes": 3458,
+      "sha256": "3d2c3ebe7f8c4bd88047e835696eecb75bba926a3e20cc2aec69a1d543b735f3"
+    },
+    {
+      "path": "admin/includes/layout.php",
+      "bytes": 3259,
+      "sha256": "2caea4e334c92191452e359cad27be59b064a0c858015e0864cf0cff1b4c1ad3"
+    },
+    {
+      "path": "admin/index.php",
+      "bytes": 4827,
+      "sha256": "28349d53d405069f69b778e1a9fb41d5964c169af42a6c19fdf4a832be330216"
+    },
+    {
+      "path": "admin/invoice.php",
+      "bytes": 14717,
+      "sha256": "0ef9875717f0c81b773d2a4e9d00daf52d8513c37de0fc3cac1fe7551f72a93d"
+    },
+    {
+      "path": "admin/login.php",
+      "bytes": 3607,
+      "sha256": "2ac6281ea70d454190024c5f83bd94c7cd9535ead36a5190c822c79cc9ce69a7"
+    },
+    {
+      "path": "admin/logout.php",
+      "bytes": 394,
+      "sha256": "f196ea0cc8afcd128a7d83b0e4abe3babacff063692b5c802bc21a4e94db4927"
+    },
+    {
+      "path": "admin/proposal.php",
+      "bytes": 11929,
+      "sha256": "4384e0ad995e12d93944ae6394fa537851b7ec060843cf7de0b40c90d5ed9029"
+    },
+    {
+      "path": "admin/quotation.php",
+      "bytes": 8713,
+      "sha256": "1671bf60a12791bca17ad4d86997213c8704c7da50d6f7864210e5f5dd465780"
+    },
+    {
+      "path": "admin/settings.php",
+      "bytes": 3838,
+      "sha256": "4cbfb01cfbadb361b7f096c1407a695291bdadc4891514bc5602967552040940"
+    },
+    {
+      "path": "admin/setup.php",
+      "bytes": 4399,
+      "sha256": "cd94b1f5708bf42246a11a3ca3b1e9e32d0573bf35e991a133279e4c0f4915b0"
+    },
+    {
+      "path": "admin/workflow.php",
+      "bytes": 7697,
+      "sha256": "3a87903c633e50fad018d520413cc9c0886b634a5c50c95d0404c2fcb9843a63"
     },
     {
       "path": "assets/css/main.css",
       "bytes": 24181,
       "sha256": "2cbaf3366bd54a5b59a98a6c12d285bc9913c975565cd3a744e9950620e5e378"
+    },
+    {
+      "path": "assets/css/success.css",
+      "bytes": 3457,
+      "sha256": "35824a87057775e3716b62d9c589453d4b9b6864b844b57857d6dafe739e16ca"
     },
     {
       "path": "assets/images/book/return-on-travel.jpg",
@@ -271,32 +356,42 @@
     {
       "path": "assets/js/site-config.js",
       "bytes": 518,
-      "sha256": "c45fd6f1aee51f3044152c9d9fef77229967b2f5b387ad0c0b05031832b519c8"
+      "sha256": "af447eb43ee6799ee689c60d1f65531f76895803ca12cd622a30228c6e6bfc0f"
+    },
+    {
+      "path": "assets/js/success.js",
+      "bytes": 1071,
+      "sha256": "7133c45601c9249e885363c9d0de632af98dbbcb9e6e600d53c4e9e0292422f4"
     },
     {
       "path": "business.html",
       "bytes": 7905,
-      "sha256": "9f1640aafbd85720ad7a230557faaf576cbe6549d393a1cb6e72187f3359a141"
+      "sha256": "a6b6598b21859ff5689b6cd7005e67fa87195402840e1d2e5454b00d27215bb5"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 10034,
+      "sha256": "e0ec650ea90649d78f642b4bcc95c7f00d3faa14daf8c2e3be18a6f4553a5403"
     },
     {
       "path": "contact.html",
       "bytes": 12241,
-      "sha256": "42e8f4a244cc567e85bc3ab38e7942c38c0c6c84478c4faeda869976e04890dc"
+      "sha256": "4f4dd27a8597cc5afc0a475294f02dbe13f18c6570bdc82135e8be98a16f29d0"
     },
     {
       "path": "corporate.html",
       "bytes": 7657,
-      "sha256": "f8a39c08eb444bf17b074a6e94f0069635850d366ad822bfcda2f7cce0223c47"
+      "sha256": "1b04a50a8fc75fdb57da2c90801fcd3b6e3e655396ff5c74715323e676e09d67"
     },
     {
       "path": "data/site.json",
       "bytes": 296,
-      "sha256": "4ffbdd51a462f0a3e91e8559ba6bd7d61281192d709cc9c57685dee64deffebf"
+      "sha256": "3351a1ce651c3132ab6506e81a3e37933fa34c23ef45dc01ba1f89bc293d49ff"
     },
     {
       "path": "destinations.html",
       "bytes": 10197,
-      "sha256": "b52096ea85802608fc2e45e5927d14237f434106ee7b57dd96346eb392d047f3"
+      "sha256": "3777f78abcc925ba088bbaa9276767a579061a7a3ddf1be407558144be8f0b08"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -325,8 +420,8 @@
     },
     {
       "path": "docs/COMMIT-v7.1.txt",
-      "bytes": 68,
-      "sha256": "6a91e9142b4373cdb3b115cabc882fa4fa9838715bf643c76e74f8c6d414a67a"
+      "bytes": 67,
+      "sha256": "30d424ac78fefb79b5cd3e77befb0370206461c9c7b1b66105066e5413020f92"
     },
     {
       "path": "docs/COMMIT-v7.2.txt",
@@ -362,6 +457,16 @@
       "path": "docs/DEPLOYMENT-v9.5.2.md",
       "bytes": 477,
       "sha256": "e78153667b6f28f47175fdb3d3f4677fb741eda4d83a3a9b2c388d324f23dd81"
+    },
+    {
+      "path": "docs/DEPLOYMENT-v9.6.0.md",
+      "bytes": 864,
+      "sha256": "5b397d219c45f992585e5db66248738ab0c593295cad64f498a068a3bd244272"
+    },
+    {
+      "path": "docs/DEPLOYMENT-v9.6.1.md",
+      "bytes": 919,
+      "sha256": "e8ef74c31d498ad9a1f76cf541cfca0036292dff82df58f2aad9bc8fa6d3fb09"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -415,8 +520,8 @@
     },
     {
       "path": "docs/QA-v7.1-COMPLETE.md",
-      "bytes": 491,
-      "sha256": "4d2c936895423ca130b272acb3efe5bf1cd6d16354e386ed134c994364e83b01"
+      "bytes": 476,
+      "sha256": "1733b302596d6119f8138dd42b5a0249b35fc5f4b795bb5dc2d5b1a47a987f44"
     },
     {
       "path": "docs/QA-v7.2-COMPLETE.md",
@@ -464,6 +569,16 @@
       "sha256": "62bf074633fda1390d0bde4c88c998367a21571ed4c44b02e68d63b28bb6a76e"
     },
     {
+      "path": "docs/QA-v9.6.0-PRODUCTION.md",
+      "bytes": 1392,
+      "sha256": "5494702ee02b7355395ca890c107966c98ef9a1b8dcb8c4097c2f62541b61aae"
+    },
+    {
+      "path": "docs/QA-v9.6.1-PRODUCTION.md",
+      "bytes": 1136,
+      "sha256": "1aefff6a7be59768ebc5820b7d70dfdcc8b314b61b7b0cf631698c916f2e3b98"
+    },
+    {
       "path": "docs/RELEASE-v5.2.md",
       "bytes": 255,
       "sha256": "dc5e466f6f0da38f3facd2ca815182ac711a19fc6b026f4a70cf9494571fb6aa"
@@ -485,8 +600,8 @@
     },
     {
       "path": "docs/RELEASE-v7.1.md",
-      "bytes": 784,
-      "sha256": "0939acbce04801ec26b568682554347b7aad17f2fbb1cea48b3f15909f0a0a9c"
+      "bytes": 769,
+      "sha256": "3697810fb5a6a5aecf41613a21ca0635072f97a25bfc50e7da350dac70afef0d"
     },
     {
       "path": "docs/RELEASE-v7.2.md",
@@ -539,6 +654,21 @@
       "sha256": "f3b57b6c88f251d830aa01065b7abc24ddc210edc886ba2a71673b58df57f807"
     },
     {
+      "path": "docs/RELEASE-v9.6.0.md",
+      "bytes": 1946,
+      "sha256": "9d047ebbffabc1d58a3096f283229925eccc093ab05621c9a4c85c4a2a98101b"
+    },
+    {
+      "path": "docs/RELEASE-v9.6.1.md",
+      "bytes": 1598,
+      "sha256": "e8305211444c214380d63e12e982c6c2408efc645a0a7d7aa2678456394bb173"
+    },
+    {
+      "path": "docs/rgts-mail-config.example.php",
+      "bytes": 615,
+      "sha256": "d557a62d70452a797f273ef226a7e220145f2e5e8ab094d176205e5de5c98e75"
+    },
+    {
       "path": "docs/SMTP-SETUP-v7.3.md",
       "bytes": 1256,
       "sha256": "626ad26b42ad16040e4fcc70d51929b35ae8480a248660942a405a39e0322969"
@@ -549,19 +679,19 @@
       "sha256": "adab1f0e4bfdf0e13208fc51049a6ff85d07cacb6a558dd4b614e3352b256897"
     },
     {
-      "path": "docs/rgts-mail-config.example.php",
-      "bytes": 615,
-      "sha256": "d557a62d70452a797f273ef226a7e220145f2e5e8ab094d176205e5de5c98e75"
-    },
-    {
       "path": "favicon.ico",
       "bytes": 13771,
       "sha256": "92866a2030bb4712d84d2cf183c49b1bd9c2cd38e0eb62346ba17cc65048eec9"
     },
     {
       "path": "form-handler.php",
-      "bytes": 16247,
-      "sha256": "7b9644f5bfc2edfb876625dbe6e4b04d279c1725840e10b024d6ec9ca0a4d920"
+      "bytes": 18195,
+      "sha256": "e25cf8be477490a6b428db96f0066f58000508f865bef9ac63742613035bb304"
+    },
+    {
+      "path": "includes/OperationsStore.php",
+      "bytes": 16643,
+      "sha256": "29372ad2799640166596c288a195e30e76f5ebf5c291da136a8c4fb016689492"
     },
     {
       "path": "includes/SmtpMailer.php",
@@ -571,42 +701,52 @@
     {
       "path": "index.html",
       "bytes": 6749,
-      "sha256": "c88518e40f8050a20c2c63a7e0bf64bfa506787c54c1e5fd695739f9c8b4c8b3"
+      "sha256": "eba304444a884f44271c99d7e820234ba32d54381f8907c588194e40416da8b0"
     },
     {
       "path": "journal-dubai.html",
       "bytes": 7643,
-      "sha256": "038239065c9b6f626ba08a503285dd9f9dc22b17f5a3996e0299fbef81f55fd5"
+      "sha256": "aa97602cb887a5a4264dc5a89b0811ff34baeb52fc5c3cdbb42cbb62f367fd87"
     },
     {
       "path": "journal-japan.html",
       "bytes": 7694,
-      "sha256": "b6d767d381846089a2393a3ff89a7e471f016b7bf99df3876a4ff54c2e2f5a5f"
+      "sha256": "69676cafd24804f48e4d5b3ada66f0bcd37d890b61cddeb1b26e99a6601cefe4"
     },
     {
       "path": "journal-kenya.html",
       "bytes": 7714,
-      "sha256": "4f12a0a592710ac441d4ee6576793c136910086fd486de79e8352b82f8fe10cd"
+      "sha256": "19fadb58c19d8820b73c6870320f410ec2f65b366912ce3528ffe79c1c857bf3"
     },
     {
       "path": "journal.html",
       "bytes": 7927,
-      "sha256": "a606b4910aaca35dcf11121a467b0391234b02a68c70dfdcac54c2d5f953a588"
+      "sha256": "507c46af640445c9c7501800b82f62a03ae9818b1ed05a2bd87992a0c2f2ee58"
     },
     {
       "path": "payments.html",
       "bytes": 5210,
-      "sha256": "c6cab4b9fc3f8ed449077d7931b85a63f29e495f91c7d130a9d461632fffcf7a"
+      "sha256": "3f10777191c4e40f5621fda873b416edaea99a75328b218443380cf4f6dfe16a"
     },
     {
       "path": "privacy.html",
       "bytes": 5353,
-      "sha256": "896e187f0cff877da47b1679a46f87602a71241dd35cc26399ce5a8806a58656"
+      "sha256": "a6880efaab4423fa0e2de7854f43da33ed9d29a117f9282ec53c2584a53d7213"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2318,
+      "sha256": "577f7564d53e395d8838c3d849cdee8c9e02cf15775445aca891ff5bcd341855"
     },
     {
       "path": "robots.txt",
-      "bytes": 123,
-      "sha256": "e373ac249834bf0de67213ce547cd67074032a39aed7984073f3efbce5cc13c6"
+      "bytes": 160,
+      "sha256": "12ceb678eaa201443b064019a538cf1b25ea9bdce31aa6641aa8927b9aa89558"
+    },
+    {
+      "path": "SEO_REPORT.md",
+      "bytes": 465,
+      "sha256": "3aeac61dd962489ed40bfdd1d9d769c4d582e98e08f77da4b3585c4dd1d140fa"
     },
     {
       "path": "site.webmanifest",
@@ -619,14 +759,24 @@
       "sha256": "38b5a5994c548e5d90f96a45373d390f6541fbbc4de29e0081dd45e2ed386b68"
     },
     {
+      "path": "success.html",
+      "bytes": 4999,
+      "sha256": "5995c0ba7173f2f9408c46a975078f53adc30ce7b8742e45b8aec713b0f6a8c1"
+    },
+    {
       "path": "terms.html",
       "bytes": 5247,
-      "sha256": "cf508ad8ae403d1e9e75265b60e88d842aff262c778688b249c0bb3562b5829f"
+      "sha256": "2c55ef16fd5fb558616378d091a1423df54dd9852d63aae66ea989db05a3eb54"
     },
     {
       "path": "vercel.json",
       "bytes": 911,
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 387,
+      "sha256": "ab46e4d296062eca6b7115a61e2b47577ed7109f08ac2b071bbaa4034e98af34"
     }
   ]
 }

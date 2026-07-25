@@ -1,5 +1,33 @@
 # Changelog
 
+## v9.6.1 — Complete Client Engagement Suite (2026-07-25)
+
+- Added the private Invoice Generator with automatic `RGT-I-YYYY-000001` numbering.
+- Added direct conversion from approved quotations into invoices.
+- Added separate USD 250, USD 150, USD 100 and full USD 500 business-matchmaking invoice modes.
+- Added issue date, due date, line items, discount, service fee, amount paid and balance calculations.
+- Added Issued, Part-paid, Paid and Overdue invoice statuses.
+- Added payment-position updates from the generated invoice view.
+- Added private Payment Settings for bank, SWIFT/IBAN, M-Pesa, secure link and invoice instructions.
+- Payment-setting changes require no code change or redeployment and affect new invoices only.
+- Each issued invoice preserves a snapshot of the payment details used at generation time.
+- Added Invoice and Payment stages to the Client Workflow.
+- Preserved every v9.6.0 feature, including the Enhanced Success Page after Begin Your Journey submissions.
+
+## v9.6.0 — Client Engagement Suite Production (2026-07-25)
+
+- Added secure first-time configuration and session-based access for the private `/admin/` suite.
+- Added the Executive Proposal Generator with Luxury Travel, Corporate Travel and separate Global Business Connections modes.
+- Added two-sentence recommendation controls, live branded preview, automatic 5% travel service fee and grand-total calculation.
+- Added the Executive Quotation Generator with repeatable travel line items, discounts, service fees and live totals.
+- Added the fixed USD 500 business-matchmaking quotation schedule: USD 250 on engagement, USD 150 mid-project and USD 100 on final delivery.
+- Added sequential proposal numbers (`RGT-YYYY-000001`) and quotation numbers (`RGT-Q-YYYY-000001`).
+- Added print-ready branded document output for browser PDF export.
+- Added a private Client Workflow that receives future website enquiries automatically and records stage changes, notes and generated documents.
+- Added a dedicated Enhanced Success Page with enquiry reference, next steps, response expectation and support links.
+- Preserved the verified Zoho CRM, departmental SMTP, customer acknowledgement, analytics, SEO, navigation and public design.
+- Stores admin credentials and operational data outside `public_html`; no credentials or client records are included in the release.
+
 ## v9.5.2 — Production Stable (2026-07-24)
 
 - Marked the verified CRM and departmental email workflow as the Phase 1 production baseline.

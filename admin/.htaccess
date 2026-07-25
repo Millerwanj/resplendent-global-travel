@@ -1,0 +1,13 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^includes(?:/|$) - [F,L,NC]
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set X-Frame-Options "DENY"
+  Header always set Cache-Control "no-store, private"
+</IfModule>
+
+<FilesMatch "^(bootstrap-token|.*\.log|.*\.json)$">
+  Require all denied
+</FilesMatch>

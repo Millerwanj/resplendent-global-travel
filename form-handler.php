@@ -1,8 +1,10 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '9.5.2';
+const RGTS_RELEASE = '9.6.1';
 const RGTS_ZOHO_ENDPOINT = 'https://crm.zoho.com/crm/WebToLeadForm';
+
+require_once __DIR__ . '/includes/OperationsStore.php';
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Location: contact.html', true, 303);
@@ -38,11 +40,26 @@ function reference_id(string $candidate = ''): string
 
 function redirect_result(string $status, string $reference = '', string $stage = ''): never
 {
+    if ($status === 'success') {
+        $params = $reference !== '' ? ['reference' => $reference] : [];
+        header('Location: success.html' . ($params ? '?' . http_build_query($params) : ''), true, 303);
+        exit;
+    }
     $params = ['status' => $status];
     if ($reference !== '') $params['reference'] = $reference;
     if ($stage !== '') $params['stage'] = $stage;
     header('Location: contact.html?' . http_build_query($params) . '#form-status', true, 303);
     exit;
+}
+
+function operations_event(?OperationsStore $store, string $reference, string $event, string $result, array $context = []): void
+{
+    if (!$store) return;
+    try {
+        $store->recordPipelineEvent($reference, $event, $result, $context);
+    } catch (Throwable $error) {
+        pipeline_log($reference, 'operations_store', 'failed', ['event' => $event, 'message' => $error->getMessage()]);
+    }
 }
 
 /** Write one structured line per pipeline event. Logs are stored outside public_html when possible. */
@@ -160,6 +177,12 @@ function submit_to_zoho(array $payload): array
 }
 
 $reference = reference_id((string)($_POST['reference'] ?? ''));
+$operations = null;
+try {
+    $operations = new OperationsStore();
+} catch (Throwable $error) {
+    pipeline_log($reference, 'operations_store', 'failed', ['message' => $error->getMessage()]);
+}
 pipeline_log($reference, 'received', 'ok', [
     'ip_hash' => hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown')),
     'user_agent' => clean((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 240),
@@ -214,6 +237,23 @@ if (!isset($routes[$service])) {
 }
 $recipient = $routes[$service];
 pipeline_log($reference, 'validation', 'ok', ['service' => $service, 'route' => $recipient]);
+if ($operations) {
+    try {
+        $operations->recordEnquiry($reference, [
+            'name' => $name,
+            'email' => (string)$email,
+            'phone' => $phone,
+            'company' => $company,
+            'service' => $service,
+            'destination' => clean((string)($_POST['destination'] ?? ''), 160),
+            'dates' => clean((string)($_POST['dates'] ?? ''), 120),
+            'message' => $message,
+        ]);
+        operations_event($operations, $reference, 'validation', 'ok', ['route' => $recipient]);
+    } catch (Throwable $error) {
+        pipeline_log($reference, 'operations_store', 'failed', ['message' => $error->getMessage()]);
+    }
+}
 
 $labels = [
     'destination' => 'Destination / Country', 'dates' => 'Preferred dates', 'travellers' => 'Travellers / delegates',
@@ -260,7 +300,7 @@ $zohoPayload = [
     'zc_gad' => '',
     'xmIwtLD' => 'de858a0a0ffa0ce6b8c709d8ded691f994c0b4ff9d2f7020c568c07e9fc7eeca1ebe141d1bbc2f0a52b5b97438773630',
     'actionType' => 'TGVhZHM=',
-    'returnURL' => 'https://www.resplendentglobaltravel.com/contact.html?status=success&reference=' . rawurlencode($reference) . '#form-status',
+    'returnURL' => 'https://www.resplendentglobaltravel.com/success.html?reference=' . rawurlencode($reference),
     'First Name' => $zohoFirstName,
     'Last Name' => $zohoLastName,
     'Email' => (string)$email,
@@ -277,6 +317,7 @@ pipeline_log($reference, 'zoho', $zoho['ok'] ? 'ok' : 'failed', [
     'response_excerpt' => $zoho['response_excerpt'],
     'error' => $zoho['error'],
 ]);
+operations_event($operations, $reference, 'zoho', $zoho['ok'] ? 'ok' : 'failed', ['http_code' => $zoho['http_code']]);
 if (!$zoho['ok']) redirect_result('error', $reference, 'zoho');
 
 $configPath = dirname(__DIR__) . '/rgts-mail-config.php';
@@ -312,8 +353,10 @@ try {
         $body
     );
     pipeline_log($reference, 'smtp', 'ok', $smtpResult);
+    operations_event($operations, $reference, 'smtp', 'ok', ['recipient' => $recipient]);
 } catch (Throwable $error) {
     pipeline_log($reference, 'smtp', 'failed', ['message' => $error->getMessage()]);
+    operations_event($operations, $reference, 'smtp', 'failed');
     redirect_result('partial', $reference, 'smtp');
 }
 
@@ -359,10 +402,12 @@ try {
         $customerBody
     );
     pipeline_log($reference, 'customer_ack', 'ok', $ackResult);
+    operations_event($operations, $reference, 'customer_ack', 'ok');
 } catch (Throwable $error) {
     // The enquiry is already safely in Zoho and the responsible department's inbox.
     // Keep the customer-facing submission successful while preserving the failure for operations.
     pipeline_log($reference, 'customer_ack', 'failed', ['message' => $error->getMessage()]);
+    operations_event($operations, $reference, 'customer_ack', 'failed');
 }
 
 pipeline_log($reference, 'complete', 'ok', ['customer_ack' => 'attempted']);
