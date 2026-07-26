@@ -1,5 +1,35 @@
 # Changelog
 
+## v9.6.3 — Controlled Approval Pipeline (2026-07-26)
+
+- Added automatic department-specific client document senders: Bookings, Corporate Travel, Global Business Connections, Accounts and General.
+- Added an editable sender selector to the final review panel, with service-aware defaults and central oversight copy.
+- Added **Request changes** alongside client acceptance, including secure receiving-email verification and a recorded client note.
+- Added the **Revision Requested** workflow stage and internal revision-request notifications.
+- Added controlled proposal and quotation revisions using the original document number plus `R1`, `R2` and later revision suffixes.
+- Disabled active links for older sent versions and retained every earlier version for the audit trail.
+- Added automatic draft invoice creation after acceptance of the latest proposal or quotation.
+- Added automatic USD 250 engagement draft invoicing for accepted Business Matchmaking documents.
+- Added automatic superseding of unsent draft invoices when a client requests changes or a revised document is created.
+- Added a protected **Create Linked Draft Invoice** action for proposals and quotations accepted before v9.6.3, with duplicate prevention and acceptance-record preservation.
+- Preserved manual review-and-send control: automatic invoices remain **Draft** until reviewed and emailed.
+- Marked a draft invoice **Issued** only after the SMTP server accepts its reviewed email.
+- Preserved the public website design, Zoho enquiry pipeline, exact legal wording, PDF styling, payment settings and protected operational storage.
+
+## v9.6.2 — Complete Client Pipeline (2026-07-26)
+
+- Removed the separate public thank-you page and restored the minimalist inline confirmation with a `Submitted` button and enquiry reference.
+- Added dependency-free server-side branded PDF generation using the approved Resplendent logo.
+- Added a mandatory review-before-send control for proposals, quotations and invoices.
+- Added automatic PDF attachment delivery through the existing authenticated SMTP configuration.
+- Added secure acceptance links for proposals and quotations.
+- Added tamper-evident document hashes, one-time acceptance records, superseded-link handling and privacy-preserving connection fingerprints.
+- Added automatic Client Workflow movement to Approval after acceptance and an internal acceptance notification.
+- Added document delivery and acceptance status history to the private operations suite.
+- Applied the approved travel availability wording to travel proposals, quotations and invoices.
+- Applied the approved milestone non-refundability and no-guaranteed-outcome wording to business-matchmaking proposals, quotations and invoices.
+- Preserved Zoho lead creation, departmental routing, acknowledgement email, generators, payment settings, numbering, analytics, SEO and the approved public design.
+
 ## v9.6.1 — Complete Client Engagement Suite (2026-07-25)
 
 - Added the private Invoice Generator with automatic `RGT-I-YYYY-000001` numbering.

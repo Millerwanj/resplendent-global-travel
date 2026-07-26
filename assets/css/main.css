@@ -21,6 +21,8 @@ html{scroll-padding-top:88px}
 body.nav-open{overflow:hidden}
 img[width][height]{height:auto}
 .consent-error{display:block;margin-top:-14px;color:#9e3030;font-size:.78rem}
+.luxury-form [data-submit-button]:disabled{cursor:default;opacity:.78}
+.luxury-form .form-status.success{margin-top:14px;line-height:1.55}
 .luxury-form input[aria-invalid="true"],
 .luxury-form select[aria-invalid="true"],
 .luxury-form textarea[aria-invalid="true"]{border-bottom-color:#9e3030}

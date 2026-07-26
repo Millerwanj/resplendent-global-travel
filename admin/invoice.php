@@ -7,10 +7,23 @@ admin_require_auth();
 $store = admin_store();
 $quotations = array_values(array_filter($store->listDocuments(), static fn(array $document): bool =>
     ($document['type'] ?? '') === 'quotation'
+    && ($document['lifecycle_status'] ?? 'active') !== 'superseded'
+    && ($document['delivery']['status'] ?? '') === 'accepted'
+    && empty($document['draft_invoice']['id'])
 ));
 $sourceId = admin_text($_GET['quotation'] ?? $_POST['source_quotation'] ?? '', 100);
 $source = $sourceId !== '' ? $store->getDocument($sourceId) : null;
-if ($source && ($source['type'] ?? '') !== 'quotation') $source = null;
+if (
+    $source
+    && (
+        ($source['type'] ?? '') !== 'quotation'
+        || ($source['lifecycle_status'] ?? 'active') === 'superseded'
+        || ($source['delivery']['status'] ?? '') !== 'accepted'
+        || !empty($source['draft_invoice']['id'])
+    )
+) {
+    $source = null;
+}
 $sourcePayload = is_array($source['payload'] ?? null) ? $source['payload'] : [];
 $clientReference = admin_text(
     $_GET['client'] ?? $_POST['client_reference'] ?? $source['client_reference'] ?? '',
@@ -217,6 +230,10 @@ admin_page_header('Invoice Generator', 'invoice');
                 <?php if ($paymentSettings['mpesa_number'] !== ''): ?><span>M-Pesa<strong><?= admin_e($paymentSettings['mpesa_number']) ?></strong></span><?php endif; ?>
             </div><p><?= nl2br(admin_e($paymentSettings['instructions'])) ?></p></section>
             <section><p data-preview-note></p></section>
+            <section class="preview-policy">
+                <div data-policy-travel><h3>Important Terms</h3><p>Airfares, accommodation rates, taxes, availability and supplier conditions are indicative at the time of enquiry and may change until the required payment is received and the service is ticketed or formally confirmed in writing.</p></div>
+                <div data-policy-business hidden><h3>Important Terms</h3><p>Non-refundable professional fees: Each milestone payment becomes non-refundable once the corresponding work has commenced, as it covers research, due diligence, outreach, coordination and professional time committed to the engagement. This does not affect any rights available where agreed services are not delivered or applicable law requires otherwise.</p><p>Payment of professional fees does not guarantee a successful introduction, transaction or commercial outcome.</p></div>
+            </section>
             <footer><span>resplendentglobaltravel.com</span><span>Precision · Discretion · Purpose</span></footer>
         </article>
     </aside>

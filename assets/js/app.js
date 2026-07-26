@@ -191,6 +191,11 @@
   if (returnedStatus === "success") {
     status.textContent = `Thank you. Your enquiry${returnedReference ? ` ${returnedReference}` : ""} has been delivered to the appropriate Resplendent department.`;
     status.className = "form-status success";
+    if (submitButton) {
+      submitButton.textContent = "Submitted";
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-disabled", "true");
+    }
     status.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
     if (typeof window.gtag === "function") {
       window.gtag("event", "generate_lead", {

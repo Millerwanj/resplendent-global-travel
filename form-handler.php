@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '9.6.1';
+const RGTS_RELEASE = '9.6.3';
 const RGTS_ZOHO_ENDPOINT = 'https://crm.zoho.com/crm/WebToLeadForm';
 
 require_once __DIR__ . '/includes/OperationsStore.php';
@@ -40,11 +40,6 @@ function reference_id(string $candidate = ''): string
 
 function redirect_result(string $status, string $reference = '', string $stage = ''): never
 {
-    if ($status === 'success') {
-        $params = $reference !== '' ? ['reference' => $reference] : [];
-        header('Location: success.html' . ($params ? '?' . http_build_query($params) : ''), true, 303);
-        exit;
-    }
     $params = ['status' => $status];
     if ($reference !== '') $params['reference'] = $reference;
     if ($stage !== '') $params['stage'] = $stage;
@@ -300,7 +295,7 @@ $zohoPayload = [
     'zc_gad' => '',
     'xmIwtLD' => 'de858a0a0ffa0ce6b8c709d8ded691f994c0b4ff9d2f7020c568c07e9fc7eeca1ebe141d1bbc2f0a52b5b97438773630',
     'actionType' => 'TGVhZHM=',
-    'returnURL' => 'https://www.resplendentglobaltravel.com/success.html?reference=' . rawurlencode($reference),
+    'returnURL' => 'https://www.resplendentglobaltravel.com/contact?status=success&reference=' . rawurlencode($reference) . '#form-status',
     'First Name' => $zohoFirstName,
     'Last Name' => $zohoLastName,
     'Email' => (string)$email,

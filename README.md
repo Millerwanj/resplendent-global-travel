@@ -1,6 +1,6 @@
 # Resplendent Global Travel Solutions
 
-**Current production release: v9.6.1 — Complete Client Engagement Suite**
+**Current production release: v9.6.3 — Controlled Approval Pipeline**
 
 Production website for `resplendentglobaltravel.com`.
 
@@ -12,7 +12,7 @@ The Contact form retains the verified server-side pipeline:
 2. Zoho CRM Web-to-Lead submission with HTTP/response diagnostics;
 3. external SMTP configuration check;
 4. authenticated SMTP delivery to the selected department and central copy;
-5. customer acknowledgement and enhanced success page;
+5. customer acknowledgement and minimalist inline confirmation with the enquiry reference;
 6. automatic entry in the private Client Workflow.
 
 The website design, content, Google Analytics ID `G-5WEEFVG6MB`, SEO metadata and public navigation remain unchanged.
@@ -26,8 +26,14 @@ Open `/admin/` after deployment to access:
 - Invoice Generator with quotation conversion, milestone invoicing, payment status and balance tracking;
 - automatic proposal and quotation numbering;
 - automatic `RGT-I-YYYY-000001` invoice numbering;
-- print-ready branded documents for browser PDF export;
-- Client Workflow with enquiry capture, status changes, notes and document history.
+- automatic branded PDF generation and secure email attachment delivery;
+- review-before-send control with editable cover email;
+- service-aware sender selection for Bookings, Corporate Travel, Global Business Connections and Accounts;
+- secure proposal and quotation response links with **Accept** and **Request changes** actions;
+- controlled proposal and quotation revisions with `R1`, `R2` and later audit references;
+- automatic draft invoice creation only after acceptance of the latest document version;
+- mandatory review-before-send for every automatically prepared invoice;
+- Client Workflow with enquiry capture, delivery, revision requests, acceptance, status changes, notes and document history;
 - private Payment Settings that can be updated without coding or redeployment.
 
 Use `ADMIN-SETUP.md` for the one-time private administrator setup.
@@ -46,6 +52,9 @@ Admin configuration and client data are written outside `public_html`:
 The ZIP contains no client records, mailbox passwords or administrator password.
 Each invoice stores a snapshot of the payment details active when it was issued;
 later settings changes affect new invoices only.
+Document delivery, revision-request and acceptance records are stored in the
+same protected operations directory; raw response tokens and client IP
+addresses are not stored.
 
 ## Pipeline logs
 

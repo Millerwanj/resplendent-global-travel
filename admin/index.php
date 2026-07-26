@@ -63,10 +63,11 @@ admin_page_header('Operations Overview', 'dashboard');
         <?php else: ?>
             <div class="compact-list">
                 <?php foreach ($recentDocuments as $document): ?>
+                <?php $deliveryStatus = (string)($document['delivery']['status'] ?? ''); ?>
                 <a href="document.php?id=<?= rawurlencode((string)$document['id']) ?>">
                     <span class="document-mark"><?= ($document['type'] ?? '') === 'proposal' ? 'P' : (($document['type'] ?? '') === 'quotation' ? 'Q' : 'I') ?></span>
                     <div><strong><?= admin_e($document['client_name'] ?? 'Client document') ?></strong><small><?= admin_e($document['number'] ?? '') ?></small></div>
-                    <em><?= admin_e(($document['type'] ?? '') === 'invoice' ? ($document['payload']['invoice_status'] ?? 'Issued') : ucfirst((string)($document['type'] ?? 'document'))) ?></em>
+                    <em><?= admin_e($deliveryStatus !== '' ? ucfirst($deliveryStatus) : (($document['type'] ?? '') === 'invoice' ? ($document['payload']['invoice_status'] ?? 'Issued') : ucfirst((string)($document['type'] ?? 'document')))) ?></em>
                 </a>
                 <?php endforeach; ?>
             </div>
