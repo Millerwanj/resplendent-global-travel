@@ -1,10 +1,10 @@
-# Resplendent v9.6.1 Admin Setup
+# Resplendent v9.6.3 Admin Setup
 
 This file is private. Do not publish it separately or share its setup token.
 
 ## First sign-in
 
-1. Deploy the complete v9.6.1 Production package to `public_html`.
+1. Deploy the complete v9.6.3 Production package to `public_html`.
 2. Visit `https://www.resplendentglobaltravel.com/admin/`.
 3. Enter this one-time setup token:
 

@@ -69,6 +69,8 @@
     const businessSection = root.querySelector("[data-business-invoice]");
     if (standardSection) standardSection.hidden = business;
     if (businessSection) businessSection.hidden = !business;
+    root.querySelectorAll("[data-policy-travel]").forEach((section) => { section.hidden = business; });
+    root.querySelectorAll("[data-policy-business]").forEach((section) => { section.hidden = !business; });
     if (business) field("currency").value = "USD";
 
     const currency = business ? "USD" : value("currency") || "USD";

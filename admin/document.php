@@ -2,10 +2,12 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/bootstrap.php';
+require_once dirname(__DIR__) . '/includes/DocumentSender.php';
 admin_require_auth();
 
+$store = admin_store();
 $id = admin_text($_GET['id'] ?? '', 100);
-$document = $id !== '' ? admin_store()->getDocument($id) : null;
+$document = $id !== '' ? $store->getDocument($id) : null;
 if (!$document) {
     http_response_code(404);
     admin_flash('error', 'That generated document could not be found.');
@@ -19,7 +21,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && ($document['type'] ?? '') =
         exit;
     }
     $amountPaid = max(0, (float)($_POST['amount_paid'] ?? 0));
-    $updated = admin_store()->updateInvoicePayment($id, $amountPaid);
+    $updated = $store->updateInvoicePayment($id, $amountPaid);
     header(
         'Location: document.php?id=' . rawurlencode($id) . '&payment=' . ($updated ? 'updated' : 'error'),
         true,
@@ -33,12 +35,47 @@ $type = (string)($document['type'] ?? 'proposal');
 $isProposal = $type === 'proposal';
 $isQuotation = $type === 'quotation';
 $isInvoice = $type === 'invoice';
+$lifecycleStatus = (string)($document['lifecycle_status'] ?? 'active');
+$invoiceStatus = (string)($payload['invoice_status'] ?? 'Issued');
+$isSuperseded = $lifecycleStatus === 'superseded' || ($isInvoice && $invoiceStatus === 'Superseded');
+$isDraftInvoice = $isInvoice && $invoiceStatus === 'Draft';
+$canSend = !$isSuperseded && $lifecycleStatus !== 'revision_requested';
 $documentTitle = match ($type) {
     'quotation' => 'Executive Quotation',
     'invoice' => 'Invoice',
     default => 'Executive Proposal',
 };
 $currency = (string)($payload['currency'] ?? 'USD');
+$deliveries = $store->listDocumentDeliveries($id);
+$latestDelivery = $deliveries[0] ?? null;
+$acceptedDelivery = null;
+foreach ($deliveries as $delivery) {
+    if (is_array($delivery) && ($delivery['status'] ?? '') === 'accepted') {
+        $acceptedDelivery = $delivery;
+        break;
+    }
+}
+$linkedInvoice = is_array($document['draft_invoice'] ?? null) ? $document['draft_invoice'] : [];
+$linkedInvoiceStatus = (string)($linkedInvoice['status'] ?? 'Draft');
+$canCreateLinkedInvoice = !$isInvoice
+    && !$isSuperseded
+    && $lifecycleStatus === 'active'
+    && is_array($acceptedDelivery)
+    && empty($linkedInvoice['id']);
+$flash = admin_take_flash();
+$policy = is_array($document['policy'] ?? null) ? $document['policy'] : [];
+$policyTerms = is_array($policy['terms'] ?? null) ? $policy['terms'] : [];
+$mailConfigPath = dirname(__DIR__, 2) . '/rgts-mail-config.php';
+$mailConfig = is_file($mailConfigPath) ? require $mailConfigPath : [];
+if (!is_array($mailConfig)) $mailConfig = [];
+$senderProfiles = DocumentSender::profiles($mailConfig);
+$suggestedSender = DocumentSender::departmentForDocument($document);
+$defaultSubject = $documentTitle . ' ' . (string)($document['number'] ?? '') . ' — Resplendent';
+$defaultCoverMessage = match ($type) {
+    'quotation' => 'Please find attached our concise quotation for the services discussed. Review the scope, investment and terms at your convenience.',
+    'invoice' => 'Please find attached your Resplendent invoice. The document includes the applicable payment position and approved payment instructions.',
+    default => 'Please find attached our concise executive proposal, prepared around the requirements discussed. Review the recommendations, scope and investment at your convenience.',
+};
 
 function document_value(array $payload, string $key, string $fallback = '—'): string
 {
@@ -62,16 +99,49 @@ function document_money(string $currency, mixed $amount): string
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/admin.css?v=9.6.1">
+    <link rel="stylesheet" href="assets/admin.css?v=9.6.3">
 </head>
 <body class="document-page">
 <div class="document-actions">
     <a href="<?= $isProposal ? 'proposal.php' : ($isQuotation ? 'quotation.php' : 'invoice.php') ?>">Create another</a>
-    <?php if ($isQuotation): ?><a href="invoice.php?quotation=<?= rawurlencode($id) ?>">Create Invoice</a><?php endif; ?>
+    <?php if (!$isInvoice && !$isSuperseded): ?><a href="<?= $isProposal ? 'proposal.php' : 'quotation.php' ?>?revision=<?= rawurlencode($id) ?>">Create Revision</a><?php endif; ?>
+    <?php if (!$isInvoice && !empty($linkedInvoice['id'])): ?><a href="document.php?id=<?= rawurlencode((string)$linkedInvoice['id']) ?>"><?= $linkedInvoiceStatus === 'Draft' ? 'Open Draft Invoice' : 'Open Linked Invoice' ?></a><?php endif; ?>
     <a href="index.php">Operations home</a>
+    <a href="download-document.php?id=<?= rawurlencode($id) ?>">Download PDF</a>
     <button type="button" onclick="window.print()">Print / Save PDF</button>
 </div>
-<?php if ($isInvoice): ?>
+<?php if ($flash): ?>
+    <div class="document-flash <?= admin_e($flash['type']) ?>" role="status"><?= admin_e($flash['message']) ?></div>
+<?php endif; ?>
+<?php if ($lifecycleStatus === 'revision_requested'): ?>
+<section class="document-workflow-notice revision-requested">
+    <div><span>Client response</span><strong>Revision requested</strong></div>
+    <p><?= nl2br(admin_e($document['change_request']['notes'] ?? 'The client requested changes to this document.')) ?></p>
+    <a href="<?= $isProposal ? 'proposal.php' : 'quotation.php' ?>?revision=<?= rawurlencode($id) ?>">Create revised version</a>
+</section>
+<?php elseif ($isSuperseded): ?>
+<section class="document-workflow-notice superseded">
+    <div><span>Document status</span><strong>Superseded</strong></div>
+    <p>This version is retained for the audit trail and cannot be sent again.</p>
+    <?php if (!empty($document['superseded_by_id'])): ?><a href="document.php?id=<?= rawurlencode((string)$document['superseded_by_id']) ?>">Open <?= admin_e($document['superseded_by_number'] ?? 'latest revision') ?></a><?php endif; ?>
+</section>
+<?php elseif ($isDraftInvoice): ?>
+<section class="document-workflow-notice draft-invoice">
+    <div><span>Invoice status</span><strong>Draft - review required</strong></div>
+    <p>This invoice was prepared automatically from accepted document <strong><?= admin_e($payload['source_document_number'] ?? '') ?></strong>. It will not be issued until you review and send it.</p>
+</section>
+<?php elseif ($canCreateLinkedInvoice): ?>
+<section class="document-workflow-notice legacy-acceptance">
+    <div><span>Accepted document</span><strong>Invoice not yet linked</strong></div>
+    <p>This acceptance predates automatic invoice creation. Create one controlled draft from the accepted terms; it will remain unsent until reviewed.</p>
+    <form method="post" action="create-linked-invoice.php">
+        <input type="hidden" name="csrf" value="<?= admin_e(admin_csrf_token()) ?>">
+        <input type="hidden" name="document_id" value="<?= admin_e($id) ?>">
+        <button type="submit">Create Linked Draft Invoice</button>
+    </form>
+</section>
+<?php endif; ?>
+<?php if ($isInvoice && !$isDraftInvoice && !$isSuperseded): ?>
 <section class="document-payment-control">
     <div>
         <span>Invoice status</span>
@@ -86,6 +156,76 @@ function document_money(string $currency, mixed $amount): string
         </label>
         <button type="submit">Update Payment</button>
     </form>
+</section>
+<?php endif; ?>
+<?php if ($canSend): ?>
+<section class="document-send-control" aria-labelledby="send-document-heading">
+    <div class="document-send-heading">
+        <div>
+            <span>Final review</span>
+            <h2 id="send-document-heading">Review and send</h2>
+            <p>The final PDF is generated and attached automatically only after you confirm this review.</p>
+        </div>
+        <?php if (is_array($latestDelivery)): ?>
+            <strong class="delivery-status <?= admin_e((string)($latestDelivery['status'] ?? '')) ?>">
+                <?= admin_e(ucfirst((string)($latestDelivery['status'] ?? 'pending'))) ?>
+            </strong>
+        <?php endif; ?>
+    </div>
+    <form method="post" action="send-document.php" class="document-send-form">
+        <input type="hidden" name="csrf" value="<?= admin_e(admin_csrf_token()) ?>">
+        <input type="hidden" name="document_id" value="<?= admin_e($id) ?>">
+        <div class="document-send-grid">
+            <label>Client email
+                <input type="email" name="recipient" required value="<?= admin_e($payload['email'] ?? '') ?>">
+            </label>
+            <label>Email subject
+                <input type="text" name="subject" required maxlength="240" value="<?= admin_e($defaultSubject) ?>">
+            </label>
+            <label>Send from
+                <select name="sender_profile" required>
+                    <?php foreach ($senderProfiles as $key => $profile): ?>
+                        <option value="<?= admin_e($key) ?>" <?= $key === $suggestedSender ? 'selected' : '' ?>>
+                            <?= admin_e($profile['label'] . ' - ' . $profile['email']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+        </div>
+        <label>Cover message
+            <textarea name="cover_message" rows="3" maxlength="4000" required><?= admin_e($defaultCoverMessage) ?></textarea>
+        </label>
+        <?php if (!$isInvoice): ?>
+            <label class="document-send-check">
+                <input type="checkbox" name="acceptance_required" value="1" checked>
+                <span>Include a secure client acceptance link and record acceptance in the workflow.</span>
+            </label>
+        <?php endif; ?>
+        <label class="document-send-check review-confirmation">
+            <input type="checkbox" name="review_confirmed" value="1" required>
+            <span>I have reviewed the document, client email, figures, payment details and terms.</span>
+        </label>
+        <button type="submit">Send Reviewed PDF</button>
+    </form>
+
+    <?php if ($deliveries !== []): ?>
+        <div class="delivery-history">
+            <h3>Delivery record</h3>
+            <?php foreach (array_slice($deliveries, 0, 5) as $delivery): ?>
+                <article>
+                    <span><?= admin_e(ucfirst((string)($delivery['status'] ?? 'pending'))) ?></span>
+                    <div>
+                        <strong><?= admin_e($delivery['recipient'] ?? '') ?></strong>
+                        <small>
+                            <?= admin_e(isset($delivery['created_at']) ? date('j M Y, H:i', strtotime((string)$delivery['created_at'])) : '') ?>
+                            <?= !empty($delivery['acceptance_required']) ? ' · Acceptance requested' : '' ?>
+                            <?= !empty($delivery['from_email']) ? ' · From ' . admin_e($delivery['from_email']) : '' ?>
+                        </small>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 </section>
 <?php endif; ?>
 <main class="final-document">
@@ -184,7 +324,8 @@ function document_money(string $currency, mixed $amount): string
         <section class="final-section quote-section">
             <div class="section-number">01</div><div>
                 <h2>Invoice Details</h2>
-                <?php if (!empty($payload['quotation_number'])): ?><p class="invoice-reference-line">Related quotation: <strong><?= admin_e($payload['quotation_number']) ?></strong></p><?php endif; ?>
+                <?php $sourceDocumentNumber = (string)($payload['source_document_number'] ?? $payload['quotation_number'] ?? ''); ?>
+                <?php if ($sourceDocumentNumber !== ''): ?><p class="invoice-reference-line">Related accepted document: <strong><?= admin_e($sourceDocumentNumber) ?></strong></p><?php endif; ?>
                 <table class="final-quote-table">
                     <thead><tr><th>Description</th><th>Qty</th><th>Amount</th></tr></thead>
                     <tbody>
@@ -221,6 +362,13 @@ function document_money(string $currency, mixed $amount): string
         </section>
         <section class="final-section compact">
             <div class="section-number">03</div><div><h2>Thank You</h2><p><?= nl2br(admin_e(document_value($payload, 'invoice_note'))) ?></p></div>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($policyTerms !== []): ?>
+        <section class="final-policy">
+            <h2>Important Terms</h2>
+            <?php foreach ($policyTerms as $term): ?><p><?= admin_e($term) ?></p><?php endforeach; ?>
         </section>
     <?php endif; ?>
 

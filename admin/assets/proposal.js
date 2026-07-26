@@ -50,6 +50,31 @@
     return [...selected, ...additional];
   };
 
+  const applyRevisionPayload = () => {
+    const node = root.querySelector("[data-revision-payload]");
+    if (!node) return;
+    try {
+      const payload = JSON.parse(node.textContent || "{}");
+      Object.entries(payload).forEach(([name, content]) => {
+        if (Array.isArray(content) || content === null || typeof content === "object") return;
+        const control = field(name);
+        if (control && "value" in control) control.value = String(content);
+      });
+      const services = Array.isArray(payload.included_services) ? payload.included_services.map(String) : [];
+      const standardServices = new Set(
+        [...root.querySelectorAll("[data-included-services] input")].map((input) => input.value)
+      );
+      root.querySelectorAll("[data-included-services] input").forEach((input) => {
+        input.checked = services.includes(input.value);
+      });
+      const additional = services.filter((service) => !standardServices.has(service));
+      if (field("additional_services")) field("additional_services").value = additional.join(", ");
+      serviceFeeWasEdited = Object.prototype.hasOwnProperty.call(payload, "service_fee");
+    } catch {
+      // Leave the safe generator defaults in place if stored revision data is unreadable.
+    }
+  };
+
   const update = () => {
     const business = value("proposal_type") === "Global Business Connections";
     root.querySelectorAll("[data-travel-section]").forEach((section) => { section.hidden = business; });
@@ -59,6 +84,8 @@
     const previewBusiness = root.querySelector("[data-preview-business]");
     if (previewTravel) previewTravel.hidden = business;
     if (previewBusiness) previewBusiness.hidden = !business;
+    root.querySelectorAll("[data-policy-travel]").forEach((section) => { section.hidden = business; });
+    root.querySelectorAll("[data-policy-business]").forEach((section) => { section.hidden = !business; });
 
     if (business) {
       currencyField.value = "USD";
@@ -133,6 +160,7 @@
       : number("flight_price") + number("hotel_price") + number("additional_price") + number("service_fee");
     const payload = {
       client_reference: value("client_reference"),
+      revision_of_id: value("revision_of_id"),
       proposal_type: value("proposal_type"),
       proposal_date: value("proposal_date"),
       client_name: value("client_name"),
@@ -166,5 +194,6 @@
     root.querySelector("[data-document-payload]").value = JSON.stringify(payload);
   });
 
+  applyRevisionPayload();
   update();
 })();
