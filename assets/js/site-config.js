@@ -1,5 +1,5 @@
 window.RESPLENDENT_CONFIG = Object.freeze({
-  version: "9.6.1",
+  version: "9.6.4",
   siteName: "Resplendent Global Travel Solutions",
   siteUrl: "https://www.resplendentglobaltravel.com",
   enquiryEmail: "info@resplendentglobaltravel.com",

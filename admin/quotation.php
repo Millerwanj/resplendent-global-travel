@@ -5,7 +5,22 @@ require_once __DIR__ . '/includes/layout.php';
 admin_require_auth();
 
 $store = admin_store();
-$clientReference = admin_text($_GET['client'] ?? $_POST['client_reference'] ?? '', 40);
+$revisionId = admin_text($_GET['revision'] ?? $_POST['revision_of_id'] ?? '', 100);
+$revisionSource = $revisionId !== '' ? $store->getDocument($revisionId) : null;
+if ($revisionSource && ($revisionSource['type'] ?? '') !== 'quotation') $revisionSource = null;
+$revisionPayload = is_array($revisionSource['payload'] ?? null) ? $revisionSource['payload'] : [];
+if ($revisionPayload !== []) {
+    $revisionPayload['quotation_date'] = gmdate('Y-m-d');
+    $revisionPayload['valid_until'] = gmdate('Y-m-d', strtotime('+7 days'));
+}
+$revisionItems = is_array($revisionPayload['items'] ?? null) ? $revisionPayload['items'] : [];
+if ($revisionItems === []) {
+    $revisionItems = [['description' => 'Professional travel service', 'quantity' => '1', 'unit_price' => '0.00']];
+}
+$clientReference = admin_text(
+    $_GET['client'] ?? $_POST['client_reference'] ?? $revisionSource['client_reference'] ?? '',
+    40
+);
 $client = $clientReference !== '' ? $store->getClient($clientReference) : null;
 $error = '';
 
@@ -19,6 +34,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         } elseif (admin_text($payload['client_name'] ?? '', 120) === '' || empty($payload['items'])) {
             $error = 'Add the client name and at least one quotation item.';
         } else {
+            $payload['revision_of_id'] = admin_text($_POST['revision_of_id'] ?? '', 100);
             $record = $store->saveDocument('quotation', $payload);
             admin_flash('success', 'Quotation ' . (string)$record['number'] . ' is ready.');
             header('Location: document.php?id=' . rawurlencode((string)$record['id']), true, 303);
@@ -34,10 +50,14 @@ admin_page_header('Quotation Generator', 'quotation');
     <form method="post" class="generator-form admin-form" data-quotation-form>
         <input type="hidden" name="csrf" value="<?= admin_e(admin_csrf_token()) ?>">
         <input type="hidden" name="client_reference" value="<?= admin_e($clientReference) ?>">
+        <input type="hidden" name="revision_of_id" value="<?= admin_e($revisionSource['id'] ?? '') ?>">
         <input type="hidden" name="document_payload" data-document-payload>
+        <?php if ($revisionPayload !== []): ?>
+            <script type="application/json" data-revision-payload><?= json_encode($revisionPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES) ?></script>
+        <?php endif; ?>
         <div class="generator-intro">
-            <div><p class="eyebrow">Executive Document</p><h2>Create a clear, decision-ready quotation.</h2></div>
-            <p>Use the travel layout for itemised services or switch to the fixed business-matchmaking fee schedule.</p>
+            <div><p class="eyebrow"><?= $revisionSource ? 'Controlled Revision' : 'Executive Document' ?></p><h2><?= $revisionSource ? 'Revise ' . admin_e($revisionSource['number'] ?? 'quotation') . '.' : 'Create a clear, decision-ready quotation.' ?></h2></div>
+            <p><?= $revisionSource ? 'The new version retains the original reference and receives the next revision number.' : 'Use the travel layout for itemised services or switch to the fixed business-matchmaking fee schedule.' ?></p>
         </div>
 
         <fieldset>
@@ -65,12 +85,14 @@ admin_page_header('Quotation Generator', 'quotation');
         <fieldset data-travel-quotation>
             <legend><span>02</span> Quotation items</legend>
             <div class="quotation-items" data-quotation-items>
+                <?php foreach ($revisionItems as $item): if (!is_array($item)) continue; ?>
                 <div class="quotation-item" data-quotation-item>
-                    <label>Description<input type="text" name="item_description[]" value="Professional travel service"></label>
-                    <label>Qty<input type="number" name="item_quantity[]" min="0" step="1" value="1"></label>
-                    <label>Unit price<input type="number" name="item_price[]" min="0" step="0.01" value="0"></label>
+                    <label>Description<input type="text" name="item_description[]" value="<?= admin_e($item['description'] ?? '') ?>"></label>
+                    <label>Qty<input type="number" name="item_quantity[]" min="0" step="1" value="<?= admin_e($item['quantity'] ?? '1') ?>"></label>
+                    <label>Unit price<input type="number" name="item_price[]" min="0" step="0.01" value="<?= admin_e($item['unit_price'] ?? $item['total'] ?? '0') ?>"></label>
                     <button type="button" class="remove-item" data-remove-item aria-label="Remove item">×</button>
                 </div>
+                <?php endforeach; ?>
             </div>
             <button type="button" class="text-action" data-add-item>+ Add another item</button>
             <div class="form-grid quotation-adjustments">
@@ -124,6 +146,10 @@ admin_page_header('Quotation Generator', 'quotation');
             <section class="quote-total"><span>Total investment</span><strong data-preview-total>USD 0.00</strong></section>
             <section><h3>Terms</h3><p data-preview-payment-terms></p></section>
             <section><h3>Payment</h3><p data-preview-payment-details></p></section>
+            <section class="preview-policy">
+                <div data-policy-travel><h3>Important Terms</h3><p>Airfares, accommodation rates, taxes, availability and supplier conditions are indicative at the time of enquiry and may change until the required payment is received and the service is ticketed or formally confirmed in writing.</p></div>
+                <div data-policy-business hidden><h3>Important Terms</h3><p>Non-refundable professional fees: Each milestone payment becomes non-refundable once the corresponding work has commenced, as it covers research, due diligence, outreach, coordination and professional time committed to the engagement. This does not affect any rights available where agreed services are not delivered or applicable law requires otherwise.</p><p>Payment of professional fees does not guarantee a successful introduction, transaction or commercial outcome.</p></div>
+            </section>
             <footer><span>resplendentglobaltravel.com</span><span>Precision · Discretion · Purpose</span></footer>
         </article>
     </aside>

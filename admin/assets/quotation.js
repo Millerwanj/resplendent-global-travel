@@ -21,6 +21,21 @@
   };
   const businessMode = () => value("quotation_type") === "Business Matchmaking";
 
+  const applyRevisionPayload = () => {
+    const node = root.querySelector("[data-revision-payload]");
+    if (!node) return;
+    try {
+      const payload = JSON.parse(node.textContent || "{}");
+      Object.entries(payload).forEach(([name, content]) => {
+        if (name === "items" || Array.isArray(content) || content === null || typeof content === "object") return;
+        const control = field(name);
+        if (control && "value" in control) control.value = String(content);
+      });
+    } catch {
+      // Leave the safe generator defaults in place if stored revision data is unreadable.
+    }
+  };
+
   const readItems = () => [...root.querySelectorAll("[data-quotation-item]")].map((row) => {
     const description = String(row.querySelector('[name="item_description[]"]')?.value || "").trim();
     const quantity = Math.max(0, Number(row.querySelector('[name="item_quantity[]"]')?.value || 0) || 0);
@@ -46,6 +61,8 @@
     if (businessSection) businessSection.hidden = !business;
     if (previewTravel) previewTravel.hidden = business;
     if (previewBusiness) previewBusiness.hidden = !business;
+    root.querySelectorAll("[data-policy-travel]").forEach((section) => { section.hidden = business; });
+    root.querySelectorAll("[data-policy-business]").forEach((section) => { section.hidden = !business; });
     if (business) field("currency").value = "USD";
 
     const currency = business ? "USD" : value("currency") || "USD";
@@ -129,6 +146,7 @@
     const calculated = totals();
     const payload = {
       client_reference: value("client_reference"),
+      revision_of_id: value("revision_of_id"),
       quotation_type: value("quotation_type"),
       quotation_date: value("quotation_date"),
       valid_until: value("valid_until"),
@@ -149,5 +167,6 @@
     root.querySelector("[data-document-payload]").value = JSON.stringify(payload);
   });
 
+  applyRevisionPayload();
   update();
 })();

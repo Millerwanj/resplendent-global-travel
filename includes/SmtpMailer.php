@@ -30,10 +30,22 @@ final class SmtpMailer
         }
     }
 
-    /** @param string[] $to @param string[] $cc
+    /**
+     * @param string[] $to
+     * @param string[] $cc
+     * @param array<int,array{filename:string,mime_type:string,content:string}> $attachments
      *  @return array<string,string>
      */
-    public function send(array $to, array $cc, string $fromEmail, string $fromName, string $replyTo, string $subject, string $body): array
+    public function send(
+        array $to,
+        array $cc,
+        string $fromEmail,
+        string $fromName,
+        string $replyTo,
+        string $subject,
+        string $body,
+        array $attachments = []
+    ): array
     {
         $recipients = array_values(array_unique(array_filter(array_merge($to, $cc), static fn($v) => filter_var($v, FILTER_VALIDATE_EMAIL))));
         if ($recipients === []) throw new RuntimeException('SMTP stage recipients: no valid recipient was supplied.');
@@ -66,7 +78,16 @@ final class SmtpMailer
 
             $this->stage = 'message_data';
             $this->command('DATA', [354]);
-            $this->write($this->buildMessage($to, $cc, $fromEmail, $fromName, $replyTo, $subject, $body) . "\r\n.\r\n");
+            $this->write($this->buildMessage(
+                $to,
+                $cc,
+                $fromEmail,
+                $fromName,
+                $replyTo,
+                $subject,
+                $body,
+                $attachments
+            ) . "\r\n.\r\n");
             $this->expect([250]);
 
             $this->stage = 'quit';
@@ -76,6 +97,7 @@ final class SmtpMailer
                 'port' => (string)$this->port,
                 'encryption' => $this->encryption,
                 'recipients_accepted' => (string)count($recipients),
+                'attachments' => (string)count($attachments),
                 'final_stage' => 'queued_by_smtp_server',
             ];
         } finally {
@@ -153,8 +175,21 @@ final class SmtpMailer
         return $response;
     }
 
-    /** @param string[] $to @param string[] $cc */
-    private function buildMessage(array $to, array $cc, string $fromEmail, string $fromName, string $replyTo, string $subject, string $body): string
+    /**
+     * @param string[] $to
+     * @param string[] $cc
+     * @param array<int,array{filename:string,mime_type:string,content:string}> $attachments
+     */
+    private function buildMessage(
+        array $to,
+        array $cc,
+        string $fromEmail,
+        string $fromName,
+        string $replyTo,
+        string $subject,
+        string $body,
+        array $attachments
+    ): string
     {
         $domain = substr(strrchr($fromEmail, '@') ?: '@localhost', 1);
         $messageId = sprintf('<%s.%s@%s>', bin2hex(random_bytes(8)), time(), $domain);
@@ -170,12 +205,44 @@ final class SmtpMailer
         $headers[] = 'Reply-To: ' . $replyTo;
         $headers[] = 'Subject: ' . $encodedSubject;
         $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-Type: text/plain; charset=UTF-8';
-        $headers[] = 'Content-Transfer-Encoding: 8bit';
-        $headers[] = 'X-Mailer: RGTS Website SMTP ' . RGTS_RELEASE;
+        $headers[] = 'X-Mailer: RGTS Website SMTP ' . (defined('RGTS_RELEASE') ? RGTS_RELEASE : '9.6.4');
         $normalizedBody = preg_replace('/\r\n|\r|\n/', "\r\n", $body) ?? $body;
-        $normalizedBody = preg_replace('/^\./m', '..', $normalizedBody) ?? $normalizedBody;
-        return implode("\r\n", $headers) . "\r\n\r\n" . $normalizedBody;
+
+        if ($attachments === []) {
+            $headers[] = 'Content-Type: text/plain; charset=UTF-8';
+            $headers[] = 'Content-Transfer-Encoding: 8bit';
+            $message = implode("\r\n", $headers) . "\r\n\r\n" . $normalizedBody;
+            return preg_replace('/^\./m', '..', $message) ?? $message;
+        }
+
+        $boundary = 'rgts_' . bin2hex(random_bytes(18));
+        $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
+        $parts = [
+            '--' . $boundary,
+            'Content-Type: text/plain; charset=UTF-8',
+            'Content-Transfer-Encoding: 8bit',
+            '',
+            $normalizedBody,
+        ];
+
+        foreach ($attachments as $attachment) {
+            $filename = preg_replace('/[^A-Za-z0-9._-]/', '-', basename((string)($attachment['filename'] ?? 'document.pdf'))) ?: 'document.pdf';
+            $mimeType = preg_match('/^[A-Za-z0-9.+-]+\/[A-Za-z0-9.+-]+$/', (string)($attachment['mime_type'] ?? ''))
+                ? (string)$attachment['mime_type']
+                : 'application/octet-stream';
+            $content = (string)($attachment['content'] ?? '');
+            if ($content === '') throw new RuntimeException('SMTP stage attachment: an attachment was empty.');
+            $parts[] = '--' . $boundary;
+            $parts[] = 'Content-Type: ' . $mimeType . '; name="' . $filename . '"';
+            $parts[] = 'Content-Transfer-Encoding: base64';
+            $parts[] = 'Content-Disposition: attachment; filename="' . $filename . '"';
+            $parts[] = '';
+            $parts[] = rtrim(chunk_split(base64_encode($content), 76, "\r\n"));
+        }
+        $parts[] = '--' . $boundary . '--';
+        $parts[] = '';
+        $message = implode("\r\n", $headers) . "\r\n\r\n" . implode("\r\n", $parts);
+        return preg_replace('/^\./m', '..', $message) ?? $message;
     }
 
     private function encodeHeader(string $value): string

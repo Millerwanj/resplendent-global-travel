@@ -28,6 +28,18 @@ Use `docs/rgts-mail-config.example.php` as the template and insert the current p
 
 Non-general enquiries also copy `info@` for central oversight.
 
+## v9.6.3 document senders
+
+Client proposals, quotations and invoices use the same department architecture
+for their visible sender. The final admin review panel shows and permits a
+controlled override of the selected profile.
+
+The existing `info@` SMTP account may authenticate these addresses when Verpex
+has authorised them as aliases or send-as identities. If Verpex requires
+separate mailbox authentication, add `smtp_username` and `smtp_password` to
+the relevant private `document_senders` profile. See
+`rgts-mail-config.example.php`.
+
 ## Validation
 
 A success message is shown only after the SMTP server accepts the message. Delivery failures are written to the PHP error log with the enquiry reference, without logging the mailbox password.
