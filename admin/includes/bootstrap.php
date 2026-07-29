@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_ADMIN_RELEASE = '9.6.4';
+const RGTS_ADMIN_RELEASE = '9.7.0';
 const RGTS_ADMIN_SETUP_TOKEN_HASH = '28d113a2884fed0f8918adc3f519ea796ce3fa0aefb6d9d3b631f47845ed5e46';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {

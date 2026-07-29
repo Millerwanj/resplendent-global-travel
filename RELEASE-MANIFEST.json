@@ -1,13 +1,8 @@
 {
-  "release": "9.6.4",
-  "name": "Destination Journal Edition",
-  "date": "2026-07-26",
+  "release": "9.7.0",
+  "name": "Tripadvisor Journal Edition",
+  "date": "2026-07-29",
   "files": [
-    {
-      "path": "_headers",
-      "bytes": 595,
-      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
-    },
     {
       "path": ".editorconfig",
       "bytes": 114,
@@ -31,22 +26,47 @@
     {
       "path": "404.html",
       "bytes": 5871,
-      "sha256": "b8cce99a34648eb2af8428e13b98534111318cd78775d52592c00341c579865f"
-    },
-    {
-      "path": "about.html",
-      "bytes": 7621,
-      "sha256": "4ccf8ac7379d4ba82a7a4a29122822f1669a43d97251a75cb6b1a05dadddabdd"
-    },
-    {
-      "path": "accept.php",
-      "bytes": 17128,
-      "sha256": "906a431a991f8730a2373c2e40c01458ce8debbb4146b4eade59f7122ebcc8af"
+      "sha256": "631fba41d2f336a94023cc245998cd43d2d1e369da34b31649a44f3fa739c663"
     },
     {
       "path": "ADMIN-SETUP.md",
       "bytes": 1118,
-      "sha256": "5e05ce59087f963f0fc5d13e75d805f921f013b5e8efaf9d6a329c1eea82b79e"
+      "sha256": "6af50d81f91f4dee500b91a39fa2a5361a4cb2c6daf4490e2fc0a00f8d32e837"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 14450,
+      "sha256": "6c13e24bc6eafa36b88122c476360c303ab92212f2d3ee7d053bfd0f04ccf445"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3224,
+      "sha256": "9b15de15bec091d31596f47e06a13fd1e8f5e77eea8b28a3ed842664052f28fb"
+    },
+    {
+      "path": "SEO_REPORT.md",
+      "bytes": 465,
+      "sha256": "3aeac61dd962489ed40bfdd1d9d769c4d582e98e08f77da4b3585c4dd1d140fa"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 430,
+      "sha256": "488ae9bf757e59d06795677e84d0f8da22fce15720536bb84c772a4073908983"
+    },
+    {
+      "path": "_headers",
+      "bytes": 595,
+      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
+    },
+    {
+      "path": "about.html",
+      "bytes": 7621,
+      "sha256": "cbee9b532df3343987694948ba4343748e0563531f12fa2c92cfb3ec666f87ec"
+    },
+    {
+      "path": "accept.php",
+      "bytes": 17128,
+      "sha256": "b397bd85da44b30cae292d03790afa1659a672e708a5114cf0375d3dc6f8da4a"
     },
     {
       "path": "admin/.htaccess",
@@ -86,7 +106,7 @@
     {
       "path": "admin/document.php",
       "bytes": 24612,
-      "sha256": "2c097b8225bc2a52abb4645ea4f271bc67e6bb5a47330f69f2734b4ffc813f03"
+      "sha256": "c3b7fb140bf05287f274eeeab4f80523340ed0749b410dffc62118d7ea416c58"
     },
     {
       "path": "admin/download-document.php",
@@ -96,12 +116,12 @@
     {
       "path": "admin/includes/bootstrap.php",
       "bytes": 3458,
-      "sha256": "7a438911067e6a896c6c4aa38b4fd005aa5abeb03e5afa8fb0cc3972494bb2cb"
+      "sha256": "f30ab8f34d1a62552148bae573dcfca2952f2c3df8060674c012cb7f33da718a"
     },
     {
       "path": "admin/includes/layout.php",
       "bytes": 3261,
-      "sha256": "aa2123d23f9152736fa224933a6c0b7361e7cdf7a74c91013bd837eae5fca1ae"
+      "sha256": "ff2be9792fb16a5c7ba705496156b89c683e5f1e3b4680b83ceb2c2bea26b228"
     },
     {
       "path": "admin/index.php",
@@ -116,7 +136,7 @@
     {
       "path": "admin/login.php",
       "bytes": 3607,
-      "sha256": "963a958229b5bda4a909adb89defe73e5e315064cde99e9dcca4df16d2e013c3"
+      "sha256": "6e5c56cca17e5815dbff95e2f4bb9afb5eb7b263efd75d007651a825eada7fd4"
     },
     {
       "path": "admin/logout.php",
@@ -136,7 +156,7 @@
     {
       "path": "admin/send-document.php",
       "bytes": 6240,
-      "sha256": "35a9f6b4102b96a7a79ac75d4fc108429fd6dba319624d5d6a572ac03738d642"
+      "sha256": "e6deecfd26b1859784b8da90d108a3b96ba0c780cfdc02fe12810c81165698f8"
     },
     {
       "path": "admin/settings.php",
@@ -146,7 +166,7 @@
     {
       "path": "admin/setup.php",
       "bytes": 4399,
-      "sha256": "b9472e1c00c2b1125d90ded26161af5d26a64934dc2320518d9253662bd10f40"
+      "sha256": "6d6abe425c1285a290b4df4da63dbfc1ab716a566055d3c1a958989a32ad32ef"
     },
     {
       "path": "admin/workflow.php",
@@ -160,8 +180,13 @@
     },
     {
       "path": "assets/css/main.css",
-      "bytes": 24320,
-      "sha256": "8f613502d12badbbb88f0fe62d42ad283f5a9a642c6986fb826310d8e9e84caa"
+      "bytes": 24694,
+      "sha256": "d4903a92243df94ae2b41c10cef2fb6c9e66eb09262a1c38e5d549806534452a"
+    },
+    {
+      "path": "assets/css/success.css",
+      "bytes": 3457,
+      "sha256": "35824a87057775e3716b62d9c589453d4b9b6864b844b57857d6dafe739e16ca"
     },
     {
       "path": "assets/images/book/return-on-travel.jpg",
@@ -252,6 +277,16 @@
       "path": "assets/images/destinations/japan.webp",
       "bytes": 435386,
       "sha256": "f3967cf5e503fe0ae31c762e5f692f092d9a266882552459107fa0b7a8ce5e82"
+    },
+    {
+      "path": "assets/images/destinations/maasai-mara-balloon.jpg",
+      "bytes": 336399,
+      "sha256": "76fb418f653670c22d209826c21e65e9f9788328586e72588e6862ebf23631c7"
+    },
+    {
+      "path": "assets/images/destinations/maasai-mara-balloon.webp",
+      "bytes": 125802,
+      "sha256": "711199b1154f71e0203d9845f7a3e31ecc608380d9ef6941c1bc4a01e7546700"
     },
     {
       "path": "assets/images/destinations/maasai-mara.jpg",
@@ -381,37 +416,37 @@
     {
       "path": "assets/js/site-config.js",
       "bytes": 518,
-      "sha256": "f37459fa2fbf3019df6a57825b9d8c5389a50a980443234ed696e5cdf07f47ed"
+      "sha256": "06ed94116119533e4e3dd525bf95f7c9d3bf060ce6578ccffbc08d2234a0fd8d"
+    },
+    {
+      "path": "assets/js/success.js",
+      "bytes": 1071,
+      "sha256": "7133c45601c9249e885363c9d0de632af98dbbcb9e6e600d53c4e9e0292422f4"
     },
     {
       "path": "business.html",
       "bytes": 7905,
-      "sha256": "51530a5c405cd18ea17e15e4ed2a0add35d2c765c6c6eaa6f7039e5b357a01ec"
-    },
-    {
-      "path": "CHANGELOG.md",
-      "bytes": 13687,
-      "sha256": "ef8d531eff49405f78a1c458e4b1ddfe241bb98ecf8ca8e2d3596b78005e3947"
+      "sha256": "9dd87037d5724662fd4c1708d01b4ca89a2f44a24401710136989fdb3a6098d9"
     },
     {
       "path": "contact.html",
       "bytes": 12241,
-      "sha256": "355ea10f651cc640391aae549d2789025633a252a073676d92e81301164cb086"
+      "sha256": "785faf8e8df7f902883e35a5f2c5b0b72c8c0b58c1eb025f264170281d321c55"
     },
     {
       "path": "corporate.html",
       "bytes": 7657,
-      "sha256": "a8a607dbed5323c3a30a806e90af9116f1d7b840aa490e7daf87f6884ccee91c"
+      "sha256": "7f6edb89d0bd76b658bed07e43a56e0639cd46656d6ab7fb4c1990e177577f2e"
     },
     {
       "path": "data/site.json",
       "bytes": 296,
-      "sha256": "5fd486ce8a43dc27c2dfc4e02c0d7b8ac67b35e8771f5768b205d266e170643c"
+      "sha256": "1bd0b988dd99315356aa8142f327825409d7a0b57f69256edd9020719043486d"
     },
     {
       "path": "destinations.html",
       "bytes": 10212,
-      "sha256": "81c8f3cddcd3ba7998fea349322a35143f49725109544ad8fd83299493aa53b2"
+      "sha256": "db42395c0a4a85ac00c7f0e9aa64876228e78a0cd309873437d26bf43fddcd11"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -507,6 +542,11 @@
       "path": "docs/DEPLOYMENT-v9.6.4.md",
       "bytes": 593,
       "sha256": "c6cf8366a073e399f729abff54e28e49f2b12508903533b38857b5233e97c67c"
+    },
+    {
+      "path": "docs/DEPLOYMENT-v9.7.0.md",
+      "bytes": 625,
+      "sha256": "584f44af6f4758095b73409cbdb0b39499f081c10a356e630e801f549bfe23d1"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -634,6 +674,11 @@
       "sha256": "a8aa40287c6a9cf55556508377faf73b82cf3a48db421bed3e20f70be1c49d54"
     },
     {
+      "path": "docs/QA-v9.7.0-PRODUCTION.md",
+      "bytes": 2221,
+      "sha256": "09d830b7914a1e549048f751221e115942564ead060652eba27e0a53ec1889f3"
+    },
+    {
       "path": "docs/RELEASE-v5.2.md",
       "bytes": 255,
       "sha256": "dc5e466f6f0da38f3facd2ca815182ac711a19fc6b026f4a70cf9494571fb6aa"
@@ -734,9 +779,9 @@
       "sha256": "9e3d346e07dbb7980012a87387846042c3c9b2bcbd35d4d0f034e7dcdadd46e9"
     },
     {
-      "path": "docs/rgts-mail-config.example.php",
-      "bytes": 2307,
-      "sha256": "324cc2fa0a82902a2bcc0a8e0d9e50fe51e3778a6ae7737131ddfc1d86909fee"
+      "path": "docs/RELEASE-v9.7.0.md",
+      "bytes": 1091,
+      "sha256": "03cb2404009889e2a52a0295562e2971cee55b24a110623c4b36930d30480fdb"
     },
     {
       "path": "docs/SMTP-SETUP-v7.3.md",
@@ -749,6 +794,11 @@
       "sha256": "adab1f0e4bfdf0e13208fc51049a6ff85d07cacb6a558dd4b614e3352b256897"
     },
     {
+      "path": "docs/rgts-mail-config.example.php",
+      "bytes": 2307,
+      "sha256": "324cc2fa0a82902a2bcc0a8e0d9e50fe51e3778a6ae7737131ddfc1d86909fee"
+    },
+    {
       "path": "favicon.ico",
       "bytes": 13771,
       "sha256": "92866a2030bb4712d84d2cf183c49b1bd9c2cd38e0eb62346ba17cc65048eec9"
@@ -756,7 +806,7 @@
     {
       "path": "form-handler.php",
       "bytes": 17993,
-      "sha256": "696dcfe4dc99e6298bbca3c147d39dfc7ed4097357dc988e4f186ab7928b3e8a"
+      "sha256": "fae79cb70100e4b4061092a4d865648750dbe1be7df2573fe29737c477c1e61c"
     },
     {
       "path": "includes/DocumentPolicy.php",
@@ -771,7 +821,7 @@
     {
       "path": "includes/OperationsStore.php",
       "bytes": 55198,
-      "sha256": "0b0df093e566d971cfac2f3ee639613c2a0667360b4765d1b2ef388667c30ea5"
+      "sha256": "eb0e4059fd308e566611c108895f9f917a8e67aa4f47665dd3d7ed755952ded3"
     },
     {
       "path": "includes/PdfDocumentGenerator.php",
@@ -781,57 +831,47 @@
     {
       "path": "includes/SmtpMailer.php",
       "bytes": 10780,
-      "sha256": "6d6d7ae78049f2b8915838297b1989fe435e43f7f61364db751ddc5aaa093f38"
+      "sha256": "7917f8cb7a1cf4b582cfc25ddcaf0e7df83246ce0a6a3e52f57fd8735c79e3a8"
     },
     {
       "path": "index.html",
       "bytes": 6749,
-      "sha256": "5a75b86f6b8ec73109707088a3fab3da5a3246122b58d6d42b3f5a214d673926"
+      "sha256": "4403efc37efbc3eaa51c7e81c287c5c29ad0ce432ba598837fca5c6b3b115ed5"
     },
     {
       "path": "journal-dubai.html",
-      "bytes": 10465,
-      "sha256": "d05c7958ea4facdf6fe779db7cea5b7924ebf27aa6276ed379a6a01318a24af1"
+      "bytes": 11040,
+      "sha256": "288682970caff499d6b269dfee264e018f1bc02dcaadaa2d35130a8bf9e0e457"
     },
     {
       "path": "journal-japan.html",
-      "bytes": 10698,
-      "sha256": "b3b6e298ce34ea800874a3c3270d3ef36ff13f564fec899837ae6a705142db5c"
+      "bytes": 11292,
+      "sha256": "956dd0b5354b41cb0498f6389bf87801a722aca41345f5e03629bc611f80e8a6"
     },
     {
       "path": "journal-kenya.html",
-      "bytes": 10483,
-      "sha256": "fd23f0dc07fe2a3b116b2ac14ab54c5a7fd4d06de102d650fbee47e88c2bfd17"
+      "bytes": 11063,
+      "sha256": "2ac67215b7b608b7734abd029306f0f501aeeede9aa2e2ffe129bfdc5dadb365"
     },
     {
       "path": "journal.html",
       "bytes": 7935,
-      "sha256": "44847e656601622b25884db4a9e4ff0820f19a2255b19411fafd1da359f6c79b"
+      "sha256": "7a8c75b9dd5fb2a5f02d595c1bf5ce3c0fffe2b0a6d45397502142b4d9acad6e"
     },
     {
       "path": "payments.html",
       "bytes": 5210,
-      "sha256": "81723ce7530ba49f65fcac4deef4e2d564c69296690f28ca4fad396edab9bcd9"
+      "sha256": "7c28efc8054a5e3fab892185574bb70f53e75051a598406a850ec7d5ca36fb4e"
     },
     {
       "path": "privacy.html",
       "bytes": 5353,
-      "sha256": "b5d3427b5b51401ea6381d77244e19c7e28ab9d2a4b7df28cdc3df80216d5034"
-    },
-    {
-      "path": "README.md",
-      "bytes": 3092,
-      "sha256": "b8e15fcf647796472a95cc049fffc1d02302f8ea2ae20fdf62bd7d7eb6b052e7"
+      "sha256": "62a28119d45e5c750d76994f938998d877cf4efa817cda3299f9a8b35203e242"
     },
     {
       "path": "robots.txt",
       "bytes": 160,
       "sha256": "12ceb678eaa201443b064019a538cf1b25ea9bdce31aa6641aa8927b9aa89558"
-    },
-    {
-      "path": "SEO_REPORT.md",
-      "bytes": 465,
-      "sha256": "3aeac61dd962489ed40bfdd1d9d769c4d582e98e08f77da4b3585c4dd1d140fa"
     },
     {
       "path": "site.webmanifest",
@@ -841,22 +881,22 @@
     {
       "path": "sitemap.xml",
       "bytes": 1841,
-      "sha256": "ffef29dc55e1d3b2bae7438785ded9c9aee81104e07e9f8be923ec35f2c37047"
+      "sha256": "855f97eae7196230dff7fb218944e9c36c766f061c0f7c2fa70deb0032eb4541"
+    },
+    {
+      "path": "success.html",
+      "bytes": 4999,
+      "sha256": "5995c0ba7173f2f9408c46a975078f53adc30ce7b8742e45b8aec713b0f6a8c1"
     },
     {
       "path": "terms.html",
       "bytes": 5247,
-      "sha256": "75d14c7b980b65ad5969330c7a9adcebf9de90efbe77c52dcb0bea165c56b04a"
+      "sha256": "8dac05e73fd8abafb80c0c3b08fd86d906c8824a689d46e5d4f5631d1dea730e"
     },
     {
       "path": "vercel.json",
       "bytes": 911,
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
-    },
-    {
-      "path": "VERSION.md",
-      "bytes": 485,
-      "sha256": "6d114b40202628ccbc7b6c02032585e64dc31e97560dbc1924226c2101d9c258"
     }
   ]
 }

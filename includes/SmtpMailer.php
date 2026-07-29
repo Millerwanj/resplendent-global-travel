@@ -205,7 +205,7 @@ final class SmtpMailer
         $headers[] = 'Reply-To: ' . $replyTo;
         $headers[] = 'Subject: ' . $encodedSubject;
         $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'X-Mailer: RGTS Website SMTP ' . (defined('RGTS_RELEASE') ? RGTS_RELEASE : '9.6.4');
+        $headers[] = 'X-Mailer: RGTS Website SMTP ' . (defined('RGTS_RELEASE') ? RGTS_RELEASE : '9.7.0');
         $normalizedBody = preg_replace('/\r\n|\r|\n/', "\r\n", $body) ?? $body;
 
         if ($attachments === []) {

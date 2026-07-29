@@ -1,6 +1,6 @@
 # Resplendent Global Travel Solutions
 
-**Current production release: v9.6.4 — Destination Journal Edition**
+**Current production release: v9.7.0 — Tripadvisor Journal Edition**
 
 Production website for `resplendentglobaltravel.com`.
 
@@ -15,7 +15,10 @@ The Contact form retains the verified server-side pipeline:
 5. customer acknowledgement and minimalist inline confirmation with the enquiry reference;
 6. automatic entry in the private Client Workflow.
 
-The website design, content, Google Analytics ID `G-5WEEFVG6MB`, SEO metadata and public navigation remain unchanged.
+The approved website design, Google Analytics ID `G-5WEEFVG6MB`, SEO
+foundation and public navigation remain unchanged. The Maasai Mara, Dubai and
+Japan Journal articles each include a balanced link to their matching curated
+public Tripadvisor Trip.
 
 ## Private Client Engagement Suite
 
