@@ -21,7 +21,7 @@ function admin_page_header(string $title, string $active = ''): void
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/admin.css?v=9.6.4">
+    <link rel="stylesheet" href="assets/admin.css?v=9.7.0">
 </head>
 <body class="admin-shell">
 <a class="skip-link" href="#admin-main">Skip to main content</a>
@@ -47,7 +47,7 @@ function admin_page_header(string $title, string $active = ''): void
 <div class="admin-content">
     <header class="admin-topbar">
         <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="admin-sidebar" aria-expanded="false">Menu</button>
-        <div><span>Client Engagement Suite</span><strong>v9.6.4 Production</strong></div>
+        <div><span>Client Engagement Suite</span><strong>v9.7.0 Production</strong></div>
     </header>
     <main id="admin-main" class="admin-main">
         <?php if ($flash): ?>
@@ -65,9 +65,9 @@ function admin_page_footer(array $scripts = []): void
     ?>
     </main>
 </div>
-<script src="assets/admin.js?v=9.6.4" defer></script>
+<script src="assets/admin.js?v=9.7.0" defer></script>
 <?php foreach ($scripts as $script): ?>
-<script src="<?= admin_e($script) ?>?v=9.6.4" defer></script>
+<script src="<?= admin_e($script) ?>?v=9.7.0" defer></script>
 <?php endforeach; ?>
 </body>
 </html>

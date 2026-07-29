@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '9.6.4';
+const RGTS_RELEASE = '9.7.0';
 
 require_once __DIR__ . '/includes/bootstrap.php';
 require_once dirname(__DIR__) . '/includes/DocumentSender.php';

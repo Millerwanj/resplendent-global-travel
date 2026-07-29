@@ -2,11 +2,11 @@
 
 ## Current Release
 
-**v9.6.4 — Destination Journal Edition**
-Released: 26 July 2026
+**v9.7.0 — Tripadvisor Journal Edition**
+Released: 29 July 2026
 
-This content release expands the Resplendent Journal with substantial
-editorial guides to a Maasai Mara hot-air balloon safari, a considered first
-journey through Japan and a purposeful Dubai itinerary. Japan, Dubai and the
-Maasai Mara now link from Destinations to their matching journal entries.
-The completed v9.6.3 operational pipeline remains unchanged.
+This focused release connects the Maasai Mara, Dubai and Japan Journal
+articles to their matching curated public Tripadvisor Trips. Each connection
+uses the same restrained editorial treatment and opens in a new tab. The
+completed v9.6.3 operational pipeline and v9.6.4 Journal content remain
+unchanged.

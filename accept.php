@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '9.6.4';
+const RGTS_RELEASE = '9.7.0';
 
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
@@ -192,7 +192,7 @@ $documentSuperseded = ($document['lifecycle_status'] ?? 'active') === 'supersede
     <meta name="theme-color" content="#10151F">
     <title><?= $accepted ? 'Acceptance Recorded' : ($changesRequested ? 'Revision Requested' : 'Document Response') ?> | Resplendent</title>
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="assets/css/acceptance.css?v=9.6.4">
+    <link rel="stylesheet" href="assets/css/acceptance.css?v=9.7.0">
 </head>
 <body>
 <main class="acceptance-shell">

@@ -1,5 +1,15 @@
 # Changelog
 
+## v9.7.0 — Tripadvisor Journal Edition (2026-07-29)
+
+- Connected the Maasai Mara Journal article to its curated public Tripadvisor Trip.
+- Connected the Dubai Journal article to its curated public Tripadvisor Trip.
+- Connected the Japan Journal article to its curated Tokyo and Kyoto Tripadvisor Trip.
+- Added one consistent, text-only editorial companion section to each article without using third-party logos.
+- Configured external links to open safely in a new tab while preserving referral attribution.
+- Refreshed Article schema modification dates, sitemap dates, cache identifiers and visible release versions.
+- Preserved the complete enquiry, CRM, mail, proposal, quotation, acceptance, invoice and private-admin pipeline without functional changes.
+
 ## v9.6.4 — Destination Journal Edition (2026-07-26)
 
 - Reframed the Kenya journal entry as an in-depth Maasai Mara hot-air balloon safari guide.
