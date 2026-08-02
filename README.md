@@ -1,6 +1,8 @@
 # Resplendent Global Travel Solutions
 
-**Current production release: v9.7.0 — Tripadvisor Journal Edition**
+**Current production release: v10.0.0 — Signature Journeys Edition**
+
+**Production baseline: v9.9.0 — International Edition**
 
 Production website for `resplendentglobaltravel.com`.
 
@@ -15,10 +17,21 @@ The Contact form retains the verified server-side pipeline:
 5. customer acknowledgement and minimalist inline confirmation with the enquiry reference;
 6. automatic entry in the private Client Workflow.
 
-The approved website design, Google Analytics ID `G-5WEEFVG6MB`, SEO
-foundation and public navigation remain unchanged. The Maasai Mara, Dubai and
-Japan Journal articles each include a balanced link to their matching curated
-public Tripadvisor Trip.
+The approved English website, Google Analytics ID `G-5WEEFVG6MB`, operational
+pipeline and premium minimalist design remain intact. The finalized Chinese
+page at `/zh` and localized Japanese, German, French and Italian pages at
+`/ja`, `/de`, `/fr` and `/it` retain reciprocal language selection and complete
+multilingual search metadata.
+
+The v10.0 release adds one homepage Featured Journey, a new
+`/signature-journeys` collection page and the flagship
+`/signature-journey-masai-mara` experience. The Kenya Journal article, Mara
+destination entry and journey page now form one editorial-to-enquiry path, with
+the journey name and destination prefilled for the bookings team.
+
+The locally created imagery in `assets/images/signature-journeys/` is approved
+as interim launch media. It can be replaced with approved partner media-kit
+assets later without changing the journey routes or enquiry flow.
 
 ## Private Client Engagement Suite
 
