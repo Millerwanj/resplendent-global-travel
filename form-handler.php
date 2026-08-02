@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '9.7.0';
+const RGTS_RELEASE = '10.0.0';
 const RGTS_ZOHO_ENDPOINT = 'https://crm.zoho.com/crm/WebToLeadForm';
 
 require_once __DIR__ . '/includes/OperationsStore.php';
@@ -251,7 +251,7 @@ if ($operations) {
 }
 
 $labels = [
-    'destination' => 'Destination / Country', 'dates' => 'Preferred dates', 'travellers' => 'Travellers / delegates',
+    'journey' => 'Signature journey', 'destination' => 'Destination / Country', 'dates' => 'Preferred dates', 'travellers' => 'Travellers / delegates',
     'travel_flexibility' => 'Travel flexibility', 'accommodation_preference' => 'Accommodation preference',
     'budget' => 'Approximate budget', 'interests' => 'Interests', 'corporate_industry' => 'Corporate industry',
     'delegates' => 'Number of delegates', 'corporate_objective' => 'Corporate travel objective',

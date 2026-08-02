@@ -250,7 +250,7 @@ final class OperationsStore
             'id' => $id,
             'type' => $type,
             'number' => $number,
-            'release' => '9.7.0',
+            'release' => '10.0.0',
             'client_reference' => $this->text($payload['client_reference'] ?? '', 40),
             'client_name' => $this->text($payload['client_name'] ?? '', 120),
             'company' => $this->text($payload['company'] ?? '', 160),

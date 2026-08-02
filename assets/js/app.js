@@ -142,6 +142,18 @@
     const option = [...serviceSelect.options].find((item) => item.value.toLowerCase() === target.toLowerCase());
     if (option) serviceSelect.value = option.value;
   }
+
+  const requestedJourney = (params.get("journey") || "").trim().slice(0, 180);
+  const requestedDestination = (params.get("destination") || "").trim().slice(0, 160);
+  if (requestedJourney && form.elements.journey) {
+    form.elements.journey.value = requestedJourney;
+  }
+  if (requestedDestination && form.elements.destination && !form.elements.destination.value) {
+    form.elements.destination.value = requestedDestination;
+  }
+  if (requestedJourney && form.elements.message && !form.elements.message.value) {
+    form.elements.message.value = `I would like to tailor ${requestedJourney}.`;
+  }
   updateServicePanels();
   serviceSelect?.addEventListener("change", updateServicePanels);
 

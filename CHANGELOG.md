@@ -1,5 +1,43 @@
 # Changelog
 
+## v10.0.0 — Signature Journeys Edition (2026-08-02)
+
+- Used v9.9.0 International Edition as the unchanged production baseline.
+- Added one restrained Featured Journey to the English homepage.
+- Added the Signature Journeys collection at `/signature-journeys`.
+- Added The Resplendent Masai Mara Signature Safari at
+  `/signature-journey-masai-mara` as the flagship seven-day journey framework.
+- Connected the Mara destination, Kenya Journal article and flagship journey
+  with clear editorial and enquiry pathways.
+- Added `Tailor This Journey` links that prefill Leisure Travel, journey name,
+  destination and enquiry context without bypassing the existing form pipeline.
+- Added canonical, Open Graph, Twitter, breadcrumb, WebPage, CollectionPage and
+  TouristTrip metadata for the new pages and added both routes to the sitemap.
+- Added three distinct, locally created and optimized Signature Journey images
+  as interim launch media, ready for later partner media-kit replacement.
+- Preserved all six international landing pages, reciprocal hreflang,
+  localized metadata, Google Analytics and the private Client Engagement Suite.
+- Prepared the approved release as a clean Verpex deployment package.
+
+## v9.9.0 — International Edition (2026-08-01)
+
+- Preserved the complete English production website and private Client Engagement Suite.
+- Added the finalized Chinese landing page at `/zh`, including the approved “国际商务合作” hero wording and wider content area.
+- Added professionally localized market landing pages at `/ja`, `/de`, `/fr` and `/it`.
+- Added the clean selector `EN | 中文 | 日本語 | Deutsch | Français | Italiano` to the English homepage and every international landing page.
+- Added reciprocal `hreflang`, self-referencing canonical URLs, localized page titles, descriptions, keywords, Open Graph and Twitter metadata.
+- Added localized image alternative text and localized JSON-LD for the travel agency, website, page and service catalogue.
+- Replaced the remaining German “Corporate & Executive Travel” wording with
+  “Geschäfts- und Führungskräftereisen” across visible copy, metadata, social
+  descriptions and JSON-LD, and removed related English UI wording.
+- Completed a final unintended-English review of the Japanese, German, French
+  and Italian interfaces while retaining only brand names, language labels and
+  recognised platform names where appropriate.
+- Updated `sitemap.xml` with all six language alternatives and `x-default` references.
+- Added responsive international-page styling for desktop, tablet and mobile while preserving the approved minimalist visual system.
+- Refreshed public asset cache identifiers and visible release versions to v9.9.0.
+- Preserved the verified enquiry, Zoho CRM, departmental mail, proposal, quotation, acceptance and invoice workflows without functional changes.
+
 ## v9.7.0 — Tripadvisor Journal Edition (2026-07-29)
 
 - Connected the Maasai Mara Journal article to its curated public Tripadvisor Trip.
