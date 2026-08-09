@@ -15,7 +15,7 @@ function admin_page_header(string $title, string $active = ''): void
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex,nofollow,noarchive">
-    <meta name="theme-color" content="#07192e">
+    <meta name="theme-color" content="#102f32">
     <title><?= admin_e($title) ?> | Resplendent Operations</title>
     <link rel="icon" href="../favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">

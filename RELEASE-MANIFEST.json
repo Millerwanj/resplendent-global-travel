@@ -1,16 +1,11 @@
 {
-  "release": "10.0.0",
-  "name": "Signature Journeys Edition",
-  "date": "2026-08-02",
-  "baseline": "9.9.0 International Edition",
-  "deployment_status": "production",
+  "name": "Continental Journal Edition",
+  "release": "10.6.0",
+  "date": "2026-08-09",
+  "baseline": "10.5.0 Refined Visual & Journey Edition",
   "target_host": "Verpex shared hosting",
+  "deployment_status": "production",
   "files": [
-    {
-      "path": "_headers",
-      "bytes": 595,
-      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
-    },
     {
       "path": ".editorconfig",
       "bytes": 114,
@@ -29,17 +24,47 @@
     {
       "path": ".htaccess",
       "bytes": 2535,
-      "sha256": "3b675436d982e17f52f4a0ca6428d1979df09981d37cd5efddffc6570cdbe8d5"
+      "sha256": "de202e831d60c91d0c05a9845b1e298c1a52b8f3d3043ba87293a0a5414bf31d"
     },
     {
       "path": "404.html",
       "bytes": 6076,
-      "sha256": "54cf830518ea51b477cbda4673fde94debd7348291025bc5fccddb563282db70"
+      "sha256": "e327cffe15dfd1ddc1a944a80b44fbe19b71318d041a3049401832156ace1a3f"
+    },
+    {
+      "path": "ADMIN-SETUP.md",
+      "bytes": 1118,
+      "sha256": "6af50d81f91f4dee500b91a39fa2a5361a4cb2c6daf4490e2fc0a00f8d32e837"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 18220,
+      "sha256": "a441a5d6e8913ec703e691e73fda4a520ed5927419a0b46593837fe7fee3b9e7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3931,
+      "sha256": "80ff32e3afa1b031c04be3d6f6013b913ce218fad426e437bce21d3cead296df"
+    },
+    {
+      "path": "SEO_REPORT.md",
+      "bytes": 2307,
+      "sha256": "ceb3382d057eca7b51ca762dc71ce3070e8bda17e37641055c2730d27de0d5f2"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 855,
+      "sha256": "42e1a1e28c4d87a5c818e492d3324c4510abc34e49e2067253d910823228213e"
+    },
+    {
+      "path": "_headers",
+      "bytes": 595,
+      "sha256": "665a57006e8fd73925573e33499cbb98be85fd78006f6addaa3efc0e9dcda690"
     },
     {
       "path": "about.html",
-      "bytes": 7826,
-      "sha256": "f1dbc4b4d92d6565bc2733b83000aa0cef29c25db56d5d8b851765cfe94b9894"
+      "bytes": 6010,
+      "sha256": "46721501397a3c18062f2f7241cb3fb428d305107f242f8c5d5be8c257a0209a"
     },
     {
       "path": "accept.php",
@@ -53,8 +78,8 @@
     },
     {
       "path": "admin/assets/admin.css",
-      "bytes": 34866,
-      "sha256": "b61517f2f4318c944e9bba79d15184c548ff539ca2918c4455425f1f9dd0c5ae"
+      "bytes": 34870,
+      "sha256": "c9a14ae14d13de949ca6947f87f043d713f3ed614727e61aa206f32df4f26b53"
     },
     {
       "path": "admin/assets/admin.js",
@@ -99,7 +124,7 @@
     {
       "path": "admin/includes/layout.php",
       "bytes": 3261,
-      "sha256": "ff2be9792fb16a5c7ba705496156b89c683e5f1e3b4680b83ceb2c2bea26b228"
+      "sha256": "4e94533b9189a7903f09ce9d82180f57a5af55ac800157778ecda7f9f04df782"
     },
     {
       "path": "admin/index.php",
@@ -152,9 +177,29 @@
       "sha256": "3a87903c633e50fad018d520413cc9c0886b634a5c50c95d0404c2fcb9843a63"
     },
     {
-      "path": "ADMIN-SETUP.md",
-      "bytes": 1118,
-      "sha256": "6af50d81f91f4dee500b91a39fa2a5361a4cb2c6daf4490e2fc0a00f8d32e837"
+      "path": "assets/about-warm.jpg",
+      "bytes": 282672,
+      "sha256": "1aa74863523cddc4280d73209350ee0ab33de8e3165ee27bcb872801b6e16725"
+    },
+    {
+      "path": "assets/concierge-helicopter.jpg",
+      "bytes": 2747229,
+      "sha256": "7c1f5f084344c0ab10c5bd8798d00e3d6881b3f1917ed760ec97efd3da371ed4"
+    },
+    {
+      "path": "assets/contact-warm.jpg",
+      "bytes": 142886,
+      "sha256": "0108fa8646af0dde9629979a575a0525b987a392d0fa7cfd0ba14f3a285fcdfc"
+    },
+    {
+      "path": "assets/corporate/boardroom.jpg",
+      "bytes": 538668,
+      "sha256": "abf08a4dd91cffbbd7ae3fc7a3466f8fb587e742bce52b60ef4d107bdec5c9f7"
+    },
+    {
+      "path": "assets/corporate/executive.jpg",
+      "bytes": 1057533,
+      "sha256": "26b5e50a8350f25139bb0770ed3e90680cfcfbbe1a6d0bda9fe09ba1bd994e2a"
     },
     {
       "path": "assets/css/acceptance.css",
@@ -163,13 +208,13 @@
     },
     {
       "path": "assets/css/international.css",
-      "bytes": 5159,
-      "sha256": "2eda5ff9112cfd939d7ea1299084bc4dd612662d3049a8c89329dd0b34b42edc"
+      "bytes": 5280,
+      "sha256": "bddd4be55c0f2e873b6a62708c2441ba02d7590c548e0d6e7052a7635e070438"
     },
     {
       "path": "assets/css/main.css",
       "bytes": 24694,
-      "sha256": "d4903a92243df94ae2b41c10cef2fb6c9e66eb09262a1c38e5d549806534452a"
+      "sha256": "22ed76bdf71c7b3b6275787acb8eff77f43c6bbb03e876275d0bf480bd3b576e"
     },
     {
       "path": "assets/css/signature-journeys.css",
@@ -180,6 +225,36 @@
       "path": "assets/css/success.css",
       "bytes": 3457,
       "sha256": "35824a87057775e3716b62d9c589453d4b9b6864b844b57857d6dafe739e16ca"
+    },
+    {
+      "path": "assets/destinations/cape-town.jpg",
+      "bytes": 416210,
+      "sha256": "91c413566c854ae2eed14d208b0bbf3076f466049a8a696866de876c5ac41774"
+    },
+    {
+      "path": "assets/destinations/dubai.jpg",
+      "bytes": 368759,
+      "sha256": "013da86d32a6399b7f82e3758c760b7eaa8140c9c6fc2e31d92c2ae8cbe4dbfd"
+    },
+    {
+      "path": "assets/destinations/japan.jpg",
+      "bytes": 479591,
+      "sha256": "3b77f7efeec50e2c7496236ac250c2b310245011469fd0fa28a7f20048cf1472"
+    },
+    {
+      "path": "assets/destinations/maasai-mara-balloon.jpg",
+      "bytes": 336399,
+      "sha256": "76fb418f653670c22d209826c21e65e9f9788328586e72588e6862ebf23631c7"
+    },
+    {
+      "path": "assets/destinations/maasai-mara.jpg",
+      "bytes": 289214,
+      "sha256": "90bd9143a0e11676b8129c09c40ad0adb55061eefbedaa9254fb064de4737ea9"
+    },
+    {
+      "path": "assets/home-serengeti.jpg",
+      "bytes": 147836,
+      "sha256": "b4643cdbe501c04b524abc657190c649281fc0b945e48176b476e39369f435f4"
     },
     {
       "path": "assets/images/book/return-on-travel.jpg",
@@ -292,6 +367,26 @@
       "sha256": "6bcd7b15b84ea31660c803e499c623350f20614a57a6045ef663e39e71fc5647"
     },
     {
+      "path": "assets/images/destinations/morocco.jpg",
+      "bytes": 327236,
+      "sha256": "8bc56d7aff6a0bd35a5c4a7c8a6a84ba0d3dc9871b79de69dc0de195a0d575f6"
+    },
+    {
+      "path": "assets/images/destinations/morocco.webp",
+      "bytes": 145094,
+      "sha256": "4940c80354a9bdf2f5cb17283e867c0da0d8870e8528b9e4ef52849df5eed164"
+    },
+    {
+      "path": "assets/images/destinations/namibia.jpg",
+      "bytes": 205086,
+      "sha256": "862c030b6384c81ac9183115b8b5cef0d5d126e88ac7c90d7f054c575610ee68"
+    },
+    {
+      "path": "assets/images/destinations/namibia.webp",
+      "bytes": 67658,
+      "sha256": "09a14bdc2d76087aea1601318ab25dc1baa2cfd43e0853ff00da4e09608d9885"
+    },
+    {
       "path": "assets/images/destinations/paris.jpg",
       "bytes": 273786,
       "sha256": "df23058d5fa7d68471fcb9d23daae90751f92eb2539bcf919b6b704d1e2fc72d"
@@ -323,13 +418,18 @@
     },
     {
       "path": "assets/images/hero/business-handshake.jpg",
-      "bytes": 307829,
-      "sha256": "910ee52302eb4e6446ddeed672c68ae2ce99836fe6fff8e6800c237897152a9c"
+      "bytes": 601295,
+      "sha256": "2e4eca925f01ded1cdb2e504128eeff4c571565ad17fb43c38c9b4a0b9092824"
     },
     {
       "path": "assets/images/hero/business-handshake.webp",
-      "bytes": 76350,
-      "sha256": "00abc9eb7a2751ef9734119a3919e2075d8034eef1e74b1b14095c0cb9906ebe"
+      "bytes": 429258,
+      "sha256": "13d25f559b3a3037b903f75745224e4f32ff5c75b43b6477372e6b856aa560c5"
+    },
+    {
+      "path": "assets/images/hero/business-partner.webp",
+      "bytes": 267070,
+      "sha256": "112cf3207bd21db37c7e2bbea44c0a4e6d78cf86134c3271a0afed59e2e44804"
     },
     {
       "path": "assets/images/hero/business.jpg",
@@ -383,8 +483,8 @@
     },
     {
       "path": "assets/images/hero/home.jpg",
-      "bytes": 537527,
-      "sha256": "a134ac1930f02e9b330883fa05efbec0ae1feb269811878c06481d20ffdeec88"
+      "bytes": 147836,
+      "sha256": "b4643cdbe501c04b524abc657190c649281fc0b945e48176b476e39369f435f4"
     },
     {
       "path": "assets/images/hero/home.webp",
@@ -392,14 +492,29 @@
       "sha256": "d42c8e0d8363d57281c5f8f8b103c398e104ecc87194f7abff8aa5ab358c7303"
     },
     {
+      "path": "assets/images/hero/international-green.webp",
+      "bytes": 429258,
+      "sha256": "13d25f559b3a3037b903f75745224e4f32ff5c75b43b6477372e6b856aa560c5"
+    },
+    {
+      "path": "assets/images/hero/international-premium.jpg",
+      "bytes": 240168,
+      "sha256": "b5364bc1c09ac0163df52546165a4de236ad47ed6cbd226ec660c6b59344b9c3"
+    },
+    {
+      "path": "assets/images/hero/international-premium.webp",
+      "bytes": 97700,
+      "sha256": "b4362b7f7cc0fda05fb4c40505426b40d8aa3824ba4023620f1cc33b779a69cd"
+    },
+    {
       "path": "assets/images/logo-r-pdf.jpg",
-      "bytes": 10729,
-      "sha256": "e4a290e6dbaab98fb46fe5288610aaaf447b68fc9f4f9d829373519df8226cf1"
+      "bytes": 31321,
+      "sha256": "dc7ad4138572124fff80bd50257f5d0fd225bfd60e0c7ee53132c42a08c01016"
     },
     {
       "path": "assets/images/logo-r.png",
-      "bytes": 50060,
-      "sha256": "2a494dfb87a0e250dac3888aa6f82d4112336c5a5a28ef80e4f6118e08ca31b0"
+      "bytes": 50005,
+      "sha256": "d23bf374dd20e3cfa39af89850cfc43193c00a5c08ed7a404b114f4a0091fd70"
     },
     {
       "path": "assets/images/signature-journeys/mara-featured-journey.webp",
@@ -432,24 +547,64 @@
       "sha256": "7133c45601c9249e885363c9d0de632af98dbbcb9e6e600d53c4e9e0292422f4"
     },
     {
-      "path": "business.html",
-      "bytes": 8110,
-      "sha256": "31a3b50b49a92021c95e112f957ab292cd02496d4120360daea03e920ec961d4"
+      "path": "assets/logo-r.png",
+      "bytes": 50005,
+      "sha256": "d23bf374dd20e3cfa39af89850cfc43193c00a5c08ed7a404b114f4a0091fd70"
     },
     {
-      "path": "CHANGELOG.md",
-      "bytes": 17327,
-      "sha256": "f4755c7253556a232889393d8f6f8ccabeb103c0b807d5c13f493addf2321208"
+      "path": "assets/partner-hemingways-eden-green.webp",
+      "bytes": 429258,
+      "sha256": "13d25f559b3a3037b903f75745224e4f32ff5c75b43b6477372e6b856aa560c5"
+    },
+    {
+      "path": "assets/partner-hemingways-nairobi-business.webp",
+      "bytes": 267070,
+      "sha256": "112cf3207bd21db37c7e2bbea44c0a4e6d78cf86134c3271a0afed59e2e44804"
+    },
+    {
+      "path": "assets/signature/mara-featured.webp",
+      "bytes": 151704,
+      "sha256": "f9c48a209c043e0842722983fadac723c385737c5460964425e7289b065c4434"
+    },
+    {
+      "path": "assets/signature/mara-hero.webp",
+      "bytes": 63576,
+      "sha256": "ba64f089635215ffde1dd0d7b3a5c07d470a0722e51350ce2d1197afa0deeda8"
+    },
+    {
+      "path": "assets/virungas-golden-monkey-reference.png",
+      "bytes": 697153,
+      "sha256": "52c24c924f5a822d86023ffafb9eed4f6702504c7257acf95fc97598b99c6d87"
+    },
+    {
+      "path": "assets/virungas-gorilla.jpg",
+      "bytes": 441276,
+      "sha256": "f5fb9b1b24050be24c195bab486057246dece78af74a610a3d8fab897da4228a"
+    },
+    {
+      "path": "assets/watamu-dhow.jpg",
+      "bytes": 562726,
+      "sha256": "a340e484d0fb9ebf428f3c79af65d95c0940253dcc3fea49e4915e5dc3089048"
+    },
+    {
+      "path": "business.html",
+      "bytes": 6188,
+      "sha256": "8f99ddd864bdc388cc42e93d1a27d0df9d1302228d1b50f2e26f76a17249cece"
+    },
+    {
+      "path": "concierge.html",
+      "bytes": 3732,
+      "sha256": "4553043057a8081c376b0fddae880ef43dce8a732a78bde39effb6d14d78a3a3"
     },
     {
       "path": "contact.html",
-      "bytes": 12485,
-      "sha256": "69a9859b413558630bf5a4e92dfa2ce9ead3d5c126f393138b838ea4b30e05fd"
+      "bytes": 8682,
+      "sha256": "9c48f0ea82db0300da90fc696742882febab07060901bd8a8e2a3c0f2070af2a"
     },
     {
       "path": "corporate.html",
-      "bytes": 7862,
-      "sha256": "c36095a3a6fb26ec997eced30fc097bd368eb4acff0f9e178571f81f85ec3c5d"
+      "bytes": 6241,
+      "sha256": "0511f08875e3281e68037afb41ce5a47fab0d9b7b49ff2230ff490c7184960c2"
     },
     {
       "path": "data/site.json",
@@ -458,13 +613,13 @@
     },
     {
       "path": "de.html",
-      "bytes": 16447,
-      "sha256": "cd404be95ca94c8f0350639676efb0ded9f72ac6a08e0f0d8a4139f4eb6fad8c"
+      "bytes": 16459,
+      "sha256": "2221b5f1b5b4215b5a66d4d117c8c0329970946e02812be7df4bf0198f3b927f"
     },
     {
       "path": "destinations.html",
-      "bytes": 10545,
-      "sha256": "0f41621d490a60e0f642b4cab9ffe54a92427fe38a7ee7ec136e0e4b09665523"
+      "bytes": 6896,
+      "sha256": "116862fd307274e29814cdb4ceb9165b00aa026fd74c5960a46bbb103ab2ef1d"
     },
     {
       "path": "docs/BRAND-GUIDE.md",
@@ -827,11 +982,6 @@
       "sha256": "bff4be2fd448b1f62412d4c2c6cab3bd57946ed867a547ac9dcb11b286ec7fed"
     },
     {
-      "path": "docs/rgts-mail-config.example.php",
-      "bytes": 2307,
-      "sha256": "324cc2fa0a82902a2bcc0a8e0d9e50fe51e3778a6ae7737131ddfc1d86909fee"
-    },
-    {
       "path": "docs/SMTP-SETUP-v7.3.md",
       "bytes": 1798,
       "sha256": "09908d24b6ad94c42187e1a4345743fd216833872cbfa3eefba7a36210641407"
@@ -847,6 +997,11 @@
       "sha256": "d2654777ea92ccb4022e9d7532d082ec84f9894cc898029ebc8e3c84a6d629d8"
     },
     {
+      "path": "docs/rgts-mail-config.example.php",
+      "bytes": 2307,
+      "sha256": "324cc2fa0a82902a2bcc0a8e0d9e50fe51e3778a6ae7737131ddfc1d86909fee"
+    },
+    {
       "path": "favicon.ico",
       "bytes": 13771,
       "sha256": "92866a2030bb4712d84d2cf183c49b1bd9c2cd38e0eb62346ba17cc65048eec9"
@@ -854,12 +1009,12 @@
     {
       "path": "form-handler.php",
       "bytes": 18028,
-      "sha256": "02efe6915a0f366338727249d399602c5675f17fdb9b71ec4a7ac695d06f48b0"
+      "sha256": "5b9bb8e4610005aab4cd496404198f0c22c61fc8790b732142cbb4b4214787cc"
     },
     {
       "path": "fr.html",
-      "bytes": 16770,
-      "sha256": "61ca1366e7346c6f144562a8b5a6cbb56158f82fd1aecd7acdf6242049dfa85c"
+      "bytes": 16782,
+      "sha256": "fde2a0e696b5147847ed5b9248fc7f3c355e6e4904cf15571394250ca4fd6d47"
     },
     {
       "path": "includes/DocumentPolicy.php",
@@ -879,7 +1034,7 @@
     {
       "path": "includes/PdfDocumentGenerator.php",
       "bytes": 25141,
-      "sha256": "f15bc3456f6c786b2613da3b896009832f82fb601ad102bd8c40514a1b9b606c"
+      "sha256": "87fd72f85d7030af99a766ef8d9536d0345e5cae3eccd675e695f487cfbb2430"
     },
     {
       "path": "includes/SmtpMailer.php",
@@ -888,53 +1043,68 @@
     },
     {
       "path": "index.html",
-      "bytes": 10772,
-      "sha256": "7fa179e51a9caafb00cdd0a185ebd79ff3dba828193b7b3c845e11189cca7ec6"
+      "bytes": 10502,
+      "sha256": "48365712b1034a151d57813508bac3a286111601298b8037ed672f1761e4ecee"
     },
     {
       "path": "it.html",
-      "bytes": 16283,
-      "sha256": "c63967570e489b255d1bba9bd5066fc108d46cd69a1bc44436a898daf5a25a8f"
+      "bytes": 16295,
+      "sha256": "96ed74f404c18c9b0506a2ef69e2fbf3d2f102d6c3b19bc54deb8a56c3a63407"
     },
     {
       "path": "ja.html",
-      "bytes": 16526,
-      "sha256": "be65a3071a29031fa4857421474b160bbfbc6cc083bd71e9a5ec97ee333a4bb3"
+      "bytes": 16538,
+      "sha256": "2378198f70a0d67060aecf975692ee3d7d0ca258a0d92a423612685ca427ebbd"
     },
     {
       "path": "journal-dubai.html",
       "bytes": 11253,
-      "sha256": "1789e6ecb00521f22f5e81e61d6d0d7f2c884707f3bf2ad2696bec10b4fbeedd"
+      "sha256": "dfbd4285bd992792551ded009b2ca70929f08e49307f059f58e233e6673536b9"
     },
     {
       "path": "journal-japan.html",
       "bytes": 11505,
-      "sha256": "7b0eef2fcb3fb573ddeadcf44216a7c42d8be78e0debfdb8f34e674164c9dd93"
+      "sha256": "80a00eb5f15d726db1dab30c84f404e82c9337119c9fe812309cddbdce18c3e4"
     },
     {
       "path": "journal-kenya.html",
       "bytes": 11700,
-      "sha256": "e3bac59d130f64ead19200705c18af20ca402115ce2d8dfa9cfc5d44fc4da4bd"
+      "sha256": "3111d5b12f9649c7e4806be07a115011ead6311e65b93dd9baf1297580a34d31"
+    },
+    {
+      "path": "journal-morocco.html",
+      "bytes": 11723,
+      "sha256": "9adb6da44290310e35f70a701f9f28f0e56d8944a4effc9088f39a749823c389"
+    },
+    {
+      "path": "journal-namibia.html",
+      "bytes": 11252,
+      "sha256": "a490926c12447e04ccfd26c0837e9e15df0ac85793dc37aab2311ae12566d194"
+    },
+    {
+      "path": "journal-virungas.html",
+      "bytes": 3820,
+      "sha256": "b053d0ae37eccd66317e9428fae171e713bdcd2fb3f6455b851992ad37be086f"
+    },
+    {
+      "path": "journal-watamu.html",
+      "bytes": 3623,
+      "sha256": "901c6ab8d0929417bfe5177b40a1af9c7a73fda23a4eb671dac2fdf167f5b477"
     },
     {
       "path": "journal.html",
-      "bytes": 8148,
-      "sha256": "f7a31334fd7107f1f81c23258599f47c153c87c2a67609cf77b1a97eb47e664c"
+      "bytes": 7724,
+      "sha256": "ad11374e22473ff7e645241e5dbe22332f458dfde769d756be90a4c2faca0c9a"
     },
     {
       "path": "payments.html",
       "bytes": 5359,
-      "sha256": "25822ec5ba3fb1ea176db6d097f592ea392971d4200997021dfe300b370a246c"
+      "sha256": "146c40fd25d5b468a0a711a16ab8c9a01d954e86ba7d194071afb4b838b836a9"
     },
     {
       "path": "privacy.html",
       "bytes": 5429,
-      "sha256": "c14fe78e41607d0dcd1db5748274574a0f04319fc94bf7d38196cbdb287ad034"
-    },
-    {
-      "path": "README.md",
-      "bytes": 3931,
-      "sha256": "80ff32e3afa1b031c04be3d6f6013b913ce218fad426e437bce21d3cead296df"
+      "sha256": "cdbecb917bb636b7127393c931c1dfc91a8199e78c78b56457d7a294da86fb2b"
     },
     {
       "path": "robots.txt",
@@ -942,19 +1112,19 @@
       "sha256": "12ceb678eaa201443b064019a538cf1b25ea9bdce31aa6641aa8927b9aa89558"
     },
     {
-      "path": "SEO_REPORT.md",
-      "bytes": 2307,
-      "sha256": "ceb3382d057eca7b51ca762dc71ce3070e8bda17e37641055c2730d27de0d5f2"
-    },
-    {
       "path": "signature-journey-masai-mara.html",
       "bytes": 14062,
-      "sha256": "a931c085b25c04938b9f573ae6cc8f59e14496f0cbfe84e9828f84ec393584b6"
+      "sha256": "84db57035c663ed4e9e240674b3a0bd4b440d49934522a80c3d0f4b4858d4f5b"
+    },
+    {
+      "path": "signature-journey-watamu.html",
+      "bytes": 4697,
+      "sha256": "2e948dba42b241c750d47c289e16cf7606a916cc8da96ee536aec85e4181281e"
     },
     {
       "path": "signature-journeys.html",
-      "bytes": 10023,
-      "sha256": "31e0ad980de75c6d8fb02d4b445e997490fb78c887d34fbb0b9141c541bf0b99"
+      "bytes": 12139,
+      "sha256": "63e0bb0f4cbb06c4e223ea6bcc14f90cdd0ae51add4d28180f80eb2a5b0e2c9c"
     },
     {
       "path": "site.webmanifest",
@@ -963,18 +1133,23 @@
     },
     {
       "path": "sitemap.xml",
-      "bytes": 6882,
-      "sha256": "d9b6c234799dae526254d39294eb288472260a2a7c07cb20e6a009c2d664671c"
+      "bytes": 7683,
+      "sha256": "72c8ed4c96adbb603b033ce77a27b713003a5926f579816ed24a9a89a9b5214b"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 16028,
+      "sha256": "2330b10c538ace44cc3db21aa2285e47ae05c78d5fd41849ea4c97173e91efcb"
     },
     {
       "path": "success.html",
       "bytes": 5144,
-      "sha256": "7fc6f4a46be47645789e3a98f9efdaa96f03e3cc485b462e9888570c3d25567a"
+      "sha256": "c65148c6355280828e7efa70e3272cf73a4caa051e8b09d31c708986a2b61e96"
     },
     {
       "path": "terms.html",
       "bytes": 5323,
-      "sha256": "622aed1ce9d1dc27f24f6c4fd539cf0c1f651ed4b691cd8b19e2e464dd28f15f"
+      "sha256": "9e23123905d986f58d221394285bebe605660bbae47b40b9333620ad43984bf7"
     },
     {
       "path": "vercel.json",
@@ -982,14 +1157,9 @@
       "sha256": "0a4a4741888e7e5fa50113b713a05d91f48d2d90ec7ee1316ccfa1d05bcda539"
     },
     {
-      "path": "VERSION.md",
-      "bytes": 774,
-      "sha256": "5f8b3297316cf3598e25f1deed20a4a1c5c5e8993812010988db3c01b158cb9b"
-    },
-    {
       "path": "zh.html",
-      "bytes": 15036,
-      "sha256": "393d2c059a6a27602f56ab92a8d4bd421ed42b1d4d3da31b8ef7565e753503ae"
+      "bytes": 15048,
+      "sha256": "207e2d522d60f55d647ebf5a5b2e75936a04f7d1067b183e566991c752cb1c05"
     }
   ]
 }

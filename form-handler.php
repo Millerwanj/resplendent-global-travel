@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const RGTS_RELEASE = '10.0.0';
+const RGTS_RELEASE = '10.6.0';
 const RGTS_ZOHO_ENDPOINT = 'https://crm.zoho.com/crm/WebToLeadForm';
 
 require_once __DIR__ . '/includes/OperationsStore.php';
