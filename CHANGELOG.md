@@ -1,5 +1,20 @@
 # Changelog
 
+## v10.6.0 — Continental Journal Edition (2026-08-09)
+
+- Added an original Namibia Journal feature with dedicated destination imagery.
+- Added an original Morocco Journal feature with dedicated destination imagery.
+- Replaced the international landing-page hero with an original premium East
+  African pavilion image composed for multilingual headline legibility.
+- Reordered the Journal collection to create an international editorial rhythm,
+  with Kenya Coast first and Maasai Mara last rather than adjacent.
+- Retained the approved smooth Resplendent mark across the public website,
+  private admin experience and generated client documents.
+- Refreshed active asset cache identifiers, release metadata and the sitemap to
+  v10.6.0.
+- Preserved the enquiry, Zoho CRM, departmental mail, proposal, quotation,
+  acceptance, invoice and private-admin workflows without functional changes.
+
 ## v10.0.0 — Signature Journeys Edition (2026-08-02)
 
 - Used v9.9.0 International Edition as the unchanged production baseline.

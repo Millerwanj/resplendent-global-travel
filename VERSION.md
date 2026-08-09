@@ -2,17 +2,18 @@
 
 ## Current Production Release
 
-**v10.0.0 — Signature Journeys Edition**
-Released: 2 August 2026
+**v10.6.0 — Continental Journal Edition**
+Released: 9 August 2026
 
-This release uses v9.9.0 International Edition as its production
-baseline. It preserves the English site, six-language landing-page cluster,
-multilingual metadata and private client-engagement suite while introducing
-the Signature Journeys collection and The Resplendent Masai Mara Signature
-Safari as its flagship journey.
+This release builds on v10.5.0 while preserving the six-language SEO cluster,
+enquiry/CRM pipeline and private client-engagement suite. It retains the smooth
+Resplendent mark throughout the public website, private admin experience and
+client-document system.
 
-The homepage Featured Journey, Journal-to-Journey flow and prefilled
-`Tailor This Journey` enquiry route are included in the production experience.
-The three locally created Mara images are approved as interim launch media and
-can be replaced with approved partner media-kit assets in a future content
-release.
+The Journal now adds original Namibia and Morocco features and dedicated
+editorial imagery. Its collection order separates the two Kenya stories with a
+broader international rhythm, placing the Kenya Coast first and Maasai Mara
+last. The five international landing pages now share a more refined,
+brand-aligned East African pavilion hero. All enquiry, proposal, quotation,
+acceptance, invoice and departmental mail workflows remain functionally
+unchanged.

@@ -95,7 +95,7 @@ final class PdfDocumentGenerator
             'Prepared' => $this->displayDate((string)($payload['proposal_date'] ?? $document['created_at'] ?? '')),
             'Client contact' => $this->value($payload, 'email', 'Not provided'),
         ]);
-        $this->paragraph($this->value($payload, 'introduction', 'Thank you for the opportunity to consider your requirements.'), 10.5, 'F3', [0.10, 0.14, 0.20], 16);
+        $this->paragraph($this->value($payload, 'introduction', 'Thank you for the opportunity to consider your requirements.'), 10.5, 'F3', [0.14, 0.22, 0.22], 16);
 
         $business = (string)($payload['proposal_type'] ?? '') === 'Global Business Connections';
         if ($business) {
@@ -195,7 +195,7 @@ final class PdfDocumentGenerator
         $this->sectionHeading('01  INVOICE DETAILS');
         $sourceNumber = (string)($payload['source_document_number'] ?? $payload['quotation_number'] ?? '');
         if ($sourceNumber !== '') {
-            $this->paragraph('Related accepted document: ' . $sourceNumber, 9, 'F2', [0.10, 0.14, 0.20], 14);
+            $this->paragraph('Related accepted document: ' . $sourceNumber, 9, 'F2', [0.14, 0.22, 0.22], 14);
         }
         $currency = (string)($payload['currency'] ?? 'USD');
         $rows = [];
@@ -239,7 +239,7 @@ final class PdfDocumentGenerator
         }
         if ($details !== []) $this->keyValues($details);
         $this->paragraph($this->value($payment, 'instructions', 'Payment instructions will be provided separately.'));
-        if (!empty($payment['payment_link'])) $this->paragraph('Secure payment link: ' . (string)$payment['payment_link'], 8.5, 'F2', [0.65, 0.47, 0.19], 13);
+        if (!empty($payment['payment_link'])) $this->paragraph('Secure payment link: ' . (string)$payment['payment_link'], 8.5, 'F2', [0.66, 0.54, 0.33], 13);
 
         $this->sectionHeading('03  THANK YOU');
         $this->paragraph($this->value($payload, 'invoice_note', 'Thank you for choosing Resplendent Global Travel Solutions.'));
@@ -252,9 +252,9 @@ final class PdfDocumentGenerator
         $this->y = 112.0;
 
         $this->image('Logo', self::LEFT, 36, 42, 42);
-        $this->drawText('RESPLENDENT', 104, 50, 14, 'F3', [0.04, 0.13, 0.24]);
-        $this->drawText('GLOBAL TRAVEL SOLUTIONS', 104, 67, 6.5, 'F2', [0.65, 0.47, 0.19]);
-        $this->line(self::LEFT, 88, self::RIGHT, 88, [0.65, 0.47, 0.19], 0.8);
+        $this->drawText('RESPLENDENT', 104, 50, 14, 'F3', [0.06, 0.18, 0.20]);
+        $this->drawText('GLOBAL TRAVEL SOLUTIONS', 104, 67, 6.5, 'F2', [0.66, 0.54, 0.33]);
+        $this->line(self::LEFT, 88, self::RIGHT, 88, [0.66, 0.54, 0.33], 0.8);
 
         $this->line(self::LEFT, 801, self::RIGHT, 801, [0.78, 0.72, 0.61], 0.45);
         $this->drawText('resplendentglobaltravel.com', self::LEFT, 817, 6.5, 'F1', [0.35, 0.38, 0.42]);
@@ -276,12 +276,12 @@ final class PdfDocumentGenerator
 
     private function titleBlock(string $title, string $number, string $service, string $client, string $company): void
     {
-        $this->drawText($title, self::LEFT, $this->y, 7.5, 'F2', [0.65, 0.47, 0.19]);
+        $this->drawText($title, self::LEFT, $this->y, 7.5, 'F2', [0.66, 0.54, 0.33]);
         $this->drawText($number, 400, $this->y, 8, 'F2', [0.35, 0.38, 0.42]);
         $this->y += 25;
         $this->drawText($service, self::LEFT, $this->y, 9, 'F2', [0.35, 0.38, 0.42]);
         $this->y += 24;
-        $this->drawText($client, self::LEFT, $this->y, 25, 'F3', [0.04, 0.13, 0.24]);
+        $this->drawText($client, self::LEFT, $this->y, 25, 'F3', [0.06, 0.18, 0.20]);
         $this->y += 18;
         if ($company !== '') {
             $this->drawText('Prepared for ' . $company, self::LEFT, $this->y, 8, 'F1', [0.35, 0.38, 0.42]);
@@ -298,8 +298,8 @@ final class PdfDocumentGenerator
         $width = (self::RIGHT - self::LEFT) / $count;
         $x = self::LEFT;
         foreach ($items as $label => $value) {
-            $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.65, 0.47, 0.19]);
-            $this->drawText($value, $x, $this->y + 14, 8.2, 'F1', [0.10, 0.14, 0.20]);
+            $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.66, 0.54, 0.33]);
+            $this->drawText($value, $x, $this->y + 14, 8.2, 'F1', [0.14, 0.22, 0.22]);
             $x += $width;
         }
         $this->y += 38;
@@ -311,7 +311,7 @@ final class PdfDocumentGenerator
         $this->y += 8;
         $this->line(self::LEFT, $this->y, self::RIGHT, $this->y, [0.82, 0.79, 0.72], 0.45);
         $this->y += 20;
-        $this->drawText($title, self::LEFT, $this->y, 8, 'F2', [0.65, 0.47, 0.19]);
+        $this->drawText($title, self::LEFT, $this->y, 8, 'F2', [0.66, 0.54, 0.33]);
         $this->y += 18;
     }
 
@@ -331,10 +331,10 @@ final class PdfDocumentGenerator
             $this->ensureSpace($height + 6);
             $x = self::LEFT;
             foreach ($row as $label => $value) {
-                $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.65, 0.47, 0.19]);
+                $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.66, 0.54, 0.33]);
                 $lineY = $this->y + 14;
                 foreach ($wrappedValues[$label] as $line) {
-                    $this->drawText($line, $x, $lineY, 8.5, 'F1', [0.10, 0.14, 0.20]);
+                    $this->drawText($line, $x, $lineY, 8.5, 'F1', [0.14, 0.22, 0.22]);
                     $lineY += 11;
                 }
                 $x += $columnWidth;
@@ -366,7 +366,7 @@ final class PdfDocumentGenerator
         $lines = $this->wrap($text, 465, 9);
         foreach ($lines as $index => $line) {
             $this->ensureSpace(15);
-            $this->drawText($index === 0 ? '-' : '', self::LEFT, $this->y, 9, 'F2', [0.65, 0.47, 0.19]);
+            $this->drawText($index === 0 ? '-' : '', self::LEFT, $this->y, 9, 'F2', [0.66, 0.54, 0.33]);
             $this->drawText($line, self::LEFT + 14, $this->y, 9, 'F1', [0.22, 0.25, 0.29]);
             $this->y += 14;
         }
@@ -377,8 +377,8 @@ final class PdfDocumentGenerator
         $noteLines = $note !== '' ? $this->wrap($note, 255, 8) : [];
         $height = max(64, 36 + count($noteLines) * 11);
         $this->ensureSpace($height + 12);
-        $this->rect(self::LEFT, $this->y, self::RIGHT - self::LEFT, $height, [0.04, 0.13, 0.24]);
-        $this->drawText($label, self::LEFT + 18, $this->y + 21, 6.5, 'F2', [0.78, 0.63, 0.36]);
+        $this->rect(self::LEFT, $this->y, self::RIGHT - self::LEFT, $height, [0.06, 0.18, 0.20]);
+        $this->drawText($label, self::LEFT + 18, $this->y + 21, 6.5, 'F2', [0.77, 0.67, 0.47]);
         $this->drawText($amount, self::LEFT + 18, $this->y + 45, 18, 'F3', [1, 1, 1]);
         $noteY = $this->y + 24;
         foreach ($noteLines as $line) {
@@ -395,8 +395,8 @@ final class PdfDocumentGenerator
         $x = self::LEFT;
         $width = (self::RIGHT - self::LEFT) / max(1, count($items));
         foreach ($items as $label => $amount) {
-            $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.65, 0.47, 0.19]);
-            $this->drawText($amount, $x, $this->y + 23, 13, 'F3', [0.04, 0.13, 0.24]);
+            $this->drawText(strtoupper($label), $x, $this->y, 6.2, 'F2', [0.66, 0.54, 0.33]);
+            $this->drawText($amount, $x, $this->y + 23, 13, 'F3', [0.06, 0.18, 0.20]);
             $x += $width;
         }
         $this->y += 54;

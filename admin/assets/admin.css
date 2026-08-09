@@ -1,13 +1,13 @@
 :root{
-  --navy:#0a2342;
-  --navy-deep:#07192e;
-  --gold:#a6813c;
-  --gold-light:#c9aa67;
-  --ivory:#f7f4ec;
+  --navy:#173d40;
+  --navy-deep:#102f32;
+  --gold:#a88954;
+  --gold-light:#c4aa79;
+  --ivory:#f4f0e7;
   --paper:#fffdf8;
   --ink:#202d39;
-  --muted:#6d747a;
-  --line:rgba(10,35,66,.14);
+  --muted:#617777;
+  --line:rgba(23,61,64,.14);
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Inter",Arial,sans-serif;
 }
@@ -24,7 +24,7 @@ button{cursor:pointer}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;color:var(--navy)}
 
 /* Authentication */
-.auth-page{min-height:100vh;display:grid;place-items:center;padding:38px 20px;background:linear-gradient(135deg,rgba(7,25,46,.96),rgba(10,35,66,.88)),url("../../assets/images/hero/home.jpg") center/cover}
+.auth-page{min-height:100vh;display:grid;place-items:center;padding:38px 20px;background:linear-gradient(135deg,rgba(16,47,50,.96),rgba(23,61,64,.88)),url("../../assets/images/hero/home.jpg") center/cover}
 .auth-card{width:min(520px,100%);background:var(--paper);padding:54px 58px;box-shadow:0 34px 80px rgba(0,0,0,.24)}
 .auth-logo{width:74px;height:74px;object-fit:contain;margin-bottom:26px}
 .auth-card h1{font-size:3.15rem;letter-spacing:-.04em;margin-bottom:16px}
@@ -70,7 +70,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
 .admin-form label{display:flex;flex-direction:column;gap:7px;color:var(--navy);font-size:.63rem;font-weight:600;letter-spacing:.085em;text-transform:uppercase}
 .admin-form label small{color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none}
 .admin-form input,.admin-form select,.admin-form textarea{width:100%;border:1px solid var(--line);border-radius:0;background:#fff;padding:11px 12px;color:var(--ink);outline:none;text-transform:none;letter-spacing:0}
-.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(166,129,60,.1)}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(168,137,84,.12)}
 .admin-form textarea{resize:vertical;line-height:1.6}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .full-span{grid-column:1/-1}
@@ -130,7 +130,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
 .table-action{color:var(--gold);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em}
 .workflow-empty-filter{padding:30px;text-align:center;color:var(--muted)}
 .workflow-drawer{position:fixed;inset:0;z-index:120}
-.drawer-backdrop{position:absolute;inset:0;background:rgba(7,25,46,.55)}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(16,47,50,.55)}
 .drawer-panel{position:absolute;inset:0 0 0 auto;width:min(560px,100%);overflow:auto;background:var(--paper);padding:58px 48px}
 .drawer-close{position:absolute;top:24px;right:28px;text-decoration:none;color:var(--muted);font-size:2rem;line-height:1}
 .drawer-panel h2{font-size:3.2rem;letter-spacing:-.04em;margin-bottom:10px}
@@ -176,7 +176,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
 .live-preview-panel{position:sticky;top:26px;background:#dedbd4;padding:16px}
 .preview-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;padding:0 4px;color:#555;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em}
 .preview-toolbar button{border:0;background:transparent;color:var(--navy);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em}
-.live-preview-panel.expanded{position:fixed;inset:0;z-index:150;overflow:auto;padding:50px;background:rgba(7,25,46,.94)}
+.live-preview-panel.expanded{position:fixed;inset:0;z-index:150;overflow:auto;padding:50px;background:rgba(16,47,50,.94)}
 .live-preview-panel.expanded .document-preview{max-width:850px;margin:auto}
 .live-preview-panel.expanded .preview-toolbar{max-width:850px;margin:0 auto 15px;color:#fff}
 .live-preview-panel.expanded .preview-toolbar button{color:var(--gold-light)}
