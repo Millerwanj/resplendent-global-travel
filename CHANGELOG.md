@@ -1,5 +1,62 @@
 # Changelog
 
+## v10.8.1 — Virungas Pricing Revision (2026-08-10)
+
+- Revised the Across the Virungas public starting price from USD 12,100 to USD
+  14,100 per person sharing.
+- Updated the visible Journey Investment amount and matching USD Offer
+  structured data together.
+- Preserved the approved public design, journey content, enquiry workflow,
+  pricing controls, RTGS priority and provider-neutral payment foundation.
+- Retained the public terms stating that international flights are quoted
+  separately unless expressly included.
+
+## v10.8.0 — Journey Investment & Payment-Ready Edition (2026-08-10)
+
+- Preserved the approved v10.7.0 public design, navigation, imagery and enquiry
+  workflow without introducing a pricing table or checkout interface.
+- Added one restrained Journey Investment block to the three detailed Signature
+  Journey pages: Across the Virungas from USD 12,100, Masai Mara from USD 7,350
+  and Watamu from USD 2,400, per person sharing.
+- Added matching Offer structured data while keeping prices off the homepage,
+  hero areas and Signature Journeys overview.
+- Added the approved taxes, flight, payment, supplier-confirmation, cancellation
+  and privacy wording to public terms and new client travel documents.
+- Kept RTGS bank transfer as the preferred live payment method.
+- Added provider-neutral payment settings, adapter contract, private external
+  configuration template and idempotent transaction ledger for future online,
+  mobile or contactless providers.
+- Set the protected internal pricing floor at a 25% base margin plus a separate
+  3% payment and foreign-exchange reserve using `supplier cost / 0.72`.
+- Prevented payment links from appearing on invoices unless online checkout is
+  explicitly enabled and production-verified.
+- Added payment activation and security guidance without embedding credentials,
+  storing full card data or activating a provider.
+
+## v10.7.0 — SEO Visibility Edition (2026-08-10)
+
+- Preserved the exact approved v10.6.0 public design, multilingual cluster,
+  enquiry workflow, private admin suite and client-document system.
+- Added `/luxury-kenya-safaris` for private safari planning intent.
+- Added `/rwanda-uganda-gorilla-safari` for permit-led two-country gorilla
+  journey planning.
+- Added `/luxury-namibia-journey` and `/luxury-morocco-journey` as focused
+  destination planning pages.
+- Added `/corporate-travel-management-kenya` for Kenya-based corporate and
+  executive travel search intent.
+- Integrated the existing dedicated Across the Virungas Signature Journey into
+  the collection, Journal and sitemap discovery paths.
+- Completed Article metadata for the Watamu and Virungas Journal entries and
+  TouristTrip metadata for Watamu.
+- Expanded the dedicated Watamu page to the full six-day planning rhythm already
+  approved in the Signature Journeys collection.
+- Replaced public internal `.html` links with clean canonical paths while
+  preserving all existing Verpex redirects.
+- Consolidated the superseded long-form Virungas Journal route into the current
+  canonical `/journal-virungas` page.
+- Updated the sitemap, cache identifiers, structured data and release metadata
+  to v10.7.0.
+
 ## v10.6.0 — Continental Journal Edition (2026-08-09)
 
 - Added an original Namibia Journal feature with dedicated destination imagery.

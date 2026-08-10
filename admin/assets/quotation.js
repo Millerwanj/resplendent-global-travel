@@ -39,16 +39,22 @@
   const readItems = () => [...root.querySelectorAll("[data-quotation-item]")].map((row) => {
     const description = String(row.querySelector('[name="item_description[]"]')?.value || "").trim();
     const quantity = Math.max(0, Number(row.querySelector('[name="item_quantity[]"]')?.value || 0) || 0);
+    const supplierCost = Math.max(0, Number(row.querySelector('[name="item_cost[]"]')?.value || 0) || 0);
     const unitPrice = Math.max(0, Number(row.querySelector('[name="item_price[]"]')?.value || 0) || 0);
-    return { description, quantity, unit_price: unitPrice.toFixed(2), total: (quantity * unitPrice).toFixed(2) };
+    return { description, quantity, supplier_cost: supplierCost.toFixed(2), unit_price: unitPrice.toFixed(2), total: (quantity * unitPrice).toFixed(2) };
   }).filter((item) => item.description);
 
   const totals = () => {
-    if (businessMode()) return { subtotal: 500, discount: 0, serviceFee: 0, grandTotal: 500 };
-    const subtotal = readItems().reduce((sum, item) => sum + Number(item.total), 0);
+    if (businessMode()) return { subtotal: 500, supplierCost: 0, discount: 0, serviceFee: 0, grandTotal: 500, minimumTotal: 0, baseMargin: 100 };
+    const items = readItems();
+    const subtotal = items.reduce((sum, item) => sum + Number(item.total), 0);
+    const supplierCost = items.reduce((sum, item) => sum + (item.quantity * Number(item.supplier_cost)), 0);
     const discount = number("discount");
     const serviceFee = number("service_fee");
-    return { subtotal, discount, serviceFee, grandTotal: Math.max(0, subtotal - discount + serviceFee) };
+    const grandTotal = Math.max(0, subtotal - discount + serviceFee);
+    const minimumTotal = supplierCost > 0 ? supplierCost / 0.72 : 0;
+    const grossMargin = grandTotal > 0 ? ((grandTotal - supplierCost) / grandTotal) * 100 : 0;
+    return { subtotal, supplierCost, discount, serviceFee, grandTotal, minimumTotal, baseMargin: grossMargin - 3 };
   };
 
   const update = () => {
@@ -61,6 +67,8 @@
     if (businessSection) businessSection.hidden = !business;
     if (previewTravel) previewTravel.hidden = business;
     if (previewBusiness) previewBusiness.hidden = !business;
+    const costConfirmation = root.querySelector("[data-cost-basis-confirmed]");
+    if (costConfirmation) costConfirmation.disabled = business;
     root.querySelectorAll("[data-policy-travel]").forEach((section) => { section.hidden = business; });
     root.querySelectorAll("[data-policy-business]").forEach((section) => { section.hidden = !business; });
     if (business) field("currency").value = "USD";
@@ -76,6 +84,22 @@
     text("[data-form-total]", formatMoney(currency, calculated.grandTotal));
     text("[data-preview-payment-terms]", value("payment_terms"));
     text("[data-preview-payment-details]", value("payment_details"));
+    const marginStatus = root.querySelector("[data-margin-status]");
+    if (marginStatus) {
+      if (business) {
+        marginStatus.textContent = "Fixed professional-fee schedule.";
+        marginStatus.classList.remove("margin-warning");
+      } else if (calculated.supplierCost <= 0) {
+        marginStatus.textContent = "Enter supplier costs to validate the internal pricing floor.";
+        marginStatus.classList.remove("margin-warning");
+      } else if (calculated.grandTotal + 0.005 >= calculated.minimumTotal) {
+        marginStatus.textContent = `Pricing floor met · ${Math.max(0, calculated.baseMargin).toFixed(1)}% base margin after allowance.`;
+        marginStatus.classList.remove("margin-warning");
+      } else {
+        marginStatus.textContent = `Below floor · minimum ${formatMoney(currency, calculated.minimumTotal)}.`;
+        marginStatus.classList.add("margin-warning");
+      }
+    }
 
     const body = root.querySelector("[data-preview-items]");
     if (body && !business) {
@@ -110,6 +134,7 @@
     row.innerHTML = `
       <label>Description<input type="text" name="item_description[]" placeholder="Service or reservation"></label>
       <label>Qty<input type="number" name="item_quantity[]" min="0" step="1" value="1"></label>
+      <label>Supplier cost / unit<input type="number" name="item_cost[]" min="0" step="0.01" value="0"></label>
       <label>Unit price<input type="number" name="item_price[]" min="0" step="0.01" value="0"></label>
       <button type="button" class="remove-item" data-remove-item aria-label="Remove item">×</button>`;
     root.querySelector("[data-quotation-items]")?.append(row);
@@ -144,6 +169,11 @@
     }
     const currency = businessMode() ? "USD" : value("currency") || "USD";
     const calculated = totals();
+    if (!businessMode() && calculated.supplierCost > 0 && calculated.grandTotal + 0.005 < calculated.minimumTotal) {
+      event.preventDefault();
+      window.alert(`This quotation is below the approved pricing floor. Minimum client total: ${formatMoney(currency, calculated.minimumTotal)}.`);
+      return;
+    }
     const payload = {
       client_reference: value("client_reference"),
       revision_of_id: value("revision_of_id"),

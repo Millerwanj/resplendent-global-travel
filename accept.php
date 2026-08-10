@@ -310,7 +310,7 @@ $documentSuperseded = ($document['lifecycle_status'] ?? 'active') === 'supersede
 
         <footer>
             <span>resplendentglobaltravel.com</span>
-            <a href="terms.html">Terms of Service</a>
+            <a href="terms">Terms of Service</a>
         </footer>
     </section>
 </main>

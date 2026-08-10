@@ -34,7 +34,7 @@ admin_page_header('Payment Settings', 'settings');
     <section class="admin-panel settings-intro">
         <p class="eyebrow">Private Configuration</p>
         <h2>Update payment details without changing code.</h2>
-        <p>Leave banking fields empty until the Resplendent business account is ready. Invoices will use the payment instruction shown below in the meantime.</p>
+        <p>RTGS is the preferred live method. Online checkout and contactless providers remain optional channels and should only be enabled after merchant approval and production verification.</p>
         <div class="settings-assurance">
             <strong>Historical accuracy</strong>
             <p>Each invoice stores a snapshot of the payment details used when it was issued. Updating this page changes future invoices only.</p>
@@ -43,7 +43,20 @@ admin_page_header('Payment Settings', 'settings');
     <form method="post" class="admin-panel admin-form settings-form">
         <input type="hidden" name="csrf" value="<?= admin_e(admin_csrf_token()) ?>">
         <fieldset>
-            <legend>Business bank details</legend>
+            <legend>Payment priority</legend>
+            <div class="form-grid">
+                <label>Preferred client method
+                    <select name="primary_method">
+                        <option value="rtgs" <?= $settings['primary_method'] === 'rtgs' ? 'selected' : '' ?>>RTGS bank transfer</option>
+                        <option value="online" <?= $settings['primary_method'] === 'online' ? 'selected' : '' ?>>Secure online checkout</option>
+                        <option value="contactless" <?= $settings['primary_method'] === 'contactless' ? 'selected' : '' ?>>Contactless terminal</option>
+                        <option value="other" <?= $settings['primary_method'] === 'other' ? 'selected' : '' ?>>Other approved method</option>
+                    </select>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>RTGS bank details</legend>
             <div class="form-grid">
                 <label>Bank name<input type="text" name="bank_name" value="<?= admin_e($settings['bank_name']) ?>"></label>
                 <label>Account name<input type="text" name="account_name" value="<?= admin_e($settings['account_name']) ?>"></label>
@@ -58,6 +71,20 @@ admin_page_header('Payment Settings', 'settings');
             <div class="form-grid">
                 <label>M-Pesa account name<input type="text" name="mpesa_name" value="<?= admin_e($settings['mpesa_name']) ?>"></label>
                 <label>M-Pesa number / till<input type="text" name="mpesa_number" value="<?= admin_e($settings['mpesa_number']) ?>" autocomplete="off"></label>
+                <label>Online payment provider<input type="text" name="online_provider" value="<?= admin_e($settings['online_provider']) ?>" placeholder="Provider name after approval"></label>
+                <label>Online checkout status
+                    <select name="online_enabled">
+                        <option value="0" <?= $settings['online_enabled'] !== '1' ? 'selected' : '' ?>>Not enabled</option>
+                        <option value="1" <?= $settings['online_enabled'] === '1' ? 'selected' : '' ?>>Enabled and production-verified</option>
+                    </select>
+                </label>
+                <label>Contactless terminal provider<input type="text" name="terminal_provider" value="<?= admin_e($settings['terminal_provider']) ?>" placeholder="e.g. Sabi or another provider"></label>
+                <label>Contactless status
+                    <select name="terminal_enabled">
+                        <option value="0" <?= $settings['terminal_enabled'] !== '1' ? 'selected' : '' ?>>Not enabled</option>
+                        <option value="1" <?= $settings['terminal_enabled'] === '1' ? 'selected' : '' ?>>Enabled and reconciled</option>
+                    </select>
+                </label>
                 <label class="full-span">Secure payment link<input type="url" name="payment_link" value="<?= admin_e($settings['payment_link']) ?>" placeholder="https://"></label>
             </div>
         </fieldset>
