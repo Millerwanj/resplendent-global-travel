@@ -1,4 +1,4 @@
-# Resplendent Global Travel Solutions — v10.6.0
+# Resplendent Global Travel Solutions — v10.8.0
 Options -Indexes
 RewriteEngine On
 
@@ -10,8 +10,13 @@ RewriteRule ^ https://www.resplendentglobaltravel.com%{REQUEST_URI} [R=301,L]
 # Redirect legacy .html URLs to clean canonical URLs
 RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
 RewriteRule ^index\.html$ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+journal-uganda-rwanda-gorillas\.html(?:[?\s]) [NC]
+RewriteRule ^journal-uganda-rwanda-gorillas\.html$ /journal-virungas [R=301,L,NE]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[?\s]) [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
+
+# Consolidate the superseded Virungas journal route.
+RewriteRule ^journal-uganda-rwanda-gorillas/?$ /journal-virungas [R=301,L,NE]
 
 # Serve clean URLs from existing static HTML files
 RewriteCond %{REQUEST_FILENAME} !-f

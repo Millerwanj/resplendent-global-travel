@@ -344,10 +344,17 @@ function document_money(string $currency, mixed $amount): string
             <div class="balance"><span>Balance due</span><strong><?= admin_e(document_money($currency, $payload['balance_amount'] ?? 0)) ?></strong></div>
         </section>
         <?php $payment = is_array($payload['payment_settings'] ?? null) ? $payload['payment_settings'] : []; ?>
+        <?php $preferredPayment = match ((string)($payment['primary_method'] ?? 'rtgs')) {
+            'online' => 'Secure online checkout',
+            'contactless' => 'Contactless terminal',
+            'other' => 'Approved alternative method',
+            default => 'RTGS bank transfer',
+        }; ?>
         <section class="final-section compact">
             <div class="section-number">02</div><div>
                 <h2>Payment Instructions</h2>
                 <dl class="invoice-payment-grid">
+                    <div><dt>Preferred method</dt><dd><?= admin_e($preferredPayment) ?></dd></div>
                     <?php if (!empty($payment['bank_name'])): ?><div><dt>Bank</dt><dd><?= admin_e($payment['bank_name']) ?></dd></div><?php endif; ?>
                     <?php if (!empty($payment['account_name'])): ?><div><dt>Account name</dt><dd><?= admin_e($payment['account_name']) ?></dd></div><?php endif; ?>
                     <?php if (!empty($payment['account_number'])): ?><div><dt>Account number</dt><dd><?= admin_e($payment['account_number']) ?></dd></div><?php endif; ?>
@@ -357,7 +364,7 @@ function document_money(string $currency, mixed $amount): string
                     <?php if (!empty($payment['mpesa_number'])): ?><div><dt>M-Pesa</dt><dd><?= admin_e(trim((string)($payment['mpesa_name'] ?? '') . ' ' . (string)$payment['mpesa_number'])) ?></dd></div><?php endif; ?>
                 </dl>
                 <p><?= nl2br(admin_e(document_value($payment, 'instructions', 'Payment instructions will be provided separately.'))) ?></p>
-                <?php if (!empty($payment['payment_link'])): ?><p><a href="<?= admin_e($payment['payment_link']) ?>">Secure payment link</a></p><?php endif; ?>
+                <?php if (($payment['online_enabled'] ?? '0') === '1' && !empty($payment['payment_link'])): ?><p><a href="<?= admin_e($payment['payment_link']) ?>">Secure payment link</a></p><?php endif; ?>
             </div>
         </section>
         <section class="final-section compact">

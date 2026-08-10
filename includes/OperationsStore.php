@@ -175,6 +175,7 @@ final class OperationsStore
     public function getPaymentSettings(): array
     {
         $defaults = [
+            'primary_method' => 'rtgs',
             'bank_name' => '',
             'account_name' => '',
             'account_number' => '',
@@ -183,6 +184,10 @@ final class OperationsStore
             'currency' => '',
             'mpesa_name' => '',
             'mpesa_number' => '',
+            'online_provider' => '',
+            'online_enabled' => '0',
+            'terminal_provider' => '',
+            'terminal_enabled' => '0',
             'payment_link' => '',
             'instructions' => 'Payment instructions will be provided separately.',
             'updated_at' => '',
@@ -199,13 +204,21 @@ final class OperationsStore
     public function savePaymentSettings(array $settings): array
     {
         $allowed = [
+            'primary_method',
             'bank_name', 'account_name', 'account_number', 'branch', 'swift_iban',
-            'currency', 'mpesa_name', 'mpesa_number', 'payment_link', 'instructions',
+            'currency', 'mpesa_name', 'mpesa_number', 'online_provider',
+            'online_enabled', 'terminal_provider', 'terminal_enabled',
+            'payment_link', 'instructions',
         ];
         $clean = [];
         foreach ($allowed as $key) {
             $clean[$key] = $this->text($settings[$key] ?? '', $key === 'instructions' ? 1500 : 240, true);
         }
+        if (!in_array($clean['primary_method'], ['rtgs', 'online', 'contactless', 'other'], true)) {
+            $clean['primary_method'] = 'rtgs';
+        }
+        $clean['online_enabled'] = $clean['online_enabled'] === '1' ? '1' : '0';
+        $clean['terminal_enabled'] = $clean['terminal_enabled'] === '1' ? '1' : '0';
         if ($clean['instructions'] === '') $clean['instructions'] = 'Payment instructions will be provided separately.';
         $clean['updated_at'] = gmdate('c');
         $this->mutateJson('payment-settings.json', [], function (array &$stored) use ($clean): void {
@@ -250,7 +263,7 @@ final class OperationsStore
             'id' => $id,
             'type' => $type,
             'number' => $number,
-            'release' => '10.0.0',
+            'release' => '10.8.1',
             'client_reference' => $this->text($payload['client_reference'] ?? '', 40),
             'client_name' => $this->text($payload['client_name'] ?? '', 120),
             'company' => $this->text($payload['company'] ?? '', 160),
@@ -1103,6 +1116,115 @@ final class OperationsStore
             );
         }
         return $updated;
+    }
+
+    /**
+     * Store a provider-neutral payment event without retaining card data, PINs
+     * or raw gateway payloads. The idempotency key prevents callbacks from
+     * recording the same provider transaction more than once.
+     *
+     * @param array<string,mixed> $transaction
+     * @return array{record:array<string,mixed>,created:bool}
+     */
+    public function recordPaymentTransaction(array $transaction): array
+    {
+        $invoiceId = $this->text($transaction['invoice_id'] ?? '', 100);
+        $invoice = $invoiceId !== '' ? $this->getDocument($invoiceId) : null;
+        if (!is_array($invoice) || ($invoice['type'] ?? '') !== 'invoice') {
+            throw new InvalidArgumentException('A valid invoice is required for a payment transaction.');
+        }
+
+        $channel = $this->text($transaction['channel'] ?? 'rtgs', 40);
+        if (!in_array($channel, ['rtgs', 'online', 'contactless', 'mobile_money', 'other'], true)) {
+            throw new InvalidArgumentException('Unsupported payment channel.');
+        }
+        $status = $this->text($transaction['status'] ?? 'pending', 30);
+        if (!in_array($status, ['pending', 'completed', 'failed', 'reversed'], true)) {
+            throw new InvalidArgumentException('Unsupported payment status.');
+        }
+
+        $amount = max(0, $this->moneyValue($transaction['amount'] ?? 0));
+        if ($amount <= 0) throw new InvalidArgumentException('Payment amount must be greater than zero.');
+        $currency = strtoupper($this->text($transaction['currency'] ?? '', 3));
+        if (!preg_match('/^[A-Z]{3}$/', $currency)) {
+            throw new InvalidArgumentException('Payment currency must be a three-letter code.');
+        }
+
+        $provider = strtolower($this->text($transaction['provider'] ?? ($channel === 'rtgs' ? 'bank' : ''), 80));
+        $providerReference = $this->text($transaction['provider_reference'] ?? '', 180);
+        $merchantReference = $this->text(
+            $transaction['merchant_reference'] ?? ($invoice['number'] ?? ''),
+            180
+        );
+        $suppliedKey = $this->text($transaction['idempotency_key'] ?? '', 240);
+        $keyMaterial = $suppliedKey !== ''
+            ? $suppliedKey
+            : implode('|', [$provider, $providerReference, $merchantReference, number_format($amount, 2, '.', ''), $currency]);
+        if ($providerReference === '' && $suppliedKey === '') {
+            throw new InvalidArgumentException('A provider reference or idempotency key is required.');
+        }
+        $idempotencyKey = hash('sha256', $keyMaterial);
+
+        $now = gmdate('c');
+        $record = [
+            'id' => 'payment-' . gmdate('YmdHis') . '-' . bin2hex(random_bytes(4)),
+            'invoice_id' => $invoiceId,
+            'invoice_number' => $this->text($invoice['number'] ?? '', 100),
+            'client_reference' => $this->text($invoice['client_reference'] ?? '', 100),
+            'channel' => $channel,
+            'provider' => $provider,
+            'provider_reference' => $providerReference,
+            'merchant_reference' => $merchantReference,
+            'confirmation_code' => $this->text($transaction['confirmation_code'] ?? '', 120),
+            'amount' => number_format($amount, 2, '.', ''),
+            'currency' => $currency,
+            'status' => $status,
+            'verified' => !empty($transaction['verified']),
+            'idempotency_key' => $idempotencyKey,
+            'note' => $this->text($transaction['note'] ?? '', 500, true),
+            'recorded_at' => $now,
+            'verified_at' => !empty($transaction['verified']) ? $now : '',
+        ];
+
+        $created = false;
+        $this->mutateJson('payment-transactions.json', [], function (array &$records) use (
+            $idempotencyKey,
+            $record,
+            &$created
+        ): void {
+            foreach ($records as $existing) {
+                if (is_array($existing) && hash_equals((string)($existing['idempotency_key'] ?? ''), $idempotencyKey)) {
+                    $record = $existing;
+                    return;
+                }
+            }
+            $records[$record['id']] = $record;
+            $created = true;
+        });
+
+        if (!$created) {
+            foreach ($this->readJson('payment-transactions.json', []) as $existing) {
+                if (is_array($existing) && hash_equals((string)($existing['idempotency_key'] ?? ''), $idempotencyKey)) {
+                    $record = $existing;
+                    break;
+                }
+            }
+        }
+        return ['record' => $record, 'created' => $created];
+    }
+
+    /** @return array<int,array<string,mixed>> */
+    public function listPaymentTransactions(string $invoiceId): array
+    {
+        $transactions = array_values(array_filter(
+            $this->readJson('payment-transactions.json', []),
+            static fn(mixed $transaction): bool =>
+                is_array($transaction) && ($transaction['invoice_id'] ?? '') === $invoiceId
+        ));
+        usort($transactions, static fn(array $a, array $b): int =>
+            strcmp((string)($b['recorded_at'] ?? ''), (string)($a['recorded_at'] ?? ''))
+        );
+        return $transactions;
     }
 
     /** @param array<string,mixed> $delivery */

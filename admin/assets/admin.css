@@ -209,7 +209,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
 .preview-investment p{max-width:55%;color:rgba(255,255,255,.65)!important}
 .document-preview>footer{display:flex;justify-content:space-between;margin-top:30px;padding-top:12px;border-top:1px solid var(--gold);color:var(--muted);font-size:.48rem;text-transform:uppercase;letter-spacing:.1em}
 .quotation-items{display:grid;gap:10px}
-.quotation-item{display:grid;grid-template-columns:1fr 75px 120px 32px;gap:8px;align-items:end}
+.quotation-item{display:grid;grid-template-columns:1fr 75px 120px 120px 32px;gap:8px;align-items:end}
+.generator-submit small{display:block;margin-top:5px;color:var(--muted);font-size:.6rem}
+.generator-submit small.margin-warning{color:#9e3f32}
 .remove-item{height:42px;border:1px solid var(--line);background:#fff;color:#9b3a3a;font-size:1.1rem}
 .text-action{justify-self:start;border:0;background:transparent;color:var(--gold);padding:3px 0;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em}
 .quotation-adjustments{padding-top:7px}
@@ -401,7 +403,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
   .drawer-actions{display:grid}
   .generator-form{padding:26px 20px}
   .quotation-item{grid-template-columns:1fr 65px}
-  .quotation-item label:nth-child(3){grid-column:1/2}
+  .quotation-item label:nth-child(3),.quotation-item label:nth-child(4){grid-column:auto}
   .matchmaking-summary{grid-template-columns:1fr}
   .payment-settings-summary,.preview-payment-details{grid-template-columns:1fr}
   .payment-settings-summary p{grid-column:auto}

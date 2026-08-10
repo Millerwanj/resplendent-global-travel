@@ -1,8 +1,8 @@
 # Resplendent Global Travel Solutions
 
-**Current production release: v10.0.0 — Signature Journeys Edition**
+**Deployment candidate: v10.8.1 — Virungas Pricing Revision**
 
-**Production baseline: v9.9.0 — International Edition**
+**Current production release: v10.7.0 — SEO Visibility Edition**
 
 Production website for `resplendentglobaltravel.com`.
 
@@ -23,11 +23,20 @@ page at `/zh` and localized Japanese, German, French and Italian pages at
 `/ja`, `/de`, `/fr` and `/it` retain reciprocal language selection and complete
 multilingual search metadata.
 
-The v10.0 release adds one homepage Featured Journey, a new
-`/signature-journeys` collection page and the flagship
-`/signature-journey-masai-mara` experience. The Kenya Journal article, Mara
-destination entry and journey page now form one editorial-to-enquiry path, with
-the journey name and destination prefilled for the bookings team.
+The v10.8.1 candidate preserves the approved visual design and adds one discreet
+Journey Investment section to each detailed Signature Journey page. Public
+starting prices are USD 14,100 for Across the Virungas, USD 7,350 for the Masai
+Mara and USD 2,400 for Watamu, per person sharing under the stated assumptions.
+It also adds the approved tax, flight, payment and confirmation terms.
+
+RTGS remains the preferred live payment method. The private operations layer is
+provider-neutral: future online or contactless providers use a common adapter
+contract, private external configuration and an idempotent transaction ledger.
+No provider is represented as active before approval and production testing.
+
+The private quotation policy protects a 25% base margin plus a 3% payment and
+foreign-exchange reserve. Current peak-season supplier costs must still be
+entered in full; the reserve is not a substitute for seasonal cost updates.
 
 The locally created imagery in `assets/images/signature-journeys/` is approved
 as interim launch media. It can be replaced with approved partner media-kit
@@ -50,13 +59,18 @@ Open `/admin/` after deployment to access:
 - automatic draft invoice creation only after acceptance of the latest document version;
 - mandatory review-before-send for every automatically prepared invoice;
 - Client Workflow with enquiry capture, delivery, revision requests, acceptance, status changes, notes and document history;
-- private Payment Settings that can be updated without coding or redeployment.
+- private Payment Settings with RTGS priority and optional provider-neutral
+  online and contactless channels that can be updated without redeployment.
 
 Use `ADMIN-SETUP.md` for the one-time private administrator setup.
 
 ## Required private mail configuration
 
 Keep `/home/resplend/rgts-mail-config.php` outside `public_html`. Use `docs/rgts-mail-config.example.php` as the template. Never place the live mailbox password in this ZIP or GitHub.
+
+Keep `/home/resplend/rgts-payment-config.php` outside `public_html`. Use
+`docs/rgts-payment-config.example.php` only as the template for future provider
+credentials. RTGS does not require this file.
 
 ## Private operational data
 

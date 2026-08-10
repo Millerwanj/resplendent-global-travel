@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -11,7 +11,7 @@
   </script>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="#0A2342" name="theme-color"/>
+  <meta content="#173D40" name="theme-color"/>
   <meta content="light" name="color-scheme"/>
   <meta content="index, follow, max-image-preview:large" name="robots"/>
   <link href="favicon.ico" rel="icon"/>
@@ -22,8 +22,8 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-  <link href="assets/css/main.css?v=10.0.0" rel="stylesheet"/>
-  <link href="assets/css/signature-journeys.css?v=10.0.0" rel="stylesheet"/>
+  <link href="styles.css?v=10.8.1" rel="stylesheet">
+
   <meta content="website" property="og:type"/>
   <meta content="Resplendent Global Travel Solutions" property="og:site_name"/>
   <meta content="Signature Journeys | Resplendent" property="og:title"/>
@@ -49,7 +49,15 @@
         "description": "Privately tailored travel frameworks shaped with precision, discretion and an unhurried sense of place.",
         "inLanguage": "en",
         "isPartOf": {"@id": "https://www.resplendentglobaltravel.com/#website"},
-        "mainEntity": {"@id": "https://www.resplendentglobaltravel.com/signature-journey-masai-mara#trip"}
+        "mainEntity": {
+          "@type": "ItemList",
+          "numberOfItems": 3,
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "The Resplendent Masai Mara Signature Safari", "url": "https://www.resplendentglobaltravel.com/signature-journey-masai-mara"},
+            {"@type": "ListItem", "position": 2, "name": "Watamu, by Tide & Dhow", "url": "https://www.resplendentglobaltravel.com/signature-journey-watamu"},
+            {"@type": "ListItem", "position": 3, "name": "Across the Virungas", "url": "https://www.resplendentglobaltravel.com/signature-journey-uganda-rwanda-gorillas"}
+          ]
+        }
       },
       {
         "@type": "BreadcrumbList",
@@ -62,27 +70,42 @@
   }
   </script>
 </head>
-<body class="signature-journeys-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" data-header=""><div class="container header-inner">
-    <a aria-label="Resplendent home" class="brand brand-lockup" href="index.html"><img alt="Resplendent Global Travel Solutions" decoding="async" fetchpriority="high" height="256" src="assets/images/logo-r.png" width="256"/><span><strong>RESPLENDENT</strong><small>GLOBAL TRAVEL SOLUTIONS</small></span></a>
-    <button type="button" aria-controls="primary-nav" aria-expanded="false" class="nav-toggle" data-nav-toggle=""><span class="sr-only">Toggle navigation</span><span></span><span></span></button>
-    <nav aria-label="Primary navigation" class="primary-nav" data-nav="" id="primary-nav"><a href="index.html">Home</a><a href="destinations.html">Destinations</a><a aria-current="page" href="signature-journeys.html">Signature Journeys</a><a href="journal.html">Journal</a><a href="corporate.html">Corporate</a><a href="business.html">Business</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></nav>
-  </div></header>
-  <main id="main">
-    <section class="journeys-hero"><div class="container journeys-hero-inner reveal"><p class="eyebrow">The Resplendent Collection</p><h1>Signature Journeys</h1><p>Distinctive journeys with a clear point of view—then shaped around your dates, priorities and preferred pace.</p></div></section>
-    <section class="section signature-intro"><div class="container split"><div class="section-heading reveal"><p class="eyebrow">A considered starting point</p><h2>Designed as a signature.<br/>Finished around you.</h2></div><div class="section-copy reveal"><p>These are not fixed departures or crowded catalogues. Each Signature Journey begins with a carefully edited framework and becomes fully personal through considered accommodation, transfers, experiences and time.</p><p>Our first journey begins in Kenya, where scale and stillness ask for exactly that kind of thoughtful planning.</p></div></div></section>
-    <section class="section section-stone" id="masai-mara"><div class="container signature-flagship">
-      <div class="signature-flagship-media reveal"><img alt="A refined safari camp breakfast overlooking the Masai Mara" decoding="async" height="1086" loading="lazy" src="assets/images/signature-journeys/mara-journey-detail.webp" width="1448"/></div>
-      <div class="signature-flagship-copy reveal"><p class="eyebrow">Flagship Journey · Kenya</p><h2>The Resplendent Masai Mara Signature Safari</h2><p>Seven days that move with the landscape: private arrivals, carefully placed safari time, considered camp living and room for the Mara to reveal itself without rush.</p>
-        <dl class="journey-summary"><div><dt>Duration</dt><dd>7 days · 6 nights</dd></div><div><dt>Journey style</dt><dd>Private and tailor-made</dd></div><div><dt>Best suited to</dt><dd>Couples · families · private groups</dd></div></dl>
-        <div class="actions"><a class="button button-dark" href="signature-journey-masai-mara.html">View the Signature Safari</a><a class="text-link" href="contact.html?service=Leisure%20Travel&amp;journey=The%20Resplendent%20Masai%20Mara%20Signature%20Safari&amp;destination=Masai%20Mara">Tailor This Journey</a></div>
-      </div>
+<body>
+  <header class="site-header"><a class="brand" href="/"><img class="brand-mark" src="assets/logo-r.png" alt=""><span class="brand-copy"><span class="brand-main">RESPLENDENT</span><span class="brand-sub">GLOBAL TRAVEL SOLUTIONS</span></span></a><nav class="nav"><a href="/">Home</a><a href="destinations">Destinations</a><a aria-current="page" href="signature-journeys">Signature Journeys</a><a href="journal">Journal</a><a href="concierge">Concierge</a><a href="corporate">Corporate</a><a href="business">Business</a><a href="about">About</a></nav><details class="mobile-menu"><summary>Menu</summary><nav class="menu-panel"><a href="/">Home</a><a href="destinations">Destinations</a><a href="signature-journeys">Signature Journeys</a><a href="journal">Journal</a><a href="concierge">Concierge</a><a href="corporate">Corporate</a><a href="business">Business</a><a href="about">About</a><a href="contact">Contact</a></nav></details><a class="outline-button header-action" href="contact">Tailor a Journey</a></header>
+  <main>
+    <section class="hero page-hero soft-green"><img class="hero-bg" src="assets/signature/mara-hero.webp" alt="Acacia tree on the East African plains at sunset"><div class="hero-content"><p class="eyebrow">Resplendent Signature Journeys</p><h1>Fewer journeys.<br>Stronger character.</h1><p class="hero-copy">Starting frameworks with a clear point of view. Every one is tailored around your dates, interests and pace.</p><div class="hero-actions"><a class="light-button" href="contact">Tailor a Journey</a><a class="outline-button" href="destinations">Explore Destinations</a></div></div></section>
+    <section class="section"><div class="section-heading"><p class="eyebrow">The Collection</p><h2>See the journey, day by day.</h2><p>These are considered starting frameworks — enough detail to picture the journey, with room to tailor the lodge, pace and experiences around you.</p></div><div class="signature-itineraries">
+      <article class="signature-journey-block" id="mara"><div class="signature-journey-photo"><img src="assets/signature/mara-featured.webp" alt="Safari vehicle crossing the Maasai Mara at golden hour"></div><div class="signature-itinerary-copy"><p class="eyebrow">Kenya · 7 days / 6 nights</p><h3>The Resplendent Maasai Mara Signature Safari</h3><p class="itinerary-intro">A private safari that gives the Mara time to unfold rather than turning wildlife into a checklist.</p><ol class="day-list">
+        <li><span>Day 01</span><div><strong>Arrive gently in Nairobi</strong><p>Personal airport welcome, private transfer and time to rest before the safari begins.</p></div></li>
+        <li><span>Day 02</span><div><strong>Fly into the Mara</strong><p>Air connection to the reserve, meet your safari team and ease into a first afternoon game drive.</p></div></li>
+        <li><span>Day 03</span><div><strong>Find your safari rhythm</strong><p>Early and late game viewing with an unhurried midday pause back at camp.</p></div></li>
+        <li><span>Day 04</span><div><strong>See the Mara differently</strong><p>A private full-day exploration, conservancy experience or optional sunrise balloon where conditions allow.</p></div></li>
+        <li><span>Day 05</span><div><strong>Allow space to slow down</strong><p>Photography, a quiet breakfast, guided walking where permitted, or simply time to enjoy camp.</p></div></li>
+        <li><span>Day 06</span><div><strong>One final full day</strong><p>Return to a favourite landscape or follow the wildlife movement with your guide.</p></div></li>
+        <li><span>Day 07</span><div><strong>Depart, or continue the story</strong><p>Fly back to Nairobi or connect onward to the coast, another East African chapter or a city stay.</p></div></li>
+      </ol><a class="text-link" href="signature-journey-masai-mara">View Journey</a></div></article>
+
+      <article class="signature-journey-block" id="watamu"><div class="signature-journey-photo"><img src="assets/watamu-dhow.jpg" alt="Traditional dhow sailing on Kenya's Indian Ocean coast"></div><div class="signature-itinerary-copy"><p class="eyebrow">Kenya · Indian Ocean · 6 days / 5 nights</p><h3>Watamu, by Tide &amp; Dhow</h3><p class="itinerary-intro">Sea, stillness and Swahili-coast character, with enough open time for the coast to feel like a coast.</p><ol class="day-list">
+        <li><span>Day 01</span><div><strong>Arrive by the Indian Ocean</strong><p>Private arrival transfer, a gentle check-in and an unhurried first evening by the water.</p></div></li>
+        <li><span>Day 02</span><div><strong>Follow the water</strong><p>A dhow or marine experience shaped around tides, weather and the conditions of the day.</p></div></li>
+        <li><span>Day 03</span><div><strong>Coast at your pace</strong><p>Leave room for the beach, pool, wellness and the luxury of having nowhere else to be.</p></div></li>
+        <li><span>Day 04</span><div><strong>Add Swahili-coast character</strong><p>A considered cultural, culinary or local experience brings another layer to the shoreline.</p></div></li>
+        <li><span>Day 05</span><div><strong>One last full horizon</strong><p>Revisit what you loved, keep the day deliberately light and close with the coast at sunset.</p></div></li>
+        <li><span>Day 06</span><div><strong>Depart gently</strong><p>Private transfer for your onward flight, or let us connect Watamu to the next chapter.</p></div></li>
+      </ol><a class="text-link" href="signature-journey-watamu">View Journey</a></div></article>
+
+      <article class="signature-journey-block" id="virungas"><div class="signature-journey-photo virungas-photo"><img src="assets/virungas-gorilla.jpg" alt="Mountain gorilla resting among lush forest foliage"></div><div class="signature-itinerary-copy"><p class="eyebrow">Rwanda &amp; Uganda · 8 days / 7 nights</p><h3>Across the Virungas</h3><p class="itinerary-intro">Two mountain-gorilla landscapes, rare primates and volcanic highlands — planned with the preparation and breathing room these forests deserve.</p><ol class="day-list">
+        <li><span>Day 01</span><div><strong>Arrive in Kigali</strong><p>Private welcome, transfer and a calm first night with time for a journey briefing.</p></div></li>
+        <li><span>Day 02</span><div><strong>Into Rwanda's highlands</strong><p>Travel toward Volcanoes National Park, settle into the landscape and prepare for the forest.</p></div></li>
+        <li><span>Day 03</span><div><strong>Mountain gorilla trek</strong><p>Enter the forest with the specialist park team for the first gorilla encounter, subject to permits and trekking conditions.</p></div></li>
+        <li><span>Day 04</span><div><strong>Golden monkeys &amp; conservation context</strong><p>A slower second forest day can bring golden monkeys, conservation insight or living culture into the story.</p></div></li>
+        <li><span>Day 05</span><div><strong>Cross into Uganda</strong><p>A privately coordinated transfer carries the journey into Uganda's southwestern highlands.</p></div></li>
+        <li><span>Day 06</span><div><strong>A second gorilla landscape</strong><p>Trek in Uganda for a different forest perspective and another deeply considered encounter.</p></div></li>
+        <li><span>Day 07</span><div><strong>Let the forest breathe</strong><p>Choose a guided nature or community experience, conservation context, or simply a restorative final day.</p></div></li>
+        <li><span>Day 08</span><div><strong>Return &amp; depart</strong><p>Private onward coordination for the airport, Kigali or the next part of your journey.</p></div></li>
+      </ol><p class="itinerary-note">Gorilla and primate activities depend on permit availability, park regulations, weather and traveller suitability.</p><a class="text-link" href="signature-journey-uganda-rwanda-gorillas">View Journey</a></div></article>
     </div></section>
-    <section class="section signature-principles"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">The Signature Standard</p><h2>What remains constant.</h2></div><div class="pillar-grid signature-principle-grid"><article class="reveal"><h3>Fewer, better choices</h3><p>We edit the possibilities before presenting them, keeping every recommendation relevant to the journey.</p></article><article class="reveal"><h3>Pace with purpose</h3><p>Transfers, experiences and rest are balanced so the itinerary feels coherent rather than overfilled.</p></article><article class="reveal"><h3>Partners confirmed with care</h3><p>Named properties and experiences are proposed only after suitability, availability and current terms are checked.</p></article></div></div></section>
-    <section class="section cta-section"><div class="container centered reveal"><p class="eyebrow">Begin with the flagship</p><h2>Let us shape the Mara around you.</h2><p>Share your dates, travellers and priorities. We will tailor the Signature Safari and confirm the most suitable partners for your journey.</p><a class="button button-gold" href="contact.html?service=Leisure%20Travel&amp;journey=The%20Resplendent%20Masai%20Mara%20Signature%20Safari&amp;destination=Masai%20Mara">Tailor This Journey</a><p class="journey-fineprint">All services, rates and named partners remain subject to availability and confirmation at the time of enquiry.</p></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a aria-label="Resplendent home" class="brand brand-footer" href="index.html"><span class="brand-name">RESPLENDENT</span><span class="brand-subtitle">GLOBAL TRAVEL SOLUTIONS</span></a><p>Luxury travel and business advisory, considered around you.</p></div><div><h2>Explore</h2><a href="destinations.html">Destinations</a><a href="signature-journeys.html">Signature Journeys</a><a href="journal.html">Journal</a><a href="corporate.html">Corporate</a><a href="business.html">Business</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div><div><h2>Services</h2><span>Flight Bookings</span><span>Hotel Reservations</span><span>Executive Travel</span><span>Business Matching</span><span>Medical Cover</span><span>Car Hire</span></div><div><h2>Contact</h2><a href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a><a aria-label="Contact Resplendent on WhatsApp" href="https://wa.me/254724785341" rel="noopener noreferrer">WhatsApp</a></div></div><div class="container footer-bottom"><span>© <span data-current-year="">2026</span> Resplendent Global Travel Solutions.</span><span>v10.0.0</span></div></footer>
-  <script defer="" src="assets/js/site-config.js?v=10.0.0"></script><script defer="" src="assets/js/app.js?v=10.0.0"></script>
+  <footer class="site-footer"><div><a class="brand" href="/"><img class="brand-mark" src="assets/logo-r.png" alt=""><span class="brand-copy"><span class="brand-main">RESPLENDENT</span><span class="brand-sub">GLOBAL TRAVEL SOLUTIONS</span></span></a><p>Signature journeys are tailored, not fixed packages.</p></div><div class="version-note">© 2026 Resplendent Global Travel Solutions · v10.8.1</div></footer>
 </body>
 </html>
