@@ -536,12 +536,29 @@ img { display: block; width: 100%; }
 .executive-film-copy h2 { margin-bottom: 24px; }
 .executive-film-copy p:not(.eyebrow) { color: #536362; line-height: 1.8; }
 .executive-film { aspect-ratio: 9 / 16; border-radius: 2px; box-shadow: 0 28px 70px rgba(15,43,42,.14); }
+.business-film-section { background: #f4f0e7; }
+.business-film-layout { max-width: 1220px; margin: 0 auto; display: grid; gap: clamp(42px,6vw,82px); }
+.business-film-copy { max-width: 760px; display: grid; gap: 18px; }
+.business-film-copy h2, .business-film-copy p { margin: 0; }
+.business-film-copy > p:not(.eyebrow) { color: #536362; line-height: 1.8; }
+.business-film-copy .business-film-note { font-size: 13px; color: #6d7775; }
+.business-film { aspect-ratio: 16 / 9; border-radius: 2px; box-shadow: 0 28px 70px rgba(15,43,42,.14); }
+.business-film video { object-fit: contain; background: #10151f; }
+.social-presence { margin-top: 38px; padding-top: 24px; border-top: 1px solid rgba(23,61,64,.18); }
+.social-presence-section { padding: 28px 7vw; background: #f4f0e7; border-top: 1px solid rgba(23,61,64,.12); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.social-presence-section .eyebrow { margin: 0; color: #6e7e7c; }
+.social-presence .eyebrow { margin-bottom: 14px; color: #6e7e7c; }
+.social-presence-links { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.social-presence-links a { color: #173d40; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(23,61,64,.35); padding-bottom: 3px; }
+.social-presence-links a:hover, .social-presence-links a:focus-visible { border-bottom-color: #173d40; }
 @media (max-width:900px) {
   .connectivity-film { min-height: 560px; }
   .executive-film-layout { grid-template-columns: 1fr; }
   .executive-film { width: min(100%,380px); margin: 0 auto; }
+  .business-film-layout { gap: 36px; }
 }
 @media (max-width:560px) {
   .connectivity-film { min-height: 430px; }
   .service-film-trigger::before { width: 58px; height: 58px; }
+  .social-presence-section { align-items: flex-start; flex-direction: column; }
 }

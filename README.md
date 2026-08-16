@@ -1,8 +1,8 @@
 # Resplendent Global Travel Solutions
 
-**Deployment candidate: v10.9.0 — Corporate Search & Serengeti Edition**
+**Deployment candidate: v11.5.4 — Global Business Connections Film Edition**
 
-**Current production release: v10.7.0 — SEO Visibility Edition**
+**Current production baseline: v11.5.3 — Corporate & Concierge Architecture**
 
 Production website for `resplendentglobaltravel.com`.
 
