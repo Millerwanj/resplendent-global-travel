@@ -1,6 +1,6 @@
 # Resplendent Global Travel Solutions
 
-**Deployment candidate: v10.8.1 — Virungas Pricing Revision**
+**Deployment candidate: v10.9.0 — Corporate Search & Serengeti Edition**
 
 **Current production release: v10.7.0 — SEO Visibility Edition**
 
@@ -23,10 +23,11 @@ page at `/zh` and localized Japanese, German, French and Italian pages at
 `/ja`, `/de`, `/fr` and `/it` retain reciprocal language selection and complete
 multilingual search metadata.
 
-The v10.8.1 candidate preserves the approved visual design and adds one discreet
+The v10.9.0 candidate preserves the approved visual design and adds focused
 Journey Investment section to each detailed Signature Journey page. Public
 starting prices are USD 14,100 for Across the Virungas, USD 7,350 for the Masai
-Mara and USD 2,400 for Watamu, per person sharing under the stated assumptions.
+Mara, USD 2,400 for Watamu and USD 6,800 for the Serengeti, per person sharing
+under the stated assumptions.
 It also adds the approved tax, flight, payment and confirmation terms.
 
 RTGS remains the preferred live payment method. The private operations layer is
@@ -38,9 +39,10 @@ The private quotation policy protects a 25% base margin plus a 3% payment and
 foreign-exchange reserve. Current peak-season supplier costs must still be
 entered in full; the reserve is not a substitute for seasonal cost updates.
 
-The locally created imagery in `assets/images/signature-journeys/` is approved
-as interim launch media. It can be replaced with approved partner media-kit
-assets later without changing the journey routes or enquiry flow.
+The Serengeti journey uses original provider-neutral imagery. The remaining
+locally created imagery in `assets/images/signature-journeys/` is approved as
+interim launch media and can be replaced later without changing the journey
+routes or enquiry flow.
 
 ## Private Client Engagement Suite
 

@@ -1,0 +1,17 @@
+.collection-investment {
+  margin: 32px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.collection-investment .eyebrow { margin-bottom: 8px; }
+.collection-investment strong {
+  display: block;
+  color: var(--navy);
+  font: 500 clamp(1.65rem, 2.5vw, 2.35rem)/1.15 var(--serif);
+}
+.collection-investment p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+.collection-investment.pending strong { font-size: clamp(1.4rem, 2vw, 1.9rem); }

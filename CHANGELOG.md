@@ -1,4 +1,52 @@
+## v11.5.1 — Production refinement
+- Fixed Destinations hero copy/header collision on short desktop viewports.
+- Added cache-busted CSS references so the header fix deploys reliably.
+- Updated eSIM visual to the approved smaller-phone travel-folio composition.
+- Lightened international landing-page hero grading to blend with the homepage green treatment.
+- Retained the original Resplendent green elsewhere.
+
 # Changelog
+
+## v11.5.2 — eSIM & Executive Mobility Service Films
+- Embedded the approved eSIM reel within the existing Travel Connectivity visual panel.
+- Kept the approved travel-folio artwork visible as the click-to-play poster.
+- Added a restrained Executive Mobility film panel to the Corporate Travel Management page.
+- Added lightweight, fast-start web video assets with no autoplay.
+- Added responsive and keyboard-accessible playback controls.
+
+## v11.1.7 — Editorial, Connectivity & Homepage SEO Refinement
+- Refined Concierge eSIM presentation with explicit eSIM title and dual actions.
+- Kept Connect Directly inactive pending Maya partner approval/tracked URL.
+- Added eSIM / Travel Connectivity to the enquiry flow (retained from prior build).
+- Added a restrained About-page “Our point of view” section after checking existing copy for repetition.
+- Replaced the Journal dhow hero with an African sunrise hero from the production asset library.
+- Strengthened homepage title/OG/Twitter brand signals with the full Resplendent Global Travel Solutions name.
+- Removed stray Virungas TouristTrip JSON-LD from the homepage only.
+- Canonicals, hreflang, sitemap, robots and redirects left unchanged.
+
+## v10.9.0 — Corporate Search & Serengeti Edition (2026-08-11)
+
+- Preserved the approved homepage, navigation, typography, colour system and
+  existing Corporate-page composition.
+- Added `/executive-travel-services-nairobi` for high-intent executive travel
+  searches and discreet leadership movement requirements.
+- Added `/exhibition-delegate-travel-nairobi` for international exhibitors,
+  delegations and conference teams requiring Nairobi travel coordination.
+- Replaced the exhibition page's rejected boardroom hero with an original,
+  unbranded delegate-arrival image composed for the approved headline layout.
+- Replaced the single Corporate-page SEO link with a restrained three-service
+  gateway connecting the existing corporate management page and both new pages.
+- Added focused metadata, Service schema, breadcrumb data, internal links and
+  sitemap entries without introducing additional main-navigation items.
+- Added The Resplendent Serengeti Signature Safari as a provider-neutral
+  seven-day, six-night journey.
+- Set the public starting price at USD 6,800 per person sharing, based on the
+  2026 green-season game-package nett rate, compulsory Serengeti fees and the
+  protected `supplier cost / 0.72` pricing formula.
+- Added matching TouristTrip Offer data, collection integration, sitemap entry
+  and original, unbranded Serengeti imagery.
+- Kept internal and international flights, premium drinks, gratuities,
+  evacuation cover and optional ballooning outside the starting price.
 
 ## v10.8.1 — Virungas Pricing Revision (2026-08-10)
 

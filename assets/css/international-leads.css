@@ -1,0 +1,114 @@
+:root {
+  --navy: #173d40;
+  --gold: #a88954;
+  --muted: #617777;
+}
+
+.lead-section {
+  background: #f2efe8;
+}
+.lead-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(460px, 1.2fr);
+  gap: 8vw;
+  align-items: start;
+}
+.lead-copy {
+  position: sticky;
+  top: 140px;
+}
+.lead-copy h2 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  margin: 12px 0 24px;
+}
+.lead-copy p {
+  color: var(--muted);
+}
+.lead-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  padding: 42px;
+  background: #fff;
+  border-top: 2px solid var(--gold);
+  box-shadow: 0 18px 54px rgba(9, 31, 50, 0.08);
+}
+.lead-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lead-form .full {
+  grid-column: 1/-1;
+}
+.lead-form label {
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lead-form input,
+.lead-form select,
+.lead-form textarea {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+}
+.lead-form textarea {
+  resize: vertical;
+}
+.lead-form .consent-field {
+  display: block;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.lead-form .consent-field input {
+  width: auto;
+  margin-right: 8px;
+}
+.lead-form .form-trap {
+  position: absolute;
+  left: -9999px;
+}
+.lead-form .form-note {
+  grid-column: 1/-1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.journey-price-end {
+  padding: 38px;
+  margin-top: 48px;
+  border-top: 1px solid var(--gold);
+  background: #fff;
+}
+.journey-price-end strong {
+  display: block;
+  font: 500 clamp(2rem, 3vw, 3rem)/1.1 var(--serif);
+  color: var(--navy);
+}
+@media (max-width: 900px) {
+  .lead-layout {
+    grid-template-columns: 1fr;
+  }
+  .lead-copy {
+    position: static;
+  }
+  .lead-form {
+    grid-template-columns: 1fr;
+  }
+  .lead-form .full {
+    grid-column: auto;
+  }
+}
+@media (max-width: 600px) {
+  .lead-form {
+    padding: 28px 20px;
+  }
+}

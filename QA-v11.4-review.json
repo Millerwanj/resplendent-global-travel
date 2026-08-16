@@ -1,0 +1,19 @@
+{
+  "palette": {
+    "ink": "#173d40",
+    "ink_deep": "#102f32",
+    "ivory": "#f4f0e7",
+    "brass": "#a88954"
+  },
+  "home_hero": "assets/review-home-coastal.webp",
+  "journal_hero": "assets/images/signature-journeys/serengeti-signature-hero.webp",
+  "signature_hero": "https://cdn.audleytravel.com/1050/749/79/16004468-aerial-view-ol-lentille.jpg",
+  "international_hero": "assets/images/hero/international-premium.webp",
+  "esim_ctas": [
+    "BUY YOUR eSIM",
+    "ADD TO MY JOURNEY"
+  ],
+  "missing_local_targets": [],
+  "html_pages": 39,
+  "external_signature_image_review_only": true
+}

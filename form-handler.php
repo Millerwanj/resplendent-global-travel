@@ -253,7 +253,7 @@ if ($operations) {
 $labels = [
     'journey' => 'Signature journey', 'destination' => 'Destination / Country', 'dates' => 'Preferred dates', 'travellers' => 'Travellers / delegates',
     'travel_flexibility' => 'Travel flexibility', 'accommodation_preference' => 'Accommodation preference',
-    'budget' => 'Approximate budget', 'interests' => 'Interests', 'corporate_industry' => 'Corporate industry',
+    'budget' => 'Approximate budget', 'interests' => 'Interests', 'country' => 'Country of residence', 'corporate_industry' => 'Corporate industry',
     'delegates' => 'Number of delegates', 'corporate_objective' => 'Corporate travel objective',
     'business_industry' => 'Business industry / sector', 'partner_profile' => 'Target partner profile',
     'meeting_objective' => 'Meeting objective'
