@@ -15,3 +15,9 @@
   font-size: .86rem;
 }
 .collection-investment.pending strong { font-size: clamp(1.4rem, 2vw, 1.9rem); }
+
+/* Keep the pointer out of every layer of the approved elephant hero presentation. */
+.signature-collection-hero,
+.signature-collection-hero *,
+.signature-collection-hero::before,
+.signature-collection-hero::after { cursor: none !important; }

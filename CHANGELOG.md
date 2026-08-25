@@ -1,3 +1,12 @@
+
+## v11.6.5 — eSIM Experience Refinement (23 August 2026)
+- Built from the supplied v11.6.4 Verpex Review baseline.
+- Replaced the eSIM hero with the approved frustrated Asian airport traveller image.
+- Replaced the existing eSIM film with the approved worried-traveller footage.
+- Added a concise four-step eSIM installation guide.
+- Fixed eSIM header/hero spacing to prevent brand and hero copy overlap at narrower and short desktop viewports.
+- Preserved the v11.6.4 data guidance, content structure and all unrelated site changes.
+
 ## v11.5.1 — Production refinement
 - Fixed Destinations hero copy/header collision on short desktop viewports.
 - Added cache-busted CSS references so the header fix deploys reliably.
@@ -6,6 +15,72 @@
 - Retained the original Resplendent green elsewhere.
 
 # Changelog
+
+## v11.7.14 — Cache-Proof Image Final (2026-08-25)
+
+- Assigned a new filename to the approved About photograph so the former image cannot be served from cache.
+- Assigned a new filename to the verified-clean elephant hero.
+- Embedded the elephant-hero cursor rule directly in the page, eliminating stylesheet-cache dependency.
+
+## v11.7.13 — Elephant Cursor Final (2026-08-25)
+
+- Removed the visible browser cursor from every layer of the Signature Journeys elephant hero.
+- Bumped both relevant stylesheet versions to prevent the previous cursor rule being served from cache.
+
+## v11.7.12 — About Hero Final (2026-08-25)
+
+- Replaced the About hero with the approved Pexels business-conversation photograph.
+- Standardised the asset at 2048 × 1365 pixels.
+- Preserved the photograph's original saturation and contrast by removing the About hero colour wash.
+- Retained a localised left-side gradient solely for heading readability.
+
+## v11.7.11 — Journal Colour Final (2026-08-25)
+- Restored the Namibia Journal hero's natural orange desert and blue-sky colour.
+- Replaced the full-frame green wash with a localized left-side text gradient.
+
+## v11.7.10 — Journal & Signature Visual Final (2026-08-25)
+- Introduced the approved Namibia desert-lodge Journal hero at the standard page-header size.
+- Improved Journal image variety and dispersed the two eSIM articles.
+- Replaced repeated primate imagery with distinct chimpanzee and gorilla covers.
+- Fixed the elephant cursor against the actual loaded hero selector.
+
+## v11.7.9 — Signature Journey Consistency Final (2026-08-25)
+- Standardised all four Signature Journey detail heroes to the same compact dimensions on desktop and mobile.
+- Corrected the elephant collection hero so the cursor-hiding treatment loads reliably without altering its image.
+- Moved Watamu onto the shared journey layout and completed the same section flow across Mara, Watamu, Serengeti and Virunga.
+
+## v11.6.4 — Connectivity Arrival Hero (2026-08-22)
+- Replaced the eSIM hero folio with real Pexels airport-arrival photography showing a traveller checking her phone beside her luggage.
+- Preserved the woman, phone and suitcase within the responsive split-hero crop.
+- Repositioned the Signature Journeys elephant photograph to retain more of the animals in the wide hero crop.
+
+## v11.6.3 — Signature Journeys Hero (2026-08-22)
+- Replaced the externally hosted Signature Journeys hero with approved ATI Holidays wildlife photography.
+- Optimized and served the new elephant-family image locally in WebP format.
+- Updated social sharing imagery and removed the page's runtime dependency on the Audley image.
+
+## v11.6.2 — Seamless Header Refinement (2026-08-22)
+- Removed the faint horizontal border beneath the shared site header across all public pages.
+- Refreshed the stylesheet version so browsers do not retain the previous header rule.
+
+## v11.6.1 — Connectivity & Hero Refinement (2026-08-22)
+- Renamed the public eSIM label to eSIM & Connectivity and expanded the page language to include roaming guidance.
+- Prevented the longer navigation label from colliding with the logo by switching to the compact menu earlier.
+- Reworked the eSIM hero as a clear split visual with the approved travel-folio image.
+- Reduced the Destinations hero height and replaced its photograph with approved ATI Holidays Wolwedans imagery.
+- Kept the homepage closing cleanly after the featured Virungas journey.
+
+## v11.6.0 — Clear Service Architecture & eSIM Edition (2026-08-22)
+- Simplified primary navigation to Home, Destinations, Signature Journeys, Executive Mobility, eSIM, Journal and About.
+- Consolidated Corporate Travel and relevant Concierge support into a dedicated Executive Mobility page.
+- Added a standalone eSIM page with practical traveller guidance and the approved click-to-play connectivity film.
+- Retained Global Business Connections as a contextual, footer-accessible service rather than a competing primary category.
+- Redirected retired Corporate and Concierge routes to Executive Mobility and refreshed sitemap coverage.
+- Corrected server-side eSIM enquiry routing and aligned the Contact form with the new public labels.
+- Preserved existing videos and approved imagery while adding responsive dimensions, lazy loading and lighter WebP assets where available.
+- Updated homepage positioning, structured data, canonical metadata and cache-busted front-end assets.
+- Replaced the international landing-page hero with a distinct, lightweight premium lodge image aligned with the homepage's brighter ivory-and-green visual language.
+- Added localized discovery pathways on Chinese, Japanese, German, French and Italian pages for Signature Journeys, Executive Mobility, eSIM, the Journal and Global Business Connections.
 
 ## v11.5.2 — eSIM & Executive Mobility Service Films
 - Embedded the approved eSIM reel within the existing Travel Connectivity visual panel.

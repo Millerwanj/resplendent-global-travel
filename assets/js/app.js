@@ -137,7 +137,7 @@
 
   const requestedService = params.get("service") || params.get("purpose");
   if (requestedService && serviceSelect) {
-    const aliases = { Leisure: "Leisure Travel", Corporate: "Corporate Travel", Business: "Business Connections", Accounts: "Accounts & Billing", Support: "Customer Support", Mixed: "Multi-service Request" };
+    const aliases = { Leisure: "Leisure Travel", "Signature Journey": "Leisure Travel", Corporate: "Corporate Travel", "Executive Mobility": "Corporate Travel", Business: "Business Connections", Accounts: "Accounts & Billing", Support: "Customer Support", Mixed: "Multi-service Request", eSIM: "eSIM / Travel Connectivity" };
     const target = aliases[requestedService] || requestedService;
     const option = [...serviceSelect.options].find((item) => item.value.toLowerCase() === target.toLowerCase());
     if (option) serviceSelect.value = option.value;

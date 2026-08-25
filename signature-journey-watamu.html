@@ -19,8 +19,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Watamu, by Tide &amp; Dhow | Resplendent</title>
-<link href="styles.css?v=11.5.1" rel="stylesheet"/>
-<link href="assets/css/international-leads.css?v=11.1.4" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="assets/watamu-dhow.jpg" rel="preload"/>
+<link href="assets/css/main.css?v=11.7.9" rel="stylesheet"/>
+<link href="assets/css/signature-journeys.css?v=11.7.9" rel="stylesheet"/>
+<link href="assets/css/international-leads.css?v=11.7.6" rel="stylesheet"/>
 <meta content="website" property="og:type"/>
 <meta content="Resplendent Global Travel Solutions" property="og:site_name"/>
 <meta content="Watamu, by Tide &amp; Dhow | Resplendent" property="og:title"/>
@@ -134,37 +139,36 @@
       }
     </script>
 </head>
-<body>
-<header class="site-header">
-<a class="brand" href="index.html"><img alt="" class="brand-mark" src="assets/logo-r.png"/><span class="brand-copy"><span class="brand-main">RESPLENDENT</span><span class="brand-sub">GLOBAL TRAVEL SOLUTIONS</span></span></a>
-<nav class="nav">
-<a href="index.html">Home</a><a href="destinations.html">Destinations</a><a aria-current="page" href="signature-journeys.html">Signature Journeys</a><a href="journal.html">Journal</a><a href="concierge.html">Concierge</a><a href="corporate.html">Corporate</a><a href="business.html">Business</a><a href="about.html">About</a>
-</nav>
-<details class="mobile-menu">
-<summary>Menu</summary>
-<nav class="menu-panel">
-<a href="index.html">Home</a><a href="destinations.html">Destinations</a><a href="signature-journeys.html">Signature Journeys</a><a href="journal.html">Journal</a><a href="concierge.html">Concierge</a><a href="corporate.html">Corporate</a><a href="business.html">Business</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-</nav>
-</details>
-<a class="outline-button header-action" href="#enquire">Tailor This Journey</a>
-</header>
-<main>
-<section class="hero page-hero soft-green">
-<img alt="Traditional dhow sailing over the Indian Ocean off Watamu" class="hero-bg" src="assets/watamu-dhow.jpg"/>
-<div class="hero-content">
+<body class="signature-journey-page watamu-journey-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header=""><div class="container header-inner">
+<a aria-label="Resplendent home" class="brand brand-lockup" href="index.html"><img alt="Resplendent Global Travel Solutions" decoding="async" fetchpriority="high" height="256" src="assets/images/logo-r.png" width="256"/><span><strong>RESPLENDENT</strong><small>GLOBAL TRAVEL SOLUTIONS</small></span></a>
+<button aria-controls="primary-nav" aria-expanded="false" class="nav-toggle" data-nav-toggle="" type="button"><span class="sr-only">Toggle navigation</span><span></span><span></span></button>
+<nav aria-label="Primary navigation" class="primary-nav" data-nav="" id="primary-nav"><a href="index.html">Home</a><a href="destinations.html">Destinations</a><a aria-current="page" href="signature-journeys.html">Signature Journeys</a><a href="executive-mobility">Executive Mobility</a><a href="esim">eSIM &amp; Connectivity</a><a href="journal.html">Journal</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></nav>
+</div></header>
+<main id="main">
+<section class="signature-journey-hero">
+<div class="signature-journey-hero-overlay"></div>
+<div class="container signature-journey-hero-content">
 <p class="eyebrow">Signature Journey · Kenya Indian Ocean</p>
 <h1>Watamu, by<br/>Tide &amp; Dhow.</h1>
-<p class="hero-copy">
+<p>
             A private coastal framework shaped around warm water, unhurried days
             and the quiet rhythm of Kenya’s Indian Ocean coast.
           </p>
-<a class="light-button" href="#enquire">Tailor This Journey</a>
+<a class="button button-gold" href="#enquire">Tailor This Journey</a>
 </div>
 </section>
-<section class="section">
-<div class="split-story">
-<p class="statement">Let the coast<br/>set the pace.</p>
-<div class="story-copy">
+<section aria-label="Journey at a glance" class="journey-at-glance"><div class="container"><dl>
+<div><dt>Duration</dt><dd>6 days · 5 nights</dd></div>
+<div><dt>Journey style</dt><dd>Private and tailor-made</dd></div>
+<div><dt>Setting</dt><dd>Watamu · Kenya coast</dd></div>
+<div><dt>Best suited to</dt><dd>Couples · families · private groups</dd></div>
+</dl></div></section>
+<section class="section journey-opening">
+<div class="container split">
+<div class="section-heading reveal"><p class="eyebrow">The Journey</p><h2>Let the coast<br/>set the pace.</h2></div>
+<div class="section-copy reveal">
 <p>
               Watamu works best when the itinerary leaves room for the tide.
               This journey is deliberately light on rigid scheduling: sea
@@ -179,15 +183,16 @@
 </div>
 </div>
 </section>
-<section class="section tinted">
-<div class="section-heading">
+<section class="section section-stone journey-rhythm" id="journey-rhythm">
+<div class="container">
+<div class="section-heading reveal">
 <p class="eyebrow">A suggested rhythm</p>
 <h2>Five nights.<br/>Plenty of horizon.</h2>
 <p>A starting framework rather than a fixed package.</p>
 </div>
-<div class="journey-list">
-<article class="journey-row">
-<div class="place">Day 01</div>
+<ol class="journey-days">
+<li class="reveal">
+<span>Day 01</span>
 <div>
 <h3>Arrive by the Indian Ocean</h3>
 <p>
@@ -195,10 +200,9 @@
                 first evening by the water.
               </p>
 </div>
-<span></span>
-</article>
-<article class="journey-row">
-<div class="place">Day 02</div>
+</li>
+<li class="reveal">
+<span>Day 02</span>
 <div>
 <h3>Follow the water</h3>
 <p>
@@ -206,10 +210,9 @@
                 conditions of the day.
               </p>
 </div>
-<span></span>
-</article>
-<article class="journey-row">
-<div class="place">Day 03</div>
+</li>
+<li class="reveal">
+<span>Day 03</span>
 <div>
 <h3>Coast at your pace</h3>
 <p>
@@ -217,10 +220,9 @@
                 having nowhere else to be.
               </p>
 </div>
-<span></span>
-</article>
-<article class="journey-row">
-<div class="place">Day 04</div>
+</li>
+<li class="reveal">
+<span>Day 04</span>
 <div>
 <h3>Add Swahili-coast character</h3>
 <p>
@@ -228,10 +230,9 @@
                 another layer to the shoreline.
               </p>
 </div>
-<span></span>
-</article>
-<article class="journey-row">
-<div class="place">Day 05</div>
+</li>
+<li class="reveal">
+<span>Day 05</span>
 <div>
 <h3>One last full horizon</h3>
 <p>
@@ -239,10 +240,9 @@
                 close with the coast at sunset.
               </p>
 </div>
-<span></span>
-</article>
-<article class="journey-row">
-<div class="place">Day 06</div>
+</li>
+<li class="reveal">
+<span>Day 06</span>
 <div>
 <h3>Depart gently</h3>
 <p>
@@ -250,17 +250,17 @@
                 Watamu to another Kenya chapter.
               </p>
 </div>
-<span></span>
-</article>
+</li>
+</ol>
 </div>
 </section>
-<section class="section">
-<div class="split-story">
-<div>
+<section class="section journey-details">
+<div class="container journey-detail-grid">
+<div class="reveal">
 <p class="eyebrow">Another coastal expression</p>
 <h2>Prefer the South Coast?</h2>
 </div>
-<div class="story-copy">
+<div class="journey-scope reveal">
 <p>
               Diani offers a different way to experience Kenya’s Indian Ocean: a
               broad white-sand shoreline, warm water and easy access to South
@@ -274,17 +274,29 @@
 </div>
 </div>
 </section>
-<section class="section">
-<div class="section-heading">
+<section class="section journal-journey-bridge">
+<div class="container split">
+<div class="section-heading reveal">
+<p class="eyebrow">From the Journal</p>
+<h2>Why a dhow changes the way you see Watamu.</h2>
+</div><div class="section-copy reveal"><p>
+            The companion Journal piece looks at the coast through movement,
+            light and the old sailing form that still defines its horizon.
+          </p>
+<div class="actions">
+<a class="text-link" href="journal-watamu.html">Read the Journal</a><a class="text-link" href="luxury-kenya-safaris.html">Explore More of Kenya</a>
+</div></div></div>
+</section><section class="section journey-investment">
+<div class="container split">
+<div class="section-heading reveal">
 <p class="eyebrow">Starting from</p>
 <h2>USD 2,400<br/>per person sharing.</h2>
-<p>
+</div><div class="section-copy reveal"><p>
             Based on two guests travelling during selected periods. Final
             pricing reflects dates, availability and tailored inclusions.
           </p>
-</div>
-</section>
-<section class="section lead-section" id="enquire">
+</div></div>
+</section><section class="section lead-section" id="enquire">
 <div class="lead-layout">
 <div class="lead-copy">
 <p class="eyebrow">Begin your Watamu journey</p>
@@ -350,31 +362,8 @@
 </form>
 </div>
 </section>
-<section class="section">
-<div class="section-heading">
-<p class="eyebrow">From the Journal</p>
-<h2>Why a dhow changes the way you see Watamu.</h2>
-<p>
-            The companion Journal piece looks at the coast through movement,
-            light and the old sailing form that still defines its horizon.
-          </p>
-<div class="hero-actions">
-<a class="text-link" href="journal-watamu.html">Read the Journal</a><a class="text-link" href="luxury-kenya-safaris.html">Explore More of Kenya</a>
-</div>
-</div>
-</section>
 </main>
-<footer class="site-footer">
-<div>
-<a class="brand" href="index.html"><img alt="" class="brand-mark" src="assets/logo-r.png"/><span class="brand-copy"><span class="brand-main">RESPLENDENT</span><span class="brand-sub">GLOBAL TRAVEL SOLUTIONS</span></span></a>
-<p>
-          All arrangements remain subject to availability for the requested
-          dates.
-        </p>
-</div>
-<div class="version-note">
-        © 2026 Resplendent Global Travel Solutions · v10.8.1
-      </div>
-</footer>
+<footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a aria-label="Resplendent home" class="brand brand-footer" href="index.html"><span class="brand-name">RESPLENDENT</span><span class="brand-subtitle">GLOBAL TRAVEL SOLUTIONS</span></a><p>Luxury travel and business advisory, considered around you.</p></div><div><h2>Explore</h2><a href="destinations.html">Destinations</a><a href="signature-journeys.html">Signature Journeys</a><a href="executive-mobility">Executive Mobility</a><a href="esim">eSIM &amp; Connectivity</a><a href="journal.html">Journal</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div><div><h2>Services</h2><span>Flight Bookings</span><span>Hotel Reservations</span><span>Executive Travel</span><span>Business Matching</span><span>Medical Cover</span><span>Car Hire</span></div><div><h2>Contact</h2><a href="mailto:info@resplendentglobaltravel.com">info@resplendentglobaltravel.com</a><a aria-label="Contact Resplendent on WhatsApp" href="https://wa.me/254724785341" rel="noopener noreferrer">WhatsApp</a></div></div><div class="container footer-bottom"><span>© <span data-current-year="">2026</span> Resplendent Global Travel Solutions.</span><span>v11.7.9</span></div></footer>
+<script defer="" src="assets/js/site-config.js?v=11.7.9"></script><script defer="" src="assets/js/app.js?v=11.7.9"></script>
 </body>
 </html>

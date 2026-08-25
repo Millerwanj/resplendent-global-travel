@@ -1,8 +1,19 @@
 # Resplendent Global Travel Solutions
 
-**Deployment candidate: v11.5.4 — Global Business Connections Film Edition**
+**Deployment candidate: v11.6.5 — Clear Service Architecture & Connectivity Edition**
 
-**Current production baseline: v11.5.3 — Corporate & Concierge Architecture**
+**Current production baseline: v11.5.4 — Global Business Connections Film Edition**
+
+The v11.6.5 candidate simplifies the public journey to Home, Destinations,
+Signature Journeys, Executive Mobility, eSIM & Connectivity, Journal and About. Corporate and
+appropriate concierge support are consolidated under Executive Mobility;
+Global Business Connections remains available from contextual and footer links.
+The release adds a standalone eSIM page and correct enquiry routing, preserves
+the approved films and imagery, redirects retired public routes, improves image
+loading and updates search metadata and sitemap entries. Chinese, Japanese,
+German, French and Italian landing pages gain a brighter premium hero plus
+localized pathways into journeys, executive mobility, connectivity, editorial content
+and the standalone Global Business Connections service.
 
 Production website for `resplendentglobaltravel.com`.
 

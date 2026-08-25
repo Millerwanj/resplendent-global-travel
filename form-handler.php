@@ -221,6 +221,7 @@ $routes = [
     'International Medical Cover' => 'bookings@resplendentglobaltravel.com',
     'Car Rental' => 'bookings@resplendentglobaltravel.com',
     'Corporate Travel' => 'corporate@resplendentglobaltravel.com',
+    'eSIM / Travel Connectivity' => 'bookings@resplendentglobaltravel.com',
     'Business Connections' => 'business@resplendentglobaltravel.com',
     'Customer Support' => 'support@resplendentglobaltravel.com',
     'Accounts & Billing' => 'accounts@resplendentglobaltravel.com',
@@ -264,7 +265,7 @@ foreach ($labels as $key => $label) {
     if ($value !== '') $details[] = "$label: $value";
 }
 if (isset($_POST['combined_services']) && is_array($_POST['combined_services'])) {
-    $allowed = ['Flights', 'Hotels', 'Corporate Travel', 'Business Connections', 'Medical Cover', 'Car Rental'];
+    $allowed = ['Flights', 'Hotels', 'Corporate Travel', 'Business Connections', 'eSIM / Travel Connectivity', 'Medical Cover', 'Car Rental'];
     $selected = array_values(array_intersect($allowed, array_map('strval', $_POST['combined_services'])));
     if ($selected) $details[] = 'Combined services: ' . implode(', ', $selected);
 }
@@ -377,7 +378,7 @@ $customerBody .= "Warm regards,
 ";
 $customerBody .= "Resplendent Global Travel Solutions
 ";
-$customerBody .= "Luxury Travel | Corporate Travel | Global Business Connections
+$customerBody .= "Signature Journeys | Executive Mobility | Global Connectivity
 ";
 $customerBody .= "info@resplendentglobaltravel.com
 ";
