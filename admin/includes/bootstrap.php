@@ -102,6 +102,21 @@ function admin_store(): OperationsStore
     return $store;
 }
 
+function admin_esimcard_config_path(): string
+{
+    $configured = trim((string)(getenv('RGTS_ESIMCARD_CONFIG') ?: ''));
+    return $configured !== '' ? $configured : dirname(__DIR__, 3) . '/rgts-esimcard-config.php';
+}
+
+/** @return array<string,mixed>|null */
+function admin_esimcard_config(): ?array
+{
+    $path = admin_esimcard_config_path();
+    if (!is_file($path)) return null;
+    $config = require $path;
+    return is_array($config) ? $config : null;
+}
+
 function admin_flash(string $type, string $message): void
 {
     $_SESSION['rgts_admin_flash'] = ['type' => $type, 'message' => $message];

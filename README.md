@@ -85,6 +85,13 @@ Keep `/home/resplend/rgts-payment-config.php` outside `public_html`. Use
 `docs/rgts-payment-config.example.php` only as the template for future provider
 credentials. RTGS does not require this file.
 
+Keep `/home/resplend/rgts-esimcard-config.php` outside `public_html`. Use
+`docs/rgts-esimcard-config.example.php` as the template, select the sandbox
+environment and add the credentials supplied directly by eSIMCard. The private
+Operations screen at `/admin/esim-sandbox.php` can verify login, balance,
+package retrieval and an explicitly enabled test purchase. Public checkout is
+not enabled by this diagnostic integration.
+
 ## Private operational data
 
 Admin configuration and client data are written outside `public_html`:

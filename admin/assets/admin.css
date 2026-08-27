@@ -108,6 +108,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1;margin-top:0;col
 .empty-state{padding:44px 4px 22px}
 .empty-state h3{font-size:1.65rem;margin-bottom:10px}
 .empty-state p{color:var(--muted);font-size:.75rem}
+.api-response{max-height:520px;overflow:auto;margin:22px 0 0;padding:18px;background:#102f32;color:#f4f0e7;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
 
 /* Workflow */
 .workflow-guide{display:grid;grid-template-columns:repeat(9,1fr);margin:0 0 26px;background:var(--navy);color:#fff}
