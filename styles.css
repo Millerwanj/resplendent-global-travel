@@ -719,6 +719,20 @@ img { display: block; width: 100%; }
  .esim-page .esim-hero::before{background:linear-gradient(180deg,rgba(12,42,43,.12) 0%,rgba(12,42,43,.28) 48%,rgba(12,42,43,.72) 100%) !important;}
 }
 
+/* v11.8.0 provider-neutral eSIM catalogue */
+.esim-catalogue-control{max-width:720px;margin:38px auto 0;padding:28px;background:#f4f0e7}
+.esim-catalogue-control label{display:block;margin-bottom:9px;color:#173d40;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.esim-catalogue-control select{width:100%;min-height:54px;border:1px solid rgba(23,61,64,.22);background:#fff;padding:0 16px;color:#173d40;font:inherit}
+.esim-catalogue-control p{margin:13px 0 0;color:#617777;font-size:.78rem}
+.esim-plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px}
+.esim-plan{display:flex;min-height:300px;flex-direction:column;padding:34px;border:1px solid rgba(23,61,64,.14);background:#fff}
+.esim-plan h3{margin:6px 0 14px;font-size:2.5rem}
+.esim-plan>p:not(.eyebrow){color:#617777}
+.esim-plan>strong{display:block;margin:24px 0;color:#173d40;font:500 1.8rem "Cormorant Garamond",Georgia,serif}
+.esim-plan .text-link{margin-top:auto}
+@media(max-width:900px){.esim-plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.esim-plan-grid{grid-template-columns:1fr}.esim-plan{min-height:260px}}
+
 /* v11.6.5 eSIM hero final — full natural photo with neutral readability gradient */
 .esim-page .esim-hero {
   min-height: clamp(620px, 78vh, 780px) !important;

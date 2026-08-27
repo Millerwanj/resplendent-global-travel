@@ -51,6 +51,19 @@ final class EsimCardClient
     }
 
     /** @return array<string,mixed> */
+    public function countries(): array
+    {
+        return $this->request('GET', '/developer/reseller/packages/country');
+    }
+
+    /** @return array<string,mixed> */
+    public function packagesByCountry(string $countryId, string $packageType = 'DATA-ONLY'): array
+    {
+        $path = '/developer/reseller/packages/country/' . rawurlencode($this->identifier($countryId)) . '/' . rawurlencode($this->packageType($packageType));
+        return $this->request('GET', $path);
+    }
+
+    /** @return array<string,mixed> */
     public function package(string $packageTypeId): array
     {
         return $this->request('GET', '/developer/reseller/package/detail/' . rawurlencode($this->identifier($packageTypeId)));

@@ -11,5 +11,6 @@ return [
     'email' => 'accounts@resplendentglobaltravel.com',
     'password' => '',
     'timeout' => 20,
+    'retail_markup_percent' => 25,
     'allow_sandbox_purchase' => false,
 ];
