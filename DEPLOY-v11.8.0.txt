@@ -1,0 +1,15 @@
+Resplendent Global Travel Solutions — v11.8.0
+Authoritative source: user-supplied VS Code working copy, 29 August 2026.
+
+Core changes:
+1. Instant Connectivity Checkout sandbox workflow.
+2. Shared Pesapal IPN safely routes RGTS-CON-* transactions to connectivity ledger.
+3. Server-side payment verification required before simulated provisioning.
+4. Accepted quotation -> linked draft invoice recovery improved.
+5. eSIM customer journey reordered to six logical steps beginning with data-needs estimation.
+6. Approved eSIM hero image and existing support video preserved.
+
+Deployment safety:
+- Keep /home/resplend/rgts-payment-config.php outside public_html.
+- Test checkout only while Pesapal environment is sandbox.
+- No real eSIM provisioning exists in this release.

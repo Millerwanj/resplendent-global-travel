@@ -51,6 +51,12 @@ final class EsimCardClient
     }
 
     /** @return array<string,mixed> */
+    public function pricing(): array
+    {
+        return $this->request('GET', '/developer/reseller/pricing');
+    }
+
+    /** @return array<string,mixed> */
     public function countries(): array
     {
         return $this->request('GET', '/developer/reseller/packages/country');

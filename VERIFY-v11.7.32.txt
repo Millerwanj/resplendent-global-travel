@@ -1,0 +1,18 @@
+Resplendent Global Travel v11.7.32 verification
+
+eSIM page structure
+- The customer journey follows one top-to-bottom sequence: choose destination and plan, estimate data, confirm essentials, install, then watch the retained installation film.
+- The existing eSIM hero image, film, film poster and all other site media remain in the full build.
+- The former bottom-to-middle catalogue jump and the Request Data contact-page detour are not present.
+- Every dynamically rendered plan card carries the approved Resplendent R mark as a faint watermark.
+
+Live catalogue and pricing
+- Destination data is read from the supplier country catalogue.
+- Plans are requested from the selected country endpoint and each package is enriched from its package-detail endpoint before retail pricing is calculated.
+- Retail remains calculated server-side using the configured markup percentage.
+- The API refuses to publish three or more materially different plans when they resolve to one identical price; repeated $43.75 cards cannot be shown.
+- Versioned CSS, JavaScript and API filenames/queries provide cache-busting for this release.
+
+Regression protection
+- Approved destination, Masai Mara, Namibia, contact and international-page image mappings remain unchanged.
+- The full website tree, images, videos, administrative tools and integration code are included in the release ZIP.

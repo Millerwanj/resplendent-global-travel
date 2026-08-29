@@ -1,0 +1,20 @@
+Resplendent Global Travel v11.7.29 verification
+
+Approved image mapping
+- Destinations: Main area pool, Desert Homestead Lodge (exact supplied JPG).
+- Masai Mara detail and hub: LO Lodge walkway (exact supplied JPG).
+- Namibia detail and hub: quad bikes on the dunes (exact supplied JPG).
+- Contact: Ongava Lodge sunset dining view (exact supplied JPG).
+- Watamu, Serengeti, Virunga and Morocco hub images match their individual journey heroes.
+
+Cache protection
+- Updated image references use v11.7.29 cache keys or new versioned filenames.
+- eSIM catalogue JavaScript and API use new v11.7.29 filenames.
+- Browser and API fetch caching are disabled for catalogue responses.
+
+eSIM corrections
+- Bottom Request Coverage & Data Options action returns to the on-page catalogue.
+- Provider pricing endpoint remains authoritative.
+- Wholesale pricing prioritises reseller, wholesale, net and sale-price fields before generic price.
+- The configured retail markup remains server-side.
+- Firsty remains inactive pending API review.

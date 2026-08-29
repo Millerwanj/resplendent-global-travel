@@ -109,3 +109,12 @@ addresses are not stored.
 ## Pipeline logs
 
 The handler writes logs to `/home/resplend/rgts-logs/pipeline-YYYY-MM-DD.log`. Search the file for the reference shown after form submission, for example `RGTS-20260724-AB12`.
+
+
+## v11.8.0 — Instant Checkout & Workflow Edition (29 August 2026)
+- Built from the authoritative VS Code working copy supplied on 29 August 2026.
+- Adds isolated Instant Connectivity Checkout with Pesapal sandbox payment verification and simulated provisioning only.
+- Preserves provider abstraction for Firsty without inventing undocumented API behavior.
+- Reorders the eSIM journey: understand data needs, choose destination, compare plans, select plan, pre-travel checks, install eSIM.
+- Strengthens accepted quotation → invoice recovery by reading acceptance deliveries when document summaries are stale.
+- Keeps automatically generated linked invoices as Draft until reviewed and sent.

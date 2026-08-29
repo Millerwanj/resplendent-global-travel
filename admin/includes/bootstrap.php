@@ -129,3 +129,18 @@ function admin_take_flash(): ?array
     unset($_SESSION['rgts_admin_flash']);
     return is_array($flash) ? $flash : null;
 }
+
+function admin_payment_config_path(): string
+{
+    $configured = trim((string)(getenv('RGTS_PAYMENT_CONFIG') ?: ''));
+    return $configured !== '' ? $configured : dirname(__DIR__, 3) . '/rgts-payment-config.php';
+}
+
+/** @return array<string,mixed>|null */
+function admin_payment_config(): ?array
+{
+    $path = admin_payment_config_path();
+    if (!is_file($path)) return null;
+    $config = require $path;
+    return is_array($config) ? $config : null;
+}

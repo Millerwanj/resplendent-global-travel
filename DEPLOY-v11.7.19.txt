@@ -1,0 +1,12 @@
+Resplendent v11.7.19 — PAYMENT PAGE GREEN POLISH
+
+Upload this ZIP to public_html and extract to /public_html.
+Allow overwrite for payments.html only.
+
+Changes:
+- navy payment-page header changed to Resplendent green
+- ivory page background retained
+- green/bronze payment styling
+- friendlier non-payable invoice wording
+- removes Try Again for non-payable invoices
+- no backend or private config files included

@@ -1,3 +1,58 @@
+# v11.8.6 — eSIM premium flow + natural headers
+
+- Removed the redundant four-step summary/navigation bar above the actual eSIM journey.
+- Hero now reads “Stay connected... Over 200 countries covered.”
+- Preserved the verified eSIM hero image and positioning; no crop/position changes.
+- Retained four functional stages: Estimate data, Choose destination, Compare & select, Install your eSIM.
+- Retained the selected purple-blazer phone image in the middle of the journey.
+- Retained the approved installation/support video.
+- Removed fade/tint/colour/contrast processing from photographic headers, explicitly including Contact.
+- Future Roam component remains hidden pending provider confirmation.
+
+# v11.8.4 — eSIM page baseline preservation
+
+- Kept the approved airport eSIM hero image unchanged; corrected only CSS crop/positioning and overscan to eliminate the exposed right-edge strip.
+- Updated hero messaging to “Resplendent eSIM” and “SIMless connectivity.”
+- Restored a simple four-step journey: Estimate data → Choose destination → Compare & select → Install & connect.
+- Retained the existing approved eSIM support video.
+- Preserved the mid-page real-photo slot; preferred purple-blazer source image remains pending an original/licensed asset and is not fabricated.
+- Added a hidden, non-public Resplendent Roam choice component ready to activate after Firsty commercial/API terms are confirmed. No roaming claims are shown live yet.
+- Retained all v11.8 connectivity checkout, quotation/invoice and PesaPal work.
+
+# v11.8.3 — Premium compact eSIM page
+
+- Reduced eSIM experience to three practical steps only: Estimate Data, Choose Destination & Plan, Install & Connect.
+- Removed redundant long-form journey explanation and shortened section spacing.
+- Added a smaller real Pexels lifestyle image beside the final installation step.
+- Kept the approved airport hero image and existing Pexels 4105310 support video unchanged.
+- Corrected the hero to full-bleed coverage and right-weighted crop to eliminate the exposed right-edge strip.
+- Added v11.8.3 cache-busting to eSIM stylesheet and shared stylesheet references.
+- Preserved all existing payment, connectivity, quotation/invoice and sandbox integration work from the authoritative v11.8 baseline.
+
+## v11.8.2 — 2026-08-29
+- Simplified the eSIM customer journey from six steps to three practical steps.
+- Removed the separate Select Plan and Pre-travel Check sections; plan selection remains inside the live catalogue flow.
+- Combined destination selection and plan comparison into Step 02.
+- Made installation the final Step 03 and placed a smaller colourful real Pexels phone-call photograph beside it.
+- Reduced eSIM page copy and vertical length.
+- Corrected the approved airport hero crop toward the traveller/right and removed exposed dark edge/background strip.
+- Preserved the approved airport hero image and existing Pexels 4105310 support video unchanged.
+- Preserved v11.8.0 checkout, payment, quotation/invoice and connectivity integration work.
+
+## v11.8.1 — eSIM premium practical refinement
+- Preserved approved airport hero and existing support video.
+- Reduced eSIM copy and corrected Step 04 visual imbalance.
+- Added a mid-page real Pexels lifestyle image beside concise connectivity copy.
+- Retained the six-step data-first customer journey and v11.8.0 checkout/invoice integration work.
+
+# v11.8.0 — Instant Checkout & Workflow Edition (29 August 2026)
+
+- Rebased on the current VS Code working copy supplied by the user.
+- Added complete Instant Connectivity Checkout sandbox workflow.
+- Added robust accepted quotation-to-invoice recovery and preserved automatic draft-invoice creation.
+- Rebuilt the eSIM page into the approved six-step customer journey.
+- Preserved approved hero imagery and support video.
+
 
 ## v11.6.5 — eSIM Experience Refinement (23 August 2026)
 - Built from the supplied v11.6.4 Verpex Review baseline.
@@ -438,3 +493,12 @@
 - Added safe diagnostic details when the honeypot blocks a submission.
 - Updated Contact page cache-busting and visible release number to v9.5.1.
 - Preserved Zoho tokens, SMTP routing, analytics, SEO, design and all approved content.
+
+## v11.8.5 — eSIM premium four-step refinement + natural hero photography
+- Preserved the verified eSIM airport hero image and its current positioning; no further crop/position changes.
+- Removed green wash/fade and image colour processing from standard photographic hero headers; original colour is shown naturally.
+- eSIM hero now reads “Resplendent eSIM” / “SIMless connectivity.”
+- Restored the full four-step journey: Estimate data → Choose destination → Compare & select → Install your eSIM.
+- Moved the selected happy-on-phone lifestyle photograph into the middle of the journey beside destination selection.
+- Restored a concise, practical installation step and retained the existing approved Pexels 4105310 support video unchanged.
+- Kept the future Resplendent Roam component hidden until provider commercial/API terms are confirmed.

@@ -769,3 +769,17 @@ img { display: block; width: 100%; }
  .esim-page .esim-hero .hero-bg{object-position:62% 40% !important;}
  .esim-page .esim-hero::before{background:linear-gradient(180deg,rgba(7,13,14,.18) 0%,rgba(7,13,14,.22) 42%,rgba(7,13,14,.76) 100%) !important;}
 }
+
+/* v11.8.5 — natural hero photography: no colour wash, saturation, contrast or fade overlays. */
+.hero .hero-bg,
+.page-hero .hero-bg { filter:none !important; }
+.hero::before,
+.page-hero::before,
+.hero.soft-green::after,
+.page-hero.soft-green::after { display:none !important; }
+.hero-content { text-shadow:0 2px 18px rgba(0,0,0,.32); }
+
+
+/* v11.8.6 — natural photographic headers, including Contact. No fade, tint, colour or contrast processing. */
+.contact-hero::before,.contact-hero::after,.contact-hero.soft-green::after{display:none!important;background:none!important;}
+.contact-hero .hero-bg{filter:none!important;opacity:1!important;}

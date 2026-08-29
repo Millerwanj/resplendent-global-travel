@@ -1,0 +1,16 @@
+Resplendent Global Travel v11.7.30 verification
+
+International landing pages
+- German, French, Italian, Japanese and Chinese pages load a newly named international stylesheet.
+- The approved international hero uses a newly named image asset to bypass stale browser/CDN copies.
+- Hero photography has no filter, tint, pseudo-element overlay, opacity reduction or background blend.
+- The approved source image is copied byte-for-byte without colour processing.
+
+eSIM catalogue
+- The page loads a newly named v11.7.30 catalogue script.
+- The script calls a newly named v11.7.30 API endpoint with browser caching disabled.
+- API responses remain private and no-store.
+- Retail pricing prioritises reseller/wholesale/net/sale and nested USD prices before generic price.
+- The bottom data-options action remains on the eSIM catalogue rather than opening Contact.
+
+This release includes and preserves all verified v11.7.29 image mappings.

@@ -1,0 +1,19 @@
+Resplendent v11.7.18 — PAYMENT EXPERIENCE & RECEIPTS
+
+SAFE PATCH: no private configuration file is included.
+
+Deploy:
+1. Upload this ZIP into /home/resplend/public_html/
+2. Extract to /public_html and allow overwrite for included files only.
+3. KEEP /home/resplend/rgts-payment-config.php unchanged.
+4. KEEP enabled=false until merchant settlement/KYC is complete and credentials are rotated.
+
+Adds:
+- polished completed/pending/failed/cancelled payment experience
+- invoice-linked secure checkout page
+- verified-payment receipt page with Print / Save PDF
+- duplicate rapid-checkout protection
+- callback carries verified tracking reference to receipt
+- existing IPN/reconciliation/idempotency protections retained
+
+No bank details are required for this patch.

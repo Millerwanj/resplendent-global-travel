@@ -5,23 +5,23 @@ require_once __DIR__ . '/includes/layout.php';
 admin_require_auth();
 
 $store = admin_store();
-$quotations = array_values(array_filter($store->listDocuments(), static fn(array $document): bool =>
-    ($document['type'] ?? '') === 'quotation'
-    && ($document['lifecycle_status'] ?? 'active') !== 'superseded'
-    && ($document['delivery']['status'] ?? '') === 'accepted'
-    && empty($document['draft_invoice']['id'])
+$quotationIsAccepted = static function (OperationsStore $store, array $document): bool {
+    if (($document['type'] ?? '') !== 'quotation') return false;
+    if (($document['lifecycle_status'] ?? 'active') === 'superseded') return false;
+    if (!empty($document['draft_invoice']['id'])) return false;
+    if (($document['delivery']['status'] ?? '') === 'accepted') return true;
+    foreach ($store->listDocumentDeliveries((string)($document['id'] ?? '')) as $delivery) {
+        if (is_array($delivery) && ($delivery['status'] ?? '') === 'accepted') return true;
+    }
+    return false;
+};
+$quotations = array_values(array_filter(
+    $store->listDocuments(),
+    static fn(array $document): bool => $quotationIsAccepted($store, $document)
 ));
 $sourceId = admin_text($_GET['quotation'] ?? $_POST['source_quotation'] ?? '', 100);
 $source = $sourceId !== '' ? $store->getDocument($sourceId) : null;
-if (
-    $source
-    && (
-        ($source['type'] ?? '') !== 'quotation'
-        || ($source['lifecycle_status'] ?? 'active') === 'superseded'
-        || ($source['delivery']['status'] ?? '') !== 'accepted'
-        || !empty($source['draft_invoice']['id'])
-    )
-) {
+if ($source && !$quotationIsAccepted($store, $source)) {
     $source = null;
 }
 $sourcePayload = is_array($source['payload'] ?? null) ? $source['payload'] : [];

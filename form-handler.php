@@ -43,7 +43,10 @@ function redirect_result(string $status, string $reference = '', string $stage =
     $params = ['status' => $status];
     if ($reference !== '') $params['reference'] = $reference;
     if ($stage !== '') $params['stage'] = $stage;
-    header('Location: contact.html?' . http_build_query($params) . '#form-status', true, 303);
+    $returnTo = clean((string)($_POST['return_to'] ?? ''), 80);
+    $allowedReturns = ['esim-order.html'];
+    $target = in_array($returnTo, $allowedReturns, true) ? $returnTo : 'contact.html';
+    header('Location: ' . $target . '?' . http_build_query($params) . '#form-status', true, 303);
     exit;
 }
 
@@ -257,7 +260,9 @@ $labels = [
     'budget' => 'Approximate budget', 'interests' => 'Interests', 'country' => 'Country of residence', 'corporate_industry' => 'Corporate industry',
     'delegates' => 'Number of delegates', 'corporate_objective' => 'Corporate travel objective',
     'business_industry' => 'Business industry / sector', 'partner_profile' => 'Target partner profile',
-    'meeting_objective' => 'Meeting objective'
+    'meeting_objective' => 'Meeting objective',
+    'esim_package_id' => 'eSIM package ID', 'esim_package' => 'Selected eSIM package',
+    'esim_price' => 'Retail price', 'esim_destination_name' => 'eSIM destination'
 ];
 $details = [];
 foreach ($labels as $key => $label) {

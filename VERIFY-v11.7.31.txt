@@ -1,0 +1,16 @@
+Resplendent Global Travel v11.7.31 verification
+
+German landing page
+- All visible primary-navigation labels are German.
+- Signature Journeys is presented as Signature-Reisen.
+- Executive Mobility is presented as Mobilität für Führungskräfte.
+- Journal is presented as Reisemagazin.
+- Global Business Connections is presented as Internationale Geschäftskontakte.
+- Matching service-card and footer labels are translated consistently.
+
+eSIM price protection
+- The active customer page loads esim-catalog-v11730.js.
+- That script calls only esim-catalog-v11730.php with cache disabled.
+- Pricing prioritises reseller, wholesale, net, sale and nested USD pricing before generic price.
+- If three or more materially different plans resolve to one identical retail price, the API suppresses the misleading result instead of displaying repeated $43.75 cards.
+- Varied valid supplier prices continue through the configured server-side retail markup.

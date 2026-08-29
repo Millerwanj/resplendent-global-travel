@@ -1,0 +1,20 @@
+Resplendent Global Travel v11.7.28 consolidated verification
+
+Baseline
+- Built from the complete v11.7.27 HERO-LOAD-INTERNATIONAL-SIGNATURE-FIX release.
+- All non-eSIM v11.7.27 files are preserved byte-for-byte.
+
+Preserved visual corrections
+- International landing pages retain the v11.7.27 editorial hero treatment.
+- Destinations retain the approved destination imagery.
+- Signature Journeys retain the corrected collection/detail imagery mappings.
+- No supplied photography was regenerated or replaced.
+
+eSIM integration
+- Private eSIMCARD sandbox operations files are included.
+- Customer-facing catalogue uses the provider pricing endpoint.
+- Retail prices are calculated server-side with the configured markup.
+- Catalogue responses use no-store caching while pricing is being validated.
+- Coverage CTA links directly to the on-page eSIM catalogue.
+- eSIMCARD adapter is active; Firsty adapter remains inactive pending API review.
+- Payment and automatic provisioning remain disabled.

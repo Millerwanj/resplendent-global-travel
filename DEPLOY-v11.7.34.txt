@@ -1,0 +1,13 @@
+Resplendent Global Travel v11.7.34 — PESAPAL DUAL ENVIRONMENT
+
+1. Upload this build to public_html as usual.
+2. DO NOT upload credentials into public_html.
+3. Edit only /home/resplend/rgts-payment-config.php.
+4. Preserve the existing LIVE key, secret and notification ID in the live block.
+5. Add PesaPal Kenya TEST credentials to the sandbox block.
+6. Set environment => 'sandbox'. Keep enabled => false while registering the sandbox IPN.
+7. Open /admin/pesapal-sandbox.php and click Register Sandbox IPN.
+8. Copy the returned ipn_id into sandbox notification_id.
+9. Only after that, set enabled => true for the controlled sandbox payment test.
+
+The provider remains backwards compatible with the old flat config while supporting separate sandbox/live credentials.

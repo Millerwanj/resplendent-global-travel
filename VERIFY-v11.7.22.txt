@@ -1,0 +1,17 @@
+Resplendent Global Travel Solutions — v11.7.22 VERIFIED IMAGE BUILD
+
+IMAGE MAPPING
+- destinations.html -> assets/images/hero/premium-refresh/destinations.webp (Kwessi Dunes)
+- journal-namibia.html -> assets/images/hero/premium-refresh/namibia.webp (quad bikes)
+- signature-journey-masai-mara.html -> assets/images/hero/premium-refresh/mara.webp (lodge walkway)
+- contact.html -> assets/images/hero/premium-refresh/contact.webp (Ongava sunset dining)
+- zh/ja/de/fr/it -> assets/images/hero/premium-refresh/international.webp (Mokuti pool/lodge)
+- esim.html -> assets/images/hero/premium-refresh/esim.webp (same approved airport traveller, normalized)
+
+UNIFORM IMAGE DIMENSIONS
+All six premium hero WEBP files are exactly 1800 x 1100 px.
+Targeted desktop hero rendering is aligned to clamp(520px, 60vh, 620px).
+
+PAYMENTS
+v11.7.18 payment experience patch and v11.7.19 green payment-page polish were applied before photography changes.
+Photography changes do not alter payment PHP/HTML implementation files.

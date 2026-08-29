@@ -63,7 +63,7 @@ final class OfferRouter
     {
         $providerId = trim((string)($raw['id'] ?? $raw['package_type_id'] ?? ''));
         $name = trim((string)($raw['name'] ?? ''));
-        $wholesale = (float)($raw['price'] ?? 0);
+        $wholesale = $this->wholesalePrice($raw);
         if ($providerId === '' || $name === '' || $wholesale <= 0) return null;
 
         $dataQuantity = (float)($raw['data_quantity'] ?? 0);
@@ -88,5 +88,34 @@ final class OfferRouter
             'currency' => 'USD',
             'scope' => strtolower(trim((string)($raw['scope'] ?? 'local'))),
         ];
+    }
+
+    /** @param array<string,mixed> $raw */
+    private function wholesalePrice(array $raw): float
+    {
+        foreach (['reseller_price', 'wholesale_price', 'net_price', 'sale_price'] as $field) {
+            if (isset($raw[$field]) && is_numeric($raw[$field]) && (float)$raw[$field] > 0) {
+                return (float)$raw[$field];
+            }
+        }
+
+        foreach (['pricing', 'prices', 'cost'] as $container) {
+            $value = $raw[$container] ?? null;
+            if (is_numeric($value) && (float)$value > 0) return (float)$value;
+            if (!is_array($value)) continue;
+            foreach (['USD', 'usd', 'reseller_price', 'wholesale_price', 'net_price', 'price', 'amount'] as $field) {
+                if (isset($value[$field]) && is_numeric($value[$field]) && (float)$value[$field] > 0) {
+                    return (float)$value[$field];
+                }
+            }
+        }
+
+        foreach (['price', 'amount'] as $field) {
+            if (isset($raw[$field]) && is_numeric($raw[$field]) && (float)$raw[$field] > 0) {
+                return (float)$raw[$field];
+            }
+        }
+
+        return 0.0;
     }
 }

@@ -1,0 +1,11 @@
+Resplendent Global Travel v11.7.27 verification
+- International landing pages exempted from 520–620px internal hero lock; restored to 92svh editorial hero.
+- No filters, colour grading, contrast processing or opacity changes on supplied hero photography.
+- Homepage keeps a neutral readability fade only; image pixels remain untouched.
+- Destinations hero references the original user-supplied Desert Homestead JPG and file is present.
+- eSIM hero references an existing approved airport traveller WebP and file is present.
+- Signature Journeys collection now mirrors corresponding detail-page hero imagery for Mara, Watamu, Serengeti, Morocco and Namibia.
+- Virungas collection/detail imagery intentionally remains different per instruction.
+- Namibia collection image is quad bikes, matching Namibia detail hero.
+- CSS cache version bumped to 11.7.27.
+- Payment files were not modified.
