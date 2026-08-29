@@ -20,9 +20,9 @@ admin_page_header('Operations Overview', 'dashboard');
 <section class="metric-grid" aria-label="Operations summary">
     <article><span>Active clients</span><strong><?= count($activeClients) ?></strong><small>Across the engagement workflow</small></article>
     <article><span>New enquiries</span><strong><?= count(array_filter($clients, static fn(array $c): bool => ($c['status'] ?? '') === 'New Enquiry')) ?></strong><small>Ready for initial review</small></article>
-    <article><span>Proposals</span><strong><?= $proposalCount ?></strong><small>Generated in v9.6</small></article>
-    <article><span>Quotations</span><strong><?= $quotationCount ?></strong><small>Generated in v9.6</small></article>
-    <article><span>Invoices</span><strong><?= $invoiceCount ?></strong><small>Issued and payment-tracked</small></article>
+    <a class="metric-card-link" href="documents.php?type=proposal"><article><span>Proposals</span><strong><?= $proposalCount ?></strong><small>Open generated proposals</small></article></a>
+    <a class="metric-card-link" href="documents.php?type=quotation"><article><span>Quotations</span><strong><?= $quotationCount ?></strong><small>Open and move approved quotations forward</small></article></a>
+    <a class="metric-card-link" href="documents.php?type=invoice"><article><span>Invoices</span><strong><?= $invoiceCount ?></strong><small>Open invoices and payment status</small></article></a>
 </section>
 
 <section class="quick-actions">
