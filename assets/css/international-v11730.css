@@ -61,3 +61,111 @@
 @media(max-width:700px){
   .international-page .hero-international{min-height:92svh !important;height:auto !important;padding:150px 0 78px !important;background-position:64% center !important;}
 }
+
+
+/* v11.9.1 — international natural hero baseline.
+   Chinese-page larger editorial dimensions retained across ZH/JA/DE/FR/IT.
+   Exact supplied image; no filter/tint/overlay/contrast/saturation changes. */
+.international-page .hero-international{
+  min-height:92svh !important;
+  height:auto !important;
+  padding:150px 0 92px !important;
+  background-image:url("../images/hero/approved/international-lodge-natural-2026.jpg") !important;
+  background-size:cover !important;
+  background-position:center 50% !important;
+  background-repeat:no-repeat !important;
+  filter:none !important;
+  opacity:1 !important;
+  background-blend-mode:normal !important;
+}
+.international-page .hero-international::before,
+.international-page .hero-international::after{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+.international-page .hero-international .eyebrow{
+  font-size:.69rem !important;
+  line-height:1.2 !important;
+  letter-spacing:.15em !important;
+}
+.international-page .hero-international .actions{
+  gap:14px !important;
+  margin-top:30px !important;
+}
+.international-page .hero-international .actions .button{
+  min-height:52px !important;
+  padding-left:30px !important;
+  padding-right:30px !important;
+  font-size:.71rem !important;
+}
+@media(max-width:980px){
+  .international-page .hero-international{
+    min-height:90svh !important;
+    background-position:58% center !important;
+  }
+}
+@media(max-width:700px){
+  .international-page .hero-international{
+    min-height:92svh !important;
+    padding:150px 0 78px !important;
+    background-position:64% center !important;
+  }
+}
+
+
+/* v11.9.3 — exact international landing-page size lock.
+   Reference: Chinese international landing page baseline.
+   ZH / JA / DE / FR / IT all use exactly the same hero dimensions.
+   No changes to image contrast, saturation, brightness, opacity or colour. */
+.international-page .hero-international{
+  min-height:92svh !important;
+  height:92svh !important;
+  box-sizing:border-box !important;
+  padding:150px 0 92px !important;
+  background-image:url("/assets/images/hero/approved/international-lodge-natural-2026.jpg?v=11.9.3") !important;
+  background-size:cover !important;
+  background-position:center 50% !important;
+  background-repeat:no-repeat !important;
+  filter:none !important;
+  opacity:1 !important;
+  background-blend-mode:normal !important;
+  overflow:hidden !important;
+}
+/* Preserve the already-approved natural hero treatment. */
+.international-page .hero-international::before,
+.international-page .hero-international::after{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+/* Slightly brighter international header labels only. */
+.international-page .site-header .primary-nav a{
+  color:rgba(255,255,255,1) !important;
+  opacity:1 !important;
+  text-shadow:0 1px 8px rgba(0,0,0,.42) !important;
+}
+@media(hover:hover){
+  .international-page .site-header .primary-nav a:hover{
+    color:#fff !important;
+    opacity:1 !important;
+    text-shadow:0 1px 11px rgba(0,0,0,.58) !important;
+  }
+}
+@media(max-width:980px){
+  .international-page .hero-international{
+    min-height:90svh !important;
+    height:90svh !important;
+    background-position:58% center !important;
+  }
+}
+@media(max-width:700px){
+  .international-page .hero-international{
+    min-height:92svh !important;
+    height:92svh !important;
+    padding:150px 0 78px !important;
+    background-position:64% center !important;
+  }
+}

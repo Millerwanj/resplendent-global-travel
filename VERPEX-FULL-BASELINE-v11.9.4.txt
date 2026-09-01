@@ -1,0 +1,16 @@
+RESPLENDENT GLOBAL TRAVEL SOLUTIONS — FULL VERPEX BASELINE v11.9.4
+2026-09-01
+
+COMPLETE BUILD — NOT A PATCH.
+Built directly from user-approved FULL Verpex baseline v11.9.3.
+
+LOCKED SCOPE OF CHANGE:
+1. eSIM purchase interface only: premium destination search, popular destination shortcuts and balanced plan cards.
+2. eSIM customer journey now reads: Destination → Plan → Your details → Review & pay → eSIM ready.
+3. Customer details stage adds required email confirmation and clearly identifies email as the eSIM delivery address.
+4. Mobile / WhatsApp is optional for eSIM orders only; all other website form validation remains unchanged.
+5. API failure states are softened so temporary catalogue issues do not dominate the page.
+6. Existing approved eSIM hero image, supporting image, video, site navigation, typography, palette and all non-eSIM pages are unchanged.
+7. Live payment activation remains separate and can be connected once merchant/bank activation is complete.
+
+ALL OTHER WEBSITE DESIGN AND CONTENT IS LOCKED AND CARRIED FORWARD FROM v11.9.3.

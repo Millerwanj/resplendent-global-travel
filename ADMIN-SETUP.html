@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Resplendent v10.8.1 Admin Setup | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Resplendent v10.8.1 Admin Setup" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/ADMIN-SETUP.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/ADMIN-SETUP.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Resplendent v10.8.1 Admin Setup" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Resplendent v10.8.1 Admin Setup","url":"https://millerwanj.github.io/resplendent-global-travel/ADMIN-SETUP.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="resplendent-v1081-admin-setup">Resplendent v10.8.1 Admin Setup</h1>
+
+<p>This file is private. Do not publish it separately or share its setup token.</p>
+
+<h2 id="first-sign-in">First sign-in</h2>
+
+<ol>
+  <li>Deploy the complete v10.8.1 package to <code class="language-plaintext highlighter-rouge">public_html</code>.</li>
+  <li>Visit <code class="language-plaintext highlighter-rouge">https://www.resplendentglobaltravel.com/admin/</code>.</li>
+  <li>
+    <p>Enter this one-time setup token:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">281af373040dc162b1411ac9e452e51b</code></p>
+  </li>
+  <li>Create the administrator email and a strong password of at least 12 characters.</li>
+  <li>Store that password securely.</li>
+</ol>
+
+<p>The setup page creates <code class="language-plaintext highlighter-rouge">/home/resplend/rgts-admin-config.php</code> outside
+<code class="language-plaintext highlighter-rouge">public_html</code>. Once the account exists, the setup token cannot be used again.</p>
+
+<h2 id="manual-fallback">Manual fallback</h2>
+
+<p>If the first-time setup page reports that it cannot write the private file,
+create <code class="language-plaintext highlighter-rouge">/home/resplend/rgts-admin-config.php</code> through cPanel and paste:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">'display_name'</span> <span class="o">=&gt;</span> <span class="s1">'Resplendent Team'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'YOUR-ADMIN-EMAIL'</span><span class="p">,</span>
+    <span class="s1">'password_hash'</span> <span class="o">=&gt;</span> <span class="s1">'PASTE-A-PHP-PASSWORD-HASH-HERE'</span><span class="p">,</span>
+    <span class="s1">'created_at'</span> <span class="o">=&gt;</span> <span class="s1">'2026-07-25T00:00:00Z'</span><span class="p">,</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>Generate the password hash using cPanel Terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php <span class="nt">-r</span> <span class="s2">"echo password_hash('YOUR-STRONG-PASSWORD', PASSWORD_DEFAULT), PHP_EOL;"</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

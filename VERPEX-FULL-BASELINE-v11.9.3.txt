@@ -1,0 +1,15 @@
+RESPLENDENT GLOBAL TRAVEL SOLUTIONS — FULL VERPEX BASELINE v11.9.3
+2026-08-30
+
+COMPLETE BUILD — NOT A PATCH.
+
+Built directly from FULL v11.9.1.
+
+ONLY CHANGES:
+1. Homepage restored exactly to the v11.9.1 homepage, with ONLY "SIMless Travel" added beneath the brand subtitle.
+2. All five international landing pages use the exact Chinese-page hero size:
+   desktop 92svh, tablet 90svh, mobile 92svh.
+3. International header navigation labels are slightly brighter, with a brighter hover state.
+4. Exact approved international lodge/desert image retained with no contrast, saturation, brightness or colour change.
+
+EVERYTHING ELSE IS LOCKED AND CARRIED FORWARD FROM v11.9.1.

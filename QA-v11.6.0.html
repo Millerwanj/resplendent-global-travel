@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA — v11.6.0 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="QA — v11.6.0" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/QA-v11.6.0.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/QA-v11.6.0.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA — v11.6.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"QA — v11.6.0","url":"https://millerwanj.github.io/resplendent-global-travel/QA-v11.6.0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="qa--v1160">QA — v11.6.0</h1>
+
+<p>Date: 22 August 2026</p>
+
+<h2 id="automated-checks">Automated checks</h2>
+
+<ul>
+  <li>41 public HTML files scanned.</li>
+  <li>0 missing local page, image, video, stylesheet or script references.</li>
+  <li>0 invalid JSON-LD blocks.</li>
+  <li>Front-end JavaScript syntax validated with Node.</li>
+  <li><code class="language-plaintext highlighter-rouge">vercel.json</code> parsed successfully.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --check</code> passed with no whitespace errors.</li>
+</ul>
+
+<h2 id="architecture-checks">Architecture checks</h2>
+
+<ul>
+  <li>Primary navigation: Home, Destinations, Signature Journeys, Executive Mobility, eSIM, Journal and About.</li>
+  <li>Contact remains available in the mobile menu and enquiry buttons.</li>
+  <li>Global Business Connections remains accessible contextually and from new-page footers.</li>
+  <li><code class="language-plaintext highlighter-rouge">/corporate</code> and <code class="language-plaintext highlighter-rouge">/concierge</code>, with and without <code class="language-plaintext highlighter-rouge">.html</code>, permanently redirect to <code class="language-plaintext highlighter-rouge">/executive-mobility</code>.</li>
+  <li>Sitemap contains <code class="language-plaintext highlighter-rouge">/executive-mobility</code> and <code class="language-plaintext highlighter-rouge">/esim</code> and excludes the retired service URLs.</li>
+  <li>Chinese, Japanese, German, French and Italian pages each contain localized links to Signature Journeys, Executive Mobility, eSIM, the Journal and Global Business Connections.</li>
+</ul>
+
+<h2 id="functional-checks">Functional checks</h2>
+
+<ul>
+  <li>eSIM enquiry aliases resolve to the existing server-side value.</li>
+  <li>eSIM enquiries route to the Bookings mailbox rather than failing validation.</li>
+  <li>Existing executive mobility, eSIM and business films remain click-to-play with <code class="language-plaintext highlighter-rouge">preload="none"</code>.</li>
+  <li>Hero images declare dimensions and priority; below-fold images use lazy loading where suitable.</li>
+  <li>The new international hero is delivered as a 97 KB WebP with a JPEG fallback and is preloaded on each localized landing page.</li>
+</ul>
+
+<h2 id="deployment-note">Deployment note</h2>
+
+<p>PHP CLI was not available in the build workspace, so server-side syntax must also be confirmed by the Verpex PHP runtime during staging. The <code class="language-plaintext highlighter-rouge">form-handler.php</code> change is limited to existing routing and allow-list arrays plus acknowledgement branding.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

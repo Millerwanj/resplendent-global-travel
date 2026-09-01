@@ -207,11 +207,12 @@ $service = clean((string)($_POST['service'] ?? ''), 80);
 $message = limit_text(trim(strip_tags((string)($_POST['message'] ?? ''))), 6000);
 $consent = isset($_POST['consent']);
 
-if ($name === '' || !$email || $phone === '' || $service === '' || $message === '' || !$consent) {
+$isEsimOrder = $service === 'eSIM / Travel Connectivity';
+if ($name === '' || !$email || (!$isEsimOrder && $phone === '') || $service === '' || $message === '' || !$consent) {
     pipeline_log($reference, 'validation', 'failed', ['reason' => 'missing_or_invalid_required_field']);
     redirect_result('error', $reference, 'validation');
 }
-if (!preg_match('/^[+()0-9\s.\-]{7,24}$/', $phone)) {
+if ($phone !== '' && !preg_match('/^[+()0-9\s.\-]{7,24}$/', $phone)) {
     pipeline_log($reference, 'validation', 'failed', ['reason' => 'invalid_phone']);
     redirect_result('error', $reference, 'validation');
 }

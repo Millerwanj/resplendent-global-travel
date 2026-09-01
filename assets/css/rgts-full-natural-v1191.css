@@ -1,0 +1,106 @@
+/* RGTS Full Verpex baseline v11.9.1 — 2026-08-30
+   Homepage deliberately excluded by not loading this stylesheet in index.html.
+   Photography: natural source colour only. No tint, wash, saturation or contrast processing.
+*/
+
+/* Permanent header brand extension */
+.site-header .brand-copy::after,
+.site-header .brand-lockup > span::after{
+  content:"SIMless Travel";
+  display:block;
+  margin-top:3px;
+  font-family:Inter,"Avenir Next",Avenir,"Segoe UI",Arial,sans-serif;
+  font-size:7px;
+  line-height:1.15;
+  letter-spacing:.10em;
+  font-weight:400;
+  text-transform:none;
+  opacity:.96;
+  white-space:nowrap;
+}
+.site-header{
+  min-height:104px;
+}
+.site-header .brand-copy{
+  gap:2px;
+}
+
+/* Uniform regular internal image-header size. */
+.page-hero{
+  min-height:70vh !important;
+  height:70vh !important;
+  overflow:hidden !important;
+}
+.page-hero .hero-bg{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  filter:none !important;
+  opacity:1 !important;
+  mix-blend-mode:normal !important;
+}
+
+/* Natural photographs: remove historical colour washes / filters from image headers. */
+.page-hero::before,
+.page-hero::after,
+.page-hero.soft-green::before,
+.page-hero.soft-green::after{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+  opacity:0 !important;
+  mix-blend-mode:normal !important;
+}
+.page-hero .hero-overlay{
+  background:transparent !important;
+}
+
+/* Signature-journey detail headers belong to the same regular internal standard. */
+.signature-journey-hero{
+  min-height:70vh !important;
+  height:70vh !important;
+  background-size:cover !important;
+  filter:none !important;
+}
+.signature-journey-hero-overlay{
+  background:transparent !important;
+}
+
+/* Preserve focal subjects page-by-page. */
+.esim-page .esim-hero .hero-bg{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  object-position:64% 40% !important;
+  transform:none !important;
+  filter:none !important;
+}
+.destinations-hero .hero-bg{
+  object-position:62% 48% !important;
+  filter:none !important;
+}
+.contact-hero .hero-bg{object-position:center 52% !important;}
+.about-hero .hero-bg{object-position:center 42% !important;}
+.signature-collection-hero .hero-bg{object-position:center 78% !important;}
+.journal-hero .hero-bg{object-position:center center !important;filter:none !important;}
+
+/* Text remains legible without altering the photo itself. */
+.page-hero .hero-content,
+.page-hero .container,
+.signature-journey-hero-content{
+  text-shadow:0 2px 12px rgba(0,0,0,.32);
+}
+
+/* Mobile uses the same visual system while protecting principal subjects. */
+@media(max-width:700px){
+  .page-hero,
+  .signature-journey-hero{
+    min-height:520px !important;
+    height:520px !important;
+  }
+  .destinations-hero .hero-bg{object-position:66% 48% !important;}
+  .esim-page .esim-hero .hero-bg{object-position:70% 40% !important;}
+}
