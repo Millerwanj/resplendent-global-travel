@@ -3,3 +3,17 @@ Thumbs.db
 .vscode/
 node_modules/
 .env
+
+docs/RELEASE-*.html
+docs/SMTP-SETUP-*.html
+docs/VERIFICATION-*.html
+docs/VERPEX-DEPLOYMENT-*.html
+docs/QA-*.html
+docs/DEPLOYMENT*.html
+docs/DOMAIN-AND-EMAIL-MIGRATION.html
+docs/IMAGE-CREDITS.html
+docs/LAUNCH-*.html
+docs/PAYMENT-ARCHITECTURE-*.html
+docs/PRICING-POLICY-*.html
+docs/API-BACKEND-*.html
+docs/BRAND-GUIDE.html
