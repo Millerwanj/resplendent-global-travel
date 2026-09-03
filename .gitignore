@@ -17,3 +17,13 @@ docs/PAYMENT-ARCHITECTURE-*.html
 docs/PRICING-POLICY-*.html
 docs/API-BACKEND-*.html
 docs/BRAND-GUIDE.html
+
+# Local deployment and server-generated files
+*.bak-*
+**/error_log
+VERIFY-v*.txt
+VERPEX-FULL-BASELINE-v*.txt
+docs/QA-*.md
+docs/RELEASE-*.md
+docs/VERPEX-DEPLOYMENT-*.html
+yandex_*.html

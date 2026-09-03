@@ -10,6 +10,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, private');
 header('X-Content-Type-Options: nosniff');
 header('Access-Control-Allow-Origin: https://www.resplendentglobaltravel.com');
+ini_set('serialize_precision', '-1');
 
 function catalogue_response(int $status, array $payload): never
 {

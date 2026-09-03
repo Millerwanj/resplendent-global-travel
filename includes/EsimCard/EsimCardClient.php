@@ -5,6 +5,7 @@ namespace Resplendent\EsimCard;
 
 use InvalidArgumentException;
 use RuntimeException;
+use Throwable;
 
 final class EsimCardClient
 {
@@ -13,6 +14,7 @@ final class EsimCardClient
     private string $password;
     private int $timeout;
     private ?string $token = null;
+    private string $pricingCacheFile;
 
     /** @param array<string,mixed> $config */
     public function __construct(array $config)
@@ -29,8 +31,11 @@ final class EsimCardClient
         $this->email = trim((string)($config['email'] ?? ''));
         $this->password = (string)($config['password'] ?? '');
         $this->timeout = max(5, min(45, (int)($config['timeout'] ?? 20)));
+        $apiToken = trim((string)($config['api_token'] ?? ''));
+        $this->token = $apiToken !== '' ? $apiToken : null;
+        $this->pricingCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-pricing-' . $environment . '.json';
 
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL) || $this->password === '') {
+        if ($this->token === null && (!filter_var($this->email, FILTER_VALIDATE_EMAIL) || $this->password === '')) {
             throw new RuntimeException('eSIMCard credentials are not configured.');
         }
         if (!str_starts_with($this->baseUrl, 'https://')) {
@@ -53,7 +58,18 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function pricing(): array
     {
-        return $this->request('GET', '/developer/reseller/pricing');
+        $cached = $this->readPricingCache(21600);
+        if ($cached !== null) return $cached;
+
+        try {
+            $response = $this->request('GET', '/developer/reseller/pricing');
+            $this->writePricingCache($response);
+            return $response;
+        } catch (Throwable $error) {
+            $stale = $this->readPricingCache(604800);
+            if ($stale !== null) return $stale;
+            throw $error;
+        }
     }
 
     /** @return array<string,mixed> */
@@ -65,8 +81,10 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function packagesByCountry(string $countryId, string $packageType = 'DATA-ONLY'): array
     {
-        $path = '/developer/reseller/packages/country/' . rawurlencode($this->identifier($countryId)) . '/' . rawurlencode($this->packageType($packageType));
-        return $this->request('GET', $path);
+        $countryId = trim($countryId);
+        if (!preg_match('/^\d{1,10}$/', $countryId)) throw new InvalidArgumentException('Invalid country identifier.');
+        $path = '/developer/reseller/packages/country/' . rawurlencode($countryId);
+        return $this->request('GET', $path, ['package_type' => $this->packageType($packageType)]);
     }
 
     /** @return array<string,mixed> */
@@ -175,5 +193,31 @@ final class EsimCardClient
         $value = strtoupper(trim($value));
         if (!in_array($value, ['DATA-ONLY', 'DATA-VOICE-SMS'], true)) throw new InvalidArgumentException('Invalid package type.');
         return $value;
+    }
+
+    /** @return array<string,mixed>|null */
+    private function readPricingCache(int $maximumAge): ?array
+    {
+        if (!is_file($this->pricingCacheFile)) return null;
+        $modified = filemtime($this->pricingCacheFile);
+        if ($modified === false || $modified < time() - $maximumAge) return null;
+        $raw = file_get_contents($this->pricingCacheFile);
+        if (!is_string($raw) || $raw === '') return null;
+        $decoded = json_decode($raw, true);
+        return is_array($decoded) ? $decoded : null;
+    }
+
+    /** @param array<string,mixed> $response */
+    private function writePricingCache(array $response): void
+    {
+        try {
+            $encoded = json_encode($response, JSON_THROW_ON_ERROR);
+            $temporary = $this->pricingCacheFile . '.tmp-' . bin2hex(random_bytes(4));
+            if (file_put_contents($temporary, $encoded, LOCK_EX) === false) return;
+            chmod($temporary, 0600);
+            if (!rename($temporary, $this->pricingCacheFile)) unlink($temporary);
+        } catch (Throwable $error) {
+            error_log('[RGTS eSIM catalogue] Pricing cache could not be refreshed.');
+        }
     }
 }

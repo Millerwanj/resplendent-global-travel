@@ -41,23 +41,27 @@ final class EsimCardAdapter implements ProviderAdapterInterface
 
     public function offers(string $destinationId): array
     {
-        $response = $this->client->packagesByCountry($destinationId, 'DATA-ONLY');
-        $packages = $this->listItems($response);
-        $offers = [];
-        foreach ($packages as $package) {
-            if (!is_array($package)) continue;
-            $packageId = trim((string)($package['id'] ?? $package['package_type_id'] ?? ''));
-            if ($packageId !== '') {
-                try {
-                    $detail = $this->objectData($this->client->package($packageId));
-                    if ($detail !== []) $package = array_replace_recursive($package, $detail);
-                } catch (\Throwable $error) {
-                    error_log('[RGTS eSIM catalogue] Package detail unavailable for ' . substr($packageId, 0, 12) . '.');
-                }
-            }
-            $offers[] = $package;
+        $countryName = '';
+        foreach ($this->countryItems() as $country) {
+            if (!is_array($country)) continue;
+            if ((string)($country['id'] ?? $country['country_id'] ?? '') !== $destinationId) continue;
+            $countryName = trim((string)($country['name'] ?? $country['country'] ?? ''));
+            break;
         }
-        return $offers;
+        if ($countryName === '') return [];
+
+        $response = $this->client->pricing();
+        $data = $response['data'] ?? $response;
+        $countries = is_array($data) ? ($data['countries'] ?? []) : [];
+        if (!is_array($countries)) return [];
+        foreach ($countries as $country) {
+            if (!is_array($country)) continue;
+            $pricingCountryName = trim((string)($country['name'] ?? $country['country'] ?? ''));
+            if (strcasecmp($pricingCountryName, $countryName) !== 0) continue;
+            $packages = $country['packages'] ?? [];
+            return is_array($packages) ? array_values(array_filter($packages, 'is_array')) : [];
+        }
+        return [];
     }
 
     /** @return array<int,array<string,mixed>> */
