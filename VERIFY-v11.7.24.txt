@@ -1,0 +1,9 @@
+v11.7.24 verification
+- Homepage restored to previous established home hero asset
+- Destinations -> user-shared Desert Homestead pool sunset image
+- Namibia Signature Journey -> user-shared Kwessi Dunes lodge image
+- International zh/ja/de/fr/it -> user-shared Mokuti pool/lodge image with versioned filenames
+- eSIM hero remains approved airport traveller and uniform geometry
+- Site-wide hero/header label contrast strengthened without image fade
+- styles and hero references cache-busted to 11.7.24
+- Payment system preserved from 11.7.23 baseline

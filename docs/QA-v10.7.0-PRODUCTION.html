@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Production QA — v10.7.0 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Production QA — v10.7.0" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.7.0-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.7.0-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Production QA — v10.7.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Production QA — v10.7.0","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.7.0-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="production-qa--v1070">Production QA — v10.7.0</h1>
+
+<h2 id="required-checks">Required checks</h2>
+
+<ul>
+  <li>HTML structure, unique titles, descriptions, canonicals and one visible H1.</li>
+  <li>JSON-LD parses on all five new pages, the three Signature Journey pages and
+the updated Journal pages.</li>
+  <li>Every sitemap URL resolves to a production HTML source file.</li>
+  <li>Every local image, stylesheet and script reference exists.</li>
+  <li>Public internal links use clean canonical URLs.</li>
+  <li>Legacy <code class="language-plaintext highlighter-rouge">.html</code> and non-<code class="language-plaintext highlighter-rouge">www</code> requests remain covered by Verpex redirects.</li>
+  <li>Desktop, tablet and mobile layouts retain the approved Resplendent design.</li>
+  <li>Contact form field names, handler, Zoho mapping and acknowledgement pipeline
+remain unchanged.</li>
+  <li>Admin, proposal, quotation, invoice and PDF implementation files remain
+functionally unchanged.</li>
+</ul>
+
+<h2 id="final-results--10-august-2026">Final results — 10 August 2026</h2>
+
+<ul>
+  <li>31 sitemap URLs checked; every route maps to a release source file.</li>
+  <li>35 HTML files checked; zero metadata, canonical, H1, JSON-LD, local-link or
+local-asset errors.</li>
+  <li>HTMLHint checked all 35 HTML files; zero errors.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --check</code> passed with zero whitespace errors.</li>
+  <li>No public internal <code class="language-plaintext highlighter-rouge">.html</code> links remain.</li>
+  <li><code class="language-plaintext highlighter-rouge">styles.css</code>, <code class="language-plaintext highlighter-rouge">assets/css/main.css</code>, <code class="language-plaintext highlighter-rouge">assets/css/signature-journeys.css</code>,
+<code class="language-plaintext highlighter-rouge">assets/js/app.js</code> and <code class="language-plaintext highlighter-rouge">assets/js/site-config.js</code> are byte-for-byte identical
+to the approved live v10.6 production assets. This preserves the current
+typography, colour system, spacing, components and responsive behaviour.</li>
+  <li><code class="language-plaintext highlighter-rouge">admin/</code>, <code class="language-plaintext highlighter-rouge">includes/</code> and <code class="language-plaintext highlighter-rouge">form-handler.php</code> have no release diff.</li>
+  <li>The only change in <code class="language-plaintext highlighter-rouge">accept.php</code> is its public Terms link moving from the
+legacy <code class="language-plaintext highlighter-rouge">.html</code> URL to the existing clean canonical route.</li>
+  <li>PHP linting was unavailable in the packaging environment; PHP application
+logic was therefore protected through direct release-diff verification.</li>
+</ul>
+
+<p>Status: <strong>PASS — ready for Verpex deployment packaging.</strong></p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

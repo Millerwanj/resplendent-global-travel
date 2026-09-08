@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Payment architecture — v10.8 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Payment architecture — v10.8" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/PAYMENT-ARCHITECTURE-v10.8.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/PAYMENT-ARCHITECTURE-v10.8.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Payment architecture — v10.8" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Payment architecture — v10.8","url":"https://millerwanj.github.io/resplendent-global-travel/docs/PAYMENT-ARCHITECTURE-v10.8.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="payment-architecture--v108">Payment architecture — v10.8</h1>
+
+<h2 id="current-position">Current position</h2>
+
+<p>RTGS bank transfer remains the preferred live payment method. The website does
+not claim that online or contactless checkout is active until a provider has
+approved the merchant account, issued credentials and passed production tests.</p>
+
+<h2 id="provider-neutral-design">Provider-neutral design</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PaymentProviderInterface</code> defines checkout, notification parsing and
+server-to-server verification for any online provider.</li>
+  <li><code class="language-plaintext highlighter-rouge">PaymentCoordinator</code> selects an enabled adapter from private configuration.</li>
+  <li>Provider credentials remain outside <code class="language-plaintext highlighter-rouge">public_html</code> in
+<code class="language-plaintext highlighter-rouge">/home/resplend/rgts-payment-config.php</code>.</li>
+  <li>The operations store records a small, idempotent transaction ledger using
+provider references. It does not store card numbers, PINs or raw payloads.</li>
+  <li>Physical contactless terminals remain a separate channel. Staff can reconcile
+their provider reference against the Resplendent invoice; a terminal API can
+use the same ledger later.</li>
+</ul>
+
+<h2 id="non-negotiable-verification-rules">Non-negotiable verification rules</h2>
+
+<ol>
+  <li>Amount, currency and invoice reference come from the server-side invoice.</li>
+  <li>Callback or notification parameters are references, not proof of payment.</li>
+  <li>The provider adapter must query the provider server for transaction status.</li>
+  <li>Only a completed, verified transaction may update an invoice.</li>
+  <li>The idempotency key prevents repeated callbacks from double-crediting it.</li>
+  <li>A payment receipt does not confirm supplier space, permits or ticketing;
+confirmation is issued separately in writing.</li>
+</ol>
+
+<h2 id="provider-activation-checklist">Provider activation checklist</h2>
+
+<ol>
+  <li>Complete merchant approval and settlement-account checks.</li>
+  <li>Install the provider adapter implementing <code class="language-plaintext highlighter-rouge">PaymentProviderInterface</code>.</li>
+  <li>Add credentials to the private configuration file.</li>
+  <li>Register the HTTPS notification URL required by that provider.</li>
+  <li>Test success, failure, cancellation, duplicate notification, partial payment,
+refund/reversal and currency mismatch scenarios in sandbox.</li>
+  <li>Complete a controlled production transaction and reconcile settlement before
+enabling the public payment link.</li>
+</ol>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Verpex Deployment — v10.8.1 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Verpex Deployment — v10.8.1" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.8.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.8.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Verpex Deployment — v10.8.1" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Verpex Deployment — v10.8.1","url":"https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.8.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="verpex-deployment--v1081">Verpex Deployment — v10.8.1</h1>
+
+<ol>
+  <li>Back up the current <code class="language-plaintext highlighter-rouge">public_html</code> directory and the private mail, admin and
+operations data held outside it.</li>
+  <li>Upload the v10.8 ZIP to Verpex File Manager.</li>
+  <li>Extract it directly into <code class="language-plaintext highlighter-rouge">public_html</code>, allowing release files to replace
+earlier public files.</li>
+  <li>Do not delete or move <code class="language-plaintext highlighter-rouge">rgts-mail-config.php</code>, <code class="language-plaintext highlighter-rouge">rgts-admin-config.php</code>,
+<code class="language-plaintext highlighter-rouge">rgts-operations-data</code> or <code class="language-plaintext highlighter-rouge">rgts-logs</code> outside <code class="language-plaintext highlighter-rouge">public_html</code>.</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">/admin/settings.php</code>, confirm <strong>RTGS bank transfer</strong> is the preferred
+method, and verify the bank details and client-facing payment note.</li>
+  <li>Keep online checkout and contactless status set to <strong>Not enabled</strong> until the
+selected provider is approved and production-verified.</li>
+  <li>Confirm the three detailed Signature Journey pages show the correct single
+Journey Investment block after their itineraries. Confirm the homepage,
+hero areas and Signature Journeys overview remain price-free.</li>
+  <li>Confirm <code class="language-plaintext highlighter-rouge">/terms</code>, <code class="language-plaintext highlighter-rouge">/privacy</code>, <code class="language-plaintext highlighter-rouge">/payments</code>, Contact, the enquiry confirmation
+flow and <code class="language-plaintext highlighter-rouge">/admin/</code> login.</li>
+  <li>Create one private test quotation using known supplier costs. Confirm the
+generator blocks a total below the internal floor and generates a quotation
+at or above it without exposing supplier costs.</li>
+  <li>Confirm <code class="language-plaintext highlighter-rouge">sitemap.xml</code> and <code class="language-plaintext highlighter-rouge">robots.txt</code>, submit the sitemap once in Search
+Console and inspect the three updated Signature Journey URLs.</li>
+</ol>
+
+<p>The release contains no mailbox password, administrator password, payment
+provider credential or client record. <code class="language-plaintext highlighter-rouge">rgts-payment-config.php</code> is not required
+while RTGS is the only active method.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

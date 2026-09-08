@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Candidate QA — v10.8.0 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Candidate QA — v10.8.0" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.8.0-CANDIDATE.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.8.0-CANDIDATE.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Candidate QA — v10.8.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Candidate QA — v10.8.0","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.8.0-CANDIDATE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="candidate-qa--v1080">Candidate QA — v10.8.0</h1>
+
+<h2 id="automated-results--10-august-2026">Automated results — 10 August 2026</h2>
+
+<ul>
+  <li>31 sitemap URLs checked; every route maps to a release source file.</li>
+  <li>35 HTML files checked; zero metadata, canonical, H1, JSON-LD, local-link or
+local-asset errors.</li>
+  <li>All three detailed Signature Journey pages contain the approved visible
+starting price and matching USD Offer data after the itinerary.</li>
+  <li>The homepage and Signature Journeys overview contain none of the three public
+starting prices.</li>
+  <li>Public pages contain no supplier-cost formula, margin percentage or internal
+pricing language.</li>
+  <li>The quotation generator uses <code class="language-plaintext highlighter-rouge">supplier cost / 0.72</code>, protecting a 25% base
+margin plus the separate 3% payment and foreign-exchange reserve.</li>
+  <li>Terms checks confirm taxes, domestic/international flight treatment, RTGS
+priority, payment-versus-confirmation wording and cancellation conditions.</li>
+  <li>Payment checks confirm provider-neutral configuration, an adapter contract,
+server-side verification guidance and idempotent ledger fields.</li>
+  <li>The payment page has no provider-specific public claim and keeps RTGS first.</li>
+  <li>The quotation script passes JavaScript syntax validation.</li>
+  <li>26 PHP files pass independent PHP AST parsing with zero syntax errors. A
+native PHP runtime was not installed in the packaging workspace.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --check</code> passes with zero whitespace errors.</li>
+</ul>
+
+<h2 id="design-preservation">Design preservation</h2>
+
+<p>SHA-256 comparison against the deployed v10.7 ZIP confirms these public files
+are byte-for-byte identical:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">styles.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/main.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/signature-journeys.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/international.css</code></li>
+</ul>
+
+<p>The new price sections use existing public components. Only the private admin
+stylesheet changes, to accommodate the supplier-cost and margin-floor controls.</p>
+
+<p>Status: <strong>PASS — ready for Verpex deployment packaging.</strong></p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

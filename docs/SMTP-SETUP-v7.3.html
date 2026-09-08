@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>v7.3 SMTP setup | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="v7.3 SMTP setup" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/SMTP-SETUP-v7.3.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/SMTP-SETUP-v7.3.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="v7.3 SMTP setup" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"v7.3 SMTP setup","url":"https://millerwanj.github.io/resplendent-global-travel/docs/SMTP-SETUP-v7.3.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="v73-smtp-setup">v7.3 SMTP setup</h1>
+
+<p>The production form sends through authenticated SMTP over implicit TLS.</p>
+
+<h2 id="server-settings">Server settings</h2>
+
+<ul>
+  <li>Host: <code class="language-plaintext highlighter-rouge">mail.resplendentglobaltravel.com</code></li>
+  <li>Port: <code class="language-plaintext highlighter-rouge">465</code></li>
+  <li>Username: <code class="language-plaintext highlighter-rouge">info@resplendentglobaltravel.com</code></li>
+  <li>Encryption: SSL/TLS</li>
+</ul>
+
+<h2 id="secret-configuration">Secret configuration</h2>
+
+<p>Create this file outside the public website directory:</p>
+
+<p><code class="language-plaintext highlighter-rouge">/home/resplend/rgts-mail-config.php</code></p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">docs/rgts-mail-config.example.php</code> as the template and insert the current password for the <code class="language-plaintext highlighter-rouge">info@</code> mailbox. Do not upload the real configuration into <code class="language-plaintext highlighter-rouge">public_html</code>, GitHub, or a ZIP shared publicly.</p>
+
+<h2 id="routing">Routing</h2>
+
+<ul>
+  <li>Leisure and reservations → <code class="language-plaintext highlighter-rouge">bookings@resplendentglobaltravel.com</code></li>
+  <li>Corporate Travel → <code class="language-plaintext highlighter-rouge">corporate@resplendentglobaltravel.com</code></li>
+  <li>Global Business Connections → <code class="language-plaintext highlighter-rouge">business@resplendentglobaltravel.com</code></li>
+  <li>Customer Support → <code class="language-plaintext highlighter-rouge">support@resplendentglobaltravel.com</code></li>
+  <li>Accounts &amp; Billing → <code class="language-plaintext highlighter-rouge">accounts@resplendentglobaltravel.com</code></li>
+  <li>General and multi-service enquiries → <code class="language-plaintext highlighter-rouge">info@resplendentglobaltravel.com</code></li>
+</ul>
+
+<p>Non-general enquiries also copy <code class="language-plaintext highlighter-rouge">info@</code> for central oversight.</p>
+
+<h2 id="v963-document-senders">v9.6.3 document senders</h2>
+
+<p>Client proposals, quotations and invoices use the same department architecture
+for their visible sender. The final admin review panel shows and permits a
+controlled override of the selected profile.</p>
+
+<p>The existing <code class="language-plaintext highlighter-rouge">info@</code> SMTP account may authenticate these addresses when Verpex
+has authorised them as aliases or send-as identities. If Verpex requires
+separate mailbox authentication, add <code class="language-plaintext highlighter-rouge">smtp_username</code> and <code class="language-plaintext highlighter-rouge">smtp_password</code> to
+the relevant private <code class="language-plaintext highlighter-rouge">document_senders</code> profile. See
+<code class="language-plaintext highlighter-rouge">rgts-mail-config.example.php</code>.</p>
+
+<h2 id="validation">Validation</h2>
+
+<p>A success message is shown only after the SMTP server accepts the message. Delivery failures are written to the PHP error log with the enquiry reference, without logging the mailbox password.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

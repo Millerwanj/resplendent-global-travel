@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA — v9.7.0 Production | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="QA — v9.7.0 Production" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.7.0-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.7.0-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA — v9.7.0 Production" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"QA — v9.7.0 Production","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.7.0-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="qa--v970-production">QA — v9.7.0 Production</h1>
+
+<p>Date: 29 July 2026</p>
+
+<h2 id="release-scope">Release scope</h2>
+
+<ul>
+  <li>Added one matching Tripadvisor companion section to each of the Maasai Mara,
+Dubai and Japan Journal articles.</li>
+  <li>Preserved the existing Resplendent enquiry call-to-action beneath each new
+section.</li>
+  <li>Refreshed active release identifiers, Article schema modification dates and
+relevant sitemap dates.</li>
+  <li>Preserved the complete operational pipeline without functional changes.</li>
+</ul>
+
+<h2 id="automated-checks">Automated checks</h2>
+
+<ul>
+  <li>Validated all 15 public HTML pages.</li>
+  <li>Resolved 255 local links and anchors without missing targets.</li>
+  <li>Parsed all Article and page JSON-LD successfully.</li>
+  <li>Confirmed exactly one correctly mapped Tripadvisor link on each destination
+article.</li>
+  <li>Confirmed every external Trip link has an explicit accessible label, opens
+in a new tab and uses <code class="language-plaintext highlighter-rouge">rel="noopener"</code>.</li>
+  <li>Confirmed all three public Tripadvisor Trip URLs return HTTP 200.</li>
+  <li>Parsed <code class="language-plaintext highlighter-rouge">sitemap.xml</code> successfully and confirmed 29 July 2026 modification
+dates for the three updated articles.</li>
+  <li>Parsed <code class="language-plaintext highlighter-rouge">data/site.json</code> successfully.</li>
+  <li>Validated all seven JavaScript files with Node syntax checks.</li>
+  <li>Confirmed the main stylesheet has balanced braces and scoped responsive
+companion styles.</li>
+  <li>Confirmed 21 operational PHP, configuration and admin files differ from the
+v9.6.4 baseline only by the release identifier.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --check</code> passes.</li>
+</ul>
+
+<h2 id="environment-note">Environment note</h2>
+
+<p>The local workspace does not include a PHP runtime, so PHP syntax was not
+re-executed here. The affected PHP and admin files were already production
+verified in v9.6.4 and their functional content remains identical; only the
+release identifier changed.</p>
+
+<h2 id="post-deployment-smoke-test">Post-deployment smoke test</h2>
+
+<ol>
+  <li>Open <code class="language-plaintext highlighter-rouge">/journal-kenya</code>, <code class="language-plaintext highlighter-rouge">/journal-dubai</code> and <code class="language-plaintext highlighter-rouge">/journal-japan</code>.</li>
+  <li>Confirm the <strong>Curated on Tripadvisor</strong> section is balanced on desktop and
+mobile.</li>
+  <li>Confirm each external link opens its matching public Tripadvisor Trip.</li>
+  <li>Confirm each existing <strong>Plan Your Journey</strong> button still opens the leisure
+enquiry form.</li>
+  <li>Submit one controlled website enquiry and confirm Zoho, internal mail,
+acknowledgement and Client Workflow capture.</li>
+  <li>Confirm the protected admin suite, document acceptance and invoice creation
+remain available.</li>
+</ol>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

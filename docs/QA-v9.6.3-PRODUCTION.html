@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA - v9.6.3 Production | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="QA - v9.6.3 Production" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.3-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.3-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA - v9.6.3 Production" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"QA - v9.6.3 Production","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.3-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="qa---v963-production">QA - v9.6.3 Production</h1>
+
+<h2 id="automated-verification">Automated verification</h2>
+
+<ul>
+  <li>PHP 8.3 integration flow passed.</li>
+  <li>Proposal revision numbering passed through <code class="language-plaintext highlighter-rouge">R1</code> and <code class="language-plaintext highlighter-rouge">R2</code>.</li>
+  <li>Pre-acceptance change request passed without creating an invoice.</li>
+  <li>Post-acceptance change request passed and superseded the unsent draft.</li>
+  <li>Latest-version acceptance created a linked draft invoice.</li>
+  <li>A legacy accepted proposal created a linked draft through the authenticated,
+CSRF-protected backfill action.</li>
+  <li>Repeating the legacy conversion returned the same invoice and created no
+duplicate.</li>
+  <li>Draft invoice remained unsent until final review.</li>
+  <li>Reviewed draft changed to <strong>Issued</strong> after recorded SMTP acceptance.</li>
+  <li>Business Matchmaking acceptance created the USD 250 engagement draft.</li>
+  <li>Bookings, Corporate, Business, Accounts and General sender resolution passed.</li>
+  <li>Receiving-email verification and raw-token non-storage passed.</li>
+  <li>Branded proposal, quotation and invoice PDF generation passed.</li>
+  <li>Multipart MIME attachment construction passed.</li>
+  <li>PHP, JavaScript, CSS, JSON, internal-reference and credential scans passed.</li>
+  <li>Clean-package extraction and release-manifest verification passed.</li>
+</ul>
+
+<h2 id="live-verification">Live verification</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">DEPLOYMENT-v9.6.3.md</code> after upload. Live Verpex SMTP sender authorisation
+and external mailbox delivery must be confirmed on the deployed domain.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA - v9.6.4 Production | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="QA - v9.6.4 Production" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.4-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.4-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA - v9.6.4 Production" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"QA - v9.6.4 Production","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.4-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="qa---v964-production">QA - v9.6.4 Production</h1>
+
+<p>Date: 26 July 2026</p>
+
+<h2 id="release-scope">Release scope</h2>
+
+<ul>
+  <li>Added full-length Japan, Dubai and Maasai Mara balloon journal articles.</li>
+  <li>Connected the corresponding destination cards to their journal entries.</li>
+  <li>Updated journal summaries, article metadata, structured data and sitemap dates.</li>
+  <li>Preserved the v9.6.3 proposal, quotation, acceptance and invoicing pipeline.</li>
+</ul>
+
+<h2 id="automated-checks">Automated checks</h2>
+
+<ul>
+  <li>All local links across the 14 HTML pages resolve to existing files or valid anchors.</li>
+  <li>Journal index, destinations page and all three articles contain titles and meta descriptions.</li>
+  <li>Article JSON-LD parses successfully.</li>
+  <li>Each destination article contains at least 500 words and seven editorial sections.</li>
+  <li>No horizontal-layout changes or new CSS were introduced.</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff --check</code> passes.</li>
+</ul>
+
+<h2 id="environment-note">Environment note</h2>
+
+<p>The cloud browser cannot access the workspace’s local preview server. Visual risk is
+limited because v9.6.4 reuses the existing v9.6.3 article and card components without
+CSS changes. A final live check should confirm the journal index, each article and the
+three destination links after deployment.</p>
+
+<h2 id="post-deployment-smoke-test">Post-deployment smoke test</h2>
+
+<ol>
+  <li>Open <code class="language-plaintext highlighter-rouge">/journal.html</code> and confirm the three cards render.</li>
+  <li>Open the Japan, Dubai and Maasai Mara articles from the journal.</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">/destinations.html</code> and confirm those three destinations link to the articles.</li>
+  <li>Confirm each article CTA opens the leisure enquiry form.</li>
+  <li>Confirm the operations dashboard, document acceptance and invoice creation remain unchanged.</li>
+</ol>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

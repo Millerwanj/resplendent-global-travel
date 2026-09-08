@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Release v9.6.3 - Controlled Approval Pipeline | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Release v9.6.3 - Controlled Approval Pipeline" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.6.3.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.6.3.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Release v9.6.3 - Controlled Approval Pipeline" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Release v9.6.3 - Controlled Approval Pipeline","url":"https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.6.3.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="release-v963---controlled-approval-pipeline">Release v9.6.3 - Controlled Approval Pipeline</h1>
+
+<p>Released: 26 July 2026</p>
+
+<p>v9.6.3 closes the operational gap between client response and invoicing while
+preserving human review at every client-facing send.</p>
+
+<h2 id="department-senders">Department senders</h2>
+
+<p>The document suite selects the sender from the document type:</p>
+
+<ul>
+  <li>Luxury and leisure travel: <code class="language-plaintext highlighter-rouge">bookings@resplendentglobaltravel.com</code></li>
+  <li>Corporate Travel: <code class="language-plaintext highlighter-rouge">corporate@resplendentglobaltravel.com</code></li>
+  <li>Global Business Connections: <code class="language-plaintext highlighter-rouge">business@resplendentglobaltravel.com</code></li>
+  <li>Invoices: <code class="language-plaintext highlighter-rouge">accounts@resplendentglobaltravel.com</code></li>
+  <li>General fallback: <code class="language-plaintext highlighter-rouge">info@resplendentglobaltravel.com</code></li>
+</ul>
+
+<p>The suggested sender remains editable in the final review panel. Central
+oversight continues through the configured <code class="language-plaintext highlighter-rouge">central_copy</code> address.</p>
+
+<h2 id="client-response-and-revision-control">Client response and revision control</h2>
+
+<p>Proposal and quotation response pages now provide <strong>Accept Document</strong> and
+<strong>Request changes instead</strong>.</p>
+
+<p>A revision request:</p>
+
+<ol>
+  <li>verifies the receiving email address;</li>
+  <li>records the request against the exact document hash;</li>
+  <li>moves the client to <strong>Revision Requested</strong>;</li>
+  <li>notifies the responsible department;</li>
+  <li>prevents the current version from being sent again; and</li>
+  <li>creates no invoice.</li>
+</ol>
+
+<p>The administrator can create a prefilled controlled revision. Revisions retain
+the original document number and append <code class="language-plaintext highlighter-rouge">R1</code>, <code class="language-plaintext highlighter-rouge">R2</code> and later suffixes. Older
+sent links are superseded, while previous records remain available for audit.</p>
+
+<h2 id="acceptance-and-draft-invoicing">Acceptance and draft invoicing</h2>
+
+<p>Acceptance of the latest active proposal or quotation automatically prepares a
+linked invoice in <strong>Draft</strong> status.</p>
+
+<ul>
+  <li>Travel and corporate drafts mirror the accepted line items, discount,
+service fee and total.</li>
+  <li>A Business Matchmaking acceptance prepares the first USD 250 engagement
+milestone invoice.</li>
+  <li>The accepted PDF SHA-256 hash is retained on the draft invoice relationship.</li>
+  <li>The draft cannot reach the client until an administrator reviews and sends
+it.</li>
+  <li>A reviewed draft becomes <strong>Issued</strong> only after SMTP accepts the email.</li>
+  <li>A later change request supersedes any unsent automatic draft.</li>
+  <li>Older accepted proposals and quotations that predate v9.6.3 display a
+controlled <strong>Create Linked Draft Invoice</strong> action. The original acceptance
+record is preserved, duplicate invoices are prevented and the resulting
+invoice remains unsent until review.</li>
+</ul>
+
+<h2 id="compatibility">Compatibility</h2>
+
+<p>The release is cumulative and can overwrite v9.6.2 files. Existing private
+administrator configuration, mail configuration, payment settings, client
+records, documents and delivery records remain compatible. Legacy acceptance
+records are upgraded only when an administrator deliberately creates their
+linked draft invoice; no bulk invoice migration runs during deployment.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

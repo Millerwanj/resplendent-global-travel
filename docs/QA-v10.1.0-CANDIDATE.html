@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>v10.1.0 Candidate QA | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="v10.1.0 Candidate QA" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.1.0-CANDIDATE.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.1.0-CANDIDATE.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="v10.1.0 Candidate QA" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"v10.1.0 Candidate QA","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.1.0-CANDIDATE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="v1010-candidate-qa">v10.1.0 Candidate QA</h1>
+
+<p>Validated 4 August 2026 against the v10.0.0 production baseline.</p>
+
+<h2 id="passed">Passed</h2>
+
+<ul>
+  <li>All 24 public HTML files passed structural validation using the established
+XHTML-style void and boolean-attribute conventions.</li>
+  <li>All 25 JSON-LD blocks parse successfully.</li>
+  <li>855 <code class="language-plaintext highlighter-rouge">href</code>, <code class="language-plaintext highlighter-rouge">src</code> and form-action references were inspected; every local
+target resolves to a file included in the build.</li>
+  <li>No iframe, YouTube embed or video asset remains in the Rwanda–Uganda feature,
+journey or Journal entry.</li>
+  <li>All links that open a new tab include a safe <code class="language-plaintext highlighter-rouge">rel</code> value.</li>
+  <li>No duplicate HTML IDs were found.</li>
+  <li><code class="language-plaintext highlighter-rouge">sitemap.xml</code> parses successfully and contains 21 public routes, including
+the two Rwanda–Uganda additions.</li>
+  <li>All 24 HTML files, public asset cache markers, the enquiry handler, private
+workflow store and site configuration carry release <code class="language-plaintext highlighter-rouge">10.1.0</code>.</li>
+  <li>JavaScript syntax checks pass for the public and private admin scripts.</li>
+  <li>The five modified HTML pages and Signature Journey stylesheet pass Prettier
+formatting checks; the complete worktree passes whitespace/error checks.</li>
+  <li>The eight Virungas image positions use different local WebP files. Their
+formats, dimensions and file integrity were verified: 1920×1080, 1800×1200,
+1440×1080, 1920×1080, 1600×1000, 1400×900, 1600×900 and 1600×900.</li>
+  <li>Seven source photographs serve the eight positions. The adult-and-infant
+gorilla photograph intentionally links the collection card and journey hero
+through different 4:3 and 16:9 crops; every other source is unique.</li>
+  <li>Every photograph is recorded against its Unsplash source, photographer,
+licence and crop in <code class="language-plaintext highlighter-rouge">docs/IMAGE-CREDITS.md</code>; the licence does not require a
+visible public caption.</li>
+  <li>The release manifest contains 210 payload files and every recorded byte size
+and SHA-256 hash matches its source file.</li>
+  <li>The deployment archive contains the manifest plus every recorded payload
+file, passes ZIP integrity testing, includes all eight Virungas images and
+excludes Git and temporary QA paths.</li>
+  <li>The international landing pages remain content-identical apart from the
+release/cache marker update.</li>
+  <li>The enquiry links use the existing verified prefill fields: <code class="language-plaintext highlighter-rouge">Leisure Travel</code>,
+journey name and <code class="language-plaintext highlighter-rouge">Rwanda and Uganda</code> destination.</li>
+  <li>All eight locally stored image derivatives came from verified Unsplash photo pages;
+no supplier image, public-site image, film or video file is included.</li>
+</ul>
+
+<h2 id="review-hold">Review hold</h2>
+
+<ul>
+  <li>Full-page desktop and mobile screenshots could not be generated: no local
+browser binary is installed, and the cloud browser cannot access the
+workspace-only preview server. Complete the planned visual review in VS Code
+before supplier submission or deployment.</li>
+  <li>PHP CLI is not installed in the current container, so the unchanged PHP
+application files could not be re-linted during this media-only correction.</li>
+  <li>No live CRM submission, partner booking request, external email, Git push or
+Verpex deployment was performed.</li>
+  <li>The completed feature still requires written Volcanoes Safaris approval
+before publication, as committed in Resplendent’s supplier correspondence.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

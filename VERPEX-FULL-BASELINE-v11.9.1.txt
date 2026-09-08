@@ -1,0 +1,15 @@
+RESPLENDENT GLOBAL TRAVEL SOLUTIONS — FULL VERPEX BASELINE v11.9.1
+2026-08-30
+
+This ZIP is a COMPLETE build, not a patch.
+
+Locked visual changes in this baseline:
+- Homepage copied unchanged from verified v11.9.0 baseline.
+- SIMless Travel appears beneath Global Travel Solutions in site headers on all non-home pages.
+- Regular internal image headers standardized to one height.
+- International landing pages retain the larger Chinese-page editorial hero size.
+- Historical wash/filter/contrast/saturation treatment removed from image headers.
+- eSIM keeps the approved yellow-jacket photograph, with subject-conscious crop.
+- Destinations uses the exact supplied blue-train photograph.
+- ZH / JA / DE / FR / IT use the exact supplied lodge/desert photograph.
+- New supplied photographs were copied byte-for-byte; no image processing or recompression.

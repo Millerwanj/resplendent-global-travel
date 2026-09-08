@@ -1,0 +1,13 @@
+RESPLENDENT GLOBAL TRAVEL SOLUTIONS — FULL VERPEX BASELINE v11.9.2
+2026-08-30
+
+COMPLETE BUILD — NOT A PATCH.
+
+ONLY APPROVED CHANGES FROM v11.9.1:
+1. International landing pages (ZH / JA / DE / FR / IT) now use the exact supplied
+   international-lodge-natural-2026.jpg image, with cache-busted references.
+   Image colour remains natural: no filter, tint, wash, saturation or contrast processing.
+2. Header navigation labels are slightly brighter, with a stronger hover state.
+3. SIMless Travel is added to the homepage header and international landing-page headers.
+
+EVERYTHING ELSE IS CARRIED FORWARD UNCHANGED FROM THE FULL v11.9.1 BASELINE.

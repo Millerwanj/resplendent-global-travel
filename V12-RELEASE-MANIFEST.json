@@ -1,0 +1,22 @@
+{
+  "release": "v12.0",
+  "name": "Unified eSIM Fulfilment",
+  "status": "consolidated-master",
+  "date": "2026-09-08",
+  "integrated_changes": [
+    "PesaPal M-Pesa conversion guard",
+    "Unlimited plan normalization",
+    "Safe pre-purchase fulfilment retry",
+    "eSIMCARD application failure validation"
+  ],
+  "private_config_excluded": [
+    "/home/resplend/rgts-esimcard-config.php",
+    "PesaPal private credentials",
+    "eSIMCARD API token/password",
+    "live purchase-enable switch"
+  ],
+  "notes": [
+    "Production credentials remain outside public_html and must never be committed.",
+    "Live order JSON/payment records are runtime data and are not part of this master consolidation."
+  ]
+}

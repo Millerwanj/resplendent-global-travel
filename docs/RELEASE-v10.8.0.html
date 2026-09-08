@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Resplendent Global Travel Solutions v10.8.0 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Resplendent Global Travel Solutions v10.8.0" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v10.8.0.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v10.8.0.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Resplendent Global Travel Solutions v10.8.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Resplendent Global Travel Solutions v10.8.0","url":"https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v10.8.0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="resplendent-global-travel-solutions-v1080">Resplendent Global Travel Solutions v10.8.0</h1>
+
+<h2 id="journey-investment--payment-ready-edition">Journey Investment &amp; Payment-Ready Edition</h2>
+
+<p>Deployment candidate prepared: 10 August 2026<br />
+Deployment target: Verpex <code class="language-plaintext highlighter-rouge">public_html</code></p>
+
+<h3 id="public-scope">Public scope</h3>
+
+<ul>
+  <li>Adds one restrained Journey Investment section after the itinerary on each
+detailed Signature Journey page.</li>
+  <li>Publishes the approved starting prices per person sharing: Across the
+Virungas USD 12,100, Masai Mara USD 7,350 and Watamu USD 2,400.</li>
+  <li>Keeps prices out of hero areas, the homepage and the Signature Journeys
+overview.</li>
+  <li>Adds matching TouristTrip Offer data for search engines.</li>
+  <li>Adds the approved pricing, taxes, flight, payment, confirmation, cancellation
+and privacy terms.</li>
+  <li>Keeps RTGS bank transfer as the preferred live payment method.</li>
+</ul>
+
+<h3 id="design-lock">Design lock</h3>
+
+<p>The four public stylesheets are byte-for-byte identical to the deployed v10.7
+release. New public content reuses the established section, split, heading and
+text-link components. No typography, colour, spacing, navigation, hero, image,
+responsive rule or public form style is changed.</p>
+
+<h3 id="internal-controls">Internal controls</h3>
+
+<ul>
+  <li>The quotation generator records an internal supplier cost per item and
+requires confirmation that the cost basis is complete.</li>
+  <li>Travel and corporate quotations below <code class="language-plaintext highlighter-rouge">supplier cost / 0.72</code> are blocked on
+both the browser and server sides. This protects the 25% base margin after the
+3% payment/foreign-exchange allowance.</li>
+  <li>Peak-season quotations must use current peak-season supplier costs before the
+protected formula is applied.</li>
+  <li>Supplier costs and margin calculations do not appear in client documents.</li>
+</ul>
+
+<h3 id="payment-readiness">Payment readiness</h3>
+
+<ul>
+  <li>Payment settings default to RTGS and support optional online and contactless
+provider identifiers.</li>
+  <li>A provider-neutral interface and coordinator allow future gateway adapters.</li>
+  <li>Credentials remain outside <code class="language-plaintext highlighter-rouge">public_html</code>.</li>
+  <li>An idempotent transaction ledger is ready for verified provider events and
+stores no full card data, security codes, PINs or raw gateway payloads.</li>
+  <li>No online or contactless provider is activated in this release.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

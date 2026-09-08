@@ -178,6 +178,22 @@ final class EsimCardClient
             $message = function_exists('mb_substr') ? mb_substr($message, 0, 240) : substr($message, 0, 240);
             throw new RuntimeException('eSIMCard: ' . $message);
         }
+
+        // Some eSIMCard endpoints may return HTTP 2xx with an application-level
+        // failure in the JSON body. Never treat those responses as a successful
+        // purchase/provisioning result.
+        $success = $decoded['success'] ?? null;
+        $rawStatus = strtolower(trim((string)($decoded['status'] ?? '')));
+        $applicationFailed = $success === false
+            || in_array($rawStatus, ['error', 'failed', 'failure', 'invalid', 'declined'], true);
+
+        if ($applicationFailed) {
+            $message = (string)($decoded['message'] ?? $decoded['error'] ?? $decoded['detail'] ?? 'API request was not completed');
+            $message = strip_tags($message);
+            $message = function_exists('mb_substr') ? mb_substr($message, 0, 240) : substr($message, 0, 240);
+            throw new RuntimeException('eSIMCard: ' . $message);
+        }
+
         return $decoded;
     }
 

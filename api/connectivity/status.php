@@ -5,29 +5,40 @@ require_once dirname(__DIR__, 2) . '/includes/Connectivity/connectivity-bootstra
 
 try {
     $id = trim((string)($_GET['order_id'] ?? ''));
+    $token = trim((string)($_GET['token'] ?? ''));
     $store = new ConnectivityOrderStore();
     $order = $store->get($id);
     if (!is_array($order)) throw new RuntimeException('Order not found.');
+    $expectedToken = (string)($order['result_token'] ?? '');
+    if ($expectedToken === '' || $token === '' || !hash_equals($expectedToken, $token)) {
+        throw new RuntimeException('Order access denied.');
+    }
 
-    // Never expose supplier activation credentials from this public endpoint.
+    $activation = [];
+    if (($order['status'] ?? '') === 'PROVISIONED') {
+        $raw = is_array($order['provisioning']['activation'] ?? null) ? $order['provisioning']['activation'] : [];
+        foreach (['qr_code','qr_code_url','iccid','smdp_address','activation_code','manual_code'] as $key) {
+            if (isset($raw[$key]) && is_scalar($raw[$key])) $activation[$key] = (string)$raw[$key];
+        }
+    }
+
     rgts_connectivity_json([
         'ok' => true,
         'order' => [
-            'id' => $order['id'],
-            'status' => $order['status'],
-            'created_at' => $order['created_at'],
+            'id' => $order['id'], 'status' => $order['status'], 'created_at' => $order['created_at'],
             'plan' => [
                 'name' => $order['payload']['plan']['name'] ?? '',
                 'destination' => $order['payload']['plan']['destination'] ?? '',
                 'data' => $order['payload']['plan']['data'] ?? '',
                 'validity' => $order['payload']['plan']['validity'] ?? '',
             ],
-            'amount' => $order['payload']['amount'] ?? '',
-            'currency' => $order['payload']['currency'] ?? '',
-            'payment_verified' => !empty($order['payment']['verified']),
+            'amount' => $order['payload']['amount'] ?? '', 'currency' => $order['payload']['currency'] ?? '',
+            'payment_verified' => !empty($order['payment']['verified']) && !empty($order['payment']['matches_order']),
             'provisioning_status' => $order['provisioning']['status'] ?? 'NOT_STARTED',
+            'activation' => $activation,
+            'delivery_email_sent' => !empty($order['delivery']['email_sent_at']),
         ],
     ]);
 } catch (Throwable $e) {
-    rgts_connectivity_json(['ok' => false, 'message' => 'Order not found.'], 404);
+    rgts_connectivity_json(['ok' => false, 'message' => 'Order not found or access link is invalid.'], 404);
 }

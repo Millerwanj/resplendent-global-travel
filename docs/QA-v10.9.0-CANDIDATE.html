@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>v10.9.0 Candidate QA | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="v10.9.0 Candidate QA" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.9.0-CANDIDATE.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.9.0-CANDIDATE.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="v10.9.0 Candidate QA" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"v10.9.0 Candidate QA","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.9.0-CANDIDATE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="v1090-candidate-qa">v10.9.0 Candidate QA</h1>
+
+<p>Prepared 11 August 2026.</p>
+
+<h2 id="passed">Passed</h2>
+
+<ul>
+  <li>Changed HTML pages parse without structural parser errors.</li>
+  <li>All changed-page JSON-LD blocks parse as valid JSON.</li>
+  <li>Local links and image/script/stylesheet references resolve.</li>
+  <li><code class="language-plaintext highlighter-rouge">sitemap.xml</code> parses as valid XML and includes all new routes.</li>
+  <li>Serengeti visible starting price and structured Offer both use USD 6,800.</li>
+  <li>Signature Journeys collection count is four.</li>
+  <li>Serengeti hero and collection images are valid 1366 x 768 WebP assets.</li>
+  <li>Approved public layout, navigation, typography and colour system remain
+unchanged.</li>
+  <li>Confidential supplier rate files are excluded from the release package.</li>
+</ul>
+
+<h2 id="environment-limited-checks">Environment-limited checks</h2>
+
+<ul>
+  <li>PHP CLI is not installed in the build workspace, so PHP lint was not rerun.
+The PHP application files were not changed in v10.9.0.</li>
+  <li>A Playwright browser executable is not installed in the build workspace, so
+automated screenshots were not captured. New imagery was inspected directly,
+and the new pages reuse the established production layouts.</li>
+</ul>
+
+<h2 id="post-deployment-smoke-test">Post-deployment smoke test</h2>
+
+<p>Open <code class="language-plaintext highlighter-rouge">/signature-journeys</code>, <code class="language-plaintext highlighter-rouge">/signature-journey-serengeti</code>, <code class="language-plaintext highlighter-rouge">/corporate</code>,
+<code class="language-plaintext highlighter-rouge">/executive-travel-services-nairobi</code> and
+<code class="language-plaintext highlighter-rouge">/exhibition-delegate-travel-nairobi</code> on desktop and mobile. Confirm clean
+routes, imagery, enquiry links and the USD 6,800 price before announcing the
+release.</p>
+
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

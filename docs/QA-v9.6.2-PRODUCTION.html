@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA — v9.6.2 Production | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="QA — v9.6.2 Production" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.2-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.2-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA — v9.6.2 Production" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"QA — v9.6.2 Production","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v9.6.2-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="qa--v962-production">QA — v9.6.2 Production</h1>
+
+<h2 id="automated-gates">Automated gates</h2>
+
+<ul>
+  <li>JavaScript syntax checks for every public and admin script.</li>
+  <li>PHP syntax parsing for every PHP source file.</li>
+  <li>CSS parser validation.</li>
+  <li>HTML, image, stylesheet, script and form-action reference checks.</li>
+  <li>JSON validation.</li>
+  <li>Generated PDF structural checks, text extraction and page rendering.</li>
+  <li>Delivery and acceptance workflow fixture checks.</li>
+  <li>Release-manifest SHA-256 verification.</li>
+  <li>Clean ZIP extraction and byte-for-byte manifest comparison.</li>
+  <li>Credential, client-data and suspicious-PHP primitive scan.</li>
+</ul>
+
+<h2 id="functional-coverage">Functional coverage</h2>
+
+<ul>
+  <li>Contact success redirects to inline confirmation rather than a separate page.</li>
+  <li>Successful inline state changes the button to <strong>Submitted</strong> and shows the
+enquiry reference.</li>
+  <li>Travel and business policy wording appears in previews and final documents.</li>
+  <li>PDF generation covers proposal, quotation and invoice examples.</li>
+  <li>Review confirmation is required before document delivery.</li>
+  <li>SMTP builds one multipart message with the generated PDF attachment.</li>
+  <li>Acceptance tokens are stored only as SHA-256 hashes.</li>
+  <li>A newer send supersedes earlier outstanding acceptance links.</li>
+  <li>Receiving-email verification, acceptance record and Approval workflow update.</li>
+  <li>Invoice payment tracking and v9.6.1 generator regression checks.</li>
+</ul>
+
+<h2 id="live-verification">Live verification</h2>
+
+<p>Zoho, authenticated SMTP, Verpex permissions and receipt of the internal
+acceptance notification must be confirmed after deployment using
+<code class="language-plaintext highlighter-rouge">DEPLOYMENT-v9.6.2.md</code>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

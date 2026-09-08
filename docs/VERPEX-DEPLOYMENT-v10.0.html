@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Verpex Deployment — v10.0.0 Signature Journeys Edition | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Verpex Deployment — v10.0.0 Signature Journeys Edition" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.0.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.0.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Verpex Deployment — v10.0.0 Signature Journeys Edition" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Verpex Deployment — v10.0.0 Signature Journeys Edition","url":"https://millerwanj.github.io/resplendent-global-travel/docs/VERPEX-DEPLOYMENT-v10.0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="verpex-deployment--v1000-signature-journeys-edition">Verpex Deployment — v10.0.0 Signature Journeys Edition</h1>
+
+<h2 id="production-upload">Production upload</h2>
+
+<ol>
+  <li>Create a current backup of <code class="language-plaintext highlighter-rouge">public_html</code> in Verpex before extracting the
+release.</li>
+  <li>Upload <code class="language-plaintext highlighter-rouge">Resplendent-Global-Travel-v10.0-Signature-Journeys-Production.zip</code>
+to <code class="language-plaintext highlighter-rouge">public_html</code>.</li>
+  <li>Extract the ZIP directly into <code class="language-plaintext highlighter-rouge">public_html</code>, allowing release files to
+replace matching public files. Confirm that <code class="language-plaintext highlighter-rouge">index.html</code> and <code class="language-plaintext highlighter-rouge">.htaccess</code>
+sit at the root of <code class="language-plaintext highlighter-rouge">public_html</code>, not inside an extra folder.</li>
+  <li>Keep these private production resources unchanged and outside <code class="language-plaintext highlighter-rouge">public_html</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/home/resplend/rgts-mail-config.php</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/home/resplend/rgts-admin-config.php</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/home/resplend/rgts-operations-data/</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/home/resplend/rgts-logs/</code></li>
+    </ul>
+  </li>
+  <li>Remove the uploaded ZIP from <code class="language-plaintext highlighter-rouge">public_html</code> after a successful extraction.</li>
+</ol>
+
+<h2 id="post-deployment-verification">Post-deployment verification</h2>
+
+<ul>
+  <li>Open <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">/signature-journeys</code> and
+<code class="language-plaintext highlighter-rouge">/signature-journey-masai-mara</code> in a private browser window.</li>
+  <li>Select <strong>Tailor This Journey</strong> and confirm that <code class="language-plaintext highlighter-rouge">/contact</code> preselects Leisure
+Travel and prefills the journey name and Masai Mara destination.</li>
+  <li>Confirm the Kenya Journal and Mara destination links reach the flagship
+journey and return correctly.</li>
+  <li>Confirm <code class="language-plaintext highlighter-rouge">/zh</code>, <code class="language-plaintext highlighter-rouge">/ja</code>, <code class="language-plaintext highlighter-rouge">/de</code>, <code class="language-plaintext highlighter-rouge">/fr</code> and <code class="language-plaintext highlighter-rouge">/it</code>, including the language selector
+on desktop and mobile.</li>
+  <li>Confirm <code class="language-plaintext highlighter-rouge">/admin/</code> reaches the private sign-in without changing stored client
+or administrator data.</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">/sitemap.xml</code>; after verification, resubmit the sitemap in Google
+Search Console.</li>
+  <li>Submit a live enquiry only when an intentional CRM and mail delivery test is
+authorised.</li>
+</ul>
+
+<p>The deployment ZIP contains no mailbox password, administrator password or
+client record. Existing secure configuration and operational data remain
+outside the web root.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

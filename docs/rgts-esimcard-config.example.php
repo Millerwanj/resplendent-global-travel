@@ -13,4 +13,5 @@ return [
     'timeout' => 20,
     'retail_markup_percent' => 25,
     'allow_sandbox_purchase' => false,
+    'allow_production_purchase' => false, // Set true only after live acceptance testing and wallet funding.
 ];

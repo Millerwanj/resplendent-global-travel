@@ -27,3 +27,9 @@ docs/QA-*.md
 docs/RELEASE-*.md
 docs/VERPEX-DEPLOYMENT-*.html
 yandex_*.html
+
+# Private production configuration
+rgts-esimcard-config.php
+.env
+.env.*
+*.zip

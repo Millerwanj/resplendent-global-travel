@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>API Backend Foundation — v11.7.15 | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="API Backend Foundation — v11.7.15" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/API-BACKEND-v11.7.15.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/API-BACKEND-v11.7.15.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="API Backend Foundation — v11.7.15" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"API Backend Foundation — v11.7.15","url":"https://millerwanj.github.io/resplendent-global-travel/docs/API-BACKEND-v11.7.15.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="api-backend-foundation--v11715">API Backend Foundation — v11.7.15</h1>
+
+<h2 id="what-is-now-built">What is now built</h2>
+
+<h3 id="payments">Payments</h3>
+<ul>
+  <li>Provider-neutral <code class="language-plaintext highlighter-rouge">PaymentProviderInterface</code> remains the contract.</li>
+  <li>New Pesapal API 3.0 adapter supports sandbox/live base URLs, token generation, hosted checkout, IPN parsing, server-to-server status verification and IPN registration.</li>
+  <li>Checkout amount/currency come from the server-side Resplendent invoice, not browser input.</li>
+  <li>New <code class="language-plaintext highlighter-rouge">/api/payments/create.php</code>, <code class="language-plaintext highlighter-rouge">/api/payments/ipn.php</code>, and <code class="language-plaintext highlighter-rouge">/api/payments/callback.php</code> endpoints.</li>
+  <li>Existing idempotent payment ledger is reused. Card/PIN details are never stored.</li>
+  <li>Pesapal remains <strong>disabled by default</strong> until credentials and a registered <code class="language-plaintext highlighter-rouge">notification_id</code> are placed in the private config.</li>
+</ul>
+
+<h3 id="connectivity">Connectivity</h3>
+<ul>
+  <li>New <code class="language-plaintext highlighter-rouge">ConnectivityProviderInterface</code> defines the adapter contract for Carlos/eSIMCard, Firsty, 2Sky or future suppliers.</li>
+  <li>New <code class="language-plaintext highlighter-rouge">ConnectivityOrchestrator</code> merges normalised offers, applies Resplendent retail pricing/margin logic, and ranks offers using quality, margin and value signals.</li>
+  <li>Development-only mock adapters prove that multiple suppliers can coexist before live API credentials arrive.</li>
+  <li><code class="language-plaintext highlighter-rouge">/api/connectivity/offers.php</code> is a development endpoint only and must not be exposed as a live catalogue until mocks are replaced.</li>
+</ul>
+
+<h2 id="pesapal-private-configuration">Pesapal private configuration</h2>
+<p>Copy <code class="language-plaintext highlighter-rouge">docs/rgts-payment-config.example.php</code> to <code class="language-plaintext highlighter-rouge">/home/resplend/rgts-payment-config.php</code>, keep <code class="language-plaintext highlighter-rouge">enabled=false</code>, then insert sandbox credentials when issued. Register <code class="language-plaintext highlighter-rouge">https://www.resplendentglobaltravel.com/api/payments/ipn.php</code> with Pesapal and place the returned GUID in <code class="language-plaintext highlighter-rouge">notification_id</code>.</p>
+
+<h2 id="provider-onboarding-later">Provider onboarding later</h2>
+<p>For each connectivity supplier we only add one adapter implementing:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">searchOffers()</code> — map supplier catalogue into Resplendent fields.</li>
+  <li><code class="language-plaintext highlighter-rouge">provision()</code> — place the paid order and return eSIM/activation data.</li>
+  <li><code class="language-plaintext highlighter-rouge">status()</code> — retrieve lifecycle/usage state.</li>
+</ol>
+
+<p>The storefront and ranking engine do not need to be rewritten when a supplier is added.</p>
+
+<h2 id="go-live-gates">Go-live gates</h2>
+<ul>
+  <li>Never enable Pesapal until merchant approval, credentials, sandbox tests and one controlled production settlement are complete.</li>
+  <li>Never provision connectivity from a browser callback alone. Fulfil only after verified payment and server-side supplier order creation.</li>
+  <li>Remove mock connectivity providers before production.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

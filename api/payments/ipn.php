@@ -38,8 +38,7 @@ try {
         $connectivityOrder = $connectivityStore->get((string)$refs['merchant_reference'])
             ?? $connectivityStore->findByProviderReference((string)$refs['provider_reference']);
         if (!is_array($connectivityOrder)) throw new RuntimeException('Matching connectivity order was not found.');
-        $connectivityOrder = rgts_connectivity_verify_payment($connectivityOrder, (string)$refs['provider_reference']);
-        $connectivityStore->save($connectivityOrder);
+        $connectivityOrder = rgts_connectivity_reconcile_and_fulfill($connectivityStore, $connectivityOrder, (string)$refs['provider_reference']);
         echo json_encode([
             'orderNotificationType' => (string)($notification['OrderNotificationType'] ?? $notification['orderNotificationType'] ?? 'IPNCHANGE'),
             'orderTrackingId' => (string)$refs['provider_reference'],

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>v10.0.0 Production QA | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="v10.0.0 Production QA" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.0.0-PRODUCTION.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.0.0-PRODUCTION.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="v10.0.0 Production QA" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"v10.0.0 Production QA","url":"https://millerwanj.github.io/resplendent-global-travel/docs/QA-v10.0.0-PRODUCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="v1000-production-qa">v10.0.0 Production QA</h1>
+
+<p>Validated 2 August 2026 against the v9.9.0 International Edition baseline.</p>
+
+<h2 id="passed">Passed</h2>
+
+<ul>
+  <li>All 22 HTML pages passed structural validation using rules compatible with
+the baseline’s established XHTML-style void elements and boolean attributes.</li>
+  <li>All local <code class="language-plaintext highlighter-rouge">href</code>, <code class="language-plaintext highlighter-rouge">src</code> and form-action targets resolve to files included in
+the production package.</li>
+  <li>All 22 JSON-LD blocks parse successfully.</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/js/app.js</code> and <code class="language-plaintext highlighter-rouge">assets/js/site-config.js</code> pass JavaScript syntax
+checks.</li>
+  <li>All five public stylesheets pass CSS syntax validation.</li>
+  <li>The contact-page journey test confirms that <code class="language-plaintext highlighter-rouge">Tailor This Journey</code> prefills:
+<code class="language-plaintext highlighter-rouge">Leisure Travel</code>, the flagship journey name, <code class="language-plaintext highlighter-rouge">Masai Mara</code> and the opening
+enquiry message.</li>
+  <li><code class="language-plaintext highlighter-rouge">sitemap.xml</code> parses successfully and contains 19 public URLs, including both
+Signature Journey routes.</li>
+  <li>Chinese, Japanese, German, French and Italian pages retain their v9.9 source
+exactly apart from the v10 release marker. Each retains the expected
+HTML language and seven-link reciprocal hreflang cluster.</li>
+  <li>All three interim Signature Journey images were visually inspected,
+stored locally as optimized WebP assets and kept distinct across their uses.</li>
+</ul>
+
+<h2 id="deployment-notes">Deployment notes</h2>
+
+<ul>
+  <li>The production package is approved for upload to Verpex.</li>
+  <li>No live CRM or email submission was performed during static release QA; the
+established v9.9 server-side enquiry pipeline is preserved unchanged.</li>
+  <li>Signature Journey imagery is interim launch media and can be replaced in a
+later content release when approved partner media-kit assets arrive.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

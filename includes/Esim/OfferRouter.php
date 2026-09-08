@@ -85,7 +85,9 @@ final class OfferRouter
             'data_gb' => round($dataGb, 2),
             'validity_days' => $validity,
             'retail_price' => $retail,
-            'currency' => 'USD',
+            'currency' => strtoupper(trim((string)($raw['currency'] ?? 'USD')) ?: 'USD'),
+            'provider' => $provider,
+            'provider_package_id' => $providerId,
             'scope' => strtolower(trim((string)($raw['scope'] ?? 'local'))),
         ];
     }

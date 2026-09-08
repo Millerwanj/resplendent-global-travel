@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>v9.4.0 — CRM Integration Edition | resplendent-global-travel</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="v9.4.0 — CRM Integration Edition" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.4.0.html" />
+<meta property="og:url" content="https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.4.0.html" />
+<meta property="og:site_name" content="resplendent-global-travel" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="v9.4.0 — CRM Integration Edition" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"v9.4.0 — CRM Integration Edition","url":"https://millerwanj.github.io/resplendent-global-travel/docs/RELEASE-v9.4.0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/resplendent-global-travel/assets/css/style.css?v=a4d8f8b52b81c481fa3d942aa811d35afc404d30">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/resplendent-global-travel/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  <link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
+</head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://millerwanj.github.io/resplendent-global-travel/">resplendent-global-travel</a></h1>
+      
+
+      <h1 id="v940--crm-integration-edition">v9.4.0 — CRM Integration Edition</h1>
+
+<h2 id="purpose">Purpose</h2>
+<p>Transform the existing contact journey into a CRM-connected client-intake workflow without embedding Zoho’s generic form design.</p>
+
+<h2 id="included">Included</h2>
+<ul>
+  <li>Existing Resplendent contact form submits validated enquiries to the Zoho CRM Leads module.</li>
+  <li>Full Name is safely mapped to Zoho First Name and required Last Name fields.</li>
+  <li>Service, company, journey details, message and RGTS reference are consolidated into the Zoho Description field.</li>
+  <li>Zoho’s configured default acknowledgement template is triggered for visitors.</li>
+  <li>Lead-owner notification remains controlled by the Zoho webform configuration.</li>
+  <li>Existing departmental SMTP routing is preserved as a secondary delivery channel when configured.</li>
+  <li>If SMTP is temporarily unavailable after Zoho accepts the lead, the client enquiry is not lost.</li>
+  <li>Existing Google Analytics foundation and contact success-state tracking remain intact.</li>
+  <li>No visible redesign, URL change, metadata change or indexing request is required.</li>
+</ul>
+
+<h2 id="deployment">Deployment</h2>
+<p>Upload and extract the complete archive over the current site, preserving the external <code class="language-plaintext highlighter-rouge">rgts-mail-config.php</code> file if SMTP routing is already configured.</p>
+
+<h2 id="required-production-test">Required production test</h2>
+<p>Submit one real test enquiry using an email address you can access. Confirm:</p>
+<ol>
+  <li>the success reference appears on the Contact page;</li>
+  <li>a Lead appears in Zoho CRM;</li>
+  <li>the visitor receives the acknowledgement email;</li>
+  <li>the lead owner receives the Zoho notification;</li>
+  <li>departmental email delivery is received when SMTP is configured.</li>
+</ol>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

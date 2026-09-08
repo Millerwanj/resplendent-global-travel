@@ -30,10 +30,11 @@ final class ConnectivityOrderStore
                 'confirmation_code' => '',
             ],
             'provisioning' => [
-                'provider' => 'sandbox',
+                'provider' => strtolower(trim((string)($payload['plan']['provider'] ?? ''))),
                 'status' => 'NOT_STARTED',
                 'provider_order_reference' => '',
             ],
+            'result_token' => bin2hex(random_bytes(32)),
             'payload' => $payload,
         ];
         $this->write($order);
@@ -55,6 +56,25 @@ final class ConnectivityOrderStore
         $order['updated_at'] = gmdate('c');
         $this->write($order);
         return $order;
+    }
+
+    /** @template T @param callable():T $callback @return T */
+    public function withOrderLock(string $id, callable $callback)
+    {
+        if (!preg_match('/^RGTS-CON-[A-Za-z0-9-]+$/', $id)) throw new InvalidArgumentException('Invalid order ID.');
+        $lockDir = $this->directory . '/.locks';
+        if (!is_dir($lockDir) && !mkdir($lockDir, 0750, true) && !is_dir($lockDir)) {
+            throw new RuntimeException('Order lock storage is unavailable.');
+        }
+        $handle = fopen($lockDir . '/' . basename($id) . '.lock', 'c');
+        if ($handle === false) throw new RuntimeException('Could not open order lock.');
+        try {
+            if (!flock($handle, LOCK_EX)) throw new RuntimeException('Could not lock connectivity order.');
+            return $callback();
+        } finally {
+            flock($handle, LOCK_UN);
+            fclose($handle);
+        }
     }
 
     public function findByProviderReference(string $trackingId): ?array

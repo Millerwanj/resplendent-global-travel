@@ -1,40 +1,14 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Connectivity Order | Resplendent</title>
+<title>Your eSIM Order | Resplendent</title>
 <style>
-body{margin:0;background:#f7f4ec;color:#17201f;font-family:Arial,sans-serif}.box{max-width:720px;margin:10vh auto;padding:46px;background:white;border:1px solid #ddd8cc}
-small{letter-spacing:.14em;text-transform:uppercase;color:#a98752}h1{font:400 38px Georgia,serif}.status{font-size:20px;color:#173c36;margin:25px 0}
-button,a.btn{display:inline-block;border:0;background:#173c36;color:white;padding:14px 18px;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;font-size:12px;cursor:pointer}
-#detail{line-height:1.7;color:#66716e}.error{color:#8b2d25}
+body{margin:0;background:#f7f4ec;color:#17201f;font-family:Arial,sans-serif}.box{max-width:760px;margin:8vh auto;padding:46px;background:white;border:1px solid #ddd8cc}small{letter-spacing:.14em;text-transform:uppercase;color:#a98752}h1{font:400 38px Georgia,serif}.status{font-size:20px;color:#173c36;margin:25px 0}#detail{line-height:1.7;color:#66716e}.activation{margin-top:28px;padding:24px;background:#f7f4ec}.activation code{word-break:break-all}.activation img{display:block;max-width:260px;width:100%;margin:18px 0;background:#fff;padding:10px}.error{color:#8b2d25}.quiet{font-size:13px;color:#66716e}a{color:#173c36}
 </style><link href="/assets/css/rgts-full-natural-v1191.css?v=11.9.1" rel="stylesheet"/>
-</head><body><main class="box"><small>Resplendent Instant Connectivity</small><h1>Your connectivity order</h1>
-<div id="status" class="status">Checking verified payment status…</div><div id="detail"></div><div id="actions"></div></main>
+</head><body><main class="box"><small>Resplendent · SIMless Travel</small><h1>Your eSIM order</h1><div id="status" class="status">Confirming your payment and eSIM…</div><div id="detail"></div></main>
 <script>
-const p=new URLSearchParams(location.search), id=p.get('order_id'), statusEl=document.getElementById('status'), detail=document.getElementById('detail'), actions=document.getElementById('actions');
-async function load(){
- if(!id){statusEl.textContent='Order reference missing.';return}
- try{
-  const r=await fetch('/api/connectivity/status.php?order_id='+encodeURIComponent(id),{cache:'no-store'}), d=await r.json();
-  if(!d.ok) throw new Error(d.message||'Order not found.');
-  const o=d.order;
-  statusEl.textContent=o.status==='PAID'?'Payment verified':o.status==='PROVISIONED'?'Sandbox eSIM provisioned':o.status.replaceAll('_',' ');
-  detail.innerHTML='<p><strong>Order:</strong> '+o.id+'<br><strong>Plan:</strong> '+o.plan.name+'<br><strong>Total:</strong> '+o.currency+' '+o.amount+'</p>';
-  if(o.status==='PAID' && o.payment_verified){
-    actions.innerHTML='<button id="prov">Run sandbox provisioning test</button>';
-    document.getElementById('prov').onclick=provision;
-  } else if(o.status==='PROVISIONED'){
-    actions.innerHTML='<p>Test complete. No real eSIM was issued.</p>';
-  } else {
-    actions.innerHTML='<a class="btn" href="/connectivity-checkout.html">Return to checkout</a>';
-  }
- }catch(e){statusEl.textContent='We could not confirm this order.';detail.innerHTML='<p class="error">'+e.message+'</p>'}
-}
-async function provision(){
- const b=document.getElementById('prov');b.disabled=true;b.textContent='Provisioning test…';
- try{
-  const r=await fetch('/api/connectivity/sandbox-provision.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({order_id:id})}), d=await r.json();
-  if(!r.ok||!d.ok)throw new Error(d.message||'Provisioning test failed.');await load();
- }catch(e){detail.innerHTML+='<p class="error">'+e.message+'</p>';b.disabled=false;b.textContent='Run sandbox provisioning test'}
-}
+const p=new URLSearchParams(location.search), id=p.get('order_id'), token=p.get('token'), statusEl=document.getElementById('status'), detail=document.getElementById('detail');let checks=0;
+function esc(v){const n=document.createElement('span');n.textContent=String(v||'');return n.innerHTML}
+function activationHtml(a){if(!a||!Object.keys(a).length)return '';let h='<div class="activation"><strong>Your eSIM is ready</strong><p>We have also sent these details to your email.</p>';if(a.qr_code_url&&/^https:\/\//i.test(a.qr_code_url))h+='<img src="'+esc(a.qr_code_url)+'" alt="eSIM QR code">';if(a.smdp_address)h+='<p><strong>SM-DP+ address</strong><br><code>'+esc(a.smdp_address)+'</code></p>';if(a.activation_code)h+='<p><strong>Activation code</strong><br><code>'+esc(a.activation_code)+'</code></p>';if(a.manual_code)h+='<p><strong>Manual installation code</strong><br><code>'+esc(a.manual_code)+'</code></p>';if(a.iccid)h+='<p><strong>ICCID</strong><br><code>'+esc(a.iccid)+'</code></p>';return h+'</div>'}
+async function load(){if(!id||!token){statusEl.textContent='This order link is incomplete.';detail.innerHTML='<p class="error">Please use the secure return link from your payment session.</p>';return}try{const r=await fetch('/api/connectivity/status.php?order_id='+encodeURIComponent(id)+'&token='+encodeURIComponent(token),{cache:'no-store'}),d=await r.json();if(!r.ok||!d.ok)throw new Error(d.message||'Order not found.');const o=d.order;const labels={PAYMENT_PENDING:'Payment confirmation pending',PAID:'Payment verified · preparing your eSIM',PROVISIONING:'Preparing your eSIM',PROVISIONED:'Your eSIM is ready',PAYMENT_REVIEW:'Payment requires review',PAYMENT_FAILED:'Payment was not completed',FULFILMENT_REVIEW:'Your eSIM order requires attention'};statusEl.textContent=labels[o.status]||String(o.status).replaceAll('_',' ');detail.innerHTML='<p><strong>Order:</strong> '+esc(o.id)+'<br><strong>Plan:</strong> '+esc(o.plan.name)+'<br><strong>Destination:</strong> '+esc(o.plan.destination)+'<br><strong>Total:</strong> '+esc(o.currency)+' '+esc(o.amount)+'</p>'+activationHtml(o.activation)+(o.delivery_email_sent?'<p class="quiet">Delivery email sent.</p>':'');if(['PAYMENT_PENDING','PAID','PROVISIONING'].includes(o.status)&&checks++<8)setTimeout(load,3000);}catch(e){statusEl.textContent='We could not confirm this order.';detail.innerHTML='<p class="error">'+esc(e.message)+'</p>'}}
 load();
 </script></body></html>
