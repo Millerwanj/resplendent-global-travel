@@ -90,6 +90,21 @@ final class ConnectivityOrderStore
         return null;
     }
 
+    /** @return array<int,array<string,mixed>> */
+    public function listRecent(int $limit = 100): array
+    {
+        $limit = max(1, min(500, $limit));
+        $orders = [];
+        foreach (glob($this->directory . '/*.json') ?: [] as $path) {
+            $decoded = json_decode((string)file_get_contents($path), true);
+            if (is_array($decoded) && !empty($decoded['id'])) $orders[] = $decoded;
+        }
+        usort($orders, static fn(array $a, array $b): int =>
+            strcmp((string)($b['updated_at'] ?? ''), (string)($a['updated_at'] ?? ''))
+        );
+        return array_slice($orders, 0, $limit);
+    }
+
     private function write(array $order): void
     {
         $path = $this->path((string)$order['id']);

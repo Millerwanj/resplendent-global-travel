@@ -1,13 +1,18 @@
 {
-  "release": "v12.0",
-  "name": "Unified eSIM Fulfilment",
+  "release": "v12.1",
+  "name": "Complete eSIM Provisioning",
   "status": "consolidated-master",
-  "date": "2026-09-08",
+  "date": "2026-09-10",
   "integrated_changes": [
     "PesaPal M-Pesa conversion guard",
     "Unlimited plan normalization",
     "Safe pre-purchase fulfilment retry",
-    "eSIMCARD application failure validation"
+    "eSIMCARD application failure validation",
+    "Delayed supplier-order reconciliation",
+    "Independent delivery-email retry",
+    "eSIM operations dashboard",
+    "Protected background reconciliation",
+    "Retired development-only mock offer endpoint and incompatible mock classes"
   ],
   "private_config_excluded": [
     "/home/resplend/rgts-esimcard-config.php",

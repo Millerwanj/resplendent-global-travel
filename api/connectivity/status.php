@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/includes/Connectivity/connectivity-bootstrap.php';
+require_once dirname(__DIR__, 2) . '/includes/Connectivity/ConnectivityFulfillmentService.php';
 
 try {
     $id = trim((string)($_GET['order_id'] ?? ''));
@@ -12,6 +13,15 @@ try {
     $expectedToken = (string)($order['result_token'] ?? '');
     if ($expectedToken === '' || $token === '' || !hash_equals($expectedToken, $token)) {
         throw new RuntimeException('Order access denied.');
+    }
+
+    $service = new ConnectivityFulfillmentService($store);
+    if (in_array(($order['provisioning']['status'] ?? ''), ['AWAITING_SUPPLIER', 'PROVISIONING_REVIEW'], true)
+        && !empty($order['provisioning']['provider_order_reference'])) {
+        $order = $service->reconcile($id);
+    }
+    if (($order['status'] ?? '') === 'PROVISIONED' && empty($order['delivery']['email_sent_at'])) {
+        $order = $service->retryDelivery($id);
     }
 
     $activation = [];
@@ -37,6 +47,7 @@ try {
             'provisioning_status' => $order['provisioning']['status'] ?? 'NOT_STARTED',
             'activation' => $activation,
             'delivery_email_sent' => !empty($order['delivery']['email_sent_at']),
+            'delivery_status' => $order['delivery']['status'] ?? 'PENDING',
         ],
     ]);
 } catch (Throwable $e) {

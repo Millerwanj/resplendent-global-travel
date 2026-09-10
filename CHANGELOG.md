@@ -1,3 +1,15 @@
+# v12.1 — Complete eSIM Provisioning (2026-09-10)
+
+- Consolidated the complete payment-to-provisioning lifecycle into one master build.
+- Added safe handling for supplier orders that are accepted but not immediately provisioned.
+- Added throttled supplier-status reconciliation through the secure customer order-status flow.
+- Added a protected background reconciliation endpoint for scheduled operational checks.
+- Separated email-delivery retries from supplier purchasing so a delivery failure cannot create a duplicate eSIM charge.
+- Added explicit supplier, fulfilment and delivery states to the Operations dashboard.
+- Added controlled admin actions for supplier checks and delivery retries.
+- Retired the obsolete public mock-offer endpoint and its incompatible development-only classes.
+- Preserved the approved website design, imagery, eSIM journey and commercial pricing logic.
+
 # v11.8.6 — eSIM premium flow + natural headers
 
 - Removed the redundant four-step summary/navigation bar above the actual eSIM journey.

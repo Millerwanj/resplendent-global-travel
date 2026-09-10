@@ -41,12 +41,17 @@ final class EsimCardConnectivityProvider implements ConnectivityProviderInterfac
         $response = $this->client->purchaseDataPackage($packageId, '', $this->testPurchase);
         $providerOrderReference = $this->findScalar($response, ['order_id','orderId','order_reference','orderReference','id']);
         if ($providerOrderReference === '') throw new RuntimeException('eSIMCard purchase completed without an order reference.');
+        $activation = $this->activationData($response);
+        $rawStatus = strtolower($this->findScalar($response, ['status','order_status','orderStatus']));
+        $failed = in_array($rawStatus, ['failed','failure','cancelled','canceled','refunded'], true);
+        $completed = in_array($rawStatus, ['completed','complete','success','successful','provisioned','active'], true)
+            || $activation !== [];
 
         return [
             'provider' => 'esimcard',
-            'status' => 'PROVISIONED',
+            'status' => $failed ? 'FAILED' : ($completed ? 'PROVISIONED' : 'PENDING'),
             'provider_order_reference' => $providerOrderReference,
-            'activation' => $this->activationData($response),
+            'activation' => $activation,
             'test_purchase' => $this->testPurchase,
         ];
     }

@@ -37,6 +37,7 @@ function admin_page_header(string $title, string $active = ''): void
         <a class="<?= $active === 'invoice' ? 'active' : '' ?>" href="invoice.php">Invoice Generator</a>
         <a class="<?= $active === 'workflow' ? 'active' : '' ?>" href="workflow.php">Client Workflow</a>
         <a class="<?= $active === 'settings' ? 'active' : '' ?>" href="settings.php">Payment Settings</a>
+        <a class="<?= $active === 'esim-orders' ? 'active' : '' ?>" href="esim-orders.php">eSIM Orders</a>
         <a class="<?= $active === 'esim' ? 'active' : '' ?>" href="esim-sandbox.php">eSIM Sandbox</a>
     </nav>
     <div class="admin-sidebar-foot">

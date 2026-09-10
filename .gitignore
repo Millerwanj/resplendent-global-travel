@@ -3,33 +3,3 @@ Thumbs.db
 .vscode/
 node_modules/
 .env
-
-docs/RELEASE-*.html
-docs/SMTP-SETUP-*.html
-docs/VERIFICATION-*.html
-docs/VERPEX-DEPLOYMENT-*.html
-docs/QA-*.html
-docs/DEPLOYMENT*.html
-docs/DOMAIN-AND-EMAIL-MIGRATION.html
-docs/IMAGE-CREDITS.html
-docs/LAUNCH-*.html
-docs/PAYMENT-ARCHITECTURE-*.html
-docs/PRICING-POLICY-*.html
-docs/API-BACKEND-*.html
-docs/BRAND-GUIDE.html
-
-# Local deployment and server-generated files
-*.bak-*
-**/error_log
-VERIFY-v*.txt
-VERPEX-FULL-BASELINE-v*.txt
-docs/QA-*.md
-docs/RELEASE-*.md
-docs/VERPEX-DEPLOYMENT-*.html
-yandex_*.html
-
-# Private production configuration
-rgts-esimcard-config.php
-.env
-.env.*
-*.zip

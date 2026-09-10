@@ -107,15 +107,29 @@ function rgts_connectivity_base_url(): string
     return 'https://' . preg_replace('/[^A-Za-z0-9.\-:]/', '', $host);
 }
 
-function rgts_connectivity_send_delivery_email(array &$order): void
+function rgts_connectivity_send_delivery_email(array &$order): bool
 {
-    if (!empty($order['delivery']['email_sent_at'])) return;
+    if (!empty($order['delivery']['email_sent_at'])) return true;
     $email = trim((string)($order['payload']['customer']['email'] ?? ''));
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return;
+    $order['delivery']['attempts'] = (int)($order['delivery']['attempts'] ?? 0) + 1;
+    $order['delivery']['last_attempt_at'] = gmdate('c');
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $order['delivery']['status'] = 'INVALID_ADDRESS';
+        $order['delivery']['email_error'] = 'The customer email address is invalid.';
+        return false;
+    }
     $configPath = dirname(__DIR__, 3) . '/rgts-mail-config.php';
-    if (!is_file($configPath)) return;
+    if (!is_file($configPath)) {
+        $order['delivery']['status'] = 'NOT_CONFIGURED';
+        $order['delivery']['email_error'] = 'Email delivery is not configured.';
+        return false;
+    }
     $mailConfig = require $configPath;
-    if (!is_array($mailConfig)) return;
+    if (!is_array($mailConfig)) {
+        $order['delivery']['status'] = 'NOT_CONFIGURED';
+        $order['delivery']['email_error'] = 'Email delivery configuration is invalid.';
+        return false;
+    }
 
     require_once dirname(__DIR__) . '/SmtpMailer.php';
     $activation = is_array($order['provisioning']['activation'] ?? null) ? $order['provisioning']['activation'] : [];
@@ -124,6 +138,7 @@ function rgts_connectivity_send_delivery_email(array &$order): void
     $body .= 'Destination: ' . (string)($order['payload']['plan']['destination'] ?? '') . "\n";
     $body .= 'Plan: ' . (string)($order['payload']['plan']['name'] ?? '') . "\n\n";
     if (!empty($activation['qr_code_url'])) $body .= 'QR code: ' . $activation['qr_code_url'] . "\n";
+    elseif (!empty($activation['qr_code']) && filter_var($activation['qr_code'], FILTER_VALIDATE_URL)) $body .= 'QR code: ' . $activation['qr_code'] . "\n";
     if (!empty($activation['smdp_address'])) $body .= 'SM-DP+ address: ' . $activation['smdp_address'] . "\n";
     if (!empty($activation['activation_code'])) $body .= 'Activation code: ' . $activation['activation_code'] . "\n";
     if (!empty($activation['manual_code'])) $body .= 'Manual code: ' . $activation['manual_code'] . "\n";
@@ -136,11 +151,16 @@ function rgts_connectivity_send_delivery_email(array &$order): void
         $replyTo = trim((string)($mailConfig['reply_to'] ?? 'bookings@resplendentglobaltravel.com'));
         $mailer = new SmtpMailer($mailConfig);
         $mailer->send([$email], [], $fromEmail, $fromName, $replyTo, 'Your Resplendent eSIM is ready — ' . (string)$order['id'], $body);
+        $order['delivery']['status'] = 'SENT';
         $order['delivery']['email_sent_at'] = gmdate('c');
         $order['delivery']['email'] = $email;
+        $order['delivery']['email_error'] = '';
+        return true;
     } catch (Throwable $e) {
+        $order['delivery']['status'] = 'FAILED';
         $order['delivery']['email_error'] = substr(strip_tags($e->getMessage()), 0, 240);
         error_log('RGTS eSIM delivery email: ' . $e->getMessage());
+        return false;
     }
 }
 
