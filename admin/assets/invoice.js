@@ -20,6 +20,53 @@
     if (node) node.textContent = content || fallback;
   };
   const businessMode = () => value("invoice_type") === "Business Matchmaking";
+  const paymentSummary = root.querySelector("[data-payment-summary]");
+  let paymentProfiles = {};
+  try {
+    paymentProfiles = JSON.parse(paymentSummary?.dataset.paymentProfiles || "{}");
+  } catch (_) {
+    paymentProfiles = {};
+  }
+
+  const paymentProfile = (currency) => paymentProfiles[currency] || paymentProfiles.USD || {};
+  const fillPaymentDetails = (container, entries) => {
+    if (!container) return;
+    container.querySelectorAll("span").forEach((node) => node.remove());
+    entries.forEach(([label, content]) => {
+      if (!content) return;
+      const item = document.createElement("span");
+      const strong = document.createElement("strong");
+      item.append(document.createTextNode(label));
+      strong.textContent = content;
+      item.append(strong);
+      container.insertBefore(item, container.querySelector("p"));
+    });
+  };
+  const renderPaymentDetails = (currency) => {
+    const payment = paymentProfile(currency);
+    fillPaymentDetails(paymentSummary, [
+      ["Bank", payment.bank_name],
+      ["Account name", payment.account_name],
+      ["Account number", payment.account_number],
+      ["Account currency", payment.currency],
+      ["M-Pesa", payment.mpesa_number ? `${payment.mpesa_name || "Paybill"} ${payment.mpesa_number}` : ""],
+      ["Paybill account", payment.mpesa_reference],
+    ]);
+    fillPaymentDetails(root.querySelector(".preview-payment-details"), [
+      ["Bank", payment.bank_name],
+      ["Account name", payment.account_name],
+      ["Account number", payment.account_number],
+      ["Account currency", payment.currency],
+      ["Branch", payment.branch],
+      ["SWIFT / IBAN", payment.swift_iban],
+      ["Bank / branch code", payment.bank_code && payment.branch_code ? `${payment.bank_code} / ${payment.branch_code}` : ""],
+      ["Customer number", payment.customer_number],
+      ["M-Pesa", payment.mpesa_number ? `${payment.mpesa_name || "Paybill"} ${payment.mpesa_number}` : ""],
+      ["Paybill account", payment.mpesa_reference],
+    ]);
+    text("[data-payment-summary-note]", payment.instructions);
+    text("[data-preview-payment-note]", payment.instructions);
+  };
 
   const milestone = () => {
     const milestones = {
@@ -74,6 +121,7 @@
     if (business) field("currency").value = "USD";
 
     const currency = business ? "USD" : value("currency") || "USD";
+    renderPaymentDetails(currency);
     const totals = calculate();
     field("grand_total_display").value = formatMoney(currency, totals.total);
     field("balance_display").value = formatMoney(currency, totals.balance);

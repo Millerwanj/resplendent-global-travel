@@ -231,11 +231,18 @@ final class PdfDocumentGenerator
             'branch' => 'Branch',
             'swift_iban' => 'SWIFT / IBAN',
             'currency' => 'Account currency',
+            'customer_number' => 'Customer number',
         ] as $key => $label) {
             if (!empty($payment[$key])) $details[$label] = (string)$payment[$key];
         }
+        if (!empty($payment['bank_code']) || !empty($payment['branch_code'])) {
+            $details['Bank / branch code'] = trim((string)($payment['bank_code'] ?? '') . ' / ' . (string)($payment['branch_code'] ?? ''), ' /');
+        }
         if (!empty($payment['mpesa_number'])) {
             $details['M-Pesa'] = trim((string)($payment['mpesa_name'] ?? '') . ' ' . (string)$payment['mpesa_number']);
+        }
+        if (!empty($payment['mpesa_reference'])) {
+            $details['Paybill account'] = (string)$payment['mpesa_reference'];
         }
         if ($details !== []) $this->keyValues($details);
         $this->paragraph($this->value($payment, 'instructions', 'Payment instructions will be provided separately.'));

@@ -25,12 +25,18 @@ if ($source && !$quotationIsAccepted($store, $source)) {
     $source = null;
 }
 $sourcePayload = is_array($source['payload'] ?? null) ? $source['payload'] : [];
+$sourceCurrency = strtoupper((string)($sourcePayload['currency'] ?? 'USD'));
+if (!in_array($sourceCurrency, ['USD', 'KES', 'EUR', 'GBP'], true)) $sourceCurrency = 'USD';
 $clientReference = admin_text(
     $_GET['client'] ?? $_POST['client_reference'] ?? $source['client_reference'] ?? '',
     40
 );
 $client = $clientReference !== '' ? $store->getClient($clientReference) : null;
-$paymentSettings = $store->getPaymentSettings();
+$paymentProfiles = [];
+foreach (['USD', 'KES', 'EUR', 'GBP'] as $profileCurrency) {
+    $paymentProfiles[$profileCurrency] = $store->getInvoicePaymentSettings($profileCurrency);
+}
+$paymentSettings = $paymentProfiles[$sourceCurrency];
 $error = '';
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
@@ -59,7 +65,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             $payload['amount_paid'] = number_format($paid, 2, '.', '');
             $payload['balance_amount'] = number_format($balance, 2, '.', '');
             $payload['invoice_status'] = $status;
-            $payload['payment_settings'] = $store->getPaymentSettings();
+            $invoiceCurrency = strtoupper(admin_text($payload['currency'] ?? 'USD', 8));
+            if (!in_array($invoiceCurrency, ['USD', 'KES', 'EUR', 'GBP'], true)) $invoiceCurrency = 'USD';
+            $payload['payment_settings'] = $store->getInvoicePaymentSettings($invoiceCurrency);
             $record = $store->saveDocument('invoice', $payload);
             admin_flash('success', 'Invoice ' . (string)$record['number'] . ' is ready.');
             header('Location: document.php?id=' . rawurlencode((string)$record['id']), true, 303);
@@ -129,7 +137,6 @@ admin_page_header('Invoice Generator', 'invoice');
                 <label>Due date<input type="date" name="due_date" value="<?= gmdate('Y-m-d', strtotime('+7 days')) ?>"></label>
                 <label>Currency
                     <select name="currency">
-                        <?php $sourceCurrency = (string)($sourcePayload['currency'] ?? 'USD'); ?>
                         <?php foreach (['USD', 'KES', 'EUR', 'GBP'] as $currency): ?><option <?= $sourceCurrency === $currency ? 'selected' : '' ?>><?= $currency ?></option><?php endforeach; ?>
                     </select>
                 </label>
@@ -185,12 +192,13 @@ admin_page_header('Invoice Generator', 'invoice');
 
         <fieldset>
             <legend><span>05</span> Payment instructions</legend>
-            <div class="payment-settings-summary">
+            <div class="payment-settings-summary" data-payment-summary data-payment-profiles='<?= admin_e(json_encode($paymentProfiles, JSON_UNESCAPED_SLASHES) ?: '{}') ?>'>
                 <?php if ($paymentSettings['bank_name'] !== ''): ?><span>Bank<strong><?= admin_e($paymentSettings['bank_name']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['account_name'] !== ''): ?><span>Account name<strong><?= admin_e($paymentSettings['account_name']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['account_number'] !== ''): ?><span>Account number<strong><?= admin_e($paymentSettings['account_number']) ?></strong></span><?php endif; ?>
+                <?php if (($paymentSettings['currency'] ?? '') !== ''): ?><span>Account currency<strong><?= admin_e($paymentSettings['currency']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['mpesa_number'] !== ''): ?><span>M-Pesa<strong><?= admin_e($paymentSettings['mpesa_number']) ?></strong></span><?php endif; ?>
-                <p><?= nl2br(admin_e($paymentSettings['instructions'])) ?></p>
+                <p data-payment-summary-note><?= nl2br(admin_e($paymentSettings['instructions'])) ?></p>
             </div>
             <a class="text-action settings-link" href="settings.php">Update Payment Settings</a>
         </fieldset>
@@ -227,8 +235,11 @@ admin_page_header('Invoice Generator', 'invoice');
                 <?php if ($paymentSettings['account_number'] !== ''): ?><span>Account number<strong><?= admin_e($paymentSettings['account_number']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['branch'] !== ''): ?><span>Branch<strong><?= admin_e($paymentSettings['branch']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['swift_iban'] !== ''): ?><span>SWIFT / IBAN<strong><?= admin_e($paymentSettings['swift_iban']) ?></strong></span><?php endif; ?>
+                <?php if (($paymentSettings['bank_code'] ?? '') !== ''): ?><span>Bank / branch code<strong><?= admin_e($paymentSettings['bank_code'] . ' / ' . $paymentSettings['branch_code']) ?></strong></span><?php endif; ?>
+                <?php if (($paymentSettings['customer_number'] ?? '') !== ''): ?><span>Customer number<strong><?= admin_e($paymentSettings['customer_number']) ?></strong></span><?php endif; ?>
                 <?php if ($paymentSettings['mpesa_number'] !== ''): ?><span>M-Pesa<strong><?= admin_e($paymentSettings['mpesa_number']) ?></strong></span><?php endif; ?>
-            </div><p><?= nl2br(admin_e($paymentSettings['instructions'])) ?></p></section>
+                <?php if (($paymentSettings['mpesa_reference'] ?? '') !== ''): ?><span>Paybill account<strong><?= admin_e($paymentSettings['mpesa_reference']) ?></strong></span><?php endif; ?>
+            </div><p data-preview-payment-note><?= nl2br(admin_e($paymentSettings['instructions'])) ?></p></section>
             <section><p data-preview-note></p></section>
             <section class="preview-policy">
                 <div data-policy-travel><h3>Important Terms</h3><p>Airfares, accommodation rates, taxes, availability and supplier conditions are indicative at the time of enquiry and may change until the required payment is received and the service is ticketed or formally confirmed in writing.</p></div>

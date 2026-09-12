@@ -1,8 +1,8 @@
 {
-  "release": "v12.1",
-  "name": "Complete eSIM Provisioning",
+    "release": "v12.4",
+    "name": "Premium Published Journals and Homepage Fade",
   "status": "consolidated-master",
-  "date": "2026-09-10",
+    "date": "2026-09-12",
   "integrated_changes": [
     "PesaPal M-Pesa conversion guard",
     "Unlimited plan normalization",
@@ -12,7 +12,11 @@
     "Independent delivery-email retry",
     "eSIM operations dashboard",
     "Protected background reconciliation",
-    "Retired development-only mock offer endpoint and incompatible mock classes"
+        "Retired development-only mock offer endpoint and incompatible mock classes",
+        "Europe2Africa Rwanda and Namibia published-journal lead capture",
+        "Currency-aware Stanbic payment instructions on new invoices",
+        "Compact premium Published Journals editorial layout",
+        "Restored homepage-only readability fade and refreshed stylesheet cache"
   ],
   "private_config_excluded": [
     "/home/resplend/rgts-esimcard-config.php",

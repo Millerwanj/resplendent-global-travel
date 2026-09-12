@@ -375,6 +375,22 @@ img { display: block; width: 100%; }
 .journal-card p { color: #617777; line-height: 1.65; }
 .journal-grid > .journal-card:last-child { grid-column: 2; }
 
+.published-journals { background: #fff; }
+.published-journals-heading { max-width: 720px; margin-bottom: 34px; }
+.published-journals-heading .eyebrow { color: var(--brass); margin-bottom: 12px; }
+.published-journals-heading h2 { margin: 0 0 16px; font: 400 clamp(42px, 5vw, 64px)/1.05 var(--serif); }
+.published-journals-heading > p:last-child { margin: 0; color: #617777; line-height: 1.75; }
+.publication-grid { border-bottom: 1px solid var(--line); }
+.publication-card { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 38px; align-items: center; border-top: 1px solid var(--line); padding: 30px 0; }
+.publication-card > img { width: 230px; height: 165px; object-fit: cover; }
+.publication-copy { display: grid; grid-template-columns: minmax(0, 1fr) 230px; column-gap: 44px; align-items: end; }
+.publication-copy .eyebrow { color: var(--brass); margin-bottom: 10px; }
+.publication-copy .eyebrow { grid-column: 1 / -1; }
+.publication-copy h3 { grid-column: 1; margin: 0 0 10px; font: 400 clamp(27px, 2.35vw, 36px)/1.12 var(--serif); }
+.publication-copy > p:not(.eyebrow) { margin: 0; color: #617777; line-height: 1.65; }
+.publication-links { grid-column: 2; grid-row: 2 / span 2; display: flex; flex-direction: column; align-items: flex-start; gap: 11px; margin: 0; padding-bottom: 2px; }
+.publication-enquiry { color: var(--ink-deep); }
+
 .journey-list { border-top: 1px solid #b8c7c2; }
 .journey-row {
   display: grid;
@@ -438,6 +454,11 @@ img { display: block; width: 100%; }
 }
 
 @media (max-width: 900px) {
+  .publication-card { grid-template-columns: 190px minmax(0, 1fr); gap: 28px; }
+  .publication-card > img { width: 190px; height: 150px; }
+  .publication-copy { grid-template-columns: 1fr; }
+  .publication-copy .eyebrow, .publication-copy h3, .publication-links { grid-column: 1; }
+  .publication-links { grid-row: auto; margin-top: 18px; }
   .journey-feature, .split-story, .contact-layout, .signature-journey-block { grid-template-columns: 1fr; }
   .journey-feature .visual { min-height: 60vw; }
   .signature-journey-photo { min-height: 58vw; max-height: 610px; }
@@ -449,6 +470,12 @@ img { display: block; width: 100%; }
 }
 
 @media (max-width: 680px) {
+  .published-journals-heading { margin-bottom: 25px; }
+  .publication-card { grid-template-columns: 110px minmax(0, 1fr); gap: 18px; padding: 24px 0; align-items: start; }
+  .publication-card > img { width: 110px; height: 150px; }
+  .publication-copy h3 { font-size: 25px; }
+  .publication-copy > p:not(.eyebrow) { font-size: 13px; }
+  .publication-links { gap: 9px; margin-top: 15px; }
   .site-header { min-height: 78px; padding: 0 20px; gap: 16px; }
   .brand-mark { width: 27px; height: 33px; }
   .brand-main { font-size: 14px; letter-spacing: .16em; }
@@ -783,3 +810,15 @@ img { display: block; width: 100%; }
 /* v11.8.6 — natural photographic headers, including Contact. No fade, tint, colour or contrast processing. */
 .contact-hero::before,.contact-hero::after,.contact-hero.soft-green::after{display:none!important;background:none!important;}
 .contact-hero .hero-bg{filter:none!important;opacity:1!important;}
+
+/* v12.4 — restore the approved homepage readability fade without tinting the photograph. */
+.home-hero::before {
+  display: block !important;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(8,32,32,.74) 0%, rgba(8,32,32,.48) 32%, rgba(8,32,32,.16) 56%, rgba(8,32,32,0) 76%) !important;
+}
+.home-hero.soft-green::after { display: none !important; }
+.home-hero .hero-bg { filter: none !important; }

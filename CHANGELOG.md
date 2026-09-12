@@ -514,3 +514,22 @@
 - Moved the selected happy-on-phone lifestyle photograph into the middle of the journey beside destination selection.
 - Restored a concise, practical installation step and retained the existing approved Pexels 4105310 support video unchanged.
 - Kept the future Resplendent Roam component hidden until provider commercial/API terms are confirmed.
+# v12.2 — Published Journals Lead Capture (11 September 2026)
+
+- Added a restrained Published Journals section to the existing Journal page.
+- Added Europe2Africa features for Namibia and Rwanda using approved site photography.
+- Added tracked outbound publication links and destination-prefilled journey enquiry links.
+- Preserved the complete v12.1 eSIM provisioning system and all other approved pages.
+# v12.3 — Invoice Payment Details (12 September 2026)
+
+- Added the verified Stanbic KES and USD accounts to new invoice snapshots.
+- KES invoices show the KES account together with M-Pesa Paybill 600100 and account 170919.
+- USD invoices show the USD account, SWIFT code, bank code, branch code and customer number.
+- EUR and GBP invoices request confirmation of the USD settlement amount before transfer.
+- Preserved the complete v12.2 Published Journals section, lead CTAs and eSIM provisioning system.
+# v12.4 — Premium Journal Layout and Homepage Fade (12 September 2026)
+
+- Reworked Published Journals into compact editorial rows with restrained photography.
+- Restored the homepage-only readability fade while preserving natural image colour.
+- Updated the homepage and Journal stylesheet versions to prevent stale cached layouts.
+- Preserved the v12.3 invoice payment details and complete eSIM provisioning system.

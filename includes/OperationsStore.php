@@ -176,20 +176,20 @@ final class OperationsStore
     {
         $defaults = [
             'primary_method' => 'rtgs',
-            'bank_name' => '',
-            'account_name' => '',
-            'account_number' => '',
-            'branch' => '',
-            'swift_iban' => '',
-            'currency' => '',
-            'mpesa_name' => '',
-            'mpesa_number' => '',
+            'bank_name' => 'Stanbic Bank Kenya Limited',
+            'account_name' => 'Resplendent Global Solutions Limited',
+            'account_number' => '0100018953794',
+            'branch' => 'Gikomba Branch',
+            'swift_iban' => 'SBICKENX',
+            'currency' => 'USD',
+            'mpesa_name' => 'Paybill',
+            'mpesa_number' => '600100',
             'online_provider' => '',
             'online_enabled' => '0',
             'terminal_provider' => '',
             'terminal_enabled' => '0',
             'payment_link' => '',
-            'instructions' => 'Payment instructions will be provided separately.',
+            'instructions' => 'Please quote the invoice number as the payment reference and send proof of payment to accounts@resplendentglobaltravel.com.',
             'updated_at' => '',
         ];
         $stored = $this->readJson('payment-settings.json', []);
@@ -198,6 +198,51 @@ final class OperationsStore
             $settings[$key] = $this->text($stored[$key] ?? $default, $key === 'instructions' ? 1500 : 240, true);
         }
         return $settings;
+    }
+
+    /** @return array<string,string> */
+    public function getInvoicePaymentSettings(string $currency): array
+    {
+        $currency = strtoupper(trim($currency));
+        $isKes = $currency === 'KES';
+
+        $profile = [
+            'primary_method' => 'rtgs',
+            'bank_name' => 'Stanbic Bank Kenya Limited',
+            'account_name' => 'Resplendent Global Solutions Limited',
+            'account_number' => $isKes ? '0100018953767' : '0100018953794',
+            'branch' => 'Gikomba Branch',
+            'swift_iban' => $isKes ? '' : 'SBICKENX',
+            'currency' => $isKes ? 'KES' : 'USD',
+            'customer_number' => 'CN-2025801',
+            'bank_code' => '31',
+            'branch_code' => '310020',
+            'mpesa_name' => $isKes ? 'Paybill' : '',
+            'mpesa_number' => $isKes ? '600100' : '',
+            'mpesa_reference' => $isKes ? '170919' : '',
+            'online_provider' => '',
+            'online_enabled' => '0',
+            'terminal_provider' => '',
+            'terminal_enabled' => '0',
+            'payment_link' => '',
+            'instructions' => $isKes
+                ? 'For M-Pesa, use Paybill 600100 and account 170919. For bank transfer, quote the invoice number as the payment reference. Send proof of payment to accounts@resplendentglobaltravel.com.'
+                : ($currency === 'USD'
+                    ? 'Quote the invoice number as the payment reference and send proof of payment to accounts@resplendentglobaltravel.com.'
+                    : 'This invoice is denominated in ' . $currency . '. Contact accounts@resplendentglobaltravel.com to confirm the USD settlement amount before transferring funds.'),
+            'updated_at' => gmdate('c'),
+        ];
+
+        $stored = $this->readJson('payment-settings.json', []);
+        $storedCurrency = strtoupper(trim((string)($stored['currency'] ?? '')));
+        if ($storedCurrency === $profile['currency']) {
+            foreach (['bank_name', 'account_name', 'account_number', 'branch', 'swift_iban', 'instructions'] as $key) {
+                $value = trim((string)($stored[$key] ?? ''));
+                if ($value !== '') $profile[$key] = $this->text($value, $key === 'instructions' ? 1500 : 240, true);
+            }
+        }
+
+        return $profile;
     }
 
     /** @param array<string,mixed> $settings @return array<string,string> */
@@ -862,7 +907,7 @@ final class OperationsStore
             'amount_paid' => '0.00',
             'balance_amount' => number_format($total, 2, '.', ''),
             'invoice_status' => 'Draft',
-            'payment_settings' => $this->getPaymentSettings(),
+            'payment_settings' => $this->getInvoicePaymentSettings($currency),
             'invoice_note' => 'Prepared from accepted '
                 . (string)($document['number'] ?? 'document')
                 . '. Review before sending to the client.',
