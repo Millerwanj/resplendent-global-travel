@@ -4,7 +4,7 @@ declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/includes/Connectivity/ConnectivityPaymentProcessor.php';
 
 $orderId = trim((string)($_GET['order_id'] ?? ''));
-$trackingId = trim((string)($_GET['OrderTrackingId'] ?? $_GET['orderTrackingId'] ?? ''));
+$trackingId = trim((string)($_GET['reference'] ?? $_GET['trxref'] ?? $_GET['OrderTrackingId'] ?? $_GET['orderTrackingId'] ?? ''));
 
 try {
     $store = new ConnectivityOrderStore();

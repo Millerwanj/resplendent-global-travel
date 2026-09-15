@@ -3,7 +3,7 @@
 ## Automated checks
 
 - PHP syntax: passed for `form-handler.php` and `includes/SmtpMailer.php`.
-- JavaScript syntax: passed for `assets/js/app.js`.
+- JavaScript syntax: passed for `assets/scripts/app.js`.
 - Invalid POST flow: confirmed HTTP 303 redirect with `stage=validation` and an RGTS reference.
 - Required project files: present.
 - Internal HTML file references: checked.

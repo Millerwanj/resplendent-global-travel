@@ -4,8 +4,8 @@
 
 - PHP syntax: `form-handler.php` passed.
 - PHP syntax: `includes/SmtpMailer.php` passed.
-- JavaScript syntax: `assets/js/app.js` passed.
-- JavaScript syntax: `assets/js/site-config.js` passed.
+- JavaScript syntax: `assets/scripts/app.js` passed.
+- JavaScript syntax: `assets/scripts/site-config.js` passed.
 - All public HTML files use v9.5.2 cache/version stamps.
 - Customer acknowledgement is sequenced after successful Zoho and departmental SMTP stages.
 - Customer acknowledgement uses the original customer email as recipient and the Resplendent central mailbox as reply-to.

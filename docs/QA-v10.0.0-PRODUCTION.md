@@ -9,7 +9,7 @@ Validated 2 August 2026 against the v9.9.0 International Edition baseline.
 - All local `href`, `src` and form-action targets resolve to files included in
   the production package.
 - All 22 JSON-LD blocks parse successfully.
-- `assets/js/app.js` and `assets/js/site-config.js` pass JavaScript syntax
+- `assets/scripts/app.js` and `assets/scripts/site-config.js` pass JavaScript syntax
   checks.
 - All five public stylesheets pass CSS syntax validation.
 - The contact-page journey test confirms that `Tailor This Journey` prefills:

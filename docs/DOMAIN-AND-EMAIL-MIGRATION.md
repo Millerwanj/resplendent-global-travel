@@ -1,6 +1,6 @@
 # Domain and Email Migration
 
-Update `assets/js/site-config.js` when the final domain and professional addresses are ready.
+Update `assets/scripts/site-config.js` when the final domain and professional addresses are ready.
 
 Recommended addresses: `info@`, `bookings@`, `corporate@`, `business@`, `support@`, and `accounts@`.
 

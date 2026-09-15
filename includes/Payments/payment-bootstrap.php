@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 use Resplendent\Payments\PaymentCoordinator;
 use Resplendent\Payments\Providers\PesapalProvider;
+use Resplendent\Payments\Providers\PaystackProvider;
 
 require_once __DIR__ . '/PaymentCoordinator.php';
 require_once __DIR__ . '/Providers/PesapalProvider.php';
+require_once __DIR__ . '/Providers/PaystackProvider.php';
 
 /** @return array<string,mixed> */
 function rgts_payment_config(): array
@@ -23,5 +25,7 @@ function rgts_payment_coordinator(): PaymentCoordinator
     $coordinator = new PaymentCoordinator($config);
     $pesapal = is_array($config['providers']['pesapal'] ?? null) ? $config['providers']['pesapal'] : [];
     if ($pesapal !== []) $coordinator->register(new PesapalProvider($pesapal));
+    $paystack = is_array($config['providers']['paystack'] ?? null) ? $config['providers']['paystack'] : [];
+    if ($paystack !== []) $coordinator->register(new PaystackProvider($paystack));
     return $coordinator;
 }

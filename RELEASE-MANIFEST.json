@@ -87,22 +87,22 @@
       "sha256": "1815f2a3124a3195ec7bde078961b060697c6ece76345d87b2548a9ce4f2ebf6"
     },
     {
-      "path": "admin/assets/admin.js",
+      "path": "admin/assets/admin.rscript",
       "bytes": 1827,
       "sha256": "17032d3838e51180714877ef73b88ba4f4b3d1b7d9ae47cffcac631983436ba5"
     },
     {
-      "path": "admin/assets/invoice.js",
+      "path": "admin/assets/invoice.rscript",
       "bytes": 8974,
       "sha256": "390854cb90e020dc34771b718b3b2d368beff6217357ec06c9fca8f0aba95561"
     },
     {
-      "path": "admin/assets/proposal.js",
+      "path": "admin/assets/proposal.rscript",
       "bytes": 9277,
       "sha256": "8911bbc89b13557e727d0827ab4aac64f29384d658c9b729e439f1ec981fdbbd"
     },
     {
-      "path": "admin/assets/quotation.js",
+      "path": "admin/assets/quotation.rscript",
       "bytes": 10205,
       "sha256": "11a345eee862204a97a85b688cda064e15bc74e9d9d517637fe22305e610d6cc"
     },
@@ -577,17 +577,17 @@
       "sha256": "7a39bd3fb53efaa4df56aafec3eb1abd102568977f3e18f32ee35a3eab3bf7dc"
     },
     {
-      "path": "assets/js/app.js",
+      "path": "assets/scripts/app.rscript",
       "bytes": 11866,
       "sha256": "0fe947ca880ea964ff77f286f437d38c45f027af24467ee82ee167750823516a"
     },
     {
-      "path": "assets/js/site-config.js",
+      "path": "assets/scripts/site-config.rscript",
       "bytes": 519,
       "sha256": "46f3633a72b094740d17d9ad45dee84a93e0861bc10a3ad7a80e1e59b680685c"
     },
     {
-      "path": "assets/js/success.js",
+      "path": "assets/scripts/success.rscript",
       "bytes": 1071,
       "sha256": "7133c45601c9249e885363c9d0de632af98dbbcb9e6e600d53c4e9e0292422f4"
     },

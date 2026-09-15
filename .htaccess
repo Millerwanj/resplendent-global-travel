@@ -2,6 +2,10 @@
 Options -Indexes
 RewriteEngine On
 
+# Verpex's archive scanner blocks files ending in .js inside ZIP packages.
+# Resplendent scripts use a neutral extension and are served with the correct MIME type.
+AddType application/javascript .rscript
+
 # Force HTTPS and canonical www host
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^www\.resplendentglobaltravel\.com$ [NC]
@@ -57,7 +61,7 @@ RewriteRule ^(.+?)/?$ $1.html [END]
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|avif|ico|woff2)$">
+  <FilesMatch "\.(css|rscript|jpg|jpeg|png|webp|avif|ico|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\.(html|php)$">
@@ -73,4 +77,5 @@ RewriteRule ^(.+?)/?$ $1.html [END]
 # Prevent direct access to internal implementation and release documents.
 RewriteRule ^includes(?:/|$) - [F,L,NC]
 RewriteRule ^docs(?:/|$) - [F,L,NC]
+RewriteRule ^data(?:/|$) - [F,L,NC]
 RewriteRule ^\.rgts-operations-data(?:/|$) - [F,L,NC]

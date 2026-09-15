@@ -181,4 +181,4 @@ admin_page_header('Proposal Generator', 'proposal');
         </article>
     </aside>
 </div>
-<?php admin_page_footer(['assets/proposal.js']); ?>
+<?php admin_page_footer(['assets/proposal.rscript']); ?>

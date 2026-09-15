@@ -81,6 +81,9 @@ final class EsimCardConnectivityProvider implements ConnectivityProviderInterfac
             'smdp_address' => ['smdp_address','smdpAddress','smdp_plus_address','smdpPlusAddress'],
             'activation_code' => ['activation_code','activationCode','matching_id','matchingId'],
             'manual_code' => ['manual_code','manualCode','lpa','lpa_code','lpaCode'],
+            'install_url' => ['install_url','installUrl','installation_url','installationUrl','direct_installation_url','directInstallationUrl'],
+            'ios_install_url' => ['ios_install_url','iosInstallUrl','apple_install_url','appleInstallUrl'],
+            'android_install_url' => ['android_install_url','androidInstallUrl'],
         ];
         $activation = [];
         foreach ($map as $target => $keys) {

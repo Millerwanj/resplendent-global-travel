@@ -3,10 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/connectivity-bootstrap.php';
 require_once dirname(__DIR__) . '/Payments/payment-bootstrap.php';
-require_once dirname(__DIR__) . '/Payments/Providers/PesapalProvider.php';
 require_once __DIR__ . '/ConnectivityFulfillmentService.php';
-
-use Resplendent\Payments\Providers\PesapalProvider;
 
 /** @return array<string,mixed> */
 function rgts_connectivity_verify_payment(array $order, string $trackingId): array
@@ -14,10 +11,9 @@ function rgts_connectivity_verify_payment(array $order, string $trackingId): arr
     $trackingId = trim($trackingId);
     if ($trackingId === '') throw new RuntimeException('Payment tracking reference is missing.');
 
-    $config = rgts_payment_config();
-    $pcfg = is_array($config['providers']['pesapal'] ?? null) ? $config['providers']['pesapal'] : [];
-    $provider = new PesapalProvider($pcfg);
-    $verified = $provider->verifyTransaction($trackingId);
+    $providerName = strtolower(trim((string)($order['payment']['provider'] ?? '')));
+    if (!in_array($providerName, ['paystack', 'pesapal'], true)) throw new RuntimeException('Payment provider is invalid.');
+    $verified = rgts_payment_coordinator()->verify($providerName, $trackingId);
 
     $expectedAmount = number_format((float)($order['payload']['amount'] ?? 0), 2, '.', '');
     $paidAmount = number_format((float)($verified['amount'] ?? 0), 2, '.', '');
@@ -43,7 +39,7 @@ function rgts_connectivity_verify_payment(array $order, string $trackingId): arr
     // Same-currency payments continue to require an exact amount match.
     $paymentMethod = strtolower(trim((string)($verified['payment_method'] ?? '')));
 
-    $providerConvertedPayment = !$sameCurrency
+    $providerConvertedPayment = $providerName === 'pesapal' && !$sameCurrency
         && $paidCurrency !== ''
         && (float)$paidAmount > 0
         && $trackingMatches
@@ -54,7 +50,7 @@ function rgts_connectivity_verify_payment(array $order, string $trackingId): arr
     // returns the KES numeric amount but still labels the currency as USD.
     // Trust this only for a server-verified COMPLETED M-Pesa transaction tied
     // to the exact provider tracking ID and exact Resplendent merchant reference.
-    $pesapalMpesaConvertedPayment = $sameCurrency
+    $pesapalMpesaConvertedPayment = $providerName === 'pesapal' && $sameCurrency
         && !$amountMatches
         && $expectedCurrency === 'USD'
         && str_contains($paymentMethod, 'mpesa')
@@ -70,7 +66,9 @@ function rgts_connectivity_verify_payment(array $order, string $trackingId): arr
             || $pesapalMpesaConvertedPayment
         );
 
-    $order['payment']['provider_reference'] = $trackingId;
+    // Never let a tampered callback replace the provider reference created by
+    // our server. A missing legacy reference may be populated once.
+    $order['payment']['provider_reference'] = $storedTrackingId !== '' ? $storedTrackingId : $trackingId;
     $order['payment']['merchant_reference'] = $paidReference;
     $order['payment']['status'] = (string)($verified['status'] ?? 'pending');
     $order['payment']['verified'] = !empty($verified['verified']);
@@ -100,8 +98,14 @@ function rgts_connectivity_verify_payment(array $order, string $trackingId): arr
 /** @return array<string,mixed> */
 function rgts_connectivity_reconcile_and_fulfill(ConnectivityOrderStore $store, array $order, string $trackingId): array
 {
-    $order = rgts_connectivity_verify_payment($order, $trackingId);
-    $store->save($order);
+    $orderId = (string)($order['id'] ?? '');
+    $order = $store->withOrderLock($orderId, static function () use ($store, $orderId, $trackingId): array {
+        $current = $store->get($orderId);
+        if (!is_array($current)) throw new RuntimeException('Connectivity order was not found.');
+        if (($current['status'] ?? '') === 'PROVISIONED') return $current;
+        $current = rgts_connectivity_verify_payment($current, $trackingId);
+        return $store->save($current);
+    });
     if (($order['status'] ?? '') !== 'PAID') return $order;
 
     $service = new ConnectivityFulfillmentService($store);

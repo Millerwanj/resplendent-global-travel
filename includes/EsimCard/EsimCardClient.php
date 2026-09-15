@@ -15,6 +15,7 @@ final class EsimCardClient
     private int $timeout;
     private ?string $token = null;
     private string $pricingCacheFile;
+    private string $countriesCacheFile;
 
     /** @param array<string,mixed> $config */
     public function __construct(array $config)
@@ -34,6 +35,7 @@ final class EsimCardClient
         $apiToken = trim((string)($config['api_token'] ?? ''));
         $this->token = $apiToken !== '' ? $apiToken : null;
         $this->pricingCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-pricing-' . $environment . '.json';
+        $this->countriesCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-countries-' . $environment . '.json';
 
         if ($this->token === null && (!filter_var($this->email, FILTER_VALIDATE_EMAIL) || $this->password === '')) {
             throw new RuntimeException('eSIMCard credentials are not configured.');
@@ -75,7 +77,20 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function countries(): array
     {
-        return $this->request('GET', '/developer/reseller/packages/country');
+        // Countries change rarely. Caching removes a full supplier login + API
+        // round trip from every plan request while checkout still revalidates
+        // the selected package and price independently.
+        $cached = $this->readJsonCache($this->countriesCacheFile, 604800);
+        if ($cached !== null) return $cached;
+        try {
+            $response = $this->request('GET', '/developer/reseller/packages/country');
+            $this->writeJsonCache($this->countriesCacheFile, $response, 'Countries');
+            return $response;
+        } catch (Throwable $error) {
+            $stale = $this->readJsonCache($this->countriesCacheFile, 2592000);
+            if ($stale !== null) return $stale;
+            throw $error;
+        }
     }
 
     /** @return array<string,mixed> */
@@ -234,6 +249,32 @@ final class EsimCardClient
             if (!rename($temporary, $this->pricingCacheFile)) unlink($temporary);
         } catch (Throwable $error) {
             error_log('[RGTS eSIM catalogue] Pricing cache could not be refreshed.');
+        }
+    }
+
+    /** @return array<string,mixed>|null */
+    private function readJsonCache(string $path, int $maximumAge): ?array
+    {
+        if (!is_file($path)) return null;
+        $modified = filemtime($path);
+        if ($modified === false || $modified < time() - $maximumAge) return null;
+        $raw = file_get_contents($path);
+        if (!is_string($raw) || $raw === '') return null;
+        $decoded = json_decode($raw, true);
+        return is_array($decoded) ? $decoded : null;
+    }
+
+    /** @param array<string,mixed> $response */
+    private function writeJsonCache(string $path, array $response, string $label): void
+    {
+        try {
+            $encoded = json_encode($response, JSON_THROW_ON_ERROR);
+            $temporary = $path . '.tmp-' . bin2hex(random_bytes(4));
+            if (file_put_contents($temporary, $encoded, LOCK_EX) === false) return;
+            chmod($temporary, 0600);
+            if (!rename($temporary, $path)) unlink($temporary);
+        } catch (Throwable $error) {
+            error_log('[RGTS eSIM catalogue] ' . $label . ' cache could not be refreshed.');
         }
     }
 }

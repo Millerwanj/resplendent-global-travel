@@ -24,7 +24,7 @@
 - `git diff --check` passed with zero whitespace errors.
 - No public internal `.html` links remain.
 - `styles.css`, `assets/css/main.css`, `assets/css/signature-journeys.css`,
-  `assets/js/app.js` and `assets/js/site-config.js` are byte-for-byte identical
+  `assets/scripts/app.js` and `assets/scripts/site-config.js` are byte-for-byte identical
   to the approved live v10.6 production assets. This preserves the current
   typography, colour system, spacing, components and responsive behaviour.
 - `admin/`, `includes/` and `form-handler.php` have no release diff.

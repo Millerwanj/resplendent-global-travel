@@ -207,4 +207,4 @@ admin_page_header('Quotation Generator', 'quotation');
         </article>
     </aside>
 </div>
-<?php admin_page_footer(['assets/quotation.js']); ?>
+<?php admin_page_footer(['assets/quotation.rscript']); ?>

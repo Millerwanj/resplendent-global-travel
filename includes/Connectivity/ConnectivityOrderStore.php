@@ -13,7 +13,7 @@ final class ConnectivityOrderStore
         }
     }
 
-    public function create(array $payload): array
+    public function create(array $payload, string $paymentProvider = 'pesapal'): array
     {
         $id = 'RGTS-CON-' . gmdate('Ymd-His') . '-' . strtoupper(bin2hex(random_bytes(2)));
         $order = [
@@ -22,7 +22,7 @@ final class ConnectivityOrderStore
             'updated_at' => gmdate('c'),
             'status' => 'PAYMENT_PENDING',
             'payment' => [
-                'provider' => 'pesapal',
+                'provider' => strtolower(trim($paymentProvider)),
                 'status' => 'pending',
                 'verified' => false,
                 'provider_reference' => '',

@@ -1,8 +1,8 @@
 {
-    "release": "v12.4",
-    "name": "Premium Published Journals and Homepage Fade",
+    "release": "v12.5.3",
+    "name": "Branded eSIM Customer Delivery",
   "status": "consolidated-master",
-    "date": "2026-09-12",
+    "date": "2026-09-15",
   "integrated_changes": [
     "PesaPal M-Pesa conversion guard",
     "Unlimited plan normalization",
@@ -16,7 +16,9 @@
         "Europe2Africa Rwanda and Namibia published-journal lead capture",
         "Currency-aware Stanbic payment instructions on new invoices",
         "Compact premium Published Journals editorial layout",
-        "Restored homepage-only readability fade and refreshed stylesheet cache"
+        "Restored homepage-only readability fade and refreshed stylesheet cache",
+        "Resplendent-branded responsive eSIM delivery email with plain-text fallback",
+        "QR, direct-install, manual activation and customer-safe setup guidance"
   ],
   "private_config_excluded": [
     "/home/resplend/rgts-esimcard-config.php",

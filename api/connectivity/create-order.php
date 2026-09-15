@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/includes/Connectivity/connectivity-bootstrap.php';
 require_once dirname(__DIR__, 2) . '/includes/Payments/payment-bootstrap.php';
-require_once dirname(__DIR__, 2) . '/includes/Payments/Providers/PesapalProvider.php';
-
-use Resplendent\Payments\Providers\PesapalProvider;
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     rgts_connectivity_json(['ok' => false, 'message' => 'POST required.'], 405);
@@ -35,20 +32,17 @@ try {
     }
 
     $config = rgts_payment_config();
-    $pcfg = is_array($config['providers']['pesapal'] ?? null) ? $config['providers']['pesapal'] : [];
-    $paymentEnvironment = strtolower(trim((string)($pcfg['environment'] ?? 'sandbox')));
-    if (!in_array($paymentEnvironment, ['sandbox','production'], true)) throw new RuntimeException('PesaPal environment is invalid.');
-    if (!empty($plan['test_only']) && $paymentEnvironment !== 'sandbox') {
-        throw new RuntimeException('The sandbox test product cannot be purchased through live PesaPal.');
+    $paymentProvider = strtolower(trim((string)($config['active_online_provider'] ?? '')));
+    if (!in_array($paymentProvider, ['paystack', 'pesapal'], true)) {
+        throw new RuntimeException('Secure online checkout is not configured.');
     }
-
-    $activePesaConfig = is_array($pcfg['environments'][$paymentEnvironment] ?? null)
-        ? $pcfg['environments'][$paymentEnvironment]
-        : $pcfg;
-    foreach (['consumer_key', 'consumer_secret', 'notification_id'] as $required) {
-        if (trim((string)($activePesaConfig[$required] ?? '')) === '') {
-            throw new RuntimeException('PesaPal ' . $paymentEnvironment . ' configuration is incomplete.');
-        }
+    $providerConfig = is_array($config['providers'][$paymentProvider] ?? null) ? $config['providers'][$paymentProvider] : [];
+    if (empty($providerConfig['enabled'])) throw new RuntimeException('Secure online checkout is not enabled.');
+    $paymentEnvironment = strtolower(trim((string)($providerConfig['environment'] ?? '')));
+    $isTestEnvironment = ($paymentProvider === 'paystack' && $paymentEnvironment === 'test')
+        || ($paymentProvider === 'pesapal' && $paymentEnvironment === 'sandbox');
+    if (!empty($plan['test_only']) && !$isTestEnvironment) {
+        throw new RuntimeException('The sandbox test product cannot be purchased through live payment processing.');
     }
 
     $price = number_format((float)($plan['price'] ?? 0), 2, '.', '');
@@ -61,14 +55,17 @@ try {
         'plan' => $plan,
         'amount' => $price,
         'currency' => $currency,
-    ]);
+    ], $paymentProvider);
 
     $parts = preg_split('/\s+/', $name, 2) ?: [$name];
-    $provider = new PesapalProvider($pcfg);
+    $coordinator = rgts_payment_coordinator();
     $base = rgts_connectivity_base_url();
     $description = !empty($plan['test_only']) ? 'Resplendent connectivity acceptance test' : 'Resplendent eSIM · ' . (string)($plan['destination'] ?? 'Travel connectivity');
 
-    $checkout = $provider->createCheckout([
+    $notificationUrl = $paymentProvider === 'paystack'
+        ? $base . '/api/payments/paystack-webhook.php'
+        : $base . '/api/payments/ipn.php';
+    $checkout = $coordinator->createCheckout([
         'merchant_reference' => $order['id'],
         'amount' => $price,
         'currency' => $currency,
@@ -81,9 +78,9 @@ try {
         ],
     ], [
         'callback_url' => $base . '/api/connectivity/callback.php?order_id=' . rawurlencode($order['id']),
-        'notification_url' => $base . '/api/payments/ipn.php',
+        'notification_url' => $notificationUrl,
         'cancellation_url' => $base . '/esim-order.html?cancelled=1',
-    ]);
+    ], $paymentProvider);
 
     $order['payment']['provider_reference'] = (string)$checkout['provider_reference'];
     $order['payment']['merchant_reference'] = $order['id'];

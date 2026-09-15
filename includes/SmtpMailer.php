@@ -34,6 +34,7 @@ final class SmtpMailer
      * @param string[] $to
      * @param string[] $cc
      * @param array<int,array{filename:string,mime_type:string,content:string}> $attachments
+     * @param string|null $htmlBody Optional HTML alternative; $body remains the plain-text fallback.
      *  @return array<string,string>
      */
     public function send(
@@ -44,7 +45,8 @@ final class SmtpMailer
         string $replyTo,
         string $subject,
         string $body,
-        array $attachments = []
+        array $attachments = [],
+        ?string $htmlBody = null
     ): array
     {
         $recipients = array_values(array_unique(array_filter(array_merge($to, $cc), static fn($v) => filter_var($v, FILTER_VALIDATE_EMAIL))));
@@ -86,7 +88,8 @@ final class SmtpMailer
                 $replyTo,
                 $subject,
                 $body,
-                $attachments
+                $attachments,
+                $htmlBody
             ) . "\r\n.\r\n");
             $this->expect([250]);
 
@@ -179,6 +182,7 @@ final class SmtpMailer
      * @param string[] $to
      * @param string[] $cc
      * @param array<int,array{filename:string,mime_type:string,content:string}> $attachments
+     * @param string|null $htmlBody Optional HTML alternative; $body remains the plain-text fallback.
      */
     private function buildMessage(
         array $to,
@@ -188,7 +192,8 @@ final class SmtpMailer
         string $replyTo,
         string $subject,
         string $body,
-        array $attachments
+        array $attachments,
+        ?string $htmlBody = null
     ): string
     {
         $domain = substr(strrchr($fromEmail, '@') ?: '@localhost', 1);
@@ -208,22 +213,48 @@ final class SmtpMailer
         $headers[] = 'X-Mailer: RGTS Website SMTP ' . (defined('RGTS_RELEASE') ? RGTS_RELEASE : '9.7.0');
         $normalizedBody = preg_replace('/\r\n|\r|\n/', "\r\n", $body) ?? $body;
 
-        if ($attachments === []) {
+        if ($attachments === [] && ($htmlBody === null || trim($htmlBody) === '')) {
             $headers[] = 'Content-Type: text/plain; charset=UTF-8';
             $headers[] = 'Content-Transfer-Encoding: 8bit';
             $message = implode("\r\n", $headers) . "\r\n\r\n" . $normalizedBody;
             return preg_replace('/^\./m', '..', $message) ?? $message;
         }
 
-        $boundary = 'rgts_' . bin2hex(random_bytes(18));
-        $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
-        $parts = [
-            '--' . $boundary,
-            'Content-Type: text/plain; charset=UTF-8',
-            'Content-Transfer-Encoding: 8bit',
-            '',
-            $normalizedBody,
-        ];
+        $normalizedHtml = preg_replace('/\r\n|\r|\n/', "\r\n", (string)$htmlBody) ?? (string)$htmlBody;
+        $hasHtml = trim($normalizedHtml) !== '';
+        $mixedBoundary = 'rgts_mixed_' . bin2hex(random_bytes(18));
+        $alternativeBoundary = 'rgts_alt_' . bin2hex(random_bytes(18));
+        $parts = [];
+
+        if ($attachments !== [] && !$hasHtml) {
+            $headers[] = 'Content-Type: multipart/mixed; boundary="' . $mixedBoundary . '"';
+            $parts[] = '--' . $mixedBoundary;
+            $parts[] = 'Content-Type: text/plain; charset=UTF-8';
+            $parts[] = 'Content-Transfer-Encoding: 8bit';
+            $parts[] = '';
+            $parts[] = $normalizedBody;
+        } elseif ($attachments === []) {
+            $headers[] = 'Content-Type: multipart/alternative; boundary="' . $alternativeBoundary . '"';
+        } else {
+            $headers[] = 'Content-Type: multipart/mixed; boundary="' . $mixedBoundary . '"';
+            $parts[] = '--' . $mixedBoundary;
+            $parts[] = 'Content-Type: multipart/alternative; boundary="' . $alternativeBoundary . '"';
+            $parts[] = '';
+        }
+
+        if ($hasHtml) {
+            $parts[] = '--' . $alternativeBoundary;
+            $parts[] = 'Content-Type: text/plain; charset=UTF-8';
+            $parts[] = 'Content-Transfer-Encoding: 8bit';
+            $parts[] = '';
+            $parts[] = $normalizedBody;
+            $parts[] = '--' . $alternativeBoundary;
+            $parts[] = 'Content-Type: text/html; charset=UTF-8';
+            $parts[] = 'Content-Transfer-Encoding: 8bit';
+            $parts[] = '';
+            $parts[] = $normalizedHtml;
+            $parts[] = '--' . $alternativeBoundary . '--';
+        }
 
         foreach ($attachments as $attachment) {
             $filename = preg_replace('/[^A-Za-z0-9._-]/', '-', basename((string)($attachment['filename'] ?? 'document.pdf'))) ?: 'document.pdf';
@@ -232,14 +263,14 @@ final class SmtpMailer
                 : 'application/octet-stream';
             $content = (string)($attachment['content'] ?? '');
             if ($content === '') throw new RuntimeException('SMTP stage attachment: an attachment was empty.');
-            $parts[] = '--' . $boundary;
+            $parts[] = '--' . $mixedBoundary;
             $parts[] = 'Content-Type: ' . $mimeType . '; name="' . $filename . '"';
             $parts[] = 'Content-Transfer-Encoding: base64';
             $parts[] = 'Content-Disposition: attachment; filename="' . $filename . '"';
             $parts[] = '';
             $parts[] = rtrim(chunk_split(base64_encode($content), 76, "\r\n"));
         }
-        $parts[] = '--' . $boundary . '--';
+        if ($attachments !== []) $parts[] = '--' . $mixedBoundary . '--';
         $parts[] = '';
         $message = implode("\r\n", $headers) . "\r\n\r\n" . implode("\r\n", $parts);
         return preg_replace('/^\./m', '..', $message) ?? $message;

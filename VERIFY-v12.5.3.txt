@@ -1,0 +1,11 @@
+RESPLENDENT FULL BUILD v12.5.3 — BRANDED eSIM DELIVERY
+
+- Complete public_html ZIP; no patch or earlier build is required.
+- Preserves the v12.5.2 fast eSIM catalogue, Paystack checkout, signed webhook,
+  reconciliation, provisioning, delivery-state tracking and admin retry flow.
+- Sends a responsive Resplendent HTML delivery email after verified fulfilment.
+- Includes a plain-text fallback, QR image/link, direct-install link when supplied,
+  manual activation details, plan summary and five-step installation guidance.
+- Dynamic customer/provider values are HTML-escaped; email links/images accept HTTPS only.
+- No supplier branding, supplier promotion, supplier support link or private credential is included.
+- SMTP, Paystack and eSIM provider credentials remain outside public_html.

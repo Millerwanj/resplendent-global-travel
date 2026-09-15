@@ -249,4 +249,4 @@ admin_page_header('Invoice Generator', 'invoice');
         </article>
     </aside>
 </div>
-<?php admin_page_footer(['assets/invoice.js']); ?>
+<?php admin_page_footer(['assets/invoice.rscript']); ?>

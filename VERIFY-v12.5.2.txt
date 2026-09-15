@@ -1,0 +1,8 @@
+RESPLENDENT FULL BUILD v12.5.2 — FAST eSIM CATALOGUE
+
+- Complete public_html ZIP; no patch or earlier build is required.
+- Supplier country data is securely cached for seven days with stale fallback.
+- Recently confirmed destinations and plans render immediately in the browser.
+- Live catalogue refresh continues quietly in the background.
+- Checkout independently revalidates the selected plan and retail price.
+- Paystack checkout, signed webhook, reconciliation and eSIM provisioning remain integrated.

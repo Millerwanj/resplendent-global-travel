@@ -67,7 +67,7 @@ function admin_page_footer(array $scripts = []): void
     ?>
     </main>
 </div>
-<script src="assets/admin.js?v=9.7.1" defer></script>
+<script src="assets/admin.rscript?v=9.7.1" defer></script>
 <?php foreach ($scripts as $script): ?>
 <script src="<?= admin_e($script) ?>?v=9.7.1" defer></script>
 <?php endforeach; ?>

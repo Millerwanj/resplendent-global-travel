@@ -5,13 +5,22 @@ declare(strict_types=1);
  * Copy to /home/resplend/rgts-payment-config.php (outside public_html).
  * Never commit live or sandbox credentials to the website release.
  *
- * v11.7.34 supports separate sandbox and live Pesapal credentials.
- * Switching `environment` selects only the matching private block.
+ * v12.5 supports Paystack test/live keys and retains Pesapal as a disabled fallback.
  */
 return [
     'primary_method' => 'rtgs',
-    'active_online_provider' => 'pesapal',
+    'active_online_provider' => 'paystack',
     'providers' => [
+        'paystack' => [
+            'enabled' => true,
+            'environment' => 'test', // test | live
+            // Optional `channels` may be added later; omitted so Paystack presents
+            // every payment method enabled for the Resplendent merchant account.
+            'environments' => [
+                'test' => ['secret_key' => ''],
+                'live' => ['secret_key' => ''],
+            ],
+        ],
         'pesapal' => [
             'enabled' => false,
             'environment' => 'sandbox', // sandbox | live

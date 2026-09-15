@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/includes/Connectivity/ConnectivityFulfillmentService.php';
+require_once dirname(__DIR__, 2) . '/includes/Connectivity/ConnectivityPaymentProcessor.php';
 
 try {
     $config = rgts_esimcard_config();
@@ -19,6 +20,14 @@ try {
         $id = (string)($order['id'] ?? '');
         if ($id === '') continue;
         $before = (string)($order['updated_at'] ?? '');
+        if (($order['status'] ?? '') === 'PAYMENT_PENDING' && !empty($order['payment']['provider_reference'])) {
+            try {
+                $order = rgts_connectivity_reconcile_and_fulfill($store, $order, (string)$order['payment']['provider_reference']);
+            } catch (Throwable $paymentError) {
+                error_log('RGTS pending payment reconciliation: ' . $paymentError->getMessage());
+            }
+            $processed++;
+        }
         if (in_array(($order['provisioning']['status'] ?? ''), ['AWAITING_SUPPLIER', 'PROVISIONING_REVIEW'], true)
             && !empty($order['provisioning']['provider_order_reference'])) {
             $order = $service->reconcile($id);
