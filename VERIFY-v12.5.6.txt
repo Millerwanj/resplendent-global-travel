@@ -1,0 +1,26 @@
+RESPLENDENT FULL RELEASE v12.5.6
+================================
+
+Purpose
+-------
+Permanent eSIM catalogue resilience fix built from the complete v12.5.5 release.
+
+Catalogue behaviour
+-------------------
+- 214 destination snapshots and 5,971 current offers ship with the release.
+- A valid server snapshot is returned immediately instead of making the customer wait on the supplier API.
+- The browser keeps a bounded 24-hour last-known-good copy for repeat visits.
+- Supplier pricing refreshes in the background and is throttled to one attempt per 15 minutes.
+- Failed or suspicious supplier responses never replace a valid snapshot.
+- Checkout forces a current supplier-price refresh before an order and Paystack checkout are created.
+
+Preserved
+---------
+- Complete Paystack journey, callback, webhook and reconciliation flow.
+- Invoice, payments, receipt and branded eSIM delivery work from v12.5.4/v12.5.5.
+- All pages, journals, images, international pages, SEO and existing site functionality.
+
+Deployment
+----------
+Upload the complete archive contents into public_html and overwrite matching files.
+Keep the private eSIMCard and payment configuration files outside public_html unchanged.

@@ -53,7 +53,7 @@ body {
 </div></div></section></main>
 <script>
 (function(){
- const q=new URLSearchParams(location.search), status=(q.get('payment')||'').toLowerCase(), invoice=q.get('invoice')||'', tracking=q.get('tracking')||'';
+ const q=new URLSearchParams(location.search), status=(q.get('payment')||'').toLowerCase(), invoice=q.get('invoice')||'', token=q.get('token')||'', tracking=q.get('tracking')||'';
  const title=document.getElementById('pay-title'), copy=document.getElementById('pay-copy'), actions=document.getElementById('pay-actions'), ref=document.getElementById('pay-ref');
  const contact='<a class="pay-button secondary" href="contact.html?purpose=Accounts%20%26%20Billing">Contact Accounts</a>';
  if(status==='completed'){
@@ -66,14 +66,14 @@ body {
    title.textContent='Payment verification in progress'; copy.textContent='Your payment is being verified. Please do not make a second payment. If confirmation is delayed, our reconciliation process will continue checking it.'; actions.innerHTML=contact;
  } else if(q.get('cancelled')){
    title.textContent='Payment cancelled'; copy.textContent='The checkout was cancelled. Your invoice remains unchanged.'; actions.innerHTML=contact;
- } else if(invoice){
+ } else if(invoice&&token){
    title.textContent='Pay your Resplendent invoice';
-   copy.textContent='Continue to our secure payment provider to settle the outstanding balance on this invoice.';
+   copy.textContent='Continue to Paystack to pay the secure amount authorised on this Resplendent invoice.';
    actions.innerHTML='<button class="pay-button" id="start-pay">Continue to secure payment</button>'+contact;
    document.getElementById('start-pay').addEventListener('click',async function(){
      const b=this; b.disabled=true; b.textContent='Preparing secure checkout…';
      try{
-       const r=await fetch('/api/payments/create.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({invoice_id:invoice})});
+       const r=await fetch('/api/payments/create.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({invoice_id:invoice,payment_token:token})});
        const d=await r.json(); if(!r.ok||!d.ok||!d.redirect_url) throw new Error(d.error||'Unable to start payment.');
        location.href=d.redirect_url;
      }catch(e){

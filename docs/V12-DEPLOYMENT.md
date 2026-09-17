@@ -1,4 +1,4 @@
-# Resplendent v12.5.2 — Paystack eSIM Fulfilment
+# Resplendent v12.5.4 — Paystack eSIM and Journey Payments
 
 This release replaces the split enquiry/sandbox provisioning journey with one controlled transaction path:
 
@@ -19,3 +19,11 @@ Live catalogue → customer details → Paystack checkout → independent server
 - Run the protected connectivity reconciliation endpoint by cPanel cron to recover missed or delayed notifications.
 - If a supplier call becomes uncertain, the order enters `PROVISIONING_REVIEW`; v12 does not blindly repurchase.
 - Customer activation data is available only through a 256-bit secure result token and is also emailed through the existing private SMTP configuration.
+
+## Journey invoice payments
+- Bank transfer remains the preferred payment method on every journey invoice.
+- New invoices include a token-protected Paystack link in the PDF and delivery email.
+- In the invoice generator, enter the approved deposit or instalment under `Card payment requested now`; leave it at `0` to offer the full outstanding balance.
+- Existing unpaid invoices receive a protected link when opened in the admin suite and can then be re-sent.
+- Paystack callbacks and signed webhook events verify the payment server-to-server before updating amount paid, balance and invoice status.
+- Repeated instalments are supported, while duplicate callbacks for the same transaction remain idempotent.

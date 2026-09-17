@@ -232,6 +232,7 @@
       total_amount: totals.total.toFixed(2),
       grand_total: formatMoney(currency, totals.total),
       amount_paid: totals.paid.toFixed(2),
+      online_payment_amount: Math.min(totals.balance, number("online_payment_amount")).toFixed(2),
       balance_amount: totals.balance.toFixed(2),
       invoice_status: totals.status,
       invoice_note: value("invoice_note"),

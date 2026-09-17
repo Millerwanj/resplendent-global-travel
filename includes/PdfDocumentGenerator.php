@@ -246,6 +246,9 @@ final class PdfDocumentGenerator
         }
         if ($details !== []) $this->keyValues($details);
         $this->paragraph($this->value($payment, 'instructions', 'Payment instructions will be provided separately.'));
+        if ((float)($payload['online_payment_amount'] ?? 0) > 0) {
+            $this->paragraph('Secure card amount available now: ' . $this->money($currency, $payload['online_payment_amount']), 8.5, 'F2', [0.06, 0.18, 0.20], 13);
+        }
         if (!empty($payment['payment_link'])) $this->paragraph('Secure payment link: ' . (string)$payment['payment_link'], 8.5, 'F2', [0.66, 0.54, 0.33], 13);
 
         $this->sectionHeading('03  THANK YOU');

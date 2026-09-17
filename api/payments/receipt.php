@@ -18,7 +18,6 @@ try {
 
     $payment = null;
     foreach ($store->listPaymentTransactions($invoiceId) as $tx) {
-        if (($tx['provider'] ?? '') !== 'pesapal') continue;
         if (($tx['provider_reference'] ?? '') !== $trackingId) continue;
         if (($tx['status'] ?? '') !== 'completed' || empty($tx['verified'])) continue;
         $payment = $tx;
@@ -48,7 +47,7 @@ body{margin:0;background:#f6f2e9;color:#173f3a;font-family:Arial,sans-serif}.wra
 <div class="box"><div class="label">Date</div><div class="value"><?= $esc($dateText) ?></div></div>
 <div class="box"><div class="label">Invoice</div><div class="value"><?= $esc($invoice['number'] ?? '') ?></div></div>
 <div class="box"><div class="label">Client</div><div class="value"><?= $esc($p['client_name'] ?? '') ?></div></div>
-<div class="box"><div class="label">PesaPal confirmation</div><div class="value"><?= $esc($payment['confirmation_code'] ?? '') ?></div></div>
+<div class="box"><div class="label">Payment confirmation</div><div class="value"><?= $esc($payment['confirmation_code'] ?? '') ?></div></div>
 <div class="box"><div class="label">Payment reference</div><div class="value"><?= $esc($payment['merchant_reference'] ?? '') ?></div></div>
 <div class="box"><div class="label">Amount received</div><div class="value amount"><?= $esc($payment['currency'] ?? '') ?> <?= $esc($payment['amount'] ?? '') ?></div></div>
 <div class="box"><div class="label">Invoice status</div><div class="value"><?= $esc($p['invoice_status'] ?? '') ?></div></div>

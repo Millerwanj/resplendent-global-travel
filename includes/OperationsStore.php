@@ -304,6 +304,20 @@ final class OperationsStore
         } else {
             $number = $this->nextNumber($type);
         }
+        $normalisedPayload = $this->normalisePayload($payload);
+        if ($type === 'invoice' && (float)($normalisedPayload['balance_amount'] ?? 0) > 0) {
+            $paymentToken = bin2hex(random_bytes(24));
+            $payment = is_array($normalisedPayload['payment_settings'] ?? null)
+                ? $normalisedPayload['payment_settings']
+                : $this->getInvoicePaymentSettings((string)($normalisedPayload['currency'] ?? 'USD'));
+            $payment['primary_method'] = 'rtgs';
+            $payment['online_provider'] = 'Paystack';
+            $payment['online_enabled'] = '1';
+            $payment['payment_link'] = 'https://www.resplendentglobaltravel.com/payments.html?invoice='
+                . rawurlencode($id) . '&token=' . rawurlencode($paymentToken);
+            $normalisedPayload['payment_settings'] = $payment;
+            $normalisedPayload['payment_token_hash'] = hash('sha256', $paymentToken);
+        }
         $record = [
             'id' => $id,
             'type' => $type,
@@ -315,7 +329,7 @@ final class OperationsStore
             'lifecycle_status' => 'active',
             'created_at' => $now,
             'updated_at' => $now,
-            'payload' => $this->normalisePayload($payload),
+            'payload' => $normalisedPayload,
         ];
         if (is_array($revisionSource)) {
             $record['revision_of_id'] = (string)$revisionSource['id'];
@@ -1160,6 +1174,37 @@ final class OperationsStore
                 'Invoice ' . (string)($updated['number'] ?? '') . ' marked ' . $invoiceStatus . '.'
             );
         }
+        return $updated;
+    }
+
+    /** @return array<string,mixed>|null */
+    public function enableInvoiceOnlinePayment(string $id): ?array
+    {
+        $updated = null;
+        $this->mutateJson('documents.json', [], function (array &$documents) use ($id, &$updated): void {
+            if (!isset($documents[$id]) || !is_array($documents[$id]) || ($documents[$id]['type'] ?? '') !== 'invoice') return;
+            $payload = is_array($documents[$id]['payload'] ?? null) ? $documents[$id]['payload'] : [];
+            if ((float)($payload['balance_amount'] ?? 0) <= 0 || ($payload['invoice_status'] ?? '') === 'Superseded') {
+                $updated = $documents[$id];
+                return;
+            }
+            $payment = is_array($payload['payment_settings'] ?? null) ? $payload['payment_settings'] : [];
+            if (!empty($payload['payment_token_hash']) && !empty($payment['payment_link'])) {
+                $updated = $documents[$id];
+                return;
+            }
+            $paymentToken = bin2hex(random_bytes(24));
+            $payment['primary_method'] = 'rtgs';
+            $payment['online_provider'] = 'Paystack';
+            $payment['online_enabled'] = '1';
+            $payment['payment_link'] = 'https://www.resplendentglobaltravel.com/payments.html?invoice='
+                . rawurlencode($id) . '&token=' . rawurlencode($paymentToken);
+            $payload['payment_settings'] = $payment;
+            $payload['payment_token_hash'] = hash('sha256', $paymentToken);
+            $documents[$id]['payload'] = $payload;
+            $documents[$id]['updated_at'] = gmdate('c');
+            $updated = $documents[$id];
+        });
         return $updated;
     }
 

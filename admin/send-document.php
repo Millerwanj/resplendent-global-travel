@@ -112,6 +112,19 @@ try {
     if ($acceptanceUrl !== '') {
         $body .= "\nWhen you are ready, record your acceptance securely using this link:\n{$acceptanceUrl}\n";
     }
+    if ($type === 'invoice') {
+        $invoicePayload = is_array($document['payload'] ?? null) ? $document['payload'] : [];
+        $paymentSettings = is_array($invoicePayload['payment_settings'] ?? null) ? $invoicePayload['payment_settings'] : [];
+        $paymentLink = trim((string)($paymentSettings['payment_link'] ?? ''));
+        if (($paymentSettings['online_enabled'] ?? '0') === '1' && str_starts_with($paymentLink, 'https://')) {
+            $body .= "\nFor secure card payment through Paystack:\n{$paymentLink}\n";
+            $cardAmount = (float)($invoicePayload['online_payment_amount'] ?? 0);
+            if ($cardAmount > 0) {
+                $body .= 'Amount available by card now: ' . (string)($invoicePayload['currency'] ?? '') . ' ' . number_format($cardAmount, 2, '.', ',') . "\n";
+            }
+            $body .= "Bank transfer remains available using the instructions in the attached invoice.\n";
+        }
+    }
     $body .= "\nWarm regards,\n\n";
     $body .= "Resplendent Global Travel Solutions\n";
     $body .= "Luxury Travel | Corporate Travel | Global Business Connections\n";

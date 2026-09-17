@@ -5,10 +5,10 @@ namespace Resplendent\Payments;
 
 use OperationsStore;
 use RuntimeException;
-use Resplendent\Payments\Providers\PesapalProvider;
+use Resplendent\Payments\PaymentProviderInterface;
 
 require_once dirname(__DIR__) . '/OperationsStore.php';
-require_once __DIR__ . '/Providers/PesapalProvider.php';
+require_once __DIR__ . '/PaymentProviderInterface.php';
 
 /**
  * Provider-neutral payment reconciliation helper.
@@ -20,28 +20,43 @@ final class PaymentReconciler
 {
     public function __construct(
         private OperationsStore $store,
-        private PesapalProvider $pesapal
+        private PaymentProviderInterface $provider,
+        private string $providerId = 'pesapal'
     ) {}
 
     /** @return array<string,mixed> */
     public function reconcilePesapal(string $trackingId, string $invoiceId = ''): array
     {
+        if ($this->providerId !== 'pesapal') throw new RuntimeException('Payment reconciler provider mismatch.');
+        return $this->reconcile($trackingId, $invoiceId);
+    }
+
+    /** @return array<string,mixed> */
+    public function reconcilePaystack(string $reference, string $invoiceId = ''): array
+    {
+        if ($this->providerId !== 'paystack') throw new RuntimeException('Payment reconciler provider mismatch.');
+        return $this->reconcile($reference, $invoiceId);
+    }
+
+    /** @return array<string,mixed> */
+    private function reconcile(string $trackingId, string $invoiceId = ''): array
+    {
         $trackingId = trim($trackingId);
-        if ($trackingId === '') throw new RuntimeException('Missing PesaPal tracking ID.');
+        if ($trackingId === '') throw new RuntimeException('Missing payment reference.');
 
-        $invoice = $invoiceId !== '' ? $this->store->getDocument($invoiceId) : null;
-        if (!is_array($invoice) || ($invoice['type'] ?? '') !== 'invoice') {
-            $invoice = $this->findInvoiceByProviderReference('pesapal', $trackingId);
-        }
+        $invoice = $this->findInvoiceByProviderReference($this->providerId, $trackingId);
         if (!is_array($invoice)) throw new RuntimeException('Matching invoice was not found.');
+        if ($invoiceId !== '' && !hash_equals((string)$invoice['id'], $invoiceId)) {
+            throw new RuntimeException('Payment reference does not match this invoice.');
+        }
 
-        $previouslyCompleted = $this->hasVerifiedCompletedTransaction((string)$invoice['id'], 'pesapal', $trackingId);
-        $verified = $this->pesapal->verifyTransaction($trackingId);
+        $previouslyCompleted = $this->hasVerifiedCompletedTransaction((string)$invoice['id'], $this->providerId, $trackingId);
+        $verified = $this->provider->verifyTransaction($trackingId);
 
         $this->store->recordPaymentTransaction([
             'invoice_id' => (string)$invoice['id'],
             'channel' => 'online',
-            'provider' => 'pesapal',
+            'provider' => $this->providerId,
             'provider_reference' => (string)$verified['provider_reference'],
             'merchant_reference' => (string)$verified['merchant_reference'],
             'confirmation_code' => (string)($verified['confirmation_code'] ?? ''),
@@ -49,8 +64,8 @@ final class PaymentReconciler
             'currency' => (string)$verified['currency'],
             'status' => (string)$verified['status'],
             'verified' => !empty($verified['verified']),
-            'idempotency_key' => 'pesapal-status|' . $trackingId . '|' . (string)$verified['status'],
-            'note' => 'Server-to-server PesaPal reconciliation.',
+            'idempotency_key' => $this->providerId . '-status|' . $trackingId . '|' . (string)$verified['status'],
+            'note' => 'Server-to-server ' . ucfirst($this->providerId) . ' reconciliation.',
         ]);
 
         $invoiceUpdated = false;
@@ -61,6 +76,10 @@ final class PaymentReconciler
                 throw new RuntimeException('Currency mismatch during payment verification.');
             }
             $alreadyPaid = (float)($payload['amount_paid'] ?? 0);
+            $remainingBalance = max(0, (float)($payload['total_amount'] ?? 0) - $alreadyPaid);
+            if ((float)$verified['amount'] > $remainingBalance + 0.005) {
+                throw new RuntimeException('Verified payment exceeds the outstanding invoice balance.');
+            }
             $this->store->updateInvoicePayment((string)$invoice['id'], $alreadyPaid + (float)$verified['amount']);
             $invoiceUpdated = true;
         }

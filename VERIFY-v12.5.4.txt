@@ -1,0 +1,13 @@
+RESPLENDENT FULL BUILD v12.5.4 — PAYSTACK JOURNEY INVOICE PAYMENTS
+
+- Complete public_html ZIP; no patch or earlier build is required.
+- Preserves the v12.5.3 eSIM catalogue, Paystack eSIM fulfilment and branded delivery email.
+- Bank transfer remains the preferred journey payment method.
+- New and existing journey invoices receive token-protected secure Paystack links.
+- RGTS can request a controlled deposit or instalment amount; zero offers the full balance.
+- Checkout amount, invoice status and currency are calculated and validated server-side.
+- Paystack callback and signed webhook events reconcile idempotently to the correct invoice.
+- Verified payments update amount paid, balance and invoice status exactly once.
+- Multiple verified instalments are supported until the invoice balance reaches zero.
+- Customer receipts are provider-neutral and contain no card data.
+- Private Paystack, SMTP and eSIM credentials remain outside public_html.

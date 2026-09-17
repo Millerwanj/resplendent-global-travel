@@ -19,10 +19,17 @@ try {
     $invoice = $store->getDocument($invoiceId);
     if (!is_array($invoice) || ($invoice['type'] ?? '') !== 'invoice') throw new RuntimeException('Invoice not found.');
     $payload = is_array($invoice['payload'] ?? null) ? $invoice['payload'] : [];
+    $token = trim((string)($input['payment_token'] ?? ''));
+    $tokenHash = (string)($payload['payment_token_hash'] ?? '');
+    if ($token === '' || $tokenHash === '' || !hash_equals($tokenHash, hash('sha256', $token))) {
+        throw new RuntimeException('This secure payment link is invalid or incomplete.');
+    }
     $status = (string)($payload['invoice_status'] ?? '');
     if (!in_array($status, ['Issued', 'Part-paid', 'Overdue'], true)) throw new RuntimeException('Invoice is not payable online.');
-    $amount = (float)($payload['balance_amount'] ?? 0);
-    if ($amount <= 0) throw new RuntimeException('Invoice has no outstanding balance.');
+    $balance = (float)($payload['balance_amount'] ?? 0);
+    if ($balance <= 0) throw new RuntimeException('Invoice has no outstanding balance.');
+    $requestedAmount = (float)($payload['online_payment_amount'] ?? 0);
+    $amount = $requestedAmount > 0 ? min($balance, $requestedAmount) : $balance;
     $currency = strtoupper((string)($payload['currency'] ?? ''));
     $name = trim((string)($payload['client_name'] ?? 'Traveller'));
     $parts = preg_split('/\s+/', $name, 2) ?: [$name];
@@ -32,20 +39,24 @@ try {
     $base = $scheme . '://' . $host;
     $merchantReference = preg_replace('/[^A-Za-z0-9_.:-]/', '-', (string)($invoice['number'] ?? $invoiceId)) . '-' . gmdate('YmdHis');
 
-    // Prevent accidental rapid duplicate checkouts for the same invoice.
+    $config = rgts_payment_config();
+    $providerId = strtolower(trim((string)($config['active_online_provider'] ?? '')));
+    if (!in_array($providerId, ['paystack', 'pesapal'], true)) throw new RuntimeException('Online checkout is not currently enabled.');
+
+    // Prevent accidental rapid duplicate checkouts for the same invoice and provider.
     foreach ($store->listPaymentTransactions($invoiceId) as $existingTx) {
-        if (($existingTx['provider'] ?? '') !== 'pesapal') continue;
-        if (($existingTx['status'] ?? '') === 'completed' && !empty($existingTx['verified'])) {
-            throw new RuntimeException('This invoice already has a verified completed PesaPal payment.');
-        }
+        if (($existingTx['provider'] ?? '') !== $providerId) continue;
         if (($existingTx['status'] ?? '') === 'pending') {
             $recordedAt = strtotime((string)($existingTx['recorded_at'] ?? '')) ?: 0;
             if ($recordedAt > 0 && (time() - $recordedAt) < 300) {
-                throw new RuntimeException('A PesaPal checkout is already pending for this invoice. Please use the existing checkout or wait a few minutes before trying again.');
+                throw new RuntimeException('A secure checkout is already pending for this invoice. Please use the existing checkout or wait a few minutes before trying again.');
             }
         }
     }
 
+    $notificationUrl = $providerId === 'paystack'
+        ? $base . '/api/payments/paystack-webhook.php'
+        : $base . '/api/payments/ipn.php';
     $checkout = rgts_payment_coordinator()->createCheckout([
         'merchant_reference' => substr($merchantReference, 0, 50),
         'amount' => number_format($amount, 2, '.', ''),
@@ -59,14 +70,14 @@ try {
         ],
     ], [
         'callback_url' => $base . '/api/payments/callback.php?invoice_id=' . rawurlencode($invoiceId),
-        'notification_url' => $base . '/api/payments/ipn.php',
+        'notification_url' => $notificationUrl,
         'cancellation_url' => $base . '/payments.html?cancelled=1',
-    ]);
+    ], $providerId);
 
     $store->recordPaymentTransaction([
         'invoice_id' => $invoiceId,
         'channel' => 'online',
-        'provider' => 'pesapal',
+        'provider' => $providerId,
         'provider_reference' => $checkout['provider_reference'],
         'merchant_reference' => substr($merchantReference, 0, 50),
         'amount' => $amount,

@@ -4,8 +4,11 @@ declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/includes/Payments/payment-bootstrap.php';
 require_once dirname(__DIR__, 2) . '/includes/Payments/Providers/PaystackProvider.php';
 require_once dirname(__DIR__, 2) . '/includes/Connectivity/ConnectivityPaymentProcessor.php';
+require_once dirname(__DIR__, 2) . '/includes/OperationsStore.php';
+require_once dirname(__DIR__, 2) . '/includes/Payments/PaymentReconciler.php';
 
 use Resplendent\Payments\Providers\PaystackProvider;
+use Resplendent\Payments\PaymentReconciler;
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -40,11 +43,14 @@ try {
     $store = new ConnectivityOrderStore();
     $order = $store->get((string)$refs['merchant_reference'])
         ?? $store->findByProviderReference((string)$refs['provider_reference']);
-    if (!is_array($order)) throw new RuntimeException('Matching connectivity order was not found.');
-    if (($order['payment']['provider'] ?? '') !== 'paystack') throw new RuntimeException('Payment provider mismatch.');
-
-    // The fulfilment service and order store both lock/idempotently re-check state.
-    rgts_connectivity_reconcile_and_fulfill($store, $order, (string)$refs['provider_reference']);
+    if (is_array($order)) {
+        if (($order['payment']['provider'] ?? '') !== 'paystack') throw new RuntimeException('Payment provider mismatch.');
+        // The fulfilment service and order store both lock/idempotently re-check state.
+        rgts_connectivity_reconcile_and_fulfill($store, $order, (string)$refs['provider_reference']);
+    } else {
+        $reconciler = new PaymentReconciler(new OperationsStore(), $provider, 'paystack');
+        $reconciler->reconcilePaystack((string)$refs['provider_reference']);
+    }
     http_response_code(200);
     echo json_encode(['ok' => true]);
 } catch (Throwable $e) {

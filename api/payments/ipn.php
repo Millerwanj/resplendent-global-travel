@@ -48,7 +48,7 @@ try {
         exit;
     }
 
-    $reconciler = new PaymentReconciler(new OperationsStore(), $provider);
+    $reconciler = new PaymentReconciler(new OperationsStore(), $provider, 'pesapal');
     $verified = $reconciler->reconcilePesapal($refs['provider_reference']);
 
     echo json_encode([

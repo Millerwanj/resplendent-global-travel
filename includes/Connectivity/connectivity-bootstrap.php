@@ -51,6 +51,9 @@ function rgts_connectivity_resolve_live_plan(string $destinationId, string $publ
     require_once dirname(__DIR__) . '/Esim/OfferRouter.php';
 
     $client = new Resplendent\EsimCard\EsimCardClient($config);
+    // This is the final pre-payment boundary. Force current supplier pricing
+    // here so customers can browse instantly without ever paying a stale price.
+    $client->refreshPricing();
     $router = new Resplendent\Esim\OfferRouter([
         new Resplendent\Esim\EsimCardAdapter($client),
         new Resplendent\Esim\FirstyAdapter(),

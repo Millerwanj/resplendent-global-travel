@@ -1,0 +1,20 @@
+RESPLENDENT FULL RELEASE v12.5.5
+
+Authoritative baseline:
+Resplendent-FULL-v12.5.4-PAYSTACK-JOURNEY-INVOICE-PAYMENTS-COMPLETE-PUBLIC_HTML(1).zip
+
+Catalogue cache correction:
+- New immutable catalogue and order scripts for v12.5.5
+- New live catalogue endpoint: api/esim-catalog-v1255.php
+- Destination plan and pricing results are never stored persistently in the browser
+- Every catalogue request carries a unique request token
+- Explicit no-store/no-cache request and response headers
+- eSIM catalogue and order pages revalidate without Ctrl+F5
+- Exact destination selection loads plans immediately on first selection
+
+Preserved from the v12.5.4 baseline:
+- Paystack payment journey
+- Journey invoice and payment updates
+- Signed webhook, callback verification and reconciliation
+- Verified-payment-only eSIM provisioning
+- Branded fulfilment and all other website content/design

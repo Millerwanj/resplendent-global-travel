@@ -64,6 +64,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             }
             $payload['amount_paid'] = number_format($paid, 2, '.', '');
             $payload['balance_amount'] = number_format($balance, 2, '.', '');
+            $onlineAmount = max(0, (float)($payload['online_payment_amount'] ?? 0));
+            $payload['online_payment_amount'] = number_format($onlineAmount > 0 ? min($balance, $onlineAmount) : 0, 2, '.', '');
             $payload['invoice_status'] = $status;
             $invoiceCurrency = strtoupper(admin_text($payload['currency'] ?? 'USD', 8));
             if (!in_array($invoiceCurrency, ['USD', 'KES', 'EUR', 'GBP'], true)) $invoiceCurrency = 'USD';
@@ -183,6 +185,7 @@ admin_page_header('Invoice Generator', 'invoice');
             <legend><span>04</span> Payment position</legend>
             <div class="form-grid">
                 <label>Amount already paid<input type="number" name="amount_paid" min="0" step="0.01" value="0"></label>
+                <label>Card payment requested now<input type="number" name="online_payment_amount" min="0" step="0.01" value="0"><small>Enter a deposit or instalment amount. Leave 0 to offer the full outstanding balance.</small></label>
                 <label>Invoice status<input type="text" name="invoice_status_display" readonly value="Issued"></label>
                 <label>Grand total<input type="text" name="grand_total_display" readonly></label>
                 <label>Balance due<input type="text" name="balance_display" readonly></label>

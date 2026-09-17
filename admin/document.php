@@ -35,6 +35,8 @@ $type = (string)($document['type'] ?? 'proposal');
 $isProposal = $type === 'proposal';
 $isQuotation = $type === 'quotation';
 $isInvoice = $type === 'invoice';
+$document = $isInvoice ? ($store->enableInvoiceOnlinePayment($id) ?? $document) : $document;
+$payload = is_array($document['payload'] ?? null) ? $document['payload'] : [];
 $lifecycleStatus = (string)($document['lifecycle_status'] ?? 'active');
 $invoiceStatus = (string)($payload['invoice_status'] ?? 'Issued');
 $isSuperseded = $lifecycleStatus === 'superseded' || ($isInvoice && $invoiceStatus === 'Superseded');
@@ -364,6 +366,7 @@ function document_money(string $currency, mixed $amount): string
                     <?php if (!empty($payment['mpesa_number'])): ?><div><dt>M-Pesa</dt><dd><?= admin_e(trim((string)($payment['mpesa_name'] ?? '') . ' ' . (string)$payment['mpesa_number'])) ?></dd></div><?php endif; ?>
                 </dl>
                 <p><?= nl2br(admin_e(document_value($payment, 'instructions', 'Payment instructions will be provided separately.'))) ?></p>
+                <?php if ((float)($payload['online_payment_amount'] ?? 0) > 0): ?><p>Secure card amount available now: <strong><?= admin_e(document_money($currency, $payload['online_payment_amount'])) ?></strong></p><?php endif; ?>
                 <?php if (($payment['online_enabled'] ?? '0') === '1' && !empty($payment['payment_link'])): ?><p><a href="<?= admin_e($payment['payment_link']) ?>">Secure payment link</a></p><?php endif; ?>
             </div>
         </section>

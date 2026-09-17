@@ -60,18 +60,28 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function pricing(): array
     {
-        $cached = $this->readPricingCache(21600);
+        // Catalogue browsing must never wait on the supplier when we already
+        // have a safe snapshot. Checkout performs a forced refresh before any
+        // order is created, so a seven-day browsing snapshot is both fast and
+        // commercially safe.
+        $cached = $this->readPricingCache(604800);
         if ($cached !== null) return $cached;
 
         try {
-            $response = $this->request('GET', '/developer/reseller/pricing');
-            $this->writePricingCache($response);
-            return $response;
+            return $this->refreshPricing();
         } catch (Throwable $error) {
-            $stale = $this->readPricingCache(604800);
+            $stale = $this->readPricingCache(2592000);
             if ($stale !== null) return $stale;
             throw $error;
         }
+    }
+
+    /** @return array<string,mixed> */
+    public function refreshPricing(): array
+    {
+        $response = $this->request('GET', '/developer/reseller/pricing');
+        $this->writePricingCache($response);
+        return $response;
     }
 
     /** @return array<string,mixed> */

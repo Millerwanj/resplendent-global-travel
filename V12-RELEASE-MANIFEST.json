@@ -1,6 +1,6 @@
 {
-    "release": "v12.5.3",
-    "name": "Branded eSIM Customer Delivery",
+    "release": "v12.5.4",
+    "name": "Paystack Journey Invoice Payments",
   "status": "consolidated-master",
     "date": "2026-09-15",
   "integrated_changes": [
@@ -19,6 +19,8 @@
         "Restored homepage-only readability fade and refreshed stylesheet cache",
         "Resplendent-branded responsive eSIM delivery email with plain-text fallback",
         "QR, direct-install, manual activation and customer-safe setup guidance"
+        ,"Paystack checkout for approved journey invoices, deposits and balances"
+        ,"Token-protected invoice payment links with provider-aware reconciliation"
   ],
   "private_config_excluded": [
     "/home/resplend/rgts-esimcard-config.php",
