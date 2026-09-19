@@ -1,0 +1,25 @@
+RESPLENDENT FULL RELEASE v12.5.7
+================================
+
+Purpose
+-------
+Minimal eSIM app entry and durable Europe2Africa journal archive, built from the complete v12.5.6 release.
+
+Changes
+-------
+- The existing eSIM page now includes one clear Find Your eSIM Plan entry to the Resplendent eSIM app.
+- No additional eSIM promotions were added elsewhere on the website.
+- The existing Published Journals section remains compact and now links to locally preserved Rwanda and Namibia archive editions.
+- Original Europe2Africa links remain available beside the archived editions.
+- The two archive editions are included in the sitemap.
+
+Preserved
+---------
+- Complete v12.5.6 instant catalogue, Paystack, callback, webhook, reconciliation and eSIM delivery flow.
+- All existing pages, imagery, international pages, SEO, journals and administrative functionality.
+- Existing minimalist site structure and visual language.
+
+Deployment
+----------
+Upload the complete archive contents into public_html and overwrite matching files.
+Keep private eSIMCard and payment configuration files outside public_html unchanged.

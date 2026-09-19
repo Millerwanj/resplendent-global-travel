@@ -1,0 +1,6 @@
+RESPLENDENT FULL RELEASE v12.5.9
+
+Scope of this release
+- Reduced the preserved Rwanda and Namibia article photographs to restrained editorial inserts.
+- Limited image width to 680px and height to 430px, centred within the article with balanced white space.
+- Preserved responsive mobile behaviour, image credits, archive content, eSIM integration, catalogue and Paystack flow.

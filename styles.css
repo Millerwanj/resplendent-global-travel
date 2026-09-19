@@ -822,3 +822,24 @@ img { display: block; width: 100%; }
 }
 .home-hero.soft-green::after { display: none !important; }
 .home-hero .hero-bg { filter: none !important; }
+
+/* v12.5.7 — restrained archive treatment for externally published editorials. */
+.publication-archive-note {
+  margin: 0 0 2.25rem;
+  padding: 1.25rem 1.35rem;
+  border-left: 2px solid var(--gold, #b89b5e);
+  background: #f5f3ec;
+}
+.publication-archive-note strong { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 600; }
+.publication-archive-note p { margin: .4rem 0 .7rem; }
+.publication-original { color: inherit; opacity: .72; }
+.article-table-wrap { margin: 1.5rem 0 2rem; overflow-x: auto; }
+.article-table-wrap table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: .92rem; line-height: 1.55; }
+.article-table-wrap th,.article-table-wrap td { padding: .85rem .9rem; border-bottom: 1px solid rgba(23,61,64,.15); text-align: left; vertical-align: top; }
+.article-table-wrap th { color: #173d40; font-weight: 600; }
+.article-source-note { margin-top: 2rem; color: rgba(23,61,64,.7); font-size: .88rem; }
+.article-figure { width: min(100%, 680px); margin: 2.25rem auto 2.75rem; }
+.article-figure img { display: block; width: 100%; max-height: 430px; object-fit: cover; border-radius: 14px; background: #e8ece8; }
+.article-figure:not(.article-figure-wide) img { aspect-ratio: 16 / 10; }
+.article-figure figcaption { margin-top: .65rem; color: rgba(23,61,64,.7); font-size: .78rem; line-height: 1.55; }
+.article-figure figcaption span { white-space: nowrap; color: #173d40; }

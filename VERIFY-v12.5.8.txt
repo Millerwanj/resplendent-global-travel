@@ -1,0 +1,11 @@
+RESPLENDENT FULL RELEASE v12.5.8
+
+Scope of this release
+- Added three credited editorial images to the preserved Europe2Africa Rwanda article.
+- Added three credited, article-specific editorial images to the preserved Europe2Africa Namibia article.
+- Images are locally hosted WebP files with responsive dimensions and lazy loading.
+- Kept the restrained archive layout, original publication links, eSIM integration, catalogue and Paystack flow unchanged.
+
+Article image credits
+- Rwanda: Volcanoes Safaris, Kigali Serena Hotel, and supplied publication photography.
+- Namibia: ATI Holidays.

@@ -1,0 +1,16 @@
+RESPLENDENT VERPEX DEPLOYMENT — v12.6.0
+
+This is a complete public_html build, not a patch.
+
+Deployment
+1. Back up the current Verpex public_html directory.
+2. Extract this ZIP locally.
+3. Upload the CONTENTS of the extracted folder into public_html so index.html sits directly inside public_html.
+4. Preserve the production .env already configured on the server; do not replace it with local or test credentials.
+5. Confirm index.html, .htaccess, assets, api, admin and data are present after upload.
+6. Clear the browser/CDN cache and open the homepage in a private window.
+
+Included changes
+- Approved Swakopmund waterfront homepage hero.
+- Europe2Africa Rwanda and Namibia archive pages with restrained, credited editorial images.
+- Existing eSIM integration, live catalogue, Paystack flow and all earlier site content.

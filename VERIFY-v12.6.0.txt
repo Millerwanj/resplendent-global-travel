@@ -1,0 +1,7 @@
+RESPLENDENT FULL RELEASE v12.6.0
+
+Scope of this release
+- Replaced the visible homepage hero photograph with the approved Swakopmund waterfront image supplied by Miller.
+- Optimised the original 2048 x 1280 photograph to a 317 KB WebP asset without artificial upscaling.
+- Preserved the approved homepage wording, navigation, readability fade and responsive layout.
+- Preserved the v12.5.9 journal archive imagery, eSIM integration, catalogue and Paystack flow unchanged.
