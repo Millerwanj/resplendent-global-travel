@@ -1,0 +1,7 @@
+v12.6.11 — Signature Journeys editorial transition
+
+Flow: hero, centred 860px click-to-play film, discreet YouTube link with red play mark, centred Beyond the ordinary introduction, existing journeys. Removes the repeated collection introduction above the film. Responsive spacing, keyboard accessible play and link.
+
+Back up public_html, extract this full build directly into public_html replacing build files, and hard-refresh /signature-journeys. Preserve existing private payment/eSIM configuration.
+
+No change to the existing unresolved eSIM supplier issue. Not deployed to Verpex.
