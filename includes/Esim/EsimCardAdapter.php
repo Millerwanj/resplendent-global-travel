@@ -50,18 +50,34 @@ final class EsimCardAdapter implements ProviderAdapterInterface
         }
         if ($countryName === '') return [];
 
-        $response = $this->client->pricing();
-        $data = $response['data'] ?? $response;
-        $countries = is_array($data) ? ($data['countries'] ?? []) : [];
-        if (!is_array($countries)) return [];
-        foreach ($countries as $country) {
-            if (!is_array($country)) continue;
-            $pricingCountryName = trim((string)($country['name'] ?? $country['country'] ?? ''));
-            if (strcasecmp($pricingCountryName, $countryName) !== 0) continue;
-            $packages = $country['packages'] ?? [];
-            return is_array($packages) ? array_values(array_filter($packages, 'is_array')) : [];
+        $rows = $this->listItems($this->client->pricing());
+        $offers = [];
+        foreach ($rows as $row) {
+            // Support both grouped country records and flat package records.
+            if (isset($row['packages']) && is_array($row['packages'])) {
+                if ($this->matchesCountry($row, $destinationId, $countryName)) {
+                    foreach ($row['packages'] as $package) if (is_array($package)) $offers[] = $package;
+                }
+                continue;
+            }
+            $country = $row['country'] ?? null;
+            $matches = $this->matchesCountry($row, $destinationId, $countryName);
+            if (is_array($country)) $matches = $matches || $this->matchesCountry($country, $destinationId, $countryName, true);
+            $coveredCountries = $row['countries'] ?? [];
+            foreach (is_array($coveredCountries) ? $coveredCountries : [] as $covered) {
+                if (is_array($covered)) $matches = $matches || $this->matchesCountry($covered, $destinationId, $countryName, true);
+            }
+            if ($matches) $offers[] = $row;
         }
-        return [];
+        return $offers;
+    }
+
+    private function matchesCountry(array $record, string $id, string $name, bool $countryRecord = false): bool
+    {
+        $countryId = $record['country_id'] ?? ($countryRecord || isset($record['packages']) ? ($record['id'] ?? '') : '');
+        if ((string)$countryId === $id) return true;
+        $countryName = $record['country_name'] ?? $record['country'] ?? ($countryRecord || isset($record['packages']) ? ($record['name'] ?? '') : '');
+        return is_string($countryName) && strcasecmp(trim($countryName), $name) === 0;
     }
 
     /** @return array<int,array<string,mixed>> */
@@ -75,6 +91,7 @@ final class EsimCardAdapter implements ProviderAdapterInterface
     private function listItems(array $response): array
     {
         $data = $response['data'] ?? $response;
+        if (is_array($data) && isset($data['data']) && is_array($data['data'])) $data = $data['data'];
         if (is_array($data) && isset($data['countries']) && is_array($data['countries'])) $data = $data['countries'];
         if (is_array($data) && isset($data['packages']) && is_array($data['packages'])) $data = $data['packages'];
         if (!is_array($data)) return [];

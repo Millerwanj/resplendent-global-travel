@@ -388,7 +388,9 @@ $customerBody .= "Signature Journeys | Executive Mobility | Global Connectivity
 ";
 $customerBody .= "info@resplendentglobaltravel.com
 ";
-$customerBody .= "+254 724 785 341
+$customerBody .= "+254 754 888 898
+";
+$customerBody .= "+254 180 632 963
 ";
 
 try {

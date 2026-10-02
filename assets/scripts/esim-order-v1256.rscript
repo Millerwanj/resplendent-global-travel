@@ -35,7 +35,7 @@
     submit.disabled=true;submit.textContent='Opening secure payment…';setFormMessage('Rechecking your plan and creating your secure Paystack checkout…',false);
     try{
       var r=await fetch('/api/connectivity/create-order.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan_id:planId,destination_id:destinationId,name:name.value.trim(),email:email.value.trim(),phone:phone.value.trim()})});
-      var d=await r.json();if(!r.ok||!d.ok||!d.redirect_url)throw new Error(d.message||'Secure checkout could not be created.');
+      var text=await r.text(),d;try{d=JSON.parse(text);}catch(parseError){throw new Error('Secure checkout is temporarily unavailable. Please try again shortly.');}if(!r.ok||!d.ok||!d.redirect_url)throw new Error(d.message||'Secure checkout could not be created.');
       window.location.assign(d.redirect_url);
     }catch(err){submit.disabled=false;submit.textContent='Continue to review & payment';setFormMessage(err.message||'Secure checkout could not be created.',true);}
   });

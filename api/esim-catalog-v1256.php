@@ -77,7 +77,7 @@ try {
     if ($action === 'offers') {
         $destination = trim((string)($_GET['destination'] ?? ''));
         if (!preg_match('/^[a-f0-9]{32}$/', $destination)) catalogue_response(422, ['ok' => false, 'message' => 'Choose a valid destination.']);
-        $cachePath = dirname(__DIR__) . '/data/esim-catalog-cache/' . $destination . '.json';
+        $cachePath = dirname(__DIR__) . '/data/esim-catalog-cache-v1267/' . $destination . '.json';
         $cachedPayload = catalogue_cache_read($cachePath);
         $refresh = (string)($_GET['refresh'] ?? '') === '1';
 
@@ -86,7 +86,7 @@ try {
         if (!$refresh && $cachedPayload !== null) catalogue_response(200, $cachedPayload);
 
         if ($refresh) {
-            $lockPath = dirname(__DIR__, 2) . '/rgts-esimcard-catalog-refresh.lock';
+            $lockPath = dirname(__DIR__, 2) . '/rgts-esimcard-catalog-refresh-v1267.lock';
             $lock = fopen($lockPath, 'c+');
             if (is_resource($lock) && flock($lock, LOCK_EX | LOCK_NB)) {
                 $lastRefresh = (int)trim((string)stream_get_contents($lock));

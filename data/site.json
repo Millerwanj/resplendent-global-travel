@@ -1,12 +1,13 @@
 {
   "name": "Resplendent Global Travel Solutions",
-  "version": "10.8.1",
+  "version": "12.6.2",
   "colors": {
     "navy": "#0A2342",
     "gold": "#C9A227",
     "white": "#FFFFFF"
   },
-  "phone": "+254724785341",
+  "phone": "+254754888898",
+  "secondaryPhone": "+254180632963",
   "amazon": "https://www.amazon.com/dp/B0H8FQ3968",
   "enquiryEmail": "info@resplendentglobaltravel.com"
 }

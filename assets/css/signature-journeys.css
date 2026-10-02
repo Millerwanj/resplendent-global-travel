@@ -22,3 +22,10 @@
 /* v11.7.27 — Signature detail photography: original colour/contrast only. */
 .signature-journey-hero-overlay{background:transparent !important;}
 .signature-journey-hero-content{text-shadow:0 2px 12px rgba(0,0,0,.38);}
+
+/* Namibia Signature Journey */
+.namibia-journey-page .signature-journey-hero{min-height:clamp(520px,60vh,620px);height:clamp(520px,60vh,620px);background-image:url("../images/signature-journeys/etosha-elephants-rushing-yathin.jpg");background-position:center center !important}
+.namibia-journey-page .signature-journey-hero-overlay{background:linear-gradient(90deg,rgba(8,36,32,.66),rgba(8,36,32,.28) 55%,rgba(8,36,32,.06)) !important}
+.namibia-image-credit{margin:0;padding:9px 20px;background:#f7f4ec;color:#635f56;font-size:.67rem;text-align:right}.namibia-image-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.namibia-price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;margin:2rem 0;border-top:1px solid var(--line)}.namibia-price-grid>div{display:flex;flex-direction:column;gap:.45rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}.namibia-price-grid strong{font:500 1.6rem var(--serif)}.namibia-price-grid span{color:var(--muted)}.namibia-price-note{max-width:760px;color:var(--muted);font-size:.82rem}.namibia-journey-page .journey-investment .section-heading{max-width:850px}
+@media(max-width:700px){.namibia-price-grid{grid-template-columns:1fr;gap:0}.namibia-journey-page .signature-journey-hero{background-position:51% center}}

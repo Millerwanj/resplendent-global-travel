@@ -1,0 +1,9 @@
+Resplendent v12.6.13 — selected-package checkout verification
+
+Back up public_html and extract the entire ZIP directly into public_html, replacing matching files. Preserve private configuration and operational data outside public_html. Keep existing catalogue caches.
+
+The exact selected package was successfully retrieved in the user's production Terminal in 0.25 seconds. This release uses that existing detail endpoint to verify the selected package before creating payment checkout, instead of downloading the worldwide catalogue.
+
+Supplier identity, destination coverage, and current price must validate. Supplier failure does not fall back to cached checkout prices. No order/payment/provisioning action was performed during local validation.
+
+After deployment run PHP syntax checks on includes/EsimCard/EsimCardClient.php and includes/Connectivity/connectivity-bootstrap.php. Test opening secure payment once; stop before paying. A successful Paystack redirect must be verified separately. The existing HTTP 500 has not been conclusively attributed to the full-catalogue refresh, so any remaining error requires its current server response/log.

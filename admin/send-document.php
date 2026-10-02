@@ -129,7 +129,8 @@ try {
     $body .= "Resplendent Global Travel Solutions\n";
     $body .= "Luxury Travel | Corporate Travel | Global Business Connections\n";
     $body .= (string)$sender['reply_to'] . "\n";
-    $body .= "+254 724 785 341\n";
+    $body .= "WhatsApp: +254 754 888 898\n";
+    $body .= "Secondary: +254 180 632 963\n";
 
     $fromEmail = (string)$sender['email'];
     $replyTo = (string)$sender['reply_to'];

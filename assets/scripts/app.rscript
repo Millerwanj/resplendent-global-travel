@@ -5,7 +5,7 @@
   const toggle = document.querySelector("[data-nav-toggle]");
   const nav = document.querySelector("[data-nav]");
   const form = document.querySelector("[data-concierge-form]");
-  const status = document.querySelector("[data-form-status]");
+  let status = document.querySelector("[data-form-status]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const navFocusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -108,9 +108,23 @@
 
   if (!form) return;
 
+  // Journey pages use the shared form script but some omit its status element.
+  // Create one so validation and submission can always finish.
+  if (!status) {
+    status = document.createElement("p");
+    status.id = "form-status";
+    status.className = "form-status";
+    status.dataset.formStatus = "";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    const button = form.querySelector('button[type="submit"]');
+    if (button) button.parentElement.insertAdjacentElement("beforebegin", status);
+    else form.append(status);
+  }
+
   const serviceSelect = form.querySelector("[data-service-category]");
   const servicePanels = [...form.querySelectorAll("[data-service-panel]")];
-  const submitButton = form.querySelector("[data-submit-button]");
+  const submitButton = form.querySelector('[data-submit-button], button[type="submit"]');
   const honeypot = form.elements.rgts_fax_number;
   const params = new URLSearchParams(location.search);
 

@@ -16,6 +16,7 @@ final class EsimCardClient
     private ?string $token = null;
     private string $pricingCacheFile;
     private string $countriesCacheFile;
+    private ?array $freshPackages = null;
 
     /** @param array<string,mixed> $config */
     public function __construct(array $config)
@@ -34,7 +35,7 @@ final class EsimCardClient
         $this->timeout = max(5, min(45, (int)($config['timeout'] ?? 20)));
         $apiToken = trim((string)($config['api_token'] ?? ''));
         $this->token = $apiToken !== '' ? $apiToken : null;
-        $this->pricingCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-pricing-' . $environment . '.json';
+        $this->pricingCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-packages-v1267-' . $environment . '.json';
         $this->countriesCacheFile = dirname(__DIR__, 3) . '/rgts-esimcard-countries-' . $environment . '.json';
 
         if ($this->token === null && (!filter_var($this->email, FILTER_VALIDATE_EMAIL) || $this->password === '')) {
@@ -54,17 +55,62 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function packages(string $packageType = 'DATA-ONLY'): array
     {
-        return $this->request('GET', '/developer/reseller/packages', ['package_type' => $this->packageType($packageType)]);
+        $this->packageType($packageType);
+        $items = [];
+        $seen = [];
+        for ($page = 1; $page <= 200; $page++) {
+            $response = $this->request('GET', '/developer/reseller/packages', [], [
+                'page' => $page, 'per_page' => 100,
+            ], true);
+            $data = $response['data'] ?? $response;
+            if (!is_array($data)) throw new RuntimeException('Invalid eSIMCard package catalogue.');
+            $rows = $data['data'] ?? $data['packages'] ?? $data['countries'] ?? $data;
+            if (!is_array($rows) || !array_is_list($rows)) {
+                throw new RuntimeException('Unrecognised eSIMCard package catalogue.');
+            }
+            $fingerprint = hash('sha256', json_encode($rows, JSON_THROW_ON_ERROR));
+            if ($rows !== [] && isset($seen[$fingerprint])) {
+                throw new RuntimeException('eSIMCard pagination repeated a page.');
+            }
+            $seen[$fingerprint] = true;
+            foreach ($rows as $row) {
+                if (!is_array($row)) throw new RuntimeException('Invalid eSIMCard package record.');
+                $items[] = $row;
+            }
+            $meta = $response['meta'] ?? $data['meta'] ?? $data;
+            $currentPage = $meta['current_page'] ?? $response['current_page'] ?? null;
+            if ($currentPage !== null && (!is_numeric($currentPage) || (int)$currentPage !== $page)) {
+                throw new RuntimeException('eSIMCard did not return the requested page.');
+            }
+            $lastPage = $meta['last_page'] ?? $response['last_page'] ?? null;
+            $links = $response['links'] ?? $data['links'] ?? [];
+            $hasNext = array_key_exists('next_page_url', $data) || array_key_exists('next_page_url', $response)
+                || (is_array($links) && array_key_exists('next', $links));
+            $next = $data['next_page_url'] ?? $response['next_page_url'] ?? $links['next'] ?? null;
+            if ($lastPage !== null) {
+                if (!is_numeric($lastPage) || (int)$lastPage < $page || (int)$lastPage > 200) {
+                    throw new RuntimeException('Invalid eSIMCard pagination metadata.');
+                }
+                if ($page >= (int)$lastPage) return ['data' => $items];
+            } elseif ($hasNext) {
+                if ($next === null || $next === '') return ['data' => $items];
+                // Never follow a supplier URL with the bearer token. Request only
+                // the fixed trusted endpoint using the next numeric page.
+            } elseif (count($rows) < 100) {
+                return ['data' => $items];
+            }
+        }
+        throw new RuntimeException('eSIMCard package pagination limit exceeded.');
     }
 
     /** @return array<string,mixed> */
     public function pricing(): array
     {
         // Catalogue browsing must never wait on the supplier when we already
-        // have a safe snapshot. Checkout performs a forced refresh before any
+        // have a safe snapshot. Checkout verifies the selected package before any
         // order is created, so a seven-day browsing snapshot is both fast and
         // commercially safe.
-        $cached = $this->readPricingCache(604800);
+        $cached = $this->freshPackages ?? $this->readPricingCache(604800);
         if ($cached !== null) return $cached;
 
         try {
@@ -79,9 +125,44 @@ final class EsimCardClient
     /** @return array<string,mixed> */
     public function refreshPricing(): array
     {
-        $response = $this->request('GET', '/developer/reseller/pricing');
+        $response = $this->packages();
         $this->writePricingCache($response);
+        $this->freshPackages = $response;
         return $response;
+    }
+
+    /** Verify one package live without replacing the complete browsing cache. */
+    public function refreshSelectedPackage(string $publicPlanId): void
+    {
+        if (!preg_match('/^[a-f0-9]{64}$/', $publicPlanId)) {
+            throw new InvalidArgumentException('Invalid plan reference.');
+        }
+        $cached = $this->readPricingCache(2592000);
+        if ($cached === null) throw new RuntimeException('Please reload the plan catalogue before continuing.');
+        $data = $cached['data'] ?? $cached;
+        $rows = $data['data'] ?? $data['packages'] ?? $data['countries'] ?? $data;
+        if (!is_array($rows) || !array_is_list($rows)) {
+            throw new RuntimeException('Invalid saved package catalogue.');
+        }
+        $providerId = null;
+        foreach ($rows as $row) {
+            if (!is_array($row)) continue;
+            $id = (string)($row['id'] ?? $row['package_type_id'] ?? '');
+            if ($id !== '' && hash_equals(hash('sha256', 'esimcard:' . $id), $publicPlanId)) {
+                $providerId = $id;
+                break;
+            }
+        }
+        if ($providerId === null) throw new RuntimeException('That package is no longer available. Please choose a current plan.');
+        $response = $this->package($providerId);
+        $package = $response['data'] ?? $response;
+        if (!is_array($package) || array_is_list($package)
+            || (string)($package['id'] ?? '') !== $providerId) {
+            throw new RuntimeException('The supplier could not verify the selected package.');
+        }
+        // Only this request uses the live record. Never persist a one-record
+        // response over the complete supplier catalogue.
+        $this->freshPackages = ['data' => [$package]];
     }
 
     /** @return array<string,mixed> */
@@ -151,14 +232,14 @@ final class EsimCardClient
         $this->token = trim($token);
     }
 
-    /** @param array<string,string> $query @param array<string,string>|null $form @return array<string,mixed> */
-    private function request(string $method, string $path, array $query = [], ?array $form = null): array
+    /** @param array<string,string> $query @param array<string,mixed>|null $form @return array<string,mixed> */
+    private function request(string $method, string $path, array $query = [], ?array $form = null, bool $jsonBody = false): array
     {
         $this->authenticate();
-        return $this->requestRaw($method, $path, $query, $form, true, false);
+        return $this->requestRaw($method, $path, $query, $form, true, $jsonBody);
     }
 
-    /** @param array<string,string> $query @param array<string,string>|null $body @return array<string,mixed> */
+    /** @param array<string,string> $query @param array<string,mixed>|null $body @return array<string,mixed> */
     private function requestRaw(string $method, string $path, array $query, ?array $body, bool $authenticated, bool $jsonBody): array
     {
         if (!function_exists('curl_init')) throw new RuntimeException('PHP cURL is required for the eSIMCard integration.');
@@ -191,10 +272,30 @@ final class EsimCardClient
         if ($payload !== null) curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
         $raw = curl_exec($curl);
         $status = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $errorNumber = curl_errno($curl);
+        $info = curl_getinfo($curl);
         $error = curl_error($curl);
         curl_close($curl);
 
-        if ($raw === false || $error !== '') throw new RuntimeException('eSIMCard network request failed.');
+        if ($raw === false || $error !== '') {
+            // Log only transport metadata, never credentials, headers or response bodies.
+            $diagnostic = [
+                'method' => strtoupper($method),
+                'host' => (string)parse_url($this->baseUrl, PHP_URL_HOST),
+                'endpoint' => $path === '/developer/reseller/login' ? 'login' : ($path === '/developer/reseller/packages' ? 'packages' : 'supplier-request'),
+                'curl_errno' => $errorNumber,
+                'curl_error' => curl_strerror($errorNumber),
+                'http_status' => $status,
+                'dns_seconds' => $info['namelookup_time'] ?? null,
+                'connect_seconds' => $info['connect_time'] ?? null,
+                'tls_seconds' => $info['appconnect_time'] ?? null,
+                'first_byte_seconds' => $info['starttransfer_time'] ?? null,
+                'total_seconds' => $info['total_time'] ?? null,
+                'ssl_verify_result' => $info['ssl_verify_result'] ?? null,
+            ];
+            error_log('[RGTS eSIM transport] ' . json_encode($diagnostic, JSON_UNESCAPED_SLASHES));
+            throw new RuntimeException('eSIMCard network request failed.');
+        }
         $decoded = json_decode((string)$raw, true);
         if (!is_array($decoded)) throw new RuntimeException('eSIMCard returned an invalid response.');
         if ($status < 200 || $status >= 300) {

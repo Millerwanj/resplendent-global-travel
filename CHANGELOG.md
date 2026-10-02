@@ -1,3 +1,20 @@
+# v12.6.13 — Selected-package checkout verification (2026-10-02)
+
+- Replace forced worldwide catalogue refresh at checkout with one live selected-package detail request.
+- Resolve supplier ID from the saved catalogue; verify the returned ID, destination coverage, and live price through the existing adapter/router.
+- Fail closed on missing cache, missing plan, supplier errors, invalid identity, coverage or price.
+- Keep the complete supplier catalogue intact; the live selected record is request-local.
+- Preserve all Signature Flow content from the supplied v12.6.11 baseline and v12.6.12 GET correction.
+
+# v12.6.12 — Correct eSIMCard packages HTTP method (2026-10-02)
+
+- Fix the confirmed supplier rejection: packages endpoint supports GET/HEAD, not POST.
+- Send GET with JSON body page and per_page: 100, using the supplier’s supplied pagination fields without the extra undocumented package_type parameter.
+- Validate requested-page metadata, reject repeated pages, and stop at the final short page when pagination metadata is absent.
+- Preserve v1267 supplier/public catalogue caches; checkout still requires fresh supplier pricing.
+- Preserve the complete supplied v12.6.11 Signature Flow baseline.
+- PHP syntax parser and archive checks passed. Authenticated live supplier verification remains pending deployment.
+
 # v12.1 — Complete eSIM Provisioning (2026-09-10)
 
 - Consolidated the complete payment-to-provisioning lifecycle into one master build.
