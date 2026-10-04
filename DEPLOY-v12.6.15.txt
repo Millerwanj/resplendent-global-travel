@@ -1,0 +1,5 @@
+Resplendent v12.6.15 — Signature Journeys introduction
+
+Extract into public_html. The film is now streamed from YouTube (7cwetIL7730), loading only after play is clicked. Introduction appears to the left on desktop and above on mobile. The correct updated film carries “Because the usual destinations are overrated.” No additional MP4 is bundled. No live deployment performed.
+
+Executive Mobility now follows introduction → service options → coordination → film and enquiry, with responsive split layouts and a smaller player.

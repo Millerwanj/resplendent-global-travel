@@ -1,0 +1,6 @@
+.rgts-whatsapp{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:calc(22px + env(safe-area-inset-bottom));z-index:40;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#167c50;color:#fff;border:1px solid rgba(255,255,255,.8);box-shadow:0 3px 12px rgba(16,47,50,.16);text-decoration:none}
+.rgts-whatsapp svg{width:28px;height:28px;fill:currentColor;display:block}
+.rgts-whatsapp:hover{background:#11613f}
+.rgts-whatsapp:focus-visible{outline:3px solid #a88954;outline-offset:4px}
+@media(max-width:600px){.rgts-whatsapp{width:48px;height:48px;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom))}}
+@media print{.rgts-whatsapp{display:none}}

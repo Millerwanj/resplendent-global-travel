@@ -1,0 +1,1 @@
+v12.6.16: discreet floating WhatsApp button on 15 service and journey pages. Primary number +254 754 888 898. Page-specific enquiry messages. eSIM checkout excluded. Includes the Signature Journeys YouTube embed and Executive Mobility structure from v12.6.15. Extract contents into public_html. Live deployment and visual browser verification not performed.

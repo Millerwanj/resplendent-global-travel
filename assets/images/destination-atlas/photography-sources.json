@@ -1,0 +1,130 @@
+[
+  {
+    "destination": "Kyoto",
+    "photographer": "David Emrich",
+    "source": "https://unsplash.com/photos/f6hlrIboDUY",
+    "license": "https://unsplash.com/license",
+    "files": "kyoto.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Marrakech",
+    "photographer": "Riccardo Monteleone",
+    "source": "https://unsplash.com/photos/CFK2zjBHJeQ",
+    "license": "https://unsplash.com/license",
+    "files": "marrakech.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Lisbon",
+    "photographer": "elisadventure photographe",
+    "source": "https://unsplash.com/photos/h5kfWB9c8lA",
+    "license": "https://unsplash.com/license",
+    "files": "lisbon.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Istanbul",
+    "photographer": "Adnan Uludag",
+    "source": "https://unsplash.com/photos/y1BI7y1vaW8",
+    "license": "https://unsplash.com/license",
+    "files": "istanbul.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Raja Ampat",
+    "photographer": "Ernests Vaga",
+    "source": "https://unsplash.com/photos/4tMHO3NbUEc",
+    "license": "https://unsplash.com/license",
+    "files": "raja-ampat.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Seychelles",
+    "photographer": "Miriam Pereira",
+    "source": "https://unsplash.com/photos/VO5nD9tb3UI",
+    "license": "https://unsplash.com/license",
+    "files": "seychelles.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Mauritius",
+    "photographer": "Heiko Kaufmann",
+    "source": "https://unsplash.com/photos/-qz75V7qpwU",
+    "license": "https://unsplash.com/license",
+    "files": "mauritius.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Sardinia",
+    "photographer": "Katie Kalmykova",
+    "source": "https://unsplash.com/photos/P5c4vJyWDFc",
+    "license": "https://unsplash.com/license",
+    "files": "sardinia.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Patagonia",
+    "photographer": "Colin Watts",
+    "source": "https://unsplash.com/photos/8tvSElhPqKE",
+    "license": "https://unsplash.com/license",
+    "files": "patagonia.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Iceland",
+    "photographer": "Rolands Varsbergs",
+    "source": "https://unsplash.com/photos/f3Os5oCc874",
+    "license": "https://unsplash.com/license",
+    "files": "iceland.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Okavango",
+    "photographer": "Wynand Uys",
+    "source": "https://unsplash.com/photos/4ZCA3xukIso",
+    "license": "https://unsplash.com/license",
+    "files": "botswana.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Musandam",
+    "photographer": "Julius Yls",
+    "source": "https://unsplash.com/photos/PeqtFDIXoUg",
+    "license": "https://unsplash.com/license",
+    "files": "musandam.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Engadin",
+    "photographer": "Mario Häfliger",
+    "source": "https://unsplash.com/photos/PaVzbUl40rc",
+    "license": "https://unsplash.com/license",
+    "files": "engadin.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Madeira",
+    "photographer": "gina",
+    "source": "https://unsplash.com/photos/YioebNDWNOM",
+    "license": "https://unsplash.com/license",
+    "files": "madeira.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "The Dolomites",
+    "photographer": "Micah & Sammie Chaffin",
+    "source": "https://unsplash.com/photos/zWTmywY3nyg",
+    "license": "https://unsplash.com/license",
+    "files": "dolomites.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  },
+  {
+    "destination": "Bhutan",
+    "photographer": "Sujan Mongar",
+    "source": "https://unsplash.com/photos/CX-cOhmYxRY",
+    "license": "https://unsplash.com/license",
+    "files": "bhutan.webp",
+    "processing": "Resized and encoded as WebP; display crops with object-fit; no AI generation"
+  }
+]

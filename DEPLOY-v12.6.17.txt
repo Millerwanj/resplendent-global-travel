@@ -1,0 +1,7 @@
+Resplendent v12.6.17 — Destinations atlas
+
+Extract the archive contents directly into public_html. Contains all prior Signature Journeys, Executive Mobility and WhatsApp changes.
+
+Destinations: existing hero image and markup preserved. Four moods, four destinations each, 16 licensed real photographs with 800 / 1400 / 2200px responsive WebP variants. All photographs are local files. Image links lead to the existing enquiry form with destination prefilled. Photography credits and source records included.
+
+Validation: all image and stylesheet paths served HTTP 200 locally; image files decoded; ZIP integrity checked; header bytes match the uploaded baseline. Browser visual QA was unavailable because browser installation failed and cloud browser does not permit local file previews. No live deployment performed.
