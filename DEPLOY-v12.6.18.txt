@@ -1,0 +1,7 @@
+Resplendent v12.6.18 — Full Verpex build
+
+Extract archive contents directly into public_html and overwrite existing website files.
+
+Updates: Buy Travel eSIMs in Kenya search title; plans from KShs.250; Kenyan-market introduction. Removed optional Destinations photography credits link; old credits URL redirects to Destinations. Source records retained.
+
+All other website files and assets retained from GitHub commit 10a271ffea41cbf87268c183989b24d676fed6d1. Server-only configuration and credentials already on Verpex must remain in place.
